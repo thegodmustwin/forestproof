@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    profiles: ["postgis"]
+    environment:
+      POSTGRES_DB: forestproof
+      POSTGRES_USER: forestproof
+      POSTGRES_PASSWORD: forestproof
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/docker/init-postgis.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forestproof -d forestproof"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  api:
+    build:
+      context: ./services/api
+    env_file: .env
+    environment:
+      FORESTPROOF_SQLITE_PATH: /data/forestproof.db
+      EVIDENCE_STORAGE_PATH: /data/evidence
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./services/api:/app
+      - ./data/local:/data
+
+  web:
+    build:
+      context: ./apps/web
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api/v1
+      NEXT_PUBLIC_ENABLE_GFW_GLAD_S2_CONTEXT: "false"
+      NEXT_PUBLIC_GFW_GLAD_S2_TILES: https://tiles.globalforestwatch.org/umd_glad_sentinel2_alerts/latest/dynamic/{z}/{x}/{y}.png
+    command: npm run dev -- -H 0.0.0.0 -p 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:

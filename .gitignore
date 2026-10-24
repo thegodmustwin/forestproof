@@ -1,0 +1,23 @@
+# Runtime and generated state
+.env
+.env.local
+.venv/
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+.next/
+*.tsbuildinfo
+dist/
+coverage/
+playwright-report/
+test-results/
+uploads/
+data/local/
+
+# Editor and OS state
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
