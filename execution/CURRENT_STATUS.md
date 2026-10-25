@@ -8,7 +8,7 @@
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
 | GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. Initial commit is 71af70f81318ea98e4d1ab20bd52739aa97012c1. |
-| GitHub CI | WORKING | First Actions run on the initial commit passed API and web jobs: https://github.com/thegodmustwin/forestproof/actions/runs/40185388840. |
+| GitHub CI | WORKING | CI passed on both the initial app commit and the context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`; API tests and web checks succeeded on the latest run: https://github.com/thegodmustwin/forestproof/actions/runs/40216435071. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
@@ -32,9 +32,8 @@
 - Local web typecheck: passed on 2026-10-21.
 - Local web production build: passed and generated nine routes on 2026-10-21.
 - Hosted-proxy topology check: web proxy returned HTTP 200 for API health and observations on loopback on 2026-10-21; this was not a public deployment.
-- GitHub Actions initial run for commit 71af70f81318ea98e4d1ab20bd52739aa97012c1: success on 2026-10-25; see the workflow link above.
-
-No tests were re-run solely for this documentation update; the existing workflow checks the code at the initial pushed commit.
+- GitHub Actions for initial app commit `71af70f81318ea98e4d1ab20bd52739aa97012c1`: API and web jobs passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40185388840.
+- GitHub Actions for context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`: API tests and web checks passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40216435071.
 
 ## Next checkpoint
 

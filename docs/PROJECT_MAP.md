@@ -1,6 +1,6 @@
 # ForestProof — repository and system map
 
-**Snapshot:** 2026-10-25, private repo thegodmustwin/forestproof, branch main.  
+**Snapshot:** 2026-10-25, private repo thegodmustwin/forestproof, branch main at `be4402f4f4c44f2f1ca52dc694af185164c3263e`.  
 This map separates the current DEMO implementation from the intended production architecture.
 
 ## System in one view
@@ -85,7 +85,7 @@ The project CI uses Python 3.12 and Node 20:
     npm run typecheck
     npm run build
 
-The first GitHub Actions run for commit 71af70f81318ea98e4d1ab20bd52739aa97012c1 passed both jobs: https://github.com/thegodmustwin/forestproof/actions/runs/40185388840. A passing build verifies this commit's CI checks only; it does not verify live data, legal sources, auth, or production operations.
+GitHub Actions passed for the initial app commit `71af70f81318ea98e4d1ab20bd52739aa97012c1` and the current context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`. On the latest run, API tests and web checks both succeeded: https://github.com/thegodmustwin/forestproof/actions/runs/40216435071. A passing build verifies CI checks only; it does not verify live data, legal sources, auth, or production operations.
 
 Codex Cloud is the preferred development path; it can install Python and npm dependencies and run these checks without requiring Docker on the owner's laptop. Network access should be limited to package managers unless a verified workflow needs additional hosts. No .env or production secret is in the repository.
 
