@@ -1,0 +1,3018 @@
+# FORESTPROOF — The Master Codex Superbuild Directive
+
+Our objective: Build an exceptionally capable, commercially viable environmental-intelligence platform beginning with Kenya's Aberdare water tower, then expandable to forests, watersheds, restoration projects and environmental compliance operations worldwide.
+
+Codex must understand that we're building something considerably more valuable than a satellite visualization:
+
+> ForestProof turns environmental observations into verifiable evidence, authorized interventions, accountable responses and measurable conservation outcomes.
+
+The architecture follows our Golden Economics doctrine: use existing satellite and scientific infrastructure wherever practical, build a comparatively inexpensive intelligence and coordination layer above it, and accumulate a proprietary Forest Intervention Outcome Graph as real organizations use the product.
+
+The first milestone is a real working Aberdare monitoring and evidence-management system. Not a mockup, not an endlessly expanding architecture document, and not a beautiful globe that cannot substantiate its alerts.
+
+The superprompt below includes the product vision, code architecture, satellite pipelines, data provenance, legal constraints, privacy safeguards, business model, testing requirements, deployment strategy and phased execution orders.
+
+# FORESTPROOF — MASTER CODEX SUPERBUILD DIRECTIVE
+
+**Project:** FORESTPROOF\
+**Category:** Environmental Intelligence / Geospatial Infrastructure / Conservation Technology / Environmental Evidence and Accountability\
+**Initial geography:** Aberdare Forest and its connected water-catchment areas, Kenya\
+**Initial use case:** Detect, investigate, document and monitor potentially harmful or unauthorized forest disturbance\
+**Long-term category:** Environmental Evidence and Intervention Infrastructure\
+**Core asset:** Forest Intervention Outcome Graph\
+**Commercial model:** Institutional monitoring SaaS + evidence workflows + API + outcome intelligence\
+**Primary strategic doctrines:** Golden Economics, AlphaZero-inspired adaptive search, Still-Fulcrum, Conservation Audit
+
+---
+
+# 0. YOUR ROLE AND MISSION
+
+You are Codex operating as an elite multidisciplinary engineering and product team.
+
+Assume the combined responsibilities of:
+
+- Principal geospatial engineer
+- Remote-sensing scientist
+- Environmental data engineer
+- Satellite imagery analyst
+- Principal full-stack software engineer
+- Principal backend architect
+- PostGIS database specialist
+- AI/ML research engineer
+- Security and privacy engineer
+- DevOps/SRE architect
+- Conservation-monitoring systems architect
+- Evidence integrity and audit-systems engineer
+- Product designer
+- Technical startup founder
+- Commercial SaaS architect
+
+Your mission is to build **FORESTPROOF**, a production-minded environmental monitoring and evidence platform.
+
+This must NOT become another pretty satellite dashboard without operational utility.
+
+It must be capable of turning actual, properly sourced observations into reviewable environmental cases, preserving their evidence, managing investigation workflows, and measuring outcomes.
+
+Our first use case is the forest-loss and logging controversy surrounding Kenya's Aberdare water tower.
+
+Our long-term goal is a reusable environmental evidence platform for conservation organizations, watershed managers, restoration operators, environmental-risk teams, civil society and other legitimate institutional customers.
+
+**Do not start by creating an elaborate 3D globe.**
+
+Start by creating a functioning environmental evidence system with a trustworthy data pipeline.
+
+The initial system must be built as a genuine product, not a presentation prototype.
+
+---
+
+# 1. THE CORE COMPANY THESIS
+
+Satellite companies and scientific organizations are becoming increasingly good at observing the Earth's surface.
+
+They provide:
+
+- Satellite imagery
+- Radar observations
+- Fire alerts
+- Forest-cover change
+- Vegetation indices
+- Historical environmental data
+- Predictive land-use analysis
+
+Yet observations alone do not guarantee environmental protection.
+
+An alert must still be:
+
+1. Interpreted correctly.
+2. Connected to a real geographic location.
+3. Evaluated against legitimate environmental and land-management context.
+4. Reviewed for credibility.
+5. Assigned to an appropriate investigator.
+6. Verified or rejected.
+7. Connected to action.
+8. Followed up.
+9. Measured for effectiveness.
+
+FORESTPROOF owns the workflow connecting these stages.
+
+Our positioning:
+
+**"From satellite warning to verified protection."**
+
+Our technical promise:
+
+**"Turn environmental disturbances into evidence-backed investigation cases, track the authorized response, and measure what happened afterward."**
+
+Our business promise:
+
+**"Help organizations responsible for protecting environmental assets identify, investigate and document threats using less manual effort and better evidence."**
+
+We do not replace:
+
+- Satellite operators
+- Forest rangers
+- Environmental scientists
+- Courts
+- Kenya Forest Service
+- Environmental regulators
+- Licensed environmental professionals
+
+We provide software that makes their observations and authorized decisions more coordinated, reliable and auditable.
+
+---
+
+# 2. THE STILL-FULCRUM STRATEGY
+
+Treat the Still-Fulcrum doctrine as a strategic metaphor, not a claim about physics.
+
+The enormous external investment occurs in:
+
+- Satellites
+- Remote sensing
+- Earth-observation infrastructure
+- Data processing
+- Forest science
+- Field investigations
+- Government environmental systems
+- Conservation programmes
+
+We should avoid owning all these expensive activities.
+
+Instead, occupy the comparatively inexpensive decision boundary:
+
+**"Which environmental observation requires what verification, by whom, under which applicable context, and what was the outcome?"**
+
+Conceptual architecture:
+
+```
+SATELLITE OPERATORS
+       |
+FOREST MONITORING SYSTEMS
+       |
+SCIENTIFIC DATA PRODUCTS
+       |
+FIELD OBSERVATIONS
+       |
+       v
+   FORESTPROOF
+       |
+       +-- DETECT
+       +-- CORROBORATE
+       +-- CLASSIFY
+       +-- EVALUATE CONTEXT
+       +-- PRIORITIZE
+       +-- ASSIGN
+       +-- DOCUMENT
+       +-- VERIFY
+       +-- ESCALATE
+       +-- MEASURE
+       |
+       v
+FOREST INTERVENTION OUTCOME GRAPH
+```
+
+Our advantage should come from controlling this coordination and evidence layer without paying to operate a global satellite constellation or massive computational infrastructure.
+
+---
+
+# 3. THE GOLDEN ECONOMICS CONSTITUTION
+
+Every major product feature must pass two questions.
+
+**QUESTION A**
+
+Can customer value and revenue grow dramatically faster than the marginal infrastructure cost of delivering the feature?
+
+**QUESTION B**
+
+Does every legitimate unit of usage produce something that makes our product, evidence base, or customer's operational intelligence more valuable?
+
+Desired structure:
+
+```
+MONITORED ENVIRONMENTAL ASSETS    ↑↑↑
+CUSTOMER VALUE                   ↑↑↑
+RECURRING REVENUE                ↑↑↑
+VERIFIED EVIDENCE                ↑↑↑
+HISTORICAL INTELLIGENCE          ↑↑↑
+CUSTOMER-SPECIFIC WORKFLOW VALUE ↑↑↑
+
+MARGINAL SOFTWARE SERVING COST   ↑ slowly
+```
+
+Prefer:
+
+- Publicly accessible scientific data where licensing permits.
+- Shared processing of the same geographic observation.
+- Reusable data products.
+- Event-driven ingestion.
+- Incremental geospatial updates.
+- Cheap spatial queries.
+- Cached imagery previews.
+- Efficient evidence storage.
+- Customer-funded field verification.
+- Automated evidence assembly.
+- Bounded AI inference.
+
+Avoid:
+
+- Constantly running expensive image models.
+- Reprocessing unchanged geographic regions.
+- Re-downloading giant imagery products unnecessarily.
+- Maintaining a private satellite imagery mirror without demand.
+- Building a custom global geospatial infrastructure before customers exist.
+- Treating subsidized infrastructure as permanently free.
+
+Our primary financial metric eventually becomes:
+
+**Contribution margin per monitored organization, site and investigation workflow.**
+
+---
+
+# 4. THE CONSERVATION AUDIT
+
+Every claimed economic advantage must have an identifiable source.
+
+Potential customer value comes from:
+
+- Reduced monitoring labor.
+- Faster investigation.
+- Improved detection coverage.
+- Better prioritization.
+- Less duplicated fieldwork.
+- More defensible evidence.
+- Easier regulatory or funder reporting.
+- Improved operational coordination.
+- Faster retrieval of historical incidents.
+- Better monitoring of restoration commitments.
+
+These are hypotheses until measured.
+
+Real costs include:
+
+- Satellite processing.
+- Data access and licensing.
+- Database operations.
+- Storage.
+- Map tiles.
+- API usage.
+- Customer onboarding.
+- Support.
+- Security.
+- Legal review where needed.
+- Actual human fieldwork.
+
+Never confuse costs transferred to partners with costs eliminated.
+
+Never claim that software has prevented illegal logging simply because an alert was generated.
+
+---
+
+# 5. STRATEGIC PRODUCT IDENTITY
+
+Product name:
+
+**FORESTPROOF**
+
+Tagline:
+
+**From satellite warning to verified protection.**
+
+Secondary positioning:
+
+**Environmental intelligence that closes the loop between observation and action.**
+
+First product:
+
+**ForestProof Aberdare Monitor**
+
+Commercial platform:
+
+**ForestProof Environmental Intelligence Cloud**
+
+Long-term proprietary asset:
+
+**Forest Intervention Outcome Graph**
+
+The company should eventually support multiple landscapes and environmental issues.
+
+However, the first build must focus on ONE coherent workflow:
+
+```
+FOREST DISTURBANCE OBSERVATION
+          |
+          v
+REVIEWABLE DETECTION
+          |
+          v
+ENVIRONMENTAL CASE
+          |
+          v
+EVIDENCE COLLECTION
+          |
+          v
+AUTHORIZED INVESTIGATION
+          |
+          v
+DOCUMENTED RESPONSE
+          |
+          v
+FOLLOW-UP OBSERVATION
+          |
+          v
+VERIFIED OR UNRESOLVED OUTCOME
+```
+
+Make this work first.
+
+---
+
+# 6. INITIAL OPERATING THEATER
+
+Begin with:
+
+**Aberdare Forest / Aberdare water tower, Kenya.**
+
+Priority research area:
+
+**Geta Forest and surrounding relevant forest-monitoring geography.**
+
+Do not invent exact forest boundaries, logging locations or active incidents.
+
+Source boundaries from authoritative or appropriately licensed geographic datasets.
+
+Use a clearly documented area-of-interest definition.
+
+Distinguish:
+
+- Indigenous/native forest.
+- Plantation forest.
+- Regenerating forest.
+- Nonforest vegetation.
+- Agricultural land.
+- Urban vegetation.
+- Water catchment.
+- Protected areas.
+- Other relevant land classes.
+
+Do not assume all cutting is unauthorized.
+
+Plantation harvesting and natural-forest degradation may have different ecological implications and legal requirements.
+
+The software must represent these differences explicitly.
+
+---
+
+# 7. LEGAL AND EVIDENCE DISCIPLINE
+
+The project is motivated by public reporting about forest cutting, harvesting and legal disputes in the Aberdares.
+
+Recent reporting describes an October 2026 court intervention concerning logging.
+
+Do NOT hardcode reported court orders as permanently applicable law.
+
+Before displaying legal status:
+
+- Find the official order or reliable legal record where available.
+- Record the issuing court.
+- Record case identification.
+- Record decision date.
+- Record operative provisions.
+- Record effective dates.
+- Record geographic scope.
+- Record any limitations.
+- Record later amendments or stays.
+- Mark whether a qualified human has verified the source.
+
+A press article is not equivalent to the official order.
+
+Never automatically label an observation:
+
+"ILLEGAL LOGGING"
+
+solely because tree cover declined.
+
+Instead, distinguish:
+
+- FOREST_DISTURBANCE_OBSERVED
+- POSSIBLE_HARVESTING
+- POSSIBLE_FIRE_DAMAGE
+- POSSIBLE_STORM_DAMAGE
+- PLANTATION_MANAGEMENT_POSSIBLE
+- AUTHORIZATION_UNKNOWN
+- DOCUMENTED_AUTHORIZATION
+- POTENTIAL_POLICY_CONFLICT
+- VERIFIED_RESTRICTION_APPLIES
+- REQUIRES_HUMAN_REVIEW
+- VERIFIED_INCIDENT
+- FALSE_POSITIVE
+- INSUFFICIENT_EVIDENCE
+
+A legally consequential classification requires appropriate evidence and human review.
+
+FORESTPROOF is decision support, not a court or enforcement agency.
+
+---
+
+# 8. EXISTING SYSTEMS WE MUST STUDY
+
+Before inventing remote-sensing infrastructure, investigate the real capabilities, APIs, licences and documentation of:
+
+### A. Global Forest Watch / Global Nature Watch
+
+Study available:
+
+- Integrated disturbance alerts.
+- GLAD-L.
+- GLAD-S2.
+- RADD radar alerts.
+- DIST-ALERT.
+- Forest loss history.
+- Protected-area layers.
+- Forest-change products.
+
+Verify the actual supported access mechanism.
+
+Do not invent API endpoints.
+
+Do not scrape private or restricted services.
+
+### B. Copernicus Data Space
+
+Study:
+
+- Sentinel-1 radar.
+- Sentinel-2 optical imagery.
+- Catalog/search access.
+- STAC or supported APIs.
+- Cloud masking.
+- Imagery metadata.
+- Licensing and request quotas.
+
+### C. NASA FIRMS
+
+Use only for:
+
+- Fire and thermal-anomaly context.
+
+Do not treat a fire detection as evidence of logging.
+
+### D. Kenya Forest Service National Forest Monitoring System
+
+Study the publicly documented:
+
+- Monitoring workflows.
+- Forest-change data.
+- Field-verification methodology.
+- Government data sources.
+- Forest management datasets.
+
+Treat descriptions of planned functionality separately from verified live functionality.
+
+### E. WWF Forest Foresight
+
+Study the public documentation and repository.
+
+Understand:
+
+- Predictive deforestation models.
+- Risk predictors.
+- Geospatial feature engineering.
+- Model evaluation.
+- Operational limitations.
+
+Do not rebuild their model without identifying a clear unmet need.
+
+### F. God's Eye View
+
+Study its open-source repository and architecture.
+
+Learn from:
+
+- Multisource data visualization.
+- Geospatial UI patterns.
+- Interactive layer control.
+- Time-based exploration.
+- Command-center design.
+
+Do not copy code without verifying its licence and attribution requirements.
+
+Do not misrepresent its imagery as continuous live satellite surveillance.
+
+### G. Forest Watcher
+
+Study its field-monitoring and offline capabilities.
+
+Avoid rebuilding an entire existing field application if integration or a lightweight complementary workflow would work better.
+
+---
+
+# 9. DATA SOURCE MANIFEST
+
+Create:
+
+`docs/DATA_SOURCES.md`
+
+For every integration record:
+
+```
+source_name
+official_organization
+source_url
+documentation_url
+product_name
+sensor_or_method
+spatial_resolution
+temporal_resolution
+coverage_area
+observation_latency
+access_mechanism
+authentication_requirements
+rate_limits
+license
+commercial_reuse_permissions
+redistribution_restrictions
+cost
+known_limitations
+verification_date
+operational_status
+```
+
+Classify each source:
+
+- VERIFIED_ACTIVE
+- AVAILABLE_WITH_CREDENTIALS
+- REQUIRES_APPROVAL
+- DOCUMENTED_NOT_TESTED
+- EXPERIMENTAL
+- DISABLED
+- UNAVAILABLE
+
+Never claim a feed is operational merely because documentation exists.
+
+---
+
+# 10. THE CORE ARCHITECTURE
+
+Recommended initial stack:
+
+**Frontend**
+
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS
+- shadcn/ui
+- MapLibre GL JS
+- Recharts or another lightweight charting library
+
+**Backend**
+
+- Python
+- FastAPI
+- Pydantic
+- SQLAlchemy
+- Alembic
+
+**Geospatial**
+
+- PostgreSQL
+- PostGIS
+- GeoPandas
+- Shapely
+- Rasterio
+- Appropriate STAC clients
+
+**Storage**
+
+- PostgreSQL for structured/geospatial records.
+- S3-compatible object storage for imagery extracts and evidence files.
+- Local filesystem object-storage adapter for development.
+
+**Background processing**
+
+Start with simple bounded scheduled workers.
+
+Use a queue only when actual concurrency or reliability requirements justify it.
+
+**Testing**
+
+- Pytest
+- Vitest
+- Playwright
+- API integration tests
+- Geospatial fixtures
+
+**Deployment**
+
+Start with a low-cost VPS or other economically justified environment.
+
+Docker Compose is sufficient for the MVP.
+
+Do not add Kubernetes or Kafka by default.
+
+---
+
+# 11. REPOSITORY STRUCTURE
+
+Preferred:
+
+```
+forestproof/
+|
++-- apps/
+|   +-- web/
+|
++-- services/
+|   +-- api/
+|   +-- worker/
+|
++-- packages/
+|   +-- schemas/
+|   +-- geo-client/
+|   +-- ui/
+|
++-- pipelines/
+|   +-- forest_alerts/
+|   +-- sentinel/
+|   +-- legal_context/
+|   +-- spatial_enrichment/
+|
++-- data/
+|   +-- fixtures/
+|   +-- demo/
+|
++-- infrastructure/
+|   +-- docker/
+|   +-- deployment/
+|
++-- tests/
+|   +-- integration/
+|   +-- e2e/
+|   +-- geospatial/
+|
++-- docs/
+|   +-- ARCHITECTURE.md
+|   +-- DATA_SOURCES.md
+|   +-- SECURITY_MODEL.md
+|   +-- EVIDENCE_MODEL.md
+|   +-- GOLDEN_ECONOMICS.md
+|   +-- ALPHAZERO_DOCTRINE.md
+|   +-- COMMERCIAL_STRATEGY.md
+|   +-- PILOT_PLAN.md
+|
++-- execution/
+|   +-- ROADMAP.md
+|   +-- NEXT_ACTIONS.md
+|   +-- PROJECT_STATUS.md
+|
++-- .env.example
++-- docker-compose.yml
++-- README.md
++-- PROJECT_BRAIN.md
+```
+
+Adapt the layout if the repository already exists.
+
+Avoid unnecessary monorepo machinery.
+
+---
+
+# 12. OBSERVATION MODEL
+
+An environmental observation is not yet an incident.
+
+Create a typed observation contract.
+
+Conceptually:
+
+```
+type EnvironmentalObservation = {
+  id: string;
+  sourceId: string;
+
+  sourceProduct: string;
+  sourceRecordId: string;
+
+  observedAt: string;
+  publishedAt?: string;
+  ingestedAt: string;
+
+  geometry: GeoJSON.Geometry;
+
+  observationType:
+    | "FOREST_DISTURBANCE"
+    | "FIRE_ANOMALY"
+    | "VEGETATION_CHANGE"
+    | "RADAR_CHANGE"
+    | "FIELD_REPORT";
+
+  confidenceValue?: number;
+  confidenceMeaning?: string;
+
+  spatialResolutionMeters?: number;
+
+  forestClassification?: string;
+
+  processingVersion: string;
+
+  rawEvidenceRef?: string;
+
+  qualityFlags: string[];
+};
+```
+
+Maintain distinct timestamps.
+
+An observation made on Monday but published on Thursday is not a Monday real-time alert.
+
+Do not confuse:
+
+- acquisition time;
+- publication time;
+- ingestion time;
+- investigation time.
+
+This distinction is mandatory for credible latency and intervention metrics.
+
+---
+
+# 13. FOREST ALERT INGESTION ENGINE
+
+Create a modular ingestion interface.
+
+```
+class ForestAlertProvider:
+    def discover(self, area, time_range):
+        ...
+
+    def fetch(self, cursor):
+        ...
+
+    def normalize(self, record):
+        ...
+
+    def provenance(self, record):
+        ...
+```
+
+Implement initially:
+
+1. A deterministic demo provider.
+2. One verified real forest-disturbance provider.
+3. An extensible interface for future providers.
+
+Do not require every data source to work before P0 is complete.
+
+The real ingestion pipeline must support:
+
+- Area-of-interest filtering.
+- Incremental updates.
+- Idempotency.
+- Deduplication.
+- Source versioning.
+- Retry/backoff.
+- Rate-limit handling.
+- Provider health reporting.
+- Missing-data detection.
+- Timestamp validation.
+- Geometry validation.
+- Safe persistence.
+
+Every ingested observation must retain source provenance.
+
+---
+
+# 14. GEO-SPATIAL DATABASE DESIGN
+
+Use PostGIS as the primary spatial engine.
+
+Suggested entities:
+
+```
+organizations
+users
+memberships
+roles
+
+monitored_areas
+forest_boundaries
+land_classifications
+catchment_areas
+protected_area_boundaries
+
+data_sources
+source_products
+ingestion_jobs
+ingestion_events
+source_health
+
+environmental_observations
+observation_geometries
+observation_relations
+alert_clusters
+
+satellite_scenes
+imagery_assets
+imagery_quality_flags
+
+legal_documents
+legal_document_versions
+legal_geographic_scopes
+legal_review_events
+
+permit_references
+authorization_evidence
+
+investigation_cases
+case_observations
+case_assignments
+case_status_events
+case_notes
+
+field_reports
+field_evidence
+evidence_assets
+evidence_provenance
+evidence_integrity_records
+
+intervention_actions
+intervention_status_events
+follow_up_observations
+
+outcome_assessments
+outcome_evidence
+outcome_labels
+
+notifications
+notification_deliveries
+
+model_versions
+prediction_runs
+evaluation_results
+
+audit_events
+cost_events
+usage_events
+```
+
+Do not create every table without a use case.
+
+Start with the smallest schema supporting the complete MVP and add migrations as functionality develops.
+
+Use appropriate spatial indexes.
+
+Perform area calculations using appropriate projected coordinate systems or geography-based calculations, not naive degrees-squared geometry.
+
+---
+
+# 15. FOREST DISTURBANCE CLASSIFICATION
+
+A satellite signal is a candidate observation.
+
+Classification should account for:
+
+- Sensor type.
+- Forest type.
+- Seasonal vegetation cycles.
+- Cloud contamination.
+- Shadow.
+- Fire indicators.
+- Known plantation compartments.
+- Agricultural conversion.
+- Roads and infrastructure.
+- Storm damage.
+- Spatial context.
+- Prior observations.
+- Source confidence metadata.
+
+P0 should preserve the source-defined classification and allow human review.
+
+Do not build an opaque AI classifier that declares illegal activity.
+
+If an ML classifier is added later, distinguish:
+
+**Observed vegetation disturbance**
+
+from:
+
+**Inferred cause**
+
+from:
+
+**Legally verified authorization status.**
+
+Never combine these into one unqualified confidence number.
+
+---
+
+# 16. MULTI-SENSOR CORROBORATION
+
+The system should eventually combine:
+
+- Optical imagery.
+- Radar disturbance indicators.
+- Thermal/fire observations.
+- Historical forest-cover changes.
+- Authorized field reports.
+
+However, signals from different products may share underlying source data and errors.
+
+Do not treat two correlated products as independent confirmation without checking their provenance.
+
+Create:
+
+`ObservationCorroboration`
+
+with:
+
+```
+observation_ids
+spatial_overlap
+temporal_overlap
+sensor_diversity
+source_independence
+agreement_type
+contradictions
+review_status
+```
+
+A pair of alerts is not necessarily twice the evidence.
+
+---
+
+# 17. FORESTCHANGE ENGINE
+
+Responsibilities:
+
+- Detect candidate changes from supported data.
+- Associate observations with monitored forest areas.
+- Cluster nearby observations appropriately.
+- Compare with historical context.
+- Identify priority locations.
+- Prevent redundant case generation.
+- Track changes through time.
+
+Avoid excessive reprocessing.
+
+Cache derived area statistics and imagery previews.
+
+Support an incremental pipeline.
+
+Every computation should have:
+
+- Input dataset versions.
+- Algorithm version.
+- Execution time.
+- Output confidence/limitations.
+- Reproducible parameters.
+
+---
+
+# 18. FORESTLAW — LEGAL CONTEXT ENGINE
+
+Create:
+
+`LegalContextService`
+
+Inputs:
+
+```
+location
+observation_date
+forest_classification
+management_area
+available legal documents
+authorization evidence
+```
+
+Outputs:
+
+```
+relevant_documents
+potential_restrictions
+source_provenance
+effective_date_intervals
+verified_status
+unresolved_questions
+human_review_required
+```
+
+The system must use explicit source documents.
+
+No legal conclusion from a hallucinated LLM summary.
+
+The legal engine must distinguish:
+
+- Official document.
+- Secondary reporting.
+- Human-entered claim.
+- Reviewed legal interpretation.
+- Unknown applicability.
+
+All important conclusions must include exact source references.
+
+Do not declare a license invalid merely because it cannot be located online.
+
+---
+
+# 19. TIME-AWARE LEGAL REASONING
+
+Laws, permits and court orders change.
+
+A restriction applicable in October may not apply in August.
+
+Represent legal status as time-dependent.
+
+For example:
+
+```
+LEGAL DOCUMENT
+    |
+effective_from
+    |
+effective_until
+    |
+geographic_scope
+    |
+activity_scope
+    |
+later_amendments
+```
+
+When examining a historical observation, query the legal state relevant to that historical date.
+
+Never silently apply today's rules retroactively.
+
+Unknown effective dates must be surfaced as uncertainty.
+
+---
+
+# 20. EVIDENCEPROOF — CORE EVIDENCE ENGINE
+
+This is one of our highest-value product primitives.
+
+Every environmental case should be able to produce a structured EvidenceProof.
+
+It should preserve:
+
+- Case ID.
+- Observation IDs.
+- Original data source.
+- Observation timestamps.
+- Geographic footprint.
+- Spatial resolution.
+- Alert methodology.
+- Processing versions.
+- Source confidence.
+- Before/after imagery references.
+- Land-cover classification.
+- Legal-source references.
+- Permit evidence where available.
+- Field-verification records.
+- Investigator notes.
+- Supporting documents.
+- Intervention actions.
+- Follow-up status.
+- Unresolved questions.
+
+Evidence must be inspectable, exportable and traceable.
+
+---
+
+# 21. EVIDENCE INTEGRITY
+
+Use cryptographic hashes for uploaded evidence files.
+
+Store:
+
+```
+evidence_id
+source
+uploader_id
+upload_time
+observation_time
+file_hash_sha256
+file_size
+mime_type
+storage_reference
+processing_version
+retention_policy
+access_classification
+```
+
+For signed reports, use authenticated identities and appropriate signing methods.
+
+Never claim that a hash proves a photograph was taken at a specific location or that its content is true.
+
+It proves only that particular bytes match the recorded digest.
+
+Authenticity and evidentiary reliability require additional controls.
+
+Preserve originals separately from transformed previews.
+
+---
+
+# 22. INTERVENTION ROUTER
+
+This is the operational heart of the platform.
+
+When an observation is sufficiently concerning, a human reviewer may create an investigation case.
+
+Case states:
+
+```
+NEW
+TRIAGED
+AWAITING_VERIFICATION
+ASSIGNED
+FIELD_VERIFICATION
+ACTION_RECOMMENDED
+ACTION_RECORDED
+FOLLOW_UP_REQUIRED
+CLOSED_VERIFIED
+CLOSED_FALSE_POSITIVE
+CLOSED_INSUFFICIENT_EVIDENCE
+REOPENED
+```
+
+Maintain an append-only transition history.
+
+For every transition record:
+
+```
+actor
+role
+timestamp
+previous_state
+new_state
+reason
+supporting_evidence
+```
+
+Allow case owners to specify:
+
+- Responsible organization.
+- Assigned investigator.
+- Review priority.
+- Due date.
+- Required evidence.
+- Follow-up date.
+- Escalation status.
+
+Do not automatically send allegations about identifiable individuals to law-enforcement agencies.
+
+External escalation requires authorized human approval.
+
+---
+
+# 23. FIELD VERIFICATION
+
+Create a mobile-friendly field report interface.
+
+P0 fields:
+
+- Case.
+- Investigator identity.
+- Observation time.
+- Approximate or precise location based on access permissions.
+- Event category.
+- Forest type.
+- Evidence photographs.
+- Notes.
+- Observed activity.
+- Safety concerns.
+- Confidence/uncertainty.
+- Recommended next action.
+
+Require authorization before report submission.
+
+Later support offline capture and deferred synchronization.
+
+Do not require an uninterrupted internet connection for field workflows once offline capability is implemented.
+
+Protect metadata that might expose confidential informants or field-team locations.
+
+---
+
+# 24. OUTCOME ENGINE
+
+An investigation is not complete merely because somebody clicked "resolved."
+
+Define:
+
+`OutcomeAssessment`
+
+with evidence-backed statuses.
+
+Examples:
+
+```
+NO_DISTURBANCE_CONFIRMED
+
+DISTURBANCE_CONFIRMED_CAUSE_UNKNOWN
+
+AUTHORIZED_MANAGEMENT_CONFIRMED
+
+UNAUTHORIZED_ACTIVITY_CONFIRMED_BY_AUTHORITY
+
+RESPONSE_COMPLETED
+
+RESPONSE_IN_PROGRESS
+
+FOLLOW_UP_SHOWS_CONTINUED_DISTURBANCE
+
+FOLLOW_UP_SHOWS_NO_NEW_DETECTED_DISTURBANCE
+
+INSUFFICIENT_EVIDENCE
+```
+
+Avoid implying causation from simple before/after imagery.
+
+"No new disturbance detected" does not establish that intervention caused activity to stop.
+
+Outcome claims must match the evidence.
+
+---
+
+# 25. THE CROWN JEWEL — FOREST INTERVENTION OUTCOME GRAPH
+
+Our highest-value asset is not the visual map.
+
+It is the accumulated relationship:
+
+```
+MONITORED AREA
+       |
+ENVIRONMENTAL OBSERVATION
+       |
+CORROBORATION
+       |
+LEGAL CONTEXT
+       |
+INVESTIGATION CASE
+       |
+EVIDENCE
+       |
+PRIORITY DECISION
+       |
+ASSIGNMENT
+       |
+FIELD REPORT
+       |
+INTERVENTION
+       |
+FOLLOW-UP
+       |
+OBSERVED OUTCOME
+```
+
+Design the database to preserve these relationships.
+
+Use relational tables and PostGIS initially.
+
+Do not introduce a graph database simply because the product is called a graph.
+
+Over time, the system should help customers answer:
+
+- Which disturbances were verified?
+- Which alerts were false positives?
+- Which areas repeatedly generate incidents?
+- Which investigations took longest?
+- Which cases lacked sufficient evidence?
+- Which responses were associated with follow-up improvements?
+- Where did detection coverage fail?
+- Where should monitoring resources be concentrated?
+
+Every real investigation should improve future analysis.
+
+---
+
+# 26. ALPHAZERO — SCARCE INVESTIGATION RESOURCE ALLOCATION
+
+Treat this as a disciplined algorithmic analogy.
+
+Do not implement fake AlphaZero/MCTS merely for branding.
+
+Our real finite resources include:
+
+- Investigator hours.
+- Field travel.
+- Satellite processing budget.
+- Community reporting capacity.
+- Organizational attention.
+- Legal review capacity.
+
+The critical question:
+
+**Which next investigation offers the greatest expected conservation value per scarce resource?**
+
+Build a transparent priority heuristic considering:
+
+```
+environmental_importance
+evidence_strength
+disturbance_magnitude
+urgency
+current_restrictions
+repeated_incident_history
+verification_feasibility
+expected_investigation_cost
+```
+
+Expose the components and their limitations.
+
+Do not use secret automated scoring to trigger coercive enforcement.
+
+---
+
+# 27. ALPHAZERO POLICY, VALUE AND SEARCH
+
+Conceptual mapping:
+
+**P — Prior**
+
+Which observations are likely to warrant investigation?
+
+**Q — Observed outcome**
+
+Which previous investigations produced useful, verified results?
+
+**N — Exploration count**
+
+How often have similar circumstances been investigated?
+
+**Value estimate**
+
+What is the expected operational value of investigating a case?
+
+Initial implementation:
+
+Transparent weighted prioritization.
+
+Later, after sufficient verified data:
+
+- Calibrated statistical models.
+- Active learning.
+- Information-gain-based sampling.
+- Geographically separated validation.
+- Outcome-informed prioritization.
+
+Do not claim a self-improving intelligence moat until we can demonstrate improvement against a baseline.
+
+---
+
+# 28. ADVERSARIAL EVALUATION
+
+Create tests for misleading observations.
+
+Examples:
+
+- Plantation harvesting mistaken for illegal clearing.
+- Cloud shadow mistaken for forest loss.
+- Seasonal vegetation decline.
+- Fire damage.
+- Storm blowdown.
+- Duplicate alert from overlapping satellite products.
+- False coordinates.
+- Delayed alert publication.
+- Outdated court order.
+- Permit data unavailable.
+- Manipulated field photograph.
+- Conflicting field reports.
+- Confidential source accidentally exposed.
+- Two organizations assigning the same case.
+- Missing investigation records.
+- Incorrectly classified forest boundary.
+
+Each significant failure should become a regression test.
+
+This is our practical version of AlphaZero-like self-correction.
+
+---
+
+# 29. EPISTEMIC DISCIPLINE
+
+Distinguish:
+
+**OBSERVED**
+
+What an authenticated source actually reports.
+
+**DERIVED**
+
+What deterministic processing calculated.
+
+**INFERRED**
+
+What a model or analyst concludes from evidence.
+
+**VERIFIED**
+
+What an authorized review establishes under defined criteria.
+
+**UNKNOWN**
+
+What the available evidence cannot establish.
+
+**DISPUTED**
+
+What conflicting evidence or claims leave unresolved.
+
+No LLM should turn an observation into an unqualified accusation.
+
+No score should be presented without its interpretation and evidence level.
+
+Preserve alternative hypotheses where appropriate.
+
+---
+
+# 30. WATER-CATCHMENT RISK
+
+The Aberdare water tower is environmentally important, including for downstream water resources.
+
+But hydrological consequences require careful scientific analysis.
+
+Do not claim that one observed clearing caused an exact number of litres of water loss.
+
+Create a transparent catchment-priority model using available data such as:
+
+- Land cover.
+- Watershed boundaries.
+- Slope.
+- River proximity.
+- Erosion vulnerability.
+- Forest classification.
+- Historical disturbance.
+- Known ecological importance.
+
+Name it:
+
+**CatchmentRisk**
+
+Initially present it as a prioritization index with limitations.
+
+Only produce quantitative water-yield or flood-impact estimates when supported by credible hydrological methods and suitable data.
+
+---
+
+# 31. PRODUCT EXPERIENCE — MAIN DASHBOARD
+
+The homepage must instantly communicate the product.
+
+Hero:
+
+**FORESTPROOF**
+
+**From satellite warning to verified protection.**
+
+Subtitle:
+
+"Monitor forest disturbances, build defensible evidence, coordinate investigations and measure conservation outcomes."
+
+Primary CTA:
+
+**Open Aberdare Monitor**
+
+Secondary CTA:
+
+**Explore Evidence Workflow**
+
+Main dashboard should display:
+
+- Monitored areas.
+- Latest data-source update.
+- Observations requiring review.
+- Active investigations.
+- Verified incidents.
+- Follow-ups due.
+- Evidence completeness.
+- Data-source health.
+
+Never present synthetic figures as current Kenyan forest statistics.
+
+---
+
+# 32. THE ICONIC MAP SCREEN
+
+Route:
+
+`/monitor/aberdare`
+
+The primary experience should be a professional environmental-intelligence map.
+
+Use MapLibre GL JS.
+
+Include:
+
+- Forest boundaries.
+- Catchment boundaries where licensed.
+- Disturbance observations.
+- Observation source.
+- Observation timestamp.
+- Spatial coverage.
+- Confidence/quality metadata.
+- Optional satellite imagery layer.
+- Alert clusters.
+- Investigation cases.
+- Historical time slider.
+
+Clicking an observation opens an evidence panel.
+
+Do not assume imagery can zoom infinitely.
+
+Show a timestamp and resolution indicator.
+
+Don't use decorative heatmaps that imply false spatial accuracy.
+
+---
+
+# 33. BEFORE / AFTER INSPECTION
+
+This is a signature product feature.
+
+Provide a split-view comparison:
+
+**Before**
+
+Historical observation.
+
+**After**
+
+Later observation.
+
+Features:
+
+- Synchronized map position.
+- Synchronized zoom.
+- Acquisition dates.
+- Sensor/source labels.
+- Cloud/quality flags.
+- Optional change geometry overlay.
+- Clear spatial-resolution information.
+
+Only compare imagery that is geographically aligned and appropriate for meaningful interpretation.
+
+If a suitable pair does not exist, state that explicitly.
+
+Never generate fake before/after evidence.
+
+---
+
+# 34. CASE INSPECTION SCREEN
+
+Route:
+
+`/cases/[id]`
+
+Show:
+
+**Observation**
+
+What was detected?
+
+**Source**
+
+Where did the information originate?
+
+**Evidence**
+
+What supports it?
+
+**Legal context**
+
+Which documents might apply?
+
+**Uncertainty**
+
+What remains unknown?
+
+**Investigation**
+
+Who is assigned?
+
+**Actions**
+
+What has actually occurred?
+
+**Outcome**
+
+What was later observed or verified?
+
+**Audit trail**
+
+Who changed the record and when?
+
+This should be the strongest screen after the map.
+
+---
+
+# 35. EVIDENCE DOSSIER
+
+Route:
+
+`/cases/[id]/dossier`
+
+Generate a professional evidence report.
+
+Sections:
+
+1. Case identification.
+2. Geographic description.
+3. Observation chronology.
+4. Source methodology.
+5. Satellite observations.
+6. Before/after comparisons.
+7. Land-cover context.
+8. Legal source references.
+9. Authorization evidence status.
+10. Field reports.
+11. Investigation actions.
+12. Outcome assessment.
+13. Outstanding uncertainties.
+14. Evidence manifest and integrity metadata.
+
+Export to a stable PDF when implemented.
+
+Reports must distinguish verified facts from allegations and inferred interpretations.
+
+No fake court seals or government branding.
+
+---
+
+# 36. OPERATIONS DASHBOARD
+
+Route:
+
+`/operations`
+
+Provide a practical investigation-management system.
+
+Features:
+
+- Assigned cases.
+- Due dates.
+- Case priority.
+- Investigation status.
+- Verification workload.
+- Follow-up queue.
+- Notification history.
+- Delayed cases.
+- Case ownership.
+
+This is the screen institutional customers may eventually pay to use daily.
+
+Make it useful, not ornamental.
+
+---
+
+# 37. OUTCOMES DASHBOARD
+
+Route:
+
+`/outcomes`
+
+Report:
+
+- Alerts reviewed.
+- Verified disturbances.
+- False-positive rate.
+- Median detection-to-review time.
+- Median review-to-assignment time.
+- Median assignment-to-field-verification time.
+- Evidence completeness.
+- Cases awaiting follow-up.
+- Resolution documentation rate.
+- Repeated disturbances by area.
+
+Distinguish operational results from ecological outcomes.
+
+Do not equate number of cases closed with hectares of forest saved.
+
+---
+
+# 38. LEGAL CONTEXT LIBRARY
+
+Route:
+
+`/legal`
+
+Provide:
+
+- Official document references.
+- Source URLs.
+- Dates.
+- Applicable geographic scope.
+- Human-review status.
+- Document versions.
+- Supersession/updates.
+- Associated monitoring cases.
+
+No automatic legal advice.
+
+Show source provenance prominently.
+
+---
+
+# 39. DATA-SOURCE HEALTH
+
+Route:
+
+`/sources`
+
+Include:
+
+```
+provider
+last_successful_fetch
+last_observation_time
+processing_latency
+current_status
+rate_limit_status
+coverage
+license
+known_gaps
+```
+
+Differentiate:
+
+- NO NEW ALERTS
+- SOURCE NOT UPDATED
+- PROVIDER UNAVAILABLE
+- INGESTION FAILED
+
+These are not the same condition.
+
+This distinction is vital.
+
+---
+
+# 40. DEMO MODE
+
+Mandatory:
+
+`DEMO_MODE=true`
+
+Must run without paid credentials.
+
+Use carefully constructed synthetic observations and evidence.
+
+Demonstration scenario:
+
+A synthetic forest-disturbance observation appears within a clearly fictional or demonstrably simulated monitoring case.
+
+The system:
+
+1. Receives the alert.
+2. Shows source and timestamp metadata.
+3. Flags it for review.
+4. Displays relevant simulated legal context.
+5. Opens an investigation case.
+6. Allows an authorized reviewer to request verification.
+7. Adds synthetic field evidence.
+8. Records a response.
+9. Generates an EvidenceProof dossier.
+10. Shows a follow-up outcome.
+
+Every synthetic case, coordinate, photograph and metric must be labeled DEMO.
+
+If the app also loads genuine public data, clearly distinguish those records.
+
+---
+
+# 41. LIVE DATA MODE
+
+`DEMO_MODE=false`
+
+Required behavior:
+
+- Real provider requests.
+- Real observations.
+- Real source metadata.
+- Real geographic coverage.
+- Persistent database records.
+- Accurate timestamps.
+- Strictly separated synthetic fixtures.
+- Explicit provider error handling.
+
+Never fall back silently to fake observations when a real provider fails.
+
+The interface should display:
+
+**Source unavailable** or **No validated data for this period**
+
+rather than fabricate activity.
+
+---
+
+# 42. AUTHENTICATION AND MULTITENANCY
+
+Institutional case management requires authentication.
+
+Roles:
+
+```
+PLATFORM_ADMIN
+ORGANIZATION_ADMIN
+ANALYST
+CASE_REVIEWER
+FIELD_INVESTIGATOR
+AUDITOR
+PUBLIC_VIEWER
+```
+
+Different roles require different permissions.
+
+Public viewers may access approved, generalized data.
+
+Investigators may access cases assigned to them.
+
+Organization admins may manage their own organization's workflows.
+
+Sensitive evidence must be private by default.
+
+Never trust arbitrary client-supplied organization IDs.
+
+All private database operations must enforce server-side authorization.
+
+---
+
+# 43. PUBLIC-INTEREST PORTAL VS PRIVATE OPERATIONS
+
+This is a major strategic requirement.
+
+FORESTPROOF should eventually have two product surfaces.
+
+**PUBLIC PORTAL**
+
+May show:
+
+- Approved forest-condition information.
+- Public monitoring methodology.
+- Generalized environmental cases.
+- Published reports.
+- Verified aggregate statistics.
+- Conservation education.
+
+**PRIVATE INSTITUTIONAL PLATFORM**
+
+Contains:
+
+- Field assignments.
+- Confidential reports.
+- Personal information.
+- Sensitive operational locations.
+- Detailed evidence.
+- Private legal review.
+- Organization-specific workflows.
+- Historical outcome intelligence.
+
+Do not expose private operations merely to make the public dashboard more impressive.
+
+---
+
+# 44. PRIVACY AND SAFETY
+
+The platform may hold information about:
+
+- Field investigators.
+- Community reporters.
+- Witnesses.
+- Conservation personnel.
+- Landowners.
+- Workers.
+- Organizations under investigation.
+
+Protect:
+
+- Identity.
+- Contact details.
+- Exact field-team locations.
+- Confidential submissions.
+- Sensitive evidence.
+- Personal data.
+- Potentially dangerous location information.
+
+Use data minimization, retention policies, access logs and encryption where appropriate.
+
+Review relevant Kenyan data-protection obligations before processing real personal data.
+
+Do not build public-facing features that identify suspected individuals or enable harassment from unverified observations.
+
+Where sensitive locations are displayed publicly, apply appropriate spatial generalization or suppression.
+
+---
+
+# 45. NOTIFICATION AND ESCALATION
+
+Start with:
+
+- In-app alerts.
+- Authorized email notifications.
+- Case assignment notices.
+
+Later:
+
+- Partner-approved SMS.
+- Partner-approved messaging integrations.
+- Structured regulator/NGO exports.
+- Webhooks.
+
+Do not automatically accuse individuals or organizations.
+
+Do not send unverified allegations to arbitrary external contacts.
+
+Require a human confirmation step for consequential external reports.
+
+---
+
+# 46. PERFORMANCE AND COST ENGINEERING
+
+Track:
+
+```
+cost_per_1000_observations
+cost_per_monitored_km2
+cost_per_case
+cost_per_evidence_dossier
+cost_per_active_organization
+database_storage_growth
+object_storage_growth
+imagery_processing_time
+provider_api_cost
+background_job_cost
+```
+
+Set budgets for:
+
+- Provider requests.
+- Imagery processing.
+- AI calls.
+- Storage retention.
+- Background tasks.
+- Export generation.
+
+Cache where valid.
+
+Prefer incremental computation over complete reprocessing.
+
+Do not leave GPU instances running idle.
+
+---
+
+# 47. THE COMMERCIAL WEDGE
+
+Do not initially sell:
+
+"Global Environmental AI Operating System."
+
+Sell:
+
+**Forest Monitoring and Evidence Management for Organizations Responsible for Specific Protected Landscapes or Catchments.**
+
+Initial ideal customers:
+
+- Conservation NGOs.
+- Watershed-management organizations.
+- Water utilities.
+- Environmental monitoring programmes.
+- Restoration project operators.
+- Forestry compliance teams.
+
+Start with organizations that already have operational or reporting budgets.
+
+The product must solve an existing expense or evidence problem.
+
+---
+
+# 48. FIRST PAID OFFER
+
+Create a commercial concept:
+
+**FORESTPROOF MONITORING PILOT**
+
+Offer:
+
+- Defined monitoring area.
+- Real disturbance feed.
+- Reviewable alerts.
+- Case management.
+- Evidence dossiers.
+- Monthly monitoring summaries.
+- Outcome dashboard.
+- Data-quality report.
+
+Potential 30–90-day paid pilot.
+
+Pricing requires customer discovery.
+
+Do not invent market-proven subscription prices.
+
+Keep software subscription, setup services and fieldwork costs separate.
+
+Avoid absorbing open-ended investigation or legal expenses into a fixed software subscription.
+
+---
+
+# 49. REVENUE MODEL
+
+Possible future tiers:
+
+**Community / Research**
+
+Low-cost or free access to approved public information.
+
+**Conservation Organization**
+
+Monitoring areas, case management and evidence reports.
+
+**Institutional**
+
+Multiple areas, teams, audit controls, historical analytics and service levels.
+
+**Enterprise / Portfolio**
+
+Many monitored assets, APIs, custom integrations, reporting and governance.
+
+**Environmental Intelligence API**
+
+Usage-based licensed access to derived data and operational intelligence where redistribution terms permit.
+
+Do not charge for public datasets in violation of their licences.
+
+Charge for genuine added value.
+
+---
+
+# 50. DATA MOAT ETHICS
+
+Our long-term asset is the Forest Intervention Outcome Graph.
+
+But ownership and permission boundaries matter.
+
+We may own our software and legitimately created derived analytics.
+
+Customers retain their rights in their private data.
+
+Do not assume customer evidence can automatically be reused to train a global proprietary model.
+
+Shared learning requires suitable permissions and a lawful basis.
+
+Public data remains subject to its source licences.
+
+The moat should grow through:
+
+- Better verified labels.
+- Better documented workflows.
+- More useful integrations.
+- Improved operational baselines.
+- Customer-specific longitudinal history.
+- Trust and evidence quality.
+
+Not through exploiting conservation informants or secretly aggregating confidential institutional records.
+
+---
+
+# 51. GRANTS AND INCENTIVES
+
+Create:
+
+`docs/GRANTS_AND_INCENTIVES.md`
+
+Investigate relevant opportunities including:
+
+- Global forest-monitoring grants.
+- Kenyan watershed restoration initiatives.
+- Conservation technology grants.
+- Environmental innovation funding.
+- Climate adaptation programs.
+- Civil-society technology support.
+- NGO partnerships.
+- Legitimate startup cloud credits.
+- Government procurement opportunities.
+
+Distinguish:
+
+OPEN
+
+CLOSED
+
+HISTORICAL
+
+PARTNERSHIP_ONLY
+
+UNKNOWN
+
+Do not present historical grants as currently available.
+
+Do not create shell organizations to qualify.
+
+Do not double-claim the same costs across grants when prohibited.
+
+The business must remain viable after promotional credits expire.
+
+---
+
+# 52. STRATEGIC PARTNERSHIP PLAN
+
+Potential partner categories:
+
+- Conservation organizations.
+- Forest monitoring specialists.
+- Environmental researchers.
+- Legitimate government agencies.
+- Watershed managers.
+- Water utilities.
+- Climate adaptation projects.
+- Field-verification organizations.
+
+Do not claim endorsements or partnerships that do not exist.
+
+Prepare a concise pilot proposal.
+
+The first target is a genuine stakeholder interview.
+
+The second target is a defined pilot requirement.
+
+The third is a paid contract or legitimate grant-funded deployment.
+
+---
+
+# 53. OPEN-SOURCE STRATEGY
+
+Use open-source dependencies lawfully.
+
+Potential public components:
+
+- Environmental observation schemas.
+- Dataset connectors where licences permit.
+- Synthetic benchmark fixtures.
+- Validation utilities.
+- Public documentation.
+- Reusable geospatial processing helpers.
+
+Keep private unless explicitly approved:
+
+- Customer-sensitive evidence.
+- Private source credentials.
+- Confidential field reports.
+- Commercial customer data.
+- Restricted environmental intelligence.
+- Proprietary internal research.
+- Private outcome histories.
+
+Do not assume the company requires a public repository.
+
+Preserve commercial IP deliberately.
+
+---
+
+# 54. EXTERNAL ENERGY CAPTURE
+
+Our architecture should become stronger when:
+
+- Sentinel coverage improves.
+- Satellite processing becomes cheaper.
+- Forest alert products become more accurate.
+- Kenya releases better monitoring data.
+- Conservation partners expand their verification capacity.
+- Public environmental legal records become more accessible.
+- Open-source geospatial tools improve.
+
+Treat external innovation as an input to our product.
+
+Do not compete unnecessarily with organizations that already solve the upstream sensing problem.
+
+---
+
+# 55. INTERFACE IMPEDANCE
+
+Institutional users should not need an entire IT department to begin.
+
+Desired onboarding:
+
+```
+Create organization
+       |
+Select monitoring area
+       |
+Choose available alert source
+       |
+Configure review policy
+       |
+Invite reviewers
+       |
+Receive first observation
+       |
+Open case
+       |
+Export evidence report
+```
+
+Avoid requiring custom GIS software for ordinary users.
+
+Support GeoJSON and other standard geographic formats where useful.
+
+Make evidence exports easy to understand outside the platform.
+
+---
+
+# 56. INCENTIVE RESONANCE
+
+Product decisions should align the incentives of:
+
+**Conservation teams**
+
+Faster and more reliable investigation.
+
+**Water and watershed organizations**
+
+Better evidence about risks to protected assets.
+
+**Field investigators**
+
+Less duplicated effort.
+
+**Environmental lawyers and advocates**
+
+More traceable evidence.
+
+**Project funders**
+
+Better reporting on interventions and outcomes.
+
+**ForestProof**
+
+More legitimate adoption and verified learning.
+
+Do not create incentives to inflate alert counts.
+
+The goal is useful, accurate intervention.
+
+---
+
+# 57. DESIGN LANGUAGE
+
+The product should feel like:
+
+- Professional Earth observation.
+- Environmental command center.
+- Scientific evidence platform.
+- Conservation operations software.
+- Institutional geospatial intelligence.
+
+Visual design:
+
+- Deep forest green.
+- Neutral charcoal.
+- Off-white.
+- Muted earth tones.
+- Clear amber for attention.
+- Restrained red for serious incidents.
+
+Avoid:
+
+- Flashy crypto dashboards.
+- Generic AI gradients.
+- Unnecessary animations.
+- Sci-fi theatrics.
+- Unreadable dark maps.
+- Decorative alert storms.
+
+The design should be beautiful, but evidence must remain legible and central.
+
+---
+
+# 58. LOW-BANDWIDTH AND MOBILE REQUIREMENTS
+
+The first geography includes areas with variable connectivity.
+
+Optimize:
+
+- Map loading.
+- Image sizes.
+- Data payloads.
+- Caching.
+- Mobile interactions.
+- Progressive content loading.
+- Graceful network failure.
+
+Provide a usable mobile case-review experience.
+
+A true offline-capable field workflow can be added after the core web app works.
+
+Don't promise offline sync unless it is implemented and tested.
+
+---
+
+# 59. SECURITY REQUIREMENTS
+
+Implement:
+
+- Authentication.
+- Authorization.
+- Tenant isolation.
+- Secure secret handling.
+- Server-side input validation.
+- Upload file validation.
+- Protected object storage.
+- Least privilege.
+- Rate limits.
+- Audit logs.
+- Secure transport.
+- Safe background job execution.
+- Access restrictions for sensitive case material.
+- Backup and restoration procedures.
+
+Never store credentials in Git.
+
+Never disable security protections merely to make a demo work.
+
+Do not allow uploaded documents or external sources to inject instructions into internal AI prompts or system configuration.
+
+---
+
+# 60. TESTING REQUIREMENTS
+
+Write meaningful tests for:
+
+- Geospatial coordinate validation.
+- Polygon intersections.
+- Area calculations.
+- Duplicated observations.
+- Out-of-order timestamps.
+- Missing source updates.
+- Provider API failures.
+- Invalid geometries.
+- Incorrect forest classification.
+- Case state transitions.
+- Tenant isolation.
+- Private evidence access.
+- Legal document versioning.
+- File hashing.
+- Evidence export completeness.
+- Outcome state transitions.
+- Cost budgets.
+- Source attribution.
+- Demo/live separation.
+
+Add an end-to-end test:
+
+```
+INGEST OBSERVATION
+       |
+DISPLAY ON MAP
+       |
+OPEN CASE
+       |
+ATTACH EVIDENCE
+       |
+ASSIGN REVIEW
+       |
+RECORD ACTION
+       |
+ADD FOLLOW-UP
+       |
+EXPORT EVIDENCE DOSSIER
+```
+
+This is the primary P0 test.
+
+---
+
+# 61. MEASUREMENT AND SCIENTIFIC VALIDATION
+
+Create clear operational baselines.
+
+Measure:
+
+- Alert precision where ground-truth labels exist.
+- False-positive rate.
+- Source latency.
+- Ingestion success rate.
+- Review latency.
+- Field-verification completion.
+- Evidence completeness.
+- Time to case assignment.
+- Case resolution documentation.
+- Follow-up coverage.
+
+Do not fabricate baseline performance.
+
+Separate:
+
+- Detection quality.
+- Operational workflow quality.
+- Conservation outcomes.
+
+They are different dimensions.
+
+If introducing predictive ML, use geographically and temporally appropriate holdout data to minimize spatial leakage and look-ahead bias.
+
+---
+
+# 62. MODEL GOVERNANCE
+
+Any ML model must have:
+
+```
+model_name
+model_version
+training_data_sources
+label_definition
+evaluation_method
+evaluation_period
+geographic_coverage
+known_failure_modes
+calibration_results
+last_validation_date
+```
+
+Do not claim an unvalidated model can forecast illegal logging.
+
+The initial platform should be useful without custom ML.
+
+Use AI to assist analysts, not replace verification.
+
+---
+
+# 63. ICONIC FIRST DEMO
+
+Create a three-minute product narrative.
+
+**0:00–0:25**
+
+Show Aberdare monitoring area and explain the problem:
+
+"Satellite alerts already exist. The gap is turning observations into documented, accountable conservation action."
+
+**0:25–0:50**
+
+Load a real observation with proper provenance, or a conspicuously labeled synthetic case if live data is unavailable.
+
+**0:50–1:15**
+
+Open before/after imagery and explain acquisition dates, resolution and limitations.
+
+**1:15–1:40**
+
+Show ForestLaw finding relevant documented context, including uncertainty.
+
+**1:40–2:00**
+
+Create or review an investigation case and assign a responsible reviewer.
+
+**2:00–2:25**
+
+Attach field evidence, record a response and preserve the audit trail.
+
+**2:25–2:45**
+
+Generate a professional EvidenceProof dossier.
+
+**2:45–3:00**
+
+Show the Forest Intervention Outcome Graph.
+
+Close:
+
+**"The satellite sees a change. ForestProof helps establish what happened, what was done, and whether the response worked."**
+
+---
+
+# 64. P0 BUILD PRIORITIES
+
+Build in this precise order:
+
+1. Repository inspection and environment setup.
+2. Architecture and source verification.
+3. Database with PostGIS.
+4. Monitored-area schema.
+5. Forest observation schema.
+6. Demo provider.
+7. One real provider.
+8. Observation ingestion and persistence.
+9. Map interface.
+10. Observation detail panel.
+11. Case creation.
+12. Case review workflow.
+13. Evidence upload and provenance.
+14. Legal context references.
+15. Outcome recording.
+16. Evidence dossier generation.
+17. Authentication and access boundaries.
+18. End-to-end tests.
+19. Deployment.
+20. First real external-user feedback.
+
+Do not work on advanced prediction or global expansion while P0 is broken.
+
+---
+
+# 65. P1 DIFFERENTIATORS
+
+After P0 works:
+
+- Multi-sensor corroboration.
+- Before/after imagery comparison.
+- Source-health dashboard.
+- Catchment-priority scoring.
+- Observation deduplication improvements.
+- Advanced legal document versioning.
+- Field-friendly mobile workflow.
+- Evidence completeness scoring.
+- Follow-up monitoring.
+- Better geospatial case analytics.
+
+---
+
+# 66. P2 COMMERCIAL PRODUCT
+
+After external validation:
+
+- Multi-organization onboarding.
+- Organization billing.
+- Monitoring subscriptions.
+- Webhook/API access.
+- Customer dashboards.
+- Case retention plans.
+- SLA monitoring.
+- Branded reports.
+- Secure organization invitations.
+- Advanced compliance workflows.
+- Institutional integrations.
+- Paid pilot management.
+
+Do not implement speculative enterprise features before a real customer's need is established.
+
+---
+
+# 67. P3 RESEARCH AND EXPANSION
+
+Later:
+
+- Predictive disturbance risk.
+- Active-learning investigation prioritization.
+- Restoration outcome monitoring.
+- Carbon/land-use monitoring where scientifically justified.
+- Watershed degradation intelligence.
+- Environmental compliance for infrastructure projects.
+- Multi-country monitoring.
+- Independent verification for environmental financing.
+- Advanced outcome models.
+
+These are future directions, not P0 requirements.
+
+---
+
+# 68. DEVELOPMENT ECONOMICS
+
+The development budget must be controlled.
+
+Preferred initial setup:
+
+- Local development.
+- Low-cost PostGIS.
+- Open-source frontend.
+- Modest backend.
+- Approved public data access.
+- No idle GPU.
+- No expensive global imagery mirror.
+- Minimal operational dependencies.
+
+Before adopting a paid provider, estimate:
+
+```
+monthly_fixed_cost
+cost_per_request
+expected_monthly_requests
+storage_cost
+processing_cost
+data_license_cost
+forecast_total_cost
+```
+
+Require user approval for new recurring paid services.
+
+Design a route from developer environment to a reliable low-cost deployment.
+
+---
+
+# 69. THE FIRST 30-DAY CAMPAIGN
+
+### DAYS 1–5 — Establish truth
+
+- Audit repository.
+- Verify data sources.
+- Establish Aberdare area-of-interest.
+- Establish data licences.
+- Build initial PostGIS schema.
+- Ingest first actual observations.
+- Record source provenance.
+- Define baseline monitoring metrics.
+
+### DAYS 6–12 — Build the intelligence experience
+
+- Functional map.
+- Observation detail.
+- Historical context.
+- Basic before/after comparisons where data permits.
+- Source-health indicators.
+- Persistent cases.
+
+### DAYS 13–20 — Build the evidence and action loop
+
+- Field evidence.
+- Case assignments.
+- Legal references.
+- Audit trail.
+- Actions.
+- Follow-up outcomes.
+- Evidence dossier.
+
+### DAYS 21–30 — Validate the business
+
+- Deploy a credible beta.
+- Demonstrate the product.
+- Seek feedback from actual conservation professionals.
+- Improve the highest-friction workflow.
+- Prepare pilot proposal.
+- Seek one real organizational design partner.
+
+This is a target execution schedule, not a claim that all integrations can be completed regardless of data access or partner availability.
+
+---
+
+# 70. REQUIRED DOCUMENTS
+
+Create and maintain:
+
+```
+PROJECT_BRAIN.md
+
+docs/
+  ARCHITECTURE.md
+  DATA_SOURCES.md
+  SATELLITE_INGESTION.md
+  GEO_DATA_MODEL.md
+  EVIDENCE_MODEL.md
+  LEGAL_CONTEXT_MODEL.md
+  CASE_WORKFLOW.md
+  FOREST_OUTCOME_GRAPH.md
+  SECURITY_AND_PRIVACY.md
+  GOLDEN_ECONOMICS.md
+  ALPHAZERO_DOCTRINE.md
+  COMMERCIAL_STRATEGY.md
+  GRANTS_AND_INCENTIVES.md
+  PILOT_PARTNERSHIPS.md
+  DEPLOYMENT.md
+  DEMO_SCRIPT.md
+
+execution/
+  ROADMAP.md
+  CURRENT_STATUS.md
+  NEXT_ACTIONS.md
+```
+
+Keep documentation synchronized with actual implementation.
+
+Clearly distinguish:
+
+WORKING
+
+PARTIAL
+
+PLANNED
+
+BLOCKED
+
+DEFERRED
+
+Do not describe roadmap items as completed features.
+
+---
+
+# 71. CONTINUOUS PORTFOLIO DISCIPLINE
+
+ForestProof is potentially valuable, but we do not assume unlimited engineering resources.
+
+Follow:
+
+**P earns exploration. Q earns commitment.**
+
+P means our strategic prior.
+
+Q means real evidence.
+
+Our conviction increases when:
+
+- Actual observations are ingested reliably.
+- Conservation professionals find the evidence useful.
+- Investigations are completed through the workflow.
+- Reports save measurable time.
+- Organizations return.
+- Partners agree to pilots.
+- Customers pay.
+- Outcomes become increasingly informative.
+
+If these signals remain weak after meaningful testing, reassess the product or customer segment.
+
+Do not defend the concept merely because its architecture is elegant.
+
+---
+
+# 72. THE MOAT TEST
+
+Before building a major feature ask:
+
+"If a competitor copied this feature next month, what would we still own that makes ForestProof more valuable?"
+
+Acceptable answers may include:
+
+- Unique legitimate partner relationships.
+- Verified historical intervention evidence.
+- Customer-specific workflow history.
+- Superior source integrations.
+- Better false-positive calibration.
+- Validated investigative processes.
+- Higher evidence quality.
+- Faster institutional onboarding.
+- Accumulated environmental outcome knowledge.
+
+If the only answer is:
+
+"Our map looks better"
+
+then the feature is not a strong moat.
+
+---
+
+# 73. THE FULCRUM TEST
+
+Ask:
+
+"Are we doing expensive upstream work somebody else already does well?"
+
+If yes, investigate using that provider.
+
+Ask:
+
+"Are we doing high-value coordination or evidence work the customer currently struggles to perform?"
+
+If yes, prioritize.
+
+The business should become essential because it reduces the gap between observations and reliable institutional response.
+
+---
+
+# 74. THE REAL-WORLD IMPACT TEST
+
+We must distinguish:
+
+**Output**
+
+100 alerts sent.
+
+**Operational outcome**
+
+30 alerts reviewed, 12 field verifications completed.
+
+**Environmental outcome**
+
+Follow-up evidence indicates a measurable change in land-cover disturbance or environmental condition.
+
+**Causal impact**
+
+Independent analysis establishes that an intervention contributed to a particular outcome.
+
+Do not collapse these into a single unsupported "hectares saved" claim.
+
+Our product should make that distinction a strength.
+
+---
+
+# 75. FIRST REQUIRED CODEX RESPONSE
+
+Before writing extensive new code:
+
+1. Inspect the current repository.
+2. Determine whether it is empty or preexisting.
+3. Report the existing technical stack.
+4. Verify access to required data sources and their licences.
+5. Identify one realistic live disturbance-data integration.
+6. Recommend the smallest complete PostGIS schema.
+7. Define the first end-to-end investigation flow.
+8. Produce the initial repository structure.
+9. Identify any credentials required without asking the user to paste secrets into chat.
+10. Estimate minimal development and hosting costs.
+
+Then begin implementing the first coherent vertical slice.
+
+Do not spend the entire session writing a speculative plan.
+
+---
+
+# 76. EXECUTION AUTONOMY
+
+Do not repeatedly ask trivial questions.
+
+Make reasonable implementation choices.
+
+Continue through routine engineering obstacles.
+
+Run tests after major milestones.
+
+Fix issues before expanding scope.
+
+Request explicit approval before:
+
+- Incurring paid charges.
+- Making public deployments under the user's accounts.
+- Publishing private source code.
+- Deleting user data.
+- Sending external notifications.
+- Contacting institutions on the user's behalf.
+- Making legally consequential claims.
+- Changing production security settings.
+
+Maintain a short, reliable execution log.
+
+---
+
+# 77. MINIMUM ACCEPTANCE CRITERIA
+
+P0 is successful when a new developer can:
+
+1. Clone the project.
+2. Configure local development using `.env.example`.
+3. Start the services.
+4. Initialize the database.
+5. Load synthetic demo observations.
+6. View a working geospatial map.
+7. Click an observation.
+8. Inspect its provenance.
+9. Create an investigation case.
+10. Attach evidence.
+11. Record review and assignment.
+12. Add a response.
+13. Add a follow-up outcome.
+14. Generate a complete evidence report.
+15. Run tests successfully.
+
+And, with an approved real provider configured:
+
+16. Fetch genuine environmental observations.
+17. Preserve their original source metadata.
+18. Display them without pretending they establish illegality.
+19. Create reviewable cases from real observations.
+20. Measure ingestion latency and data coverage.
+
+Do not call the product ready if only seeded demo mode works.
+
+---
+
+# 78. COMMERCIAL ACCEPTANCE CRITERIA
+
+Technical completion is not the same as business success.
+
+Our first commercial milestone is:
+
+**One legitimate conservation or watershed organization uses ForestProof to examine an environmental case and finds the workflow genuinely useful.**
+
+Then:
+
+**One organization agrees to a structured pilot.**
+
+Then:
+
+**One customer pays for monitoring, evidence management or reporting.**
+
+Then:
+
+**Repeat usage produces valuable historical data and measurable operational improvement.**
+
+The commercial moat must emerge from reality.
+
+---
+
+# 79. ULTIMATE NORTH STAR
+
+FORESTPROOF should eventually answer:
+
+**WHERE** did environmental change occur?
+
+**WHEN** was it observed?
+
+**WHICH** data source detected it?
+
+**HOW RELIABLE** is that observation?
+
+**WHAT** type of land or forest is involved?
+
+**WHAT** alternative explanations exist?
+
+**WHICH** rules or management conditions might apply?
+
+**WHAT** evidence is missing?
+
+**WHO** is authorized to investigate?
+
+**WHAT** investigation occurred?
+
+**WHAT** action was taken?
+
+**WHAT** happened afterward?
+
+**WAS** the original concern confirmed?
+
+**DID** the intervention produce a measurable benefit?
+
+**WHAT** did the system learn?
+
+The product must transform environmental observations into increasingly useful operational intelligence.
+
+---
+
+# 80. FINAL BUILD COMMAND
+
+Begin now.
+
+First inspect the repository.
+
+Then implement the smallest complete working system:
+
+```
+REAL OR SYNTHETIC OBSERVATION
+           |
+           v
+     FORESTPROOF MAP
+           |
+           v
+    OBSERVATION DETAIL
+           |
+           v
+     EVIDENCE REVIEW
+           |
+           v
+    INVESTIGATION CASE
+           |
+           v
+      VERIFIED ACTION
+           |
+           v
+    FOLLOW-UP OUTCOME
+           |
+           v
+     EVIDENCE DOSSIER
+           |
+           v
+FOREST INTERVENTION OUTCOME GRAPH
+```
+
+Use synthetic data honestly during development.
+
+Use real environmental data as soon as a verified, legally usable integration is ready.
+
+Do not substitute aesthetics for evidence.
+
+Do not substitute artificial intelligence for legitimate human verification.
+
+Do not substitute grant eligibility for real product demand.
+
+Do not substitute a beautiful architecture for a working system.
+
+Do not substitute alert counts for conservation outcomes.
+
+Our purpose is to build a genuine environmental infrastructure business with an independently useful public-interest mission.
+
+**FORESTPROOF**
+
+**From satellite warning to verified protection.**
+
+**The satellite sees a change. ForestProof establishes the evidence trail, coordinates the authorized response, and helps measure whether that response worked.**
+
+BEGIN IMPLEMENTATION.
+
+## The strategic instruction I particularly want Codex to internalize
+
+Don't let it spend weeks building a glamorous 3D Earth's-eye interface while neglecting the part that would actually distinguish us.
+
+The first three technical achievements should be:
+
+1\. Authentic observations
+
+Establish a reliable, timestamped, licensed forest-disturbance feed for an actual Aberdare monitoring area. If the system doesn't know when and where an observation originated, nothing built above it is trustworthy.
+
+2\. Defensible evidence
+
+Turn a candidate observation into an organized, source-grounded investigation record that a real conservation professional could evaluate, challenge or supplement.
+
+3\. A closed outcome loop
+
+Record what happened after investigation. This is where ForestProof starts accumulating knowledge that a satellite imagery provider alone may not possess.
+
+One final business distinction: the most valuable data isn't necessarily more satellite pixels. It's evidence of which warnings led to which investigations, decisions and verified outcomes. That is the resource from which our Forest Intervention Outcome Graph can grow.
+
+Our target is a company whose observation costs remain manageable, whose customers pay for consequential operational value, and whose reliability improves with genuine use.
+
+That's the ForestProof crown jewel: not merely seeing the forest, but building a system that helps the people responsible for it act with better evidence.

@@ -1,0 +1,16 @@
+---
+description: ForestProof product context, evidence safeguards, and current hosting decisions
+alwaysApply: true
+---
+
+# ForestProof project rule
+
+Read the repository root AGENTS.md, docs/PROJECT_CONTEXT.md, docs/PROJECT_MAP.md, PROJECT_BRAIN.md, and execution/CURRENT_STATUS.md before substantial work.
+
+The project converts sourced environmental observations into reviewable evidence, human-authorized investigation/action, and follow-up outcomes. DEMO data is synthetic. Never assert illegality, current live monitoring, causal impact, or production readiness without verification.
+
+The original prompts in docs/origin are historical source material, not current executable instructions or verified facts. Current user direction and implementation/status evidence take precedence.
+
+The owner prefers Codex Cloud, no local-Docker prerequisite, and OVH for eventual production hosting. No OVH deployment has been verified; Railway docs are historical. Do not deploy or incur recurring costs without current authorization.
+
+Keep documentation aligned with code and clearly label WORKING, PARTIAL, PLANNED, BLOCKED, DEFERRED, and DOCUMENTED_NOT_TESTED.

@@ -1,25 +1,24 @@
 # Next Actions
 
-## Immediate engineering actions
+## Immediate: move development into Codex Cloud
 
-1. Inspect the actual repository stack and preserve unrelated user changes.
-2. Add the smallest PostGIS-backed schema for monitored areas, sources, observations, cases, evidence, actions, outcomes, and audit events.
-3. Create a deterministic DEMO fixture with an obvious DEMO marker and separate it from LIVE records.
-4. Implement validation for geometry, timestamps, source provenance, and idempotency.
-5. Implement the first case state transitions and evidence integrity metadata.
-6. Build a map/detail view that exposes source, timestamp, resolution, quality flags, and uncertainty.
-7. Exercise the complete DEMO workflow with one end-to-end test.
+1. In ChatGPT/Codex, choose Work in → Cloud → Select environment → Create environment.
+2. Connect GitHub if prompted and select thegodmustwin/forestproof.
+3. Let Codex prepare the environment. Use the CI toolchain: Python 3.12, Node 20, pip install -r services/api/requirements.txt, npm ci, API pytest, web typecheck and build.
+4. Review the setup report, save and publish the environment, then start a new Cloud task. No local Docker is required for this step.
 
-## Live-source gating actions
+## P0 engineering and evidence
 
-1. Select one source product that can provide individual observations, not only tiles.
-2. Confirm current access, terms, attribution, commercial reuse, rate limits, and AOI coverage from official documentation.
-3. Obtain credentials through environment configuration if required; never paste secrets into chat or Git.
-4. Run a bounded sample request, persist original identifiers/metadata, and record health/latency.
-5. Change status only after validation; label any gaps in the interface.
+1. Verify the authoritative Aberdare monitoring-area geometry and permitted reuse; do not promote the illustrative DEMO polygon.
+2. Select one record-level disturbance product. Verify official docs, terms, commercial reuse, attribution, access, AOI coverage, latency, rate limits, and source-record metadata.
+3. Make one bounded source request and preserve original IDs/timestamps/processing versions; only then consider changing its status from DOCUMENTED_NOT_TESTED.
+4. Finish a source-grounded legal document/version model and human review process; keep the current demo legal gate explicit until verified materials exist.
+5. Close the gaps in upload validation and evidence access before accepting real evidence.
 
-## Before any pilot or deployment
+## Before pilot or deployment
 
-- Complete tenant boundaries, upload validation, object-access protections, audit logging, backups, and restoration checks.
-- Obtain explicit approval before recurring paid services, public deployment, external outreach, notifications, or legally consequential communication.
-- Ensure the DEMO does not claim real incidents, legal conclusions, or conservation impact.
+- Implement authenticated identity, server-side role/tenant checks, protected object storage, retention, rate limits, monitoring, backup and restore tests.
+- Audit the OVH VPS from the owner account: IP, OS/version, SSH readiness, firewall, backups, DNS/domain/TLS, capacity, and cost. Do not ask for passwords or private keys in chat.
+- Choose and document a deployment method only after the OVH inventory and production controls are understood. Railway is not the current choice.
+- Obtain practitioner feedback and one design partner before expanding billing, enterprise features, or predictive ML.
+- Get explicit current approval before recurring paid services, public deployment, external outreach, notifications, or legally consequential communication.

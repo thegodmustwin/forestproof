@@ -1,33 +1,41 @@
 # Current Status
 
-**Last updated:** 2026-10-21  
-**Milestone:** P0 hosted-beta launch package.
+**Last updated:** 2026-10-25  
+**Milestone:** private GitHub source established; Codex Cloud onboarding next.
 
 ## Truthful snapshot
 
-- Documentation: PARTIAL. Core architecture, source, evidence, workflow, security, economics, and pilot records are defined; live-source activation and deployment runbooks remain incomplete by design.
-- DEMO flow: WORKING. Automated tests seed deterministic observations; exercise case creation, assignment, review-state gates, evidence hashing, action, follow-up, dossier generation, and an outcome graph.
-- Live data: DOCUMENTED_NOT_TESTED. Candidate GFW, Copernicus, NASA FIRMS, and Kenya Forest Service contexts are recorded; none is declared operational in the project until activation evidence is captured.
-- Legal context: PLANNED. No authoritative order, permit, or restriction has been entered or applied.
-- Database and application workflow: WORKING locally. The P0 API uses a SQLite development adapter with a PostGIS-aligned target schema supplied for the next adapter milestone. The PostGIS runtime adapter is not implemented.
-- Deployment: READY_FOR_PROVIDER_CONNECTION. Production Docker commands, a private API proxy, a persistent-volume configuration guide, and GitHub Actions checks are prepared. No public URL exists yet: the remaining external steps are authentication to the owner's personal GitHub account and Railway account connection.
+| Area | Status | Evidence / limitation |
+| --- | --- | --- |
+| GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. Initial commit is 71af70f81318ea98e4d1ab20bd52739aa97012c1. |
+| GitHub CI | WORKING | First Actions run on the initial commit passed API and web jobs: https://github.com/thegodmustwin/forestproof/actions/runs/40185388840. |
+| DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
+| Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
+| Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
+| Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
+| Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
+| Codex Cloud | PLANNED | GitHub source is ready, but the owner still needs to connect/select the repo and create/test/publish a Cloud environment. |
+| Production deployment | NOT DEPLOYED | Owner prefers OVH. Only a temporary hostname is known; server IP, OS, SSH, DNS/domain, firewall, backups, and deployment method remain unverified. |
 
-## Current known constraints
+## Constraints and non-claims
 
-1. Exact Aberdare monitoring-area boundaries must come from an appropriate authoritative or licensed source.
-2. A live disturbance feed needs product-specific terms, credentials where required, bounded AOI testing, and provider-health validation.
-3. No remote observation can establish illegality or causal conservation impact on its own.
-4. Sensitive field/case information needs access controls before handling real material.
+1. The Aberdare map area is illustrative, not an official licensed boundary.
+2. DEMO observations, cases, dates, coordinates, confidence-like values, and evidence are synthetic; they are not current Kenyan incidents.
+3. A remote-sensing signal cannot establish cause, authorization, illegality, or causal conservation impact by itself.
+4. The original prompts mention October 2026 court reporting. No operative official order or current legal status is in the application; verify before use.
+5. Real field or personal evidence must not enter the current unauthenticated demo system.
+6. The old Railway guide is historical; OVH is the owner's stated preference. No website has been deployed.
 
-## Verification recorded
+## Verification evidence
 
-- API tests: `8 passed` using Python 3.13 on 2026-10-21.
-- Web typecheck: passed.
-- Web production build: passed (nine routes generated).
-- Local API and web readiness: both returned HTTP 200 on loopback.
-- Hosted-proxy check: the production Next.js web server proxied `/health` and `/observations` to a private FastAPI endpoint successfully on loopback (HTTP 200 each).
-- Browser automation: BLOCKED by a local sandbox helper error; no visual-interaction claim is made from this check.
+- Local API tests: 8 passed with Python 3.13 on 2026-10-21.
+- Local web typecheck: passed on 2026-10-21.
+- Local web production build: passed and generated nine routes on 2026-10-21.
+- Hosted-proxy topology check: web proxy returned HTTP 200 for API health and observations on loopback on 2026-10-21; this was not a public deployment.
+- GitHub Actions initial run for commit 71af70f81318ea98e4d1ab20bd52739aa97012c1: success on 2026-10-25; see the workflow link above.
 
-## Next verification checkpoint
+No tests were re-run solely for this documentation update; the existing workflow checks the code at the initial pushed commit.
 
-Push the verified P0 package to the owner's personal GitHub account, connect it to Railway, attach the API volume, and record the resulting public web URL. Independently verify a legally usable live source before representing a live monitoring capability.
+## Next checkpoint
+
+Create and publish a Codex Cloud environment for this repo using Python 3.12 and Node 20, run the CI-equivalent checks there, and record the result. Then continue with a verified AOI/source and the production-security gaps before planning OVH deployment.

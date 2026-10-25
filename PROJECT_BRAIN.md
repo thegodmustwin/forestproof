@@ -1,5 +1,10 @@
 # FORESTPROOF Project Brain
 
+New contributors and AI platforms: begin with [AGENTS.md](AGENTS.md),
+[PROJECT_CONTEXT.md](docs/PROJECT_CONTEXT.md), and
+[PROJECT_MAP.md](docs/PROJECT_MAP.md). Original inception prompts are archived
+under docs/origin/ as historical material, not verified current facts.
+
 ## Purpose
 
 ForestProof is an environmental-intelligence and evidence-workflow platform. Its first operating context is the Aberdare water tower in Kenya. The product does not decide whether activity is illegal. It helps authorized people turn a sourced environmental observation into a reviewable case, documented response, and evidence-backed follow-up.
@@ -37,7 +42,7 @@ The first coherent vertical slice is:
 | Live forest-alert provider | DOCUMENTED_NOT_TESTED | No provider is represented as operational until credentials, licence, AOI coverage, and ingestion are verified. |
 | Legal corpus | PLANNED | No court order or permit is treated as authoritative until an official source and human review are recorded. |
 | Outcome Graph | WORKING (P0) | A relational observation → case → action/follow-up graph is exposed; it does not assert environmental causality. |
-| Commercial deployment | DEFERRED | No paid service, public deployment, or external notification is authorized by this document. |
+| Commercial deployment | DEFERRED | No public deployment or external notification has been completed. The owner prefers OVH; server access, configuration, and deployment are unverified. Railway documents are historical. |
 
 ## Product boundary
 

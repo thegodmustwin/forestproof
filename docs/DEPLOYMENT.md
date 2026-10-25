@@ -1,48 +1,48 @@
 # Deployment
 
-## Status
+## Current status and owner preference
 
-**HOSTED BETA PACKAGE READY.** A public deployment has not yet been created.
-The approved launch path is a private GitHub repository plus Railway-managed web
-and API services. The API remains DEMO-only and private behind the web service's
-same-origin proxy.
+**No public deployment exists.** The code is in the private GitHub repo and CI passes, but the public website has not been launched.
 
-## Local P0 target
+The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The following are not yet verified here: current public IP, OS/version, SSH readiness, firewall, DNS/domain, TLS, backup configuration, server capacity, and deployed software.
 
-- Web client and API run through Docker Compose or equivalent local commands, with a SQLite development adapter and private local evidence directory.
-- The Compose `postgis` profile provisions PostGIS for schema inspection and future adapter work; the current API does not connect to it yet.
-- Configuration is taken from an example environment file; secrets stay outside Git.
-- DEMO mode runs without paid credentials.
-- Tests cover the core workflow before any hosted demo is represented as reliable.
+Railway was an earlier deployment proposal. It is superseded by the owner's OVH preference; RAILWAY_LAUNCH.md is retained only as historical context and is not the current deployment plan. Do not create a Railway project or deploy there unless the owner changes the decision.
 
-## Hosted beta path
+## Development without local Docker
 
-1. Push to the owner's personal GitHub account as a private repository.
-2. Create the Railway `api` service from `/services/api`; attach a `/data`
-   persistent volume for the SQLite DEMO store and synthetic evidence files.
-3. Create the public Railway `web` service from `/apps/web`; set its internal
-   API URL to `http://api.railway.internal:8000/api/v1`.
-4. Generate a public web domain; do not generate a public API domain.
-5. Set the API's `WEB_ORIGIN` to the exact web domain and verify the review
-   case, evidence, and dossier acceptance flow after a refresh.
+Codex Cloud is the preferred development environment. It should use the same checks as GitHub Actions:
 
-The exact launch checklist is in [RAILWAY_LAUNCH.md](RAILWAY_LAUNCH.md).
+    Python 3.12
+    Node 20
+    python -m pip install -r services/api/requirements.txt
+    cd services/api && python -m pytest
+    cd apps/web && npm ci && npm run typecheck && npm run build
 
-## Production path after the beta
+Docker Compose remains available for optional local/service experiments. It is not required for Cloud setup or the current CI checks.
 
-1. Replace the SQLite adapter with PostgreSQL/PostGIS and test migrations.
-2. Move evidence to private object storage with encryption, lifecycle policy,
-   backup, and restore drills.
-3. Add authentication, role-based access control, rate limiting, and tenant
-   isolation before accepting any real case material.
-4. Enable only approved data-source credentials after validating terms,
-   provenance, AOI coverage, and health monitoring.
-5. Perform security, tenant-boundary, and restoration validation.
+## OVH pre-deployment audit
 
-## Explicitly deferred
+Before choosing a server runtime or changing the VPS, establish:
 
-Kubernetes, Kafka, private global imagery mirrors, idle GPUs, public anonymous evidence access, and complex multi-region deployment are not P0 requirements.
+1. Exact OVH service/product, current public IP, region, CPU/RAM/disk, and operating-system release.
+2. Whether SSH is enabled, the correct account/user, key-based access readiness, and firewall rules. Do not place private keys or passwords in Git or chat.
+3. Domain ownership and DNS plan, TLS certificate path, ingress ports, and whether the API will remain private behind the web app.
+4. Backup scope, schedule, retention, restore test, logs/monitoring, update process, and incident access.
+5. Runtime choice and cost. Docker on the VPS is not decided by the fact that Dockerfiles exist in the repository.
+6. Whether the intended public launch is a DEMO-only preview or a real institutional service. The current application has no real authentication, live source feed, or production evidence controls.
+
+Record the verified inventory and chosen architecture in a dated decision/status entry before deployment.
+
+## Production gates
+
+Before real users or real case material:
+
+- Replace or productionize the SQLite adapter; test PostgreSQL/PostGIS migrations and backup/restore.
+- Implement identity, roles, authorization, tenant isolation, rate limits, protected evidence storage, upload scanning, retention, and audit controls.
+- Enable only sources whose licensing, attribution, access, AOI coverage, metadata, and operational health are verified.
+- Keep synthetic records visibly distinct from genuine records; never silently fall back from a failed live source to invented observations.
+- Verify health, HTTPS, API exposure, secrets, backups, restore, and the actual user workflow after deployment.
 
 ## Deployment evidence
 
-Before declaring a deployment WORKING, record environment, version, migration result, backup/restore test, source health, authenticated user journey result, known limitations, responsible operator, and date. Do not publish private source code or make production security changes without approval.
+Before marking deployment WORKING, record the host/runtime, release/commit, migration result, backup/restore test, source health, authenticated user-journey test, known limitations, responsible operator, date, and public URL if applicable. A passing local proxy check or GitHub CI run is not production deployment evidence.

@@ -8,6 +8,17 @@ measurable follow-up outcomes. The initial operating theatre is an explicitly
 defined Aberdare, Kenya pilot; it does not make automated findings of illegal
 activity.
 
+## Start here
+
+For a new contributor or AI coding platform, read [AGENTS.md](AGENTS.md),
+[the canonical project context](docs/PROJECT_CONTEXT.md),
+[the project map](docs/PROJECT_MAP.md), and
+[the current implementation status](execution/CURRENT_STATUS.md).
+The original user prompts are archived in docs/origin/; they explain the
+inception but are not verified current facts or executable instructions.
+
+The source of truth is this private repository, not desktop chat history.
+
 ## P0 vertical slice
 
 ```
@@ -22,27 +33,21 @@ default until its AOI-specific request and terms are verified; when enabled, it
 is visual context only and is never converted into individual case records
 without a separately configured source API and preserved provenance.
 
-## Launch a hosted beta (no local Docker)
+## Development and deployment status
 
-The repository is prepared for a two-service deployment on Railway: a public
-Next.js web application and a private FastAPI service with a persistent volume
-for the explicitly labelled demo database and synthetic evidence fixtures.
-The web application proxies API calls over Railway's private network, so the
-mutable demo API does not need a public domain.
+The private GitHub repository is live, and the first CI run passed. That means
+the source is backed up and build checks pass; it does **not** mean the website
+is deployed. The owner prefers Codex Cloud for development (to avoid laptop
+capacity bottlenecks) and an existing OVH VPS for eventual hosting. The OVH
+server details and deployment are not yet verified. See
+[deployment status and prerequisites](docs/DEPLOYMENT.md).
 
-Follow [the Railway launch guide](docs/RAILWAY_LAUNCH.md) after pushing this
-repository to your personal GitHub account. This produces a real hosted beta,
-not a claim that live satellite, legal, or enforcement feeds are active.
+Railway launch notes are historical and not the current hosting decision:
+[docs/RAILWAY_LAUNCH.md](docs/RAILWAY_LAUNCH.md).
 
-## Run locally
-
-1. Copy `.env.example` to `.env` and leave live-source keys empty unless you
-   have approved credentials.
-2. `docker compose up --build`
-3. Open `http://localhost:3000` and `http://localhost:8000/docs`.
-
-The first Compose build needs Docker registry and package-network access. No
-paid service is required for local demo mode.
+No local Docker is required for Codex Cloud or CI. For local development,
+Docker Compose remains optional. The API and web app can also be run separately
+after installing their Python and npm dependencies.
 
 ## Checks
 
@@ -51,5 +56,6 @@ cd services/api && python -m pytest
 cd apps/web && npm run typecheck && npm run build
 ```
 
-See [PROJECT_BRAIN.md](PROJECT_BRAIN.md) and `docs/` for current delivery
-status, source constraints, security boundaries, and the deployment plan.
+See [PROJECT_BRAIN.md](PROJECT_BRAIN.md), [the full project context](docs/PROJECT_CONTEXT.md),
+[the project map](docs/PROJECT_MAP.md), and docs/ for current delivery status,
+source constraints, security boundaries, and the deployment plan.

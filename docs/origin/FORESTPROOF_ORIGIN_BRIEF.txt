@@ -1,0 +1,612 @@
+# FORESTPROOF — The intelligence system that turns forest loss into accountable action
+
+Kenya's Aberdare crisis × Satellite intelligence × Golden Economics × AlphaZero × Still-Fulcrum doctrine
+
+I think we've found something genuinely worth developing into a crown-jewel company. But the most important discovery from this research is that we should not build another wildfire map, satellite globe or ordinary deforestation detector.
+
+Kenya already has forest-monitoring systems. Global organizations already provide sophisticated satellite alerts. Some are even building predictive AI that forecasts where deforestation is likely to occur next.
+
+Our opportunity is to own the harder problem:
+
+> When a forest disturbance is detected, who must investigate it, what evidence establishes whether the activity is authorized, what action is required, and was that action actually effective?
+
+That is where conservation, environmental law, satellite data, institutional accountability and high-value software converge.
+
+My strongest recommendation is:
+
+# FORESTPROOF
+
+The environmental evidence, intervention and accountability control plane.
+
+Tagline: From satellite warning to verified protection.
+
+Its first operating theater would be the Aberdare water tower, particularly the disputed logging around Geta Forest.
+
+Its long-term market could include forest reserves, water catchments, conservation organizations, forestry operators and institutions responsible for proving environmental compliance across Africa.
+
+## 1. Why this is a real and urgent problem
+
+On October 14, 2026, the Environment and Land Court in Ol Kalou issued conservatory orders temporarily stopping logging in Aberdare Forest, affecting licensed and unlicensed operators pending further directions. Justice Joseph Mugo Kamau is expected to visit Geta Forest on October 23.
+
+The controversy involves competing accounts: petitioners and residents have raised concerns about forest destruction and water security, while forestry authorities and sawmillers have defended some harvesting as managed plantation operations.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://citizen.digital\&sz=32)
+
+citizen.digital
+
++1
+
+
+
+That distinction is essential.
+
+A satellite image showing felled trees does not, by itself, prove a crime. We must distinguish indigenous forest loss, plantation harvesting, authorized management, fire, storms, new roads and potentially unauthorized clearing. The applicable court orders and their effective dates also matter.
+
+That's why the ultimate product cannot just shout ILLEGAL LOGGING DETECTED every time a satellite sees vegetation disappear.
+
+It must build an evidence trail that a ranger, environmental advocate, conservator, regulator or court can scrutinize.
+
+And this leads to the first major competitive insight.
+
+## 2. Kenya already has satellite forest monitoring—so our opportunity is above that layer
+
+I found the [Kenya Forest Service National Forest Monitoring System](https://nfms.kenyaforestservice.org/forest-monitoring?utm_source=chatgpt.com).
+
+Its publicly described architecture includes satellite forest-change monitoring, fire intelligence, alert histories, field verification and forest monitoring dashboards.
+
+The system's published methodology describes using satellite-derived alerts and ground verification, including ranger reports with location, forest type, incident type, photographs and recorded actions. Parts of that methodology are sourced from a 2021 draft, so we should not assume every described workflow is actively deployed today.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://nfms.kenyaforestservice.org\&sz=32)
+
+Kenya NFMS-FIP
+
++2
+
+
+
+This completely changes our ideal competitive position.
+
+We should not spend months trying to beat KFS, Google, NASA, ESA and Global Nature Watch at basic image collection.
+
+We should build the system that connects those existing observations to permissions, court orders, investigation, response and verified outcomes.
+
+That's the Still-Fulcrum position.
+
+## 3. What we should borrow from God's Eye View and other satellite systems
+
+[The Intelligence Monopoly Is Over](https://images.openai.com/static-rsc-4/e2d-HVwbOqPQ3S6OITbDbsHEXK2MW3FUVCCma2LX0Vso-g0nDokluALIo5x515kUk74nhrQyjTW4jrogTXeTTLajjgticmin_UyAVuR3LZ7ydzUrerSWW4KWtrvSl3ucQ9yalOf_nu9uegIVL93vK2B7JA-eXe647J9ODpx_kqg?purpose=inline)
+
+[God's Eye View](https://github.com/bilawalsidhu/gods-eye-view?utm_source=chatgpt.com) — Visual command center
+
+An open-source 3D geospatial interface integrating public aircraft, vessel, satellite, fire and other signals. Its value is the unified interface and ability to inspect disparate feeds in geographic context—not any special ability to see live high-resolution imagery anywhere on Earth. Some layers are delayed, simulated or approximate.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
+
+GitHub
+
++1
+
+
+
+[Global Forest Watch just made it even easier to monitor forests. | by Camellia Williams | Vizzuality Blog | Medium](https://images.openai.com/static-rsc-4/Q1F-_CJJPrQbi3nzntX0Tcqh2nA6mbNpZH5ZrUn8kVTKCZ-UhLQb5pbJpYUtKpN1Cm-Oyuvmdmu6E2UI7IVxym8uI1wBprWnQdfyEefB-34_AC8R-PazPzzDYpd9HDPU3OV6NUR7XKZJVSocD8L73xwcPLpTrh7qmZmPQwHq6Wo?purpose=inline)
+
+Global Nature Watch — Disturbance detection
+
+Its integrated disturbance alerts combine optical and radar systems including GLAD-L, GLAD-S2, RADD and DIST-ALERT. The 10-metre Sentinel-derived systems can identify smaller forest disturbances, while radar observations help through cloud cover.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://staging.globalforestwatch.org\&sz=32)
+
+staging.globalforestwatch.org
+
+
+
+[AI-systeem voorspelt illegale ontbossing: ‘30 hectare kap bij goudmijn voorkomen’ | WUR](https://images.openai.com/static-rsc-4/ypg6blw4e16_vkQCkgEoQtbOWN2r4i9kPPYC2C893ny8KnUuXK_VsGNwpeW5mUVJyef_md50_OqUIHo58SjXC8ddDToIPMceko1iH1lrJEZrgGOdhh7Nz6Jwu0nT2MIb3XuvEzsr-qtVpwJUJoxJX7j1znsZEjNu5vQ0YoGSbAU?purpose=inline)
+
+Forest Foresight — Predictive intelligence
+
+WWF has already built machine-learning tools that forecast forest-loss risk and use indicators such as roads, land use and prior disturbance. Its [open-source R package](https://github.com/ForestForesight/ForestForesight?utm_source=chatgpt.com) is particularly worth studying.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.wwf.org.uk\&sz=32)
+
+WWF
+
++1
+
+
+
+[A Conservation App to Save our Forests | 3 Sided Cube](https://images.openai.com/static-rsc-4/KwQw1AbKW0-MKdfswcsfR6SneRMO4OdcpJQGblczPHD87G_rGbxUsNn9ylQo2FMS8n-pMGoR2SvT9Bywd5UOfpSiqzBS0OZWkhqigIqQyoCU1oVdFSsOGyaIsEZ9UuMCIfL9iImrOLvioLVpZNgmSKhJuNOATVpcF9TTIYrXbfE?purpose=inline)
+
+Forest Watcher — Field verification
+
+It supports offline forest alerts, field navigation, incident reports and synchronizing data from remote areas. This is an important existing solution rather than a feature we should casually reinvent.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://watcher.globalforestwatch.org\&sz=32)
+
+watcher.globalforestwatch.org
+
++1
+
+
+
+The lesson is that the foundations of our system can largely be borrowed or integrated.
+
+| Existing technology  | What it provides                      | What ForestProof must add                                              |
+| -------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
+| God's Eye View       | Spatial visualization and feed fusion | Operational evidence and accountability                                |
+| Global Nature Watch  | Forest disturbance detection          | Case ownership, legal context, verified response                       |
+| WWF Forest Foresight | Predictions of future forest loss     | Intervention prioritization and outcome evaluation                     |
+| Forest Watcher       | Field data collection                 | Cross-institutional case management and evidence continuity            |
+| Kenya NFMS           | National forest monitoring context    | A complementary, independently useful compliance and response workflow |
+
+There is an even newer competitor worth noting: [Global Nature Watch Horizon](https://horizon.globalnaturewatch.org/?utm_source=chatgpt.com) is already previewing AI-powered environmental monitoring and summaries. It warns that AI-generated findings need source verification.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://horizon.globalnaturewatch.org\&sz=32)
+
+horizon.globalnaturewatch.org
+
+
+
+So we should not stake the company on being the first to put an AI chatbot over satellite imagery.
+
+Our enduring differentiator should be the verified intervention record: which institution received an alert, what authority applied, which evidence was reviewed, what happened next, and whether the threat was resolved.
+
+## 4. The ForestProof operating architecture
+
+THE OBSERVATION LAYER
+
+Global Nature Watch · Sentinel-1/2 · NASA FIRMS · Kenya forest datasets · community reports
+
+FOREST DISTURBANCE ENGINE
+
+Normalize observations · Deduplicate alerts · Establish location, time, forest type and confidence
+
+## FORESTPROOF AUTHORITY ENGINE
+
+Land status
+
+Reserve, plantation or private land?
+
+Legal context
+
+Which rules/orders were effective?
+
+Permit evidence
+
+Authorized, restricted or unknown?
+
+Environmental risk
+
+How important is this catchment?
+
+Verification
+
+What does field evidence establish?
+
+Accountability
+
+Who owns the next action?
+
+INVESTIGATE
+
+CLOSE VERIFIED
+
+ESCALATE
+
+## FOREST INTERVENTION OUTCOME GRAPH
+
+Detection → Investigation → Evidence → Action → Verified outcome
+
+This architecture builds on external detection systems and keeps final enforcement decisions with authorized humans.
+
+That is important: a machine can raise a concern, but it should not autonomously declare criminal guilt, issue official permits or instruct enforcement personnel to take coercive action.
+
+## 5. The six crown-jewel capabilities
+
+### A. ForestChange — finding the disturbance
+
+Combine multiple observations for an area of interest rather than depending on a single imagery source.
+
+The system might detect a disturbance across successive observations, compare it to its seasonal baseline, check if a second sensor corroborates it, and label the result according to the evidence available.
+
+Critically, forest-loss alerts are not continuously live video. Satellite revisits, cloud cover, spatial resolution and processing delays matter. Selective removal of a few trees may be invisible at 10-metre resolution.
+
+NASA FIRMS, for example, is useful for thermal anomalies and fires—not as a general-purpose logging detector. Its VIIRS fire products use approximately 375-metre pixels, and global availability is often within a few hours of observation.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://firms.modaps.eosdis.nasa.gov\&sz=32)
+
+firms.modaps.eosdis.nasa.gov
+
+
+
+### B. ForestLaw — legal and permission intelligence
+
+This is where we begin to separate ourselves from ordinary geospatial dashboards.
+
+The software must understand the relevant legal context for a specific location and date.
+
+For the Aberdare pilot, that includes the October 14 conservatory orders, their scope, their current status and any subsequently issued court directions.
+
+KFS already publishes guidance about timber movement permits and certificates of origin. These are useful compliance inputs, but a missing public record does not establish that no valid permit exists.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.kenyaforestservice.org\&sz=32)
+
+Kenya Forest Service
+
+
+
+The software should distinguish between verified authorization, verified restriction, unresolved authorization and cases requiring legal review.
+
+### C. EvidenceProof — preserving reliable evidence
+
+Every significant observation becomes an evidence packet containing:
+
+- The source, acquisition time, geographic footprint and satellite/product version.
+- The original detection, confidence information and available before/after imagery.
+- Relevant land classification and verified legal documents.
+- Any authorized field report or corroborating photograph.
+- A timestamped history of reviews, corrections, responses and case status.
+
+Evidence objects should be tamper-evident and versioned. Digitally signed reports and cryptographic hashes can help detect alteration; they do not establish that the underlying allegation is true.
+
+### D. InterventionRouter — getting the right information to the right organization
+
+Instead of broadcasting potentially inaccurate accusations, route cases to designated conservation teams or appropriately authorized institutions.
+
+A report might move through:
+
+`NEW → UNDER REVIEW → FIELD VERIFICATION → ACTION RECORDED → FOLLOW-UP → CLOSED / REOPENED`
+
+The product's operational strength comes from reducing the time between evidence appearing and somebody capable of responding receiving a usable case.
+
+### E. CatchmentRisk — understanding environmental importance
+
+A hectare of clearing in one location is not necessarily equivalent in consequence to a hectare elsewhere.
+
+The system could consider forest type, catchment position, proximity to streams, slope, existing land degradation and other environmental attributes when prioritizing investigation.
+
+But we must not claim that one logging event caused a specific change in Nairobi's water supply without hydrological evidence. Water availability depends on rainfall, soils, land cover, abstraction, infrastructure and other factors.
+
+At first, this should be a transparent environmental-priority index, not a purportedly precise water-loss prediction.
+
+### F. OutcomeGraph — learning whether interventions work
+
+This is the long-term crown jewel.
+
+For each alert, preserve the complete relationship:
+
+\\[ \boxed{ \text{Disturbance} \rightarrow \text{Evidence} \rightarrow \text{Legal context} \rightarrow \text{Investigation} \rightarrow \text{Intervention} \rightarrow \text{Observed outcome} } \\]
+
+We could eventually learn which types of cases are resolved quickly, which detections generate false alarms, which interventions are followed by continued disturbance, and where investigation resources create the most measurable benefit.
+
+More alerts alone do not make the system smarter. More accurately verified alerts and outcomes might.
+
+## 6. The AlphaZero layer — how do we get better at preventing damage?
+
+A naive system sees 1,000 satellite alerts and sends 1,000 notifications.
+
+An AlphaZero-inspired system asks:
+
+> Which investigation should receive the next scarce unit of human attention, given what we currently know?
+
+Our finite search budget isn't just GPU compute. It includes ranger time, access to remote areas, communications, investigation costs and partner capacity.
+
+The system can maintain a transparent priority over cases using four factors:
+
+\\[ \text{Investigation Priority} \propto \frac{ \text{Expected environmental consequence} \times \text{Evidence strength} \times \text{Actionability} \times \text{Time urgency} }{ \text{Expected investigation cost} } \\]
+
+This is an initial heuristic, not a validated scientific risk formula.
+
+An alert that is uncertain but occurs in a critical catchment under an active legal restriction may deserve investigation before a much larger, already explained plantation-harvesting event.
+
+With field feedback, ForestProof learns how well its prioritization works.
+
+ILLUSTRATIVE CASE — NOT A LIVE DETECTION
+
+## Geta Forest Disturbance
+
+Review needed
+
+Satellite observations
+
+Two independent indicators
+
+Legal context
+
+Court restriction reported
+
+Permit verification
+
+Not yet established
+
+Field investigation
+
+Pending
+
+Recommended next step
+
+Request review by an authorized conservation partner, supplying imagery dates, location, forest classification, applicable court-order reference and outstanding verification questions.
+
+No allegation of illegal conduct is made from satellite data alone.
+
+This produces a scientifically useful learning loop.
+
+`Predicted concern → Field investigation → Verified classification → Recorded action → Follow-up observation → Improved triage`
+
+We also need negative examples: alerts caused by seasonal changes, permitted activity, storms or sensor errors.
+
+Without those, the system could learn to exaggerate danger to generate more cases.
+
+The true objective is not maximizing alerts. It is maximizing verified environmental protection per scarce investigation resource.
+
+## 7. The Golden Economics: can ForestProof become a business?
+
+This opportunity is different from our software-only authority systems.
+
+The marginal cost of maintaining an additional monitored forest polygon may be small, but the cost of proving and responding to environmental incidents can be significant.
+
+So we should distinguish two businesses:
+
+ForestProof Software: High-margin evidence processing, geospatial analysis, workflow management and reporting.
+
+Forest protection operations: Field inspections, legal work, physical enforcement, restoration and scientific monitoring—performed by qualified partners, not implicitly absorbed into our SaaS economics.
+
+That separation is our Cost-Vector Cancellation.
+
+### Potential customers and their reasons to pay
+
+| Customer segment                                       | Economic value                                                         | Possible business model                 |
+| ------------------------------------------------------ | ---------------------------------------------------------------------- | --------------------------------------- |
+| Water utilities and catchment-management organizations | Faster identification and documentation of threats to watershed assets | Annual monitoring / reporting contracts |
+| Conservation NGOs and community associations           | Verified cases, field workflow, donor reporting                        | Grants, organizational subscriptions    |
+| ESG and environmental-risk teams                       | Evidence of land-cover changes and reported responses                  | Monitoring API / subscription           |
+| Forestry and restoration operators                     | Document authorized harvesting, compliance and regeneration            | Per-site compliance subscriptions       |
+| Environmental project funders                          | Independent monitoring of funded restoration outcomes                  | Portfolio monitoring contracts          |
+
+I would not begin by trying to sell to everyone.
+
+The sharpest initial buyer hypothesis is an organization with a budget and an existing responsibility to monitor a forest or water catchment, especially one struggling to coordinate observations, field investigations and documentation.
+
+### Golden Economics assessment
+
+| Dimension                               | Initial assessment |
+| --------------------------------------- | ------------------ |
+| Environmental impact potential          | 9.8/10             |
+| Authority density                       | 9.5                |
+| External infrastructure leverage        | 9.7                |
+| Data and outcome compounding potential  | 9.4                |
+| Software marginal-cost leverage         | 9.2                |
+| Potential institutional switching value | 9.1                |
+| Solo-developer prototype feasibility    | 9.0                |
+| Speed to first paying customer          | 6.5                |
+| Overall strategic prior                 | 9.2/10             |
+
+These are subjective opportunity-screening scores, not forecasts.
+
+The commercial difficulty is obtaining trusted institutional access, proving the accuracy of our evidence workflow, and finding a budget holder willing to pay. Government procurement and grant cycles may be slow.
+
+In other words, this could be a tremendous environmental and software asset without being the fastest cash-generating project in our portfolio.
+
+That is important to recognize before allocating months of development.
+
+## 8. The free infrastructure and incentive landscape
+
+The infrastructure opportunities are encouraging, but their terms matter.
+
+| Source                                                                                   | Available leverage                                       | Important limitation                                                       |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [Global Nature Watch data](https://data.globalforestwatch.org/?utm_source=chatgpt.com)   | Existing disturbance alerts and forest datasets          | Check redistribution and commercial licensing for each dataset             |
+| [Copernicus Data Space](https://dataspace.copernicus.eu/?utm_source=chatgpt.com)         | Open Sentinel-1/2 imagery, catalogues, processing APIs   | Quotas and imagery availability; not continuous video                      |
+| [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/?utm_source=chatgpt.com)               | Fire and thermal-anomaly observations                    | Detects fire-related activity, not logging generally                       |
+| [MapLibre](https://maplibre.org/?utm_source=chatgpt.com)                                 | Open-source 2D/3D geographic interface                   | We still need suitable map tiles and licensed imagery                      |
+| [Google Earth Engine](https://developers.google.com/earth-engine?utm_source=chatgpt.com) | Powerful geospatial analytics                            | Commercial operational usage generally requires paid access                |
+| [NICFI satellite program](https://www.nicfi.no/?utm_source=chatgpt.com)                  | Potential high-resolution tropical-forest imagery access | Access arrangements and noncommercial license restrictions must be checked |
+
+[image](https://www.google.com/s2/favicons?domain=https://dataspace.copernicus.eu\&sz=32)
+
+Copernicus Data Space Ecosystem
+
++5
+
+### A surprisingly relevant grant ecosystem
+
+The [Global Nature Watch Small Grants Fund](https://globalnaturewatch.org/grants-and-fellowships/apply/?utm_source=chatgpt.com) has historically supported civil society projects that turn satellite forest monitoring into protection activities.
+
+Its 2026 application period closed February 6, so we cannot apply to that round now. However, the 2026–2027 cohort shows that it continues to support this exact type of conservation work.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://globalnaturewatch.org\&sz=32)
+
+Global Nature Watch
+
++1
+
+
+
+There are also Kenya-specific channels worth exploring.
+
+The State Department for Forestry describes the World Bank-funded Kenya Watershed Services Improvement Project (KEWASIP), which supports community organizations and watershed restoration. That is a potential partnership ecosystem, not an established direct startup grant.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://www.forestry.go.ke\&sz=32)
+
+State Department for Forestry
+
+
+
+The Kenya Community Development Foundation's [Pamoja4Change](https://kcdf.or.ke/our-focus-areas/entrenching-community-philanthropy-2/pamoja4change/?utm_source=chatgpt.com) programme describes matching grants of KSh 500,000–1,000,000 for community initiatives, including environmental conservation and ICT. The published programme is not proof of a currently open application round or eligibility for a standalone commercial startup.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://kcdf.or.ke\&sz=32)
+
+KCDF
+
+
+
+Most interestingly, NEMA's Green Climate Fund work in the Upper Athi catchment explicitly combines hydrological monitoring, catchment protection and improved environmental decision-making.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://nema.go.ke\&sz=32)
+
+National Environment Management Authority (NEMA)
+
+
+
+So our funding thesis could become:
+
+> Partner with a legitimate conservation or watershed organization. Supply the software and measurable evidence system. Use aligned environmental grants or procurement to fund deployments, while keeping a separately viable commercial product.
+
+That is substantially stronger than applying for an arbitrary AI hackathon prize.
+
+## 9. The technical architecture I'd actually build
+
+Do not begin by recreating God's Eye View's photorealistic global cockpit.
+
+We don't need to render the whole planet to protect one forest.
+
+Start with an operational web map and evidence management system.
+
+| Component             | Recommended starting stack                             |
+| --------------------- | ------------------------------------------------------ |
+| Web application       | Next.js, TypeScript                                    |
+| Interactive map       | MapLibre GL JS                                         |
+| Backend               | Python FastAPI                                         |
+| Geospatial database   | PostgreSQL + PostGIS                                   |
+| Data sources          | Global Nature Watch alerts + Copernicus APIs           |
+| Geospatial processing | Rasterio, GeoPandas, Shapely                           |
+| Scheduling            | Lightweight scheduled jobs                             |
+| Evidence storage      | Private S3-compatible object storage                   |
+| Alerts                | Email and authorized partner notifications             |
+| AI                    | Optional classification and source-grounded summaries  |
+| Hosting               | Low-cost VPS or suitable startup-credit infrastructure |
+
+No GPU is required to get the MVP working.
+
+No fine-tuning is required.
+
+No blockchain is required.
+
+For records requiring tamper evidence, conventional signed audit logs and document hashes are a sensible starting point.
+
+When the product demonstrates the need for more sophisticated computer vision, we can test targeted models using labeled data from the actual Kenyan landscapes.
+
+And we should keep the data processing separate from the frontend so new sources or commercial satellite providers can be added without rewriting the application.
+
+## 10. What the first 30 days should accomplish
+
+DAYS
+
+## 1–5
+
+Aberdare intelligence baseline
+
+Obtain appropriate forest boundary datasets, review the existing disturbance archives, establish the legal-source registry and build a map of known monitoring sources. Record the October 14 court-order information as a sourced legal event—not an independently verified judgment document.
+
+The expected October 23 court site visit gives us a useful upcoming point at which to check whether the legal position changes.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://citizen.digital\&sz=32)
+
+citizen.digital
+
+
+
+DAYS
+
+## 6–12
+
+Working forest intelligence map
+
+Show authentic, time-stamped disturbance data for an Aberdare pilot area. Add optical/radar source distinctions, before/after imagery when available, confidence metadata and clearly labeled gaps. Avoid inventing current detections.
+
+DAYS
+
+## 13–20
+
+Evidence-to-action workflow
+
+Implement case creation, legal-source references, status transitions, document hashing, authorized field report uploads, notification routing and an exportable evidence dossier.
+
+DAYS
+
+## 21–30
+
+Independent user validation
+
+Put the product before conservation organizations, environmental researchers and catchment-management professionals. Ask them to evaluate real, appropriately sourced example cases, the reporting format and integration gaps.
+
+Aim for one genuine organizational pilot or a written expression of interest.
+
+Our most important engineering milestone is not an incredible-looking satellite globe.
+
+It is:
+
+> A conservation professional can receive an authentic disturbance observation, understand its uncertainty and legal context, document a verified investigation, and produce a defensible record of the action taken—all in one workflow.
+
+That's when we have an actual product.
+
+## 11. The deeper strategic geometry
+
+The global satellite companies are competing to observe more of Earth at higher spatial and temporal resolution.
+
+Let them.
+
+The conservation analytics organizations are getting better at identifying forest disturbances and predicting future risk.
+
+Let them.
+
+Government agencies, conservation organizations and field teams already carry responsibility for investigation and protection.
+
+We should help them become measurably more effective.
+
+The product should sit here:
+
+Satellite companies
+
+Provide observations
+
+Forest prediction systems
+
+Identify possible threats
+
+# FORESTPROOF
+
+Which evidence requires which authorized response?
+
+Detection → Legal context → Investigation → Accountability → Outcome
+
+Conservation and public institutions
+
+Verify, decide and act
+
+Protected landscapes
+
+Outcomes are monitored and independently evaluated
+
+That's the Still-Fulcrum geometry: large investments in satellites, sensors and human investigation converge onto a small, important evidence-and-action decision.
+
+It's also our Conservation Audit: we are not claiming to generate environmental protection from nothing. We are helping existing organizations use their expensive observations and limited field capacity more effectively.
+
+And it is AlphaZero-like because every correctly verified case teaches the system where its previous predictions and priorities were useful or mistaken.
+
+### The long-term asset
+
+\\[ \boxed{ \textbf{THE FOREST INTERVENTION OUTCOME GRAPH} } \\]
+
+Over time, that graph could develop a valuable history of forest changes, verified incident classifications, legal circumstances, response processes and outcomes.
+
+Unlike a generic satellite map, it could become a longitudinal operational record that customers rely on for risk management, compliance, monitoring and learning.
+
+We should still avoid treating vulnerable residents, confidential informants or individual field investigators as commodities within that data asset. Protecting identities, sensitive locations and private evidence is central to institutional trust.
+
+## My strategic decision
+
+ForestProof is worth a serious exploratory build, and the Aberdare crisis gives us a compelling first use case. But I would not yet rank it above our existing revenue-oriented crown jewels until it has a credible buyer or implementation partner.
+
+Its strongest initial advantage is that the underlying observation infrastructure largely exists. The difficult, valuable work is connecting observations to verifiable responses, legal evidence and measured outcomes.
+
+That is also what makes it scalable beyond Kenya. Different countries have different forest laws and institutions, but the general workflow remains recognizable:
+
+\\[ \boxed{ \text{Observe} \rightarrow \text{Verify} \rightarrow \text{Assign} \rightarrow \text{Act} \rightarrow \text{Prove} \rightarrow \text{Learn} } \\]
+
+The first question I would resolve before commissioning the full Codex build is whether our primary launch objective is an independent public-interest Aberdare monitoring tool or a private institutional software product for conservation organizations and watershed managers.
+
+My preference is the second, with a carefully designed public-interest evidence portal. That gives us a plausible paying customer, protected operational data, measurable conservation impact and a sustainable business that need not depend permanently on donations or hackathon grants.
+
+The satellite sees a change. ForestProof should make it possible to establish what happened, what was done about it, and whether the response worked.
+
+That's the crown-jewel thesis.&#x20;

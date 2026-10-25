@@ -1,8 +1,12 @@
 # Launch ForestProof on Railway
 
-This is the supported **hosted beta** launch path. It uses Railway's managed
-builds and persistent volume; Docker runs only in Railway's infrastructure, not
-on your computer.
+> **Historical and superseded:** The owner has since selected OVH as the
+> preferred production host. Do not use this guide as the current launch path
+> or create Railway resources unless the owner changes that decision. See
+> [DEPLOYMENT.md](DEPLOYMENT.md) for the verified status and OVH prerequisites.
+
+This document preserves an earlier proposed hosted-beta path for reference.
+Its instructions have not been executed or approved as the current deployment.
 
 ForestProof remains in `DEMO` mode on this path. It contains deterministic,
 labelled fixtures and allows users to exercise the evidence and case workflow.
