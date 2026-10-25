@@ -85,7 +85,7 @@ The project CI uses Python 3.12 and Node 20:
     npm run typecheck
     npm run build
 
-GitHub Actions passed for application commit `71af70f81318ea98e4d1ab20bd52739aa97012c1`, context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`, and follow-up context-verification commit `107e31f0b39067e19a47d40496a47282b35c04c5`. The latest run, with both API and web checks successful, is https://github.com/thegodmustwin/forestproof/actions/runs/40216705267. A passing build verifies CI checks only; it does not verify live data, legal sources, auth, or production operations.
+GitHub Actions passed for application commit `71af70f81318ea98e4d1ab20bd52739aa97012c1`, context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`, follow-up context-verification commit `107e31f0b39067e19a47d40496a47282b35c04c5`, and status/map update commit `0078e91f0ce2211863aac2fb393f7b5c5cbc0ada`. The status/map update run also passed both API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40217015885. A passing build verifies CI checks only; it does not verify live data, legal sources, auth, or production operations.
 
 Codex Cloud is the preferred development path; it can install Python and npm dependencies and run these checks without requiring Docker on the owner's laptop. Network access should be limited to package managers unless a verified workflow needs additional hosts. No .env or production secret is in the repository.
 

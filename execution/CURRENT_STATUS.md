@@ -8,7 +8,7 @@
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
 | GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. Initial commit is 71af70f81318ea98e4d1ab20bd52739aa97012c1. |
-| GitHub CI | WORKING | API tests and web checks passed on the initial app commit and both context-doc commits. Latest verified run: https://github.com/thegodmustwin/forestproof/actions/runs/40216705267. |
+| GitHub CI | WORKING | API tests and web checks passed on the initial app commit and both context-doc commits. A successful run for the latest recorded context-verification change is https://github.com/thegodmustwin/forestproof/actions/runs/40217015885. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
@@ -35,6 +35,7 @@
 - GitHub Actions for initial app commit `71af70f81318ea98e4d1ab20bd52739aa97012c1`: API and web jobs passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40185388840.
 - GitHub Actions for context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`: API tests and web checks passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40216435071.
 - GitHub Actions for follow-up context-verification commit `107e31f0b39067e19a47d40496a47282b35c04c5`: API tests and web checks passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40216705267.
+- GitHub Actions for status/map update commit `0078e91f0ce2211863aac2fb393f7b5c5cbc0ada`: API tests and web checks passed on 2026-10-25; https://github.com/thegodmustwin/forestproof/actions/runs/40217015885.
 
 ## Next checkpoint
 
