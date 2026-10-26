@@ -12,6 +12,7 @@
 ## Before pilot or deployment
 
 - Implement authenticated identity, server-side role/tenant checks, protected object storage, upload scanning, retention, rate limits, monitoring, and tested backup/restore before real evidence.
+- To test an OVH connection from Cloud, publish saved environment draft revision 9 first; it adds only `vps-8071f70a.vps.ovh.net` to the custom egress list. Then retry reachability. This opens an HTTPS host route only if publication succeeds; it does not supply SSH credentials or prove port 22 is supported. If Cloud cannot use SSH, use OVH Manager's web/KVM console to inspect the server and establish the owner-controlled access method.
 - Audit the OVH VPS from the owner account: IP, OS/version, SSH readiness, firewall, backups, DNS/domain/TLS, capacity, and operating cost. Do not ask for passwords or private keys in chat.
 - Choose and document a deployment method only after the OVH inventory and production controls are understood. Railway is not the current choice.
 - Obtain practitioner feedback and one design partner before expanding billing, enterprise features, or predictive ML.

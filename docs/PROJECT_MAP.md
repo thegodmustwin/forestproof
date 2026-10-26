@@ -98,6 +98,8 @@ Codex Cloud is the preferred development path; it can install Python and npm dep
 
 On 2026-10-26, the owner reported that publishing the latest saved Cloud environment draft failed. The configuration read shows draft revision 8 based on an existing published version; no publish diagnostics are exposed by the connected tools. The current task still has the checkout, Python 3.12, pinned Node 20, passing API/web checks, local smoke access, and read-only GitHub access. The latest draft and fresh-task restoration are not verified.
 
+On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net` to custom egress. It requires publication and has not changed the active environment. The shell's HTTPS proxy previously returned 403 CONNECT denied for the host; raw SSH support remains unverified.
+
 ## Documentation map
 
 - docs/PROJECT_CONTEXT.md — why the product exists, what is real, decisions, scope, and north star.
