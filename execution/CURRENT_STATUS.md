@@ -7,7 +7,7 @@
 
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
-| GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main at `c6377249b5b5dc587f289e55d9ba7794685503f3`. This commit adds the provisional research envelope and offline RADD normalization groundwork; the app still does not ingest or display live records. |
+| GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. The provisional research envelope and offline RADD normalization are in commit `c6377249b5b5dc587f289e55d9ba7794685503f3`; a status correction followed in `8bf1f02`. The app still does not ingest or display live records. |
 | GitHub CI | WORKING (latest run pending) | API and web checks passed through handoff commit `1df38e714fdfbae14294318e0326eadbaeb26af4` (run 40217118596). Commit `c6377249b5b5dc587f289e55d9ba7794685503f3` was just pushed; its Actions result has not been checked. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
