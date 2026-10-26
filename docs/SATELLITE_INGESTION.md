@@ -38,6 +38,14 @@ An environmental observation retains:
 
 Observed, published, and ingested timestamps are distinct. Missing timestamps are surfaced as quality issues rather than silently substituted.
 
+## Raster-cell products and derived events
+
+Some alert products expose raster-cell values rather than provider-defined event records. In the GFW Integrated Alerts (`v20261026`) and RADD (`v20261018`) field catalogs checked on 2026-10-26, the published fields included cell coordinates, source-specific dates, confidence, and intensity, but no provider event ID. Before ingesting such a product, distinguish a provider-native record ID (when one exists) from a deterministic raster-cell identity derived from product, grid/cell location, observation date, and source version. Store the processing/source version separately so an updated release can be compared with the prior snapshot.
+
+If ForestProof groups adjacent cells into a reviewable candidate, persist it as a derived cluster with the clustering method/version, parameters, and references to its contributing source cells. Keep source pixels and derived geometry distinct. A cluster is an analytical convenience, not a provider alert, confirmed event, allegation, or legal conclusion. Do not enable the live path until a bounded response confirms the exact response shape and terms allow the required retention.
+
+`services/api/app/providers/raster_identity.py` implements the deterministic cell/date key primitive. `services/api/app/providers/gfw_radd.py` now normalizes one RADD field map using documented catalog field names and preserves the raw row, release version, observation date, and uninterpreted confidence values. Tests use synthetic field-shaped input. This parser does not parse a verified HTTP response envelope, persist cell snapshots, cluster cells, or query the live provider; all remain future work.
+
 ## Required protections
 
 - Filter through an approved monitored area of interest.

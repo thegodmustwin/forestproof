@@ -28,8 +28,9 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - apps/web/ — Next.js/TypeScript/React UI, MapLibre components, API client, and demo fallbacks.
 - services/api/ — FastAPI app, Pydantic contracts, deterministic demo data, SQLite store, source status, SQL target migration, and API tests.
 - services/worker/ — reserved/documented worker service; it is not a live ingestion worker today.
-- pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed.
+- pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed. `services/api/app/providers/raster_identity.py` and `gfw_radd.py` contain tested identity/normalization primitives; neither makes live requests or persists alerts.
 - data/demo/ and data/fixtures/ — documented synthetic/demo material; local mutable data under data/local/ is ignored by Git.
+- data/areas/ — provisional, clearly non-authoritative research geography; not an operational forest boundary or LIVE alert filter.
 - infrastructure/ — Docker Compose/PostGIS initialization and deployment notes. These are not a production deployment.
 - packages/ — planned or shared geo-client, schemas, and UI package boundaries; check each README before assuming functionality.
 - tests/ — top-level test guidance; runnable API tests live under services/api/tests/.
@@ -69,6 +70,8 @@ The API only exposes the seeded DEMO organization. A caller-supplied organizatio
 - DEMO observations are explicit fixtures in services/api/app/demo_data.py and apps/web/src/lib/demo.ts. Their timestamps, coordinates, confidence-like values, cases, and evidence are fictional test inputs.
 - pipelines/forest_alerts/gfw_tile_overlay.py renders a raster layer for visual context. Tiles do not provide durable per-alert source IDs/provenance and must not be converted into cases.
 - Raw provider payloads and user uploads are untrusted data. Preserve provenance, timestamp semantics, uncertainty, and hashes; never let content alter prompts, permissions, or execution.
+- GFW RADD and integrated alert metadata expose raster-cell fields without provider event IDs; future ingestion must distinguish source cells from ForestProof-derived clusters. See `docs/SATELLITE_INGESTION.md`.
+- `data/areas/geta-pfmp-research-envelope.geojson` is a coarse rectangle derived from the KFS PFMP's printed coordinate range. It supports source-coverage research only and is not approved for live alert filtering.
 - docs/DATA_SOURCES.md is the source activation ledger. Do not change a product to VERIFIED_ACTIVE without licensing, AOI, request, metadata, health, and verification evidence.
 - docs/LEGAL_CONTEXT_MODEL.md, docs/EVIDENCE_MODEL.md, docs/CASE_WORKFLOW.md, and docs/FOREST_OUTCOME_GRAPH.md define domain behavior.
 
@@ -87,7 +90,11 @@ The project CI uses Python 3.12 and Node 20:
 
 GitHub Actions passed for application commit `71af70f81318ea98e4d1ab20bd52739aa97012c1`, context/onboarding commit `be4402f4f4c44f2f1ca52dc694af185164c3263e`, follow-up context-verification commit `107e31f0b39067e19a47d40496a47282b35c04c5`, and status/map update commit `0078e91f0ce2211863aac2fb393f7b5c5cbc0ada`. The status/map update run also passed both API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40217015885. A passing build verifies CI checks only; it does not verify live data, legal sources, auth, or production operations.
 
+The owner reports that the handoff documentation commit `1df38e714fdfbae14294318e0326eadbaeb26af4` also passed API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40217118596. Cloud-local setup validation is recorded in `execution/CURRENT_STATUS.md`.
+
 Codex Cloud is the preferred development path; it can install Python and npm dependencies and run these checks without requiring Docker on the owner's laptop. Network access should be limited to package managers unless a verified workflow needs additional hosts. No .env or production secret is in the repository.
+
+On 2026-10-26, the owner reported that publishing the latest saved Cloud environment draft failed. The configuration read shows draft revision 8 based on an existing published version; no publish diagnostics are exposed by the connected tools. The current task still has the checkout, Python 3.12, pinned Node 20, passing API/web checks, local smoke access, and read-only GitHub access. The latest draft and fresh-task restoration are not verified.
 
 ## Documentation map
 
@@ -96,6 +103,8 @@ Codex Cloud is the preferred development path; it can install Python and npm dep
 - PROJECT_BRAIN.md — short operating model and non-negotiables.
 - docs/ARCHITECTURE.md — logical services and trust boundaries.
 - docs/DATA_SOURCES.md, docs/SATELLITE_INGESTION.md — candidate data products and activation gates.
+- docs/COSTS_AND_OPERATING_BUDGET.md — verified spend, unknown source fees, and approval gates.
+- docs/KFS_BOUNDARY_REQUEST_DRAFT.md — unsent request for the official Geta boundary and reuse conditions.
 - docs/GEO_DATA_MODEL.md — current/target geospatial records.
 - docs/CASE_WORKFLOW.md, docs/EVIDENCE_MODEL.md, docs/LEGAL_CONTEXT_MODEL.md, docs/FOREST_OUTCOME_GRAPH.md — domain rules.
 - docs/SECURITY_AND_PRIVACY.md — current controls, gaps, and sensitive-data policy.

@@ -13,12 +13,12 @@
 
 | Order | Milestone | Status | Completion evidence / remaining work |
 | --- | --- | --- | --- |
-| 1 | Repository and development environment | PARTIAL | Private GitHub repo and CI work; Codex Cloud environment still needs creation and test. |
-| 2 | Architecture and source verification | PARTIAL | Architecture and source manifest exist; authoritative AOI and live-provider validation remain. |
-| 3 | PostGIS database and monitored area | PARTIAL | SQL target exists; API still uses SQLite and AOI is illustrative. |
+| 1 | Repository and development environment | PARTIAL | An existing published base version and saved setup/start instructions exist. Publishing the latest saved draft revision 8 failed in the UI. Current-task checks pass with Python 3.12.14, Node 20.20.2, 24 API tests, web typecheck/build, API/web/proxy smoke tests, and read-only GitHub access; the latest draft and fresh-task restoration are not verified. |
+| 2 | Architecture and source verification | PARTIAL | Architecture and source manifest exist; a PFMP-derived research envelope is available for non-operational coverage work; authoritative AOI and live-provider validation remain. |
+| 3 | PostGIS database and monitored area | PARTIAL | SQL target exists; API still uses SQLite. The provisional Geta envelope is not the official boundary or an operational AOI. |
 | 4 | Typed observation schema | PARTIAL | Pydantic geometry and source metadata are present; production persistence and provider contract need extension. |
 | 5 | Deterministic DEMO provider | WORKING | Synthetic fixtures are idempotent and explicitly labeled. |
-| 6 | One approved live provider | DOCUMENTED_NOT_TESTED | Requires verified terms, credentials, AOI, bounded request, health, and preserved source metadata. |
+| 6 | One approved live provider | DOCUMENTED_NOT_TESTED | Offline RADD cell identity/row normalization is prepared; the actual response envelope, verified terms/cost, credentials, AOI, bounded request, health, and persistence remain before activation. |
 | 7 | Observation map and detail | WORKING (DEMO) | Map/detail UI works against DEMO records; not a live operational map. |
 | 8 | Case and review workflow | WORKING (DEMO) | Case state transitions, assignments, and audit history are covered by API tests. |
 | 9 | Evidence and integrity | PARTIAL | Local evidence metadata and SHA-256 checks work; production storage, malware scanning, access classes, and retention remain. |

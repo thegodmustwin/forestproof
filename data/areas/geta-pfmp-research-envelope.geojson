@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "name": "geta-pfmp-research-envelope",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "geta-pfmp-research-envelope-v1",
+      "properties": {
+        "name": "Geta PFMP provisional research envelope",
+        "status": "PROVISIONAL_RESEARCH_ENVELOPE",
+        "geometry_role": "Coarse envelope for source coverage research and engineering dry-runs only",
+        "official_boundary": false,
+        "approved_for_live_alert_filtering": false,
+        "reference_area_ha": 21644.37,
+        "reference_area_meaning": "Area stated for Geta Forest Station in the PFMP; not the area of this rectangle",
+        "source_name": "Geta Participatory Forest Management Plan 2026-2031",
+        "source_organization": "Kenya Forest Service",
+        "source_url": "https://www.kenyaforestservice.org/download/geta-pfmp/",
+        "source_section": "2.1 Geographic Location, printed page 20; Figure 1, printed page 21",
+        "source_sha256_checked_2026_10_26": "1d1332f83c982e2002866cff9f545cbf4f60b262eebbe72916b822bf36ef19b7",
+        "source_extent_dms": {
+          "west": "36 degrees 30 minutes E",
+          "east": "36 degrees 42 minutes E",
+          "south": "0 degrees 42 minutes S",
+          "north": "0 degrees 15 minutes S"
+        },
+        "coordinate_interpretation": "The PFMP uses quote-like marks after the second coordinate number; these were interpreted as degrees-and-minutes notation, not seconds, and converted to decimal degrees. Its geographic datum is unspecified; WGS84 is assumed for this provisional RFC 7946 GeoJSON representation.",
+        "limitations": "The rectangle encloses the PFMP's stated location range and includes surrounding land. It is not a surveyed or digitized forest boundary, does not establish ownership or legal scope, and must not be used to claim forest area or characterize a pixel as inside Geta Forest."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [36.5, -0.7],
+            [36.7, -0.7],
+            [36.7, -0.25],
+            [36.5, -0.25],
+            [36.5, -0.7]
+          ]
+        ]
+      }
+    }
+  ]
+}

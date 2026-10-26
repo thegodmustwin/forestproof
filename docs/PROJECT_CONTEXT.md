@@ -1,6 +1,6 @@
 # ForestProof — canonical project context
 
-**Snapshot:** 2026-10-25  
+**Snapshot:** 2026-10-26
 **Repository:** private GitHub repository thegodmustwin/forestproof, default branch main  
 **Purpose:** let a new person or coding agent understand the idea, its origin, what exists, what is only planned, and what must not be claimed.
 
@@ -36,7 +36,7 @@ The long-term differentiating asset is the **Forest Intervention Outcome Graph**
 
 ## Initial operating context and sensitivities
 
-- **Pilot geography:** Aberdare water tower and connected catchments in Kenya; Geta Forest was named as a research focus. The actual monitoring area is still illustrative, not an authoritative boundary.
+- **Pilot geography:** Aberdare water tower and connected catchments in Kenya; Geta Forest is the first research focus. A coarse PFMP-text-derived Geta research envelope now supports engineering dry-runs, but it is not an authoritative boundary or an operational alert filter. The app's DEMO map remains illustrative.
 - **Use case:** triage candidate forest disturbance and help legitimate organizations investigate and document it.
 - **Important archived claim:** the origin prompts discuss October 2026 court reporting and an expected Geta Forest visit. The repository currently contains no verified operative order, official legal record, permit corpus, or human-reviewed legal conclusion. Recheck authoritative sources before any present-day use.
 - **Alternative explanations:** plantation management, authorized harvesting, fire, storm damage, seasonal vegetation, roads, sensor error, and classification uncertainty must remain possible until evidence distinguishes them.
@@ -84,12 +84,11 @@ The UI includes DEMO notices. Its coordinates, cases, provider labels, confidenc
 
 ## Work sequence from here
 
-1. Connect the private GitHub repo to Codex Cloud; create, test, and publish a Cloud environment using the CI toolchain (Python 3.12 and Node 20) without requiring local Docker.
-2. Use the Cloud task to verify setup and current branch/CI state, then continue the P0 evidence loop rather than expanding the 3D/map surface.
-3. Establish a lawfully reusable Aberdare area of interest and one genuine record-level disturbance source; verify terms, credential handling, coverage, latency, and source metadata before activation.
-4. Complete production security boundaries (identity, role/tenant isolation, protected evidence storage, backups and restore tests) before accepting real case material.
-5. Audit the OVH VPS and select a deployment method only after confirming host/IP/OS/SSH, firewall, TLS/domain, backup, operating cost, and security requirements. No deploy has happened.
-6. Validate the workflow with a legitimate conservation or watershed professional; only then expand the commercial scope.
+1. Codex Cloud setup has been exercised with Python 3.12 and Node 20: API tests, web typecheck/build, and local API/web smoke checks passed on 2026-10-25. Install/start instructions are saved; restoration in a fresh task is not independently verified.
+2. The first production pilot is owner-only and requires a live provider feed. Use the provisional PFMP research envelope to advance offline engineering, with direct GFW RADD as the lead feed candidate and GLAD-L as a comparison. Establish a lawfully reusable AOI and verify terms, cost, access, coverage, latency, and source metadata before activation.
+3. Complete production security boundaries (identity, role/tenant isolation, protected evidence storage, upload scanning, backups, and restore tests) before accepting real case material.
+4. Audit the OVH VPS and select a deployment method only after confirming host/IP/OS/SSH, firewall, TLS/domain, backup, operating cost, and security requirements. No deployment has happened.
+5. Validate the workflow with a legitimate conservation or watershed professional; only then expand the commercial scope.
 
 ## Source of truth and reading order
 

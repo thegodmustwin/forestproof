@@ -6,9 +6,12 @@ This is the compact record of durable owner choices and important unresolved fac
 
 | Date | Decision | Consequence |
 | --- | --- | --- |
+| 2026-10-26 | Keep momentum while KFS boundary and provider access questions are pending by using the PFMP's published coordinate extent as a provisional Geta research envelope. | Use only for source-coverage research and engineering dry-runs. It is not a forest boundary, not approved for live filtering, and does not settle data reuse, API cost, legal scope, or alert validity. Replace it when authoritative GIS geometry and terms are verified. |
+| 2026-10-26 | Use GFW RADD as the lead provider candidate for the first feed adapter; keep GLAD-L as a comparison and defer GFW Integrated Alerts. | This is an engineering priority based on RADD's Sentinel-1 radar, 10 m weekly product, and documented humid-tropical-forest/Africa scope. Validate local coverage, terrain limits, terms, and service cost before any record query or LIVE use; no paid access or feed activation is authorized. |
 | 2026-10-25 | Use the owner's personal GitHub account thegodmustwin and private repository thegodmustwin/forestproof; default branch is main. | Keep source private; don't publish or transfer to the university account. |
 | 2026-10-25 | Continue development in Codex Cloud to reduce laptop capacity pressure. | Prepare a repository-backed Cloud environment; preserve context in GitHub because desktop chat history is not the project source of truth. |
 | 2026-10-25 | Do not make local Docker a prerequisite for the owner's workflow. | Prefer Cloud setup and CI-equivalent Python/npm checks. Docker Compose may remain for optional use. |
+| 2026-10-25 | The first production pilot is owner-only and requires a live provider feed. | Build for one authenticated owner first; do not treat a manual-only observation workflow as satisfying the pilot requirement. Verify an appropriate record-level feed before enabling LIVE. |
 | 2026-10-25 | Prefer the existing OVH VPS for eventual hosting; its hostname is temporary. | Audit the server before choosing deployment steps. No OVH deployment or SSH readiness is verified. |
 | 2026-10-25 | Railway is not the owner's current hosting preference. | Railway guide is historical; do not follow it unless the owner changes the decision. |
 
@@ -31,8 +34,9 @@ The prompts also discuss candidate providers, grants, customer types, and market
 ## Operational facts still to establish
 
 - OVH service details: current public IP, OS/version, SSH access and key arrangement, firewall, backups, DNS/domain, TLS, runtime and deployment path.
-- Codex Cloud: GitHub connection, selected repository, environment setup/publish result, actual test run from Cloud.
-- Data: authoritative/lawfully reusable Aberdare AOI, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance.
+- Codex Cloud: environment setup and CI-equivalent checks completed in the onboarding task; saved install/start instructions are present. Fresh-task restoration is not independently verified, and a narrow egress allowlist for public source documentation awaits review/publication.
+- Data: authoritative/lawfully reusable Aberdare AOI, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance. A PFMP-derived provisional envelope now supports non-operational research; the gates remain.
+- GFW access: the owner is unsure whether an approved project API account exists. Do not request or store a key until terms and cost are reviewed; if required, use environment settings rather than chat.
 - Product validation: first legitimate practitioner interview, design partner, pilot criteria, and willingness to pay.
 - Production security: authentication, role boundaries, tenant isolation, object-store access, retention, backup and restore, monitoring, incident handling.
 

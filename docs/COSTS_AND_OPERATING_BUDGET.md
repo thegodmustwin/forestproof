@@ -1,0 +1,25 @@
+# ForestProof — costs and operating budget
+
+**Status:** initial ledger; no production feed or public service is active.
+
+## Current spend and commitments
+
+| Item | Current evidence | Project action/status |
+| --- | --- | --- |
+| OVH VPS | The owner says the OVH account is already paid. The plan, renewal date, and exact monthly/annual cost have not been inspected. | No server change or deployment has been made. Prefer using existing capacity after an owner-approved host audit. |
+| Codex Cloud | The owner reports that Codex usage is within the current allocation. This agent cannot inspect the account meter or billing settings. | Development continues within the owner's account. No separate data-service or hosting subscription was started here. |
+| GFW Integrated Alerts | Dataset metadata labels the data CC BY 4.0. The query API has authenticated routes; the published terms, rate limits, and any API fee have not been verified. | No credential has been added and no alert records queried. Treat service cost as **unknown**, not $0. |
+| Other candidate data | Copernicus, NASA FIRMS, and DIST-ALERT are documented research candidates with different access requirements and scopes. Their exact service terms/costs are not verified for ForestProof. | No paid account, query integration, or recurring data service has been activated. |
+| New third-party services | No production database, object storage, monitoring, email/SMS, or external hosting service has been provisioned by this work. | Any such service needs a cost/need review before activation. |
+
+This ledger records project setup facts, not the owner's complete invoices. Public documentation/catalog requests made during research do not establish the price of a future production API service.
+
+## Feed cost decision
+
+For GFW, the dataset license and the API service are separate questions. The catalog record reports CC BY 4.0, while the OpenAPI describes API-key/OAuth-protected query operations. The OpenAPI and catalog inspected on 2026-10-26 do not state a price or rate limit. The official Terms of Service page is linked from the dataset page. The owner published the GFW documentation domains to Cloud egress, but the Terms page still fails with an outbound tunnel 403 from this environment. Consequently, ForestProof must not describe GFW access as free until the applicable service terms, account access, quotas, and billing are confirmed.
+
+The same check applies to any alternative feed: confirm the exact product license, API/service charges and limits, permitted commercial use and redistribution, attribution, expected query volume, and any processing or storage costs. A free-to-use source can still have operational costs on the OVH host.
+
+## Approval gate
+
+Before enabling a source in LIVE mode, record a bounded first-year cost estimate (including the existing host share where known), confirm the source's fees and quota, and make the estimate visible to the owner. Do not create a paid source account, enable billing, exceed a quota, or add a recurring service without explicit owner approval. If service terms or prices cannot be confirmed, keep the source disabled and label the cost unknown.
