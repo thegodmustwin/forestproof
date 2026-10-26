@@ -92,6 +92,8 @@ GitHub Actions passed for application commit `71af70f81318ea98e4d1ab20bd52739aa9
 
 The owner reports that the handoff documentation commit `1df38e714fdfbae14294318e0326eadbaeb26af4` also passed API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40217118596. Cloud-local setup validation is recorded in `execution/CURRENT_STATUS.md`.
 
+Commit `c6377249b5b5dc587f289e55d9ba7794685503f3` adds the provisional Geta research envelope and offline RADD cell normalization groundwork. It has been pushed to private `main`; its GitHub Actions result is pending verification.
+
 Codex Cloud is the preferred development path; it can install Python and npm dependencies and run these checks without requiring Docker on the owner's laptop. Network access should be limited to package managers unless a verified workflow needs additional hosts. No .env or production secret is in the repository.
 
 On 2026-10-26, the owner reported that publishing the latest saved Cloud environment draft failed. The configuration read shows draft revision 8 based on an existing published version; no publish diagnostics are exposed by the connected tools. The current task still has the checkout, Python 3.12, pinned Node 20, passing API/web checks, local smoke access, and read-only GitHub access. The latest draft and fresh-task restoration are not verified.
