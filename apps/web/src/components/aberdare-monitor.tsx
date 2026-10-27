@@ -27,7 +27,7 @@ export function AberdareMonitor() {
       })
       .catch(() => {
         if (!active) return;
-        setConnection("API unavailable. Showing deterministic, local demo fixtures only; no live source connection is implied.");
+        setConnection("API records unavailable or unsupported. Showing deterministic, local demo fixtures only; no live source connection is implied.");
       });
     return () => { active = false; };
   }, []);

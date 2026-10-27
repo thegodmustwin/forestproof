@@ -25,7 +25,7 @@ export type DemoObservation = {
   ingestedAt: string;
   coordinates: [number, number];
   confidence: string;
-  confidenceScore: number;
+  confidenceScore: number | null;
   classification: string;
   status: ObservationStatus;
   forestClass: string;
@@ -201,11 +201,11 @@ export const getObservation = (id: string) => observations.find((item) => item.i
 export const getCase = (id: string) => cases.find((item) => item.id === id) ?? cases[0];
 
 export const formatDate = (value: string) =>
-  new Intl.DateTimeFormat("en-KE", {
+  Number.isNaN(Date.parse(value)) ? "Not provided" : new Intl.DateTimeFormat("en-KE", {
     dateStyle: "medium",
     timeStyle: "short",
     timeZone: "UTC",
   }).format(new Date(value)) + " UTC";
 
 export const toPriorityScore = (observation: DemoObservation) =>
-  Math.round((observation.confidenceScore * 0.4 + 35) * 10) / 10;
+  observation.confidenceScore === null ? null : Math.round((observation.confidenceScore * 0.4 + 35) * 10) / 10;

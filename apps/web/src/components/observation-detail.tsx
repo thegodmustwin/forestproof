@@ -21,8 +21,8 @@ export function ObservationDetail({ observation, onCreateCase }: { observation: 
           <div className="fact"><span className="fact-label">Ingested</span><span>{formatDate(observation.ingestedAt)}</span></div>
           <div className="fact"><span className="fact-label">Source</span><span>{observation.source}</span></div>
           <div className="fact"><span className="fact-label">Product</span><span>{observation.product}</span></div>
-          <div className="fact"><span className="fact-label">Confidence</span><span>{observation.confidence} · {observation.confidenceScore}%</span></div>
-          <div className="fact"><span className="fact-label">Triage heuristic</span><span>{toPriorityScore(observation)}/100 · not a decision</span></div>
+          <div className="fact"><span className="fact-label">Confidence</span><span>{observation.confidence}{observation.confidenceScore !== null ? ` · ${observation.confidenceScore}%` : ""}</span></div>
+          <div className="fact"><span className="fact-label">Triage heuristic</span><span>{toPriorityScore(observation) === null ? "Not available" : `${toPriorityScore(observation)}/100 · not a decision`}</span></div>
           <div className="fact"><span className="fact-label">Quality flags</span><span className="flag-list">{observation.qualityFlags.map((flag) => <span className="flag" key={flag}>{flag}</span>)}</span></div>
         </div>
         <div className="button-row">

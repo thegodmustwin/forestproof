@@ -1,6 +1,6 @@
 # Current Status
 
-**Last updated:** 2026-10-26
+**Last updated:** 2026-10-27
 **Milestone:** private GitHub source and Codex Cloud development environment established; production gates remain.
 
 ## Truthful snapshot
@@ -16,8 +16,8 @@
 | Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
 | Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
 | Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
-| Codex Cloud | CURRENT TASK WORKS; LATEST DRAFT UNPUBLISHED | Configuration read shows saved draft revision 9 based on an existing published version. Revision 9 adds the OVH VPS hostname to the custom egress list and still requires publish; it does not change the active network policy yet. This task verified Python 3.12.14, pinned Node 20.20.2, 24 API tests, web typecheck/build, API health/observations, web homepage, and same-origin API proxy. The publish service's underlying error is not exposed by available tools. |
-| OVH access | BLOCKED PENDING PUBLISH/SSH PATH | Temporary hostname is known (`vps-8071f70a.vps.ovh.net`). The HTTPS proxy returned 403 CONNECT denied before the hostname was added to the saved draft. Revision 9 now allows that hostname after publication, but current active egress has not changed; no SSH-agent identity is available, and server IP, OS, SSH readiness, firewall, backups, and deployment method remain unverified. |
+| Codex Cloud | CURRENT TASK WORKS; PUBLICATION UNCONFIRMED | After a readiness timeout, this task's checkout and Git read recovered on 2026-10-27. Saved draft revision 10 has not been confirmed published. The user captured an approval operation reporting RUNNING while the UI showed a publish error; the server-side cause remains unknown. Fresh-task restoration is not verified. |
+| OVH access | REMOTE DESKTOP WORKS; DEPLOYMENT PATH UNVERIFIED | The owner supplied terminal output from `vps-8071f70a`: Ubuntu 24.04.4 LTS, 6 CPUs, 11 GiB RAM and 90 GB root-disk free at that time. Codex CLI is installed, but the owner's HTTPS Git read could not authenticate. Direct access from this Cloud task, firewall, backups, TLS and deployment readiness remain unverified. |
 | Production deployment | NOT DEPLOYED | No public website or service has been deployed. The existing OVH account is paid according to the owner, but the VPS has not been accessed or audited. |
 | Data-source cost | UNKNOWN / NO FEED ACTIVE | GFW dataset metadata reports CC BY 4.0, but API service terms, rate limits, and any fees remain unverified. No authenticated alert query or paid data service has been used. See `docs/COSTS_AND_OPERATING_BUDGET.md`. |
 
@@ -32,6 +32,8 @@
 
 ## Verification evidence
 
+- On 2026-10-27 the web client was changed to reject records without an explicit DEMO_DATA flag, refuse records without their own valid point and ID, and represent absent source fields and scores as unavailable rather than borrowing synthetic fixtures. Case-event timestamps no longer fall back to the observation ingestion time. Four new web checks, TypeScript, and the production web build passed locally. This does not add live display, production authentication, or deployment.
+- On 2026-10-27 the owner's OVH remote desktop terminal reported the server inventory above, Git 2.43.0 and Codex CLI 0.163.0; Node and npm were absent from its PATH. An HTTPS Git read without interactive authentication failed. This is user-provided terminal evidence, not proof of a deployment or direct agent access.
 - Local API tests: 8 passed with Python 3.13 on 2026-10-21.
 - Local web typecheck: passed on 2026-10-21.
 - Local web production build: passed and generated nine routes on 2026-10-21.

@@ -26,6 +26,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - docs/PROJECT_DECISIONS.md — dated owner choices and unresolved facts.
 - docs/origin/ — verbatim user-authored inception prompts with an archival, non-authoritative warning.
 - apps/web/ — Next.js/TypeScript/React UI, MapLibre components, API client, and demo fallbacks.
+- apps/web/src/lib/observation-normalization.ts — demo-only API observation validation; missing provenance is displayed as missing and records without a valid ID, point, or DEMO_DATA flag are rejected. It does not implement live display.
 - services/api/ — FastAPI app, Pydantic contracts, deterministic demo data, SQLite store, source status, SQL target migration, and API tests.
 - services/worker/ — reserved/documented worker service; it is not a live ingestion worker today.
 - pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed. `services/api/app/providers/raster_identity.py` and `gfw_radd.py` contain tested identity/normalization primitives; neither makes live requests or persists alerts.
@@ -85,6 +86,7 @@ The project CI uses Python 3.12 and Node 20:
 
     cd apps/web
     npm ci
+    npm test
     npm run typecheck
     npm run build
 
