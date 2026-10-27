@@ -12,7 +12,7 @@
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Pilot geography | PROVISIONAL RESEARCH ENVELOPE | `data/areas/geta-pfmp-research-envelope.geojson` converts the PFMP's published location range to a coarse rectangle for research and dry-runs. It is not an authoritative Geta boundary and is not approved for live alert filtering. |
-| Lead feed engineering target | RADD CANDIDATE | Direct GFW RADD is the first adapter target; GLAD-L remains a comparator. Local coverage, terrain performance, exact response shape, service terms, and cost remain unverified. No records queried or feed activated. |
+| Lead feed engineering target | RADD CANDIDATE | Direct GFW RADD is the first adapter target; GLAD-L remains a comparator. Offline normalization and local snapshot persistence accept synthetic rows only in tests. Local coverage, terrain performance, exact response shape, service terms, and cost remain unverified. No live records queried or feed activated. |
 | Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
 | Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
 | Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
@@ -32,6 +32,8 @@
 
 ## Verification evidence
 
+- On 2026-10-27 a standalone RADD snapshot store was added and verified against synthetic rows. It preserves canonical source fields, a hash, cell/date identity, source release and receipt time; handles identical replays; keeps releases separate; and rolls back a batch when an existing cell/release has conflicting fields. The full API suite passes 28 tests. The store is not wired to live ingestion or production storage.
+- On 2026-10-27 the public GFW OpenAPI was retrieved again. The legacy terms URL returned HTTP 301 to `https://globalnaturewatch.org/terms`, whose host is blocked by the current workspace proxy. This explains the observed redirect failure but not the terms or API cost. No alert records were requested.
 - On 2026-10-27 the web client was changed to reject records without an explicit DEMO_DATA flag, refuse records without their own valid point and ID, and represent absent source fields and scores as unavailable rather than borrowing synthetic fixtures. Case-event timestamps no longer fall back to the observation ingestion time. Four new web checks, TypeScript, and the production web build passed locally. This does not add live display, production authentication, or deployment.
 - On 2026-10-27 the owner's OVH remote desktop terminal reported the server inventory above, Git 2.43.0 and Codex CLI 0.163.0; Node and npm were absent from its PATH. An HTTPS Git read without interactive authentication failed. This is user-provided terminal evidence, not proof of a deployment or direct agent access.
 - Local API tests: 8 passed with Python 3.13 on 2026-10-21.

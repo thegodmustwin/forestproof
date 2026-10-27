@@ -30,6 +30,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - services/api/ — FastAPI app, Pydantic contracts, deterministic demo data, SQLite store, source status, SQL target migration, and API tests.
 - services/worker/ — reserved/documented worker service; it is not a live ingestion worker today.
 - pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed. `services/api/app/providers/raster_identity.py` and `gfw_radd.py` contain tested identity/normalization primitives; neither makes live requests or persists alerts.
+- services/api/app/providers/radd_snapshot_store.py — standalone local SQLite groundwork for retaining synthetic RADD cell/release snapshots, replay detection and conflict rollback. It is not connected to the API, a live feed, or the production PostGIS target.
 - data/demo/ and data/fixtures/ — documented synthetic/demo material; local mutable data under data/local/ is ignored by Git.
 - data/areas/ — provisional, clearly non-authoritative research geography; not an operational forest boundary or LIVE alert filter.
 - infrastructure/ — Docker Compose/PostGIS initialization and deployment notes. These are not a production deployment.

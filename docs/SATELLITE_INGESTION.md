@@ -46,6 +46,10 @@ If ForestProof groups adjacent cells into a reviewable candidate, persist it as 
 
 `services/api/app/providers/raster_identity.py` implements the deterministic cell/date key primitive. `services/api/app/providers/gfw_radd.py` now normalizes one RADD field map using documented catalog field names and preserves the raw row, release version, observation date, and uninterpreted confidence values. Tests use synthetic field-shaped input. This parser does not parse a verified HTTP response envelope, persist cell snapshots, cluster cells, or query the live provider; all remain future work.
 
+An additional standalone development primitive, `services/api/app/providers/radd_snapshot_store.py`, can persist bounded synthetic row batches in SQLite. It records the derived cell key, source release, source date, canonical raw JSON, SHA-256 and UTC receipt time. Replaying identical fields is idempotent; conflicting fields for the same cell/release abort the entire batch rather than overwrite evidence. Separate releases are retained separately. This module makes no network requests and is not wired to the API or a production database. Retention and use of actual provider data still depend on verified provider terms, and a hash is not proof of origin or truth.
+
+**Request-contract check, 2026-10-27:** the public GFW OpenAPI describes authenticated `POST /dataset/{dataset}/{version}/query/json` requests with an SQL string and optional inline geometry. The route documentation says raster-only datasets require geometry or a geostore; the POST schema exposes inline geometry. The response schema is insufficient to establish the real response envelope. No alert query was made, and no SQL, geometry or response behavior has been operationally verified.
+
 ## Required protections
 
 - Filter through an approved monitored area of interest.

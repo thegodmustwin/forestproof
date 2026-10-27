@@ -18,6 +18,8 @@ This ledger records project setup facts, not the owner's complete invoices. Publ
 
 For GFW, the dataset license and the API service are separate questions. The catalog record reports CC BY 4.0, while the OpenAPI describes API-key/OAuth-protected query operations. The OpenAPI and catalog inspected on 2026-10-26 do not state a price or rate limit. The official Terms of Service page is linked from the dataset page. The owner published the GFW documentation domains to Cloud egress, but the Terms page still fails with an outbound tunnel 403 from this environment. Consequently, ForestProof must not describe GFW access as free until the applicable service terms, account access, quotas, and billing are confirmed.
 
+On 2026-10-27, the legacy GFW terms URL was confirmed to return a 301 redirect to `https://globalnaturewatch.org/terms`; the redirected host is blocked by the current workspace proxy. The content and pricing therefore remain unverified, and no alert records have been queried.
+
 The same check applies to any alternative feed: confirm the exact product license, API/service charges and limits, permitted commercial use and redistribution, attribution, expected query volume, and any processing or storage costs. A free-to-use source can still have operational costs on the OVH host.
 
 ## Approval gate
