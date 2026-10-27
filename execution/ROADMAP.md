@@ -18,7 +18,7 @@
 | 3 | PostGIS database and monitored area | PARTIAL | SQL target exists; API still uses SQLite. The provisional Geta envelope is not the official boundary or an operational AOI. |
 | 4 | Typed observation schema | PARTIAL | Pydantic geometry and source metadata are present; production persistence and provider contract need extension. |
 | 5 | Deterministic DEMO provider | WORKING | Synthetic fixtures are idempotent and explicitly labeled. |
-| 6 | One approved live provider | DOCUMENTED_NOT_TESTED | Offline RADD identity, row normalization and standalone SQLite snapshot groundwork are tested with synthetic rows; response envelope, terms/cost, credentials, AOI, bounded request, health and production persistence remain before activation. |
+| 6 | One approved live provider | DOCUMENTED_NOT_TESTED | Offline RADD identity, row normalization and standalone SQLite snapshot groundwork are tested with synthetic rows. General WRI terms were supplied by the owner; attribution details, dataset conditions, cost, credentials, AOI, response envelope, bounded request, health and production persistence remain before activation. |
 | 7 | Observation map and detail | WORKING (DEMO) | Map/detail UI accepts explicitly labelled DEMO records; missing source values are no longer filled from unrelated fixtures. The current display rejects live records and is not a live operational map. |
 | 8 | Case and review workflow | WORKING (DEMO) | Case state transitions, assignments, and audit history are covered by API tests. |
 | 9 | Evidence and integrity | PARTIAL | Local evidence metadata and SHA-256 checks work; production storage, malware scanning, access classes, and retention remain. |

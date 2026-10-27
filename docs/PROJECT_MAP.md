@@ -75,6 +75,7 @@ The API only exposes the seeded DEMO organization. A caller-supplied organizatio
 - GFW RADD and integrated alert metadata expose raster-cell fields without provider event IDs; future ingestion must distinguish source cells from ForestProof-derived clusters. See `docs/SATELLITE_INGESTION.md`.
 - `data/areas/geta-pfmp-research-envelope.geojson` is a coarse rectangle derived from the KFS PFMP's printed coordinate range. It supports source-coverage research only and is not approved for live alert filtering.
 - docs/DATA_SOURCES.md is the source activation ledger. Do not change a product to VERIFIED_ACTIVE without licensing, AOI, request, metadata, health, and verification evidence.
+- The owner supplied Global Nature Watch's general terms text on 2026-10-27; API key and attribution requirements are recorded in docs/DATA_SOURCES.md. Service cost, quota and specific attribution details remain unverified.
 - docs/LEGAL_CONTEXT_MODEL.md, docs/EVIDENCE_MODEL.md, docs/CASE_WORKFLOW.md, and docs/FOREST_OUTCOME_GRAPH.md define domain behavior.
 
 ## Build and verification
