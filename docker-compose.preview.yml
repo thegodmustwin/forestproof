@@ -27,7 +27,6 @@ services:
     security_opt: ["no-new-privileges:true"]
     networks: [preview]
 networks:
-  preview:
-    internal: true
+  preview: {}
 volumes:
   preview_data:

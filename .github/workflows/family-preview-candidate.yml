@@ -40,10 +40,12 @@ jobs:
           set -euo pipefail
           trap 'docker compose -p forestproof-preview-ci -f docker-compose.preview.yml logs; docker compose -p forestproof-preview-ci -f docker-compose.preview.yml down -v' EXIT
           docker compose -p forestproof-preview-ci -f docker-compose.preview.yml up -d --build
+          ready=false
           for i in {1..60}; do
-            if curl -fsS http://127.0.0.1:13000/api/forestproof/health > "$RUNNER_TEMP/health.json"; then break; fi
+            if curl -fsS http://127.0.0.1:13000/api/forestproof/health > "$RUNNER_TEMP/health.json"; then ready=true; break; fi
             sleep 2
           done
+          test "$ready" = true
           python3 -c 'import json,os; d=json.load(open(os.path.join(os.environ["RUNNER_TEMP"],"health.json"))); assert d["mode"] == "DEMO", d'
           curl -fsS http://127.0.0.1:13000/ | grep -qi 'ForestProof'
           docker compose -p forestproof-preview-ci -f docker-compose.preview.yml config --format json > "$RUNNER_TEMP/preview.json"
