@@ -7,7 +7,7 @@
 
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
-| GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. The provisional research envelope and offline RADD normalization are in commit `c6377249b5b5dc587f289e55d9ba7794685503f3`; a status correction followed in `8bf1f02`. The app still does not ingest or display live records. |
+| GitHub source control | WORKING | The private main branch was 6d552d29b5d3337a56b434010fa41a2f836aa373 when this pilot preparation began. Pilot work is on a separate review branch; preserve the older, locally modified desktop checkout. |
 | GitHub CI | WORKING | Main commit `6d552d29b5d3337a56b434010fa41a2f836aa373` passed API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40609084867. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
@@ -17,8 +17,8 @@
 | Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
 | Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
 | Codex Cloud | CURRENT TASK WORKS; PUBLICATION UNCONFIRMED | After a readiness timeout, this task's checkout and Git read recovered on 2026-10-27. Saved draft revision 10 has not been confirmed published. The user captured an approval operation reporting RUNNING while the UI showed a publish error; the server-side cause remains unknown. Fresh-task restoration is not verified. |
-| OVH access | REMOTE DESKTOP WORKS; DEPLOYMENT PATH UNVERIFIED | The owner supplied terminal output from `vps-8071f70a`: Ubuntu 24.04.4 LTS, 6 CPUs, 11 GiB RAM and 90 GB root-disk free at that time. Codex CLI is installed, but the owner's HTTPS Git read could not authenticate. Direct access from this Cloud task, firewall, backups, TLS and deployment readiness remain unverified. |
-| Production deployment | NOT DEPLOYED | No public website or service has been deployed. The existing OVH account is paid according to the owner, but the VPS has not been accessed or audited. |
+| OVH access | READ-ONLY SSH VERIFIED | The owner provided the host fingerprint through the existing Ubuntu desktop; the agent matched it and connected as ubuntu. Ubuntu 24.04.4, active SSH/xrdp/Docker, UFW status, available disk and a point-in-time container inventory were inspected. TLS, backups, public deployment and ongoing access controls remain unverified. |
+| Production deployment | NOT DEPLOYED | The existing OVH VPS has had a read-only audit; no ForestProof service has been deployed or started. |
 | Data-source cost | UNKNOWN / NO FEED ACTIVE | GFW dataset metadata reports CC BY 4.0. The owner supplied general Global Nature Watch terms requiring account keys and attribution, but API pricing, quotas, exact attribution requirements and dataset-specific conditions remain unverified. No authenticated alert query or paid data service has been used. See `docs/COSTS_AND_OPERATING_BUDGET.md`. |
 
 ## Constraints and non-claims
@@ -93,3 +93,10 @@ The agent verified the ED25519 host fingerprint against the owner's VPS terminal
 
 
 The initial Python dependency audit reported advisories in Starlette, python-multipart and pytest. The candidate separates test dependencies, removes the unused multipart parser, upgrades the affected packages and adds pip-audit to CI. Verification must pass on the exact branch commit; no API authentication or live feed is claimed. The web container template now uses supported Node 24 instead of end-of-life Node 20.
+
+The candidate web/API upgrades and optional web container build passed CI at https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. The Python dependency audit found no known vulnerabilities in its resolved requirements at that time; the npm production audit found no known vulnerabilities. Audits do not establish production security.
+
+
+## 2026-10-28 candidate GFW response envelope
+
+WRI's published API source at commit dd277b245debf8e37a98a8e6238c5ead8aeed115 shows POST query/json returning a Response with status success and data containing a list of row dictionaries: https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/routes/datasets/queries.py and https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/models/pydantic/responses.py. This is evidence of the source-code contract, not a verified response from the deployed service or proof of RADD coverage, access, pricing, quota, or retention rights. The standalone offline parser accepts this candidate shape, requires a concrete source release, bounds the parsed JSON and row count, rejects unsuccessful or malformed envelopes, and preserves a copy of parsed source fields. Its tests use synthetic inputs only. An empty result is not a source-health or coverage claim; raw HTTP-byte capture and response-size limits at the network boundary remain future work. LIVE remains disabled.

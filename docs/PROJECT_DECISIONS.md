@@ -33,7 +33,7 @@ The prompts also discuss candidate providers, grants, customer types, and market
 
 ## Operational facts still to establish
 
-- OVH service details: current public IP, OS/version, SSH access and key arrangement, firewall, backups, DNS/domain, TLS, runtime and deployment path.
+- OVH service details: OS, owner remote desktop, SSH identity and UFW status were inspected on 2026-10-28. Current public IP, backups, DNS/domain, TLS, installed production runtime and deployment path remain to be established.
 - Codex Cloud: environment setup and CI-equivalent checks completed in the onboarding task; saved install/start instructions are present. Fresh-task restoration is not independently verified, and a narrow egress allowlist for public source documentation awaits review/publication.
 - Data: authoritative/lawfully reusable Aberdare AOI, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance. A PFMP-derived provisional envelope now supports non-operational research; the gates remain.
 - GFW access: the owner is unsure whether an approved project API account exists. Do not request or store a key until terms and cost are reviewed; if required, use environment settings rather than chat.

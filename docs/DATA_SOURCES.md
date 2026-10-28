@@ -123,3 +123,5 @@ Before changing a provider to VERIFIED_ACTIVE:
 - The public GFW Data API documentation describes key creation and says keys without listed domains use its lowest rate-limiting tier: https://data-api.globalforestwatch.org/. It does not establish this project's current access, specific quota, API price, local coverage, or the response envelope.
 - GFW Pro and its Pro API are announced to retire on 2026-12-31: https://globalnaturewatch.org/help/gfw-pro/guides/global-forest-watch-pro-license-agreement/. This announcement concerns Pro and is not evidence that the separate GFW Data API will retire.
 - These are public documentation checks only. No authenticated request, alert-record query, account creation, provider activation, cost commitment, or paid subscription has occurred.
+
+WRI's public API source describes a successful POST query/json envelope as status success with data rows, but the deployed service and a RADD response have not been tested. See the pinned source and offline candidate parser note in docs/SATELLITE_INGESTION.md.

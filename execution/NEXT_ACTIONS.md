@@ -35,3 +35,5 @@ The owner supplied a read-only VPS screenshot on 2026-10-28: inspect Docker cont
 
 
 The verified read-only VPS inventory found UFW active with only an SSH rule, no containers listed at that moment, and no Node/npm in PATH. Recheck before installation; preserve SSH, xrdp, Docker and firewall rules. Verify a real backup/restore and domain/TLS before deployment. The API dependency upgrade and audit must pass before any exposure.
+
+Validate the offline GFW envelope parser against a permitted, bounded RADD response only after API pricing, terms, account access and a suitable research area are established. Keep the provider disabled until the remaining pilot gates pass.

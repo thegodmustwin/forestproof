@@ -47,3 +47,5 @@ Optional demo Compose host ports are loopback-only; that reduces accidental netw
 ## 2026-10-28 Python dependency audit
 
 An initial pip-audit of the API requirements flagged advisories involving Starlette, python-multipart and pytest, with duplicate advisory entries in the report. Applicability depends on exposed features. The candidate removes the unused multipart parser, separates test-only packages from runtime, upgrades FastAPI and Starlette and uses a patched pytest, then adds pip-audit to CI. This remains a candidate until CI and audit pass. Resolving package advisories does not provide authentication, production storage, backup, or a full security review.
+
+The API dependency candidate passed pytest and pip-audit in https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. This does not prove absence of all vulnerabilities or complete production hardening.

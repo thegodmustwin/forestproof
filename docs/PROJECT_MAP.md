@@ -143,3 +143,5 @@ The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a p
 Optional demo Compose host ports are restricted to loopback and checked in CI. Loopback is not owner authentication and Compose remains unsuitable for real evidence or production deployment.
 
 The API separates runtime dependencies in services/api/requirements.txt from test dependencies in services/api/requirements-dev.txt. CI audits the resolved development and runtime requirements; pinned direct dependencies do not constitute a fully pinned transitive production lockfile.
+
+services/api/app/providers/gfw_radd_envelope.py provides a bounded offline candidate parser for WRI's published success envelope; services/api/tests/test_gfw_radd_envelope.py uses synthetic inputs. The deployed API envelope, actual provider data and LIVE ingestion remain unverified.
