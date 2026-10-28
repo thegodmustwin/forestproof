@@ -44,3 +44,8 @@ The owner-only SSH-tunnel gateway candidate passed isolated runner checks in run
 ## Time-sensitive friends-and-family test
 
 Verify the synthetic preview's localhost health and full user flow, then configure and verify password-protected HTTPS on the OVH hostname without changing existing SSH or remote desktop. Clearly distinguish it from the requested live pilot. Record the actual deployment result, URL, limitations and recovery instructions if and only if verified. Confirm feed access, terms, price and area coverage separately; do not represent the Geta research envelope as an official boundary.
+
+
+## Deployed preview follow-up
+
+Ask the owner to privately retrieve the test password from the VPS and share it only with intended testers. Confirm their browser map and navigation; never collect real evidence or personal data in this shared synthetic database. Continue verified live-source access, cost and coverage work, authorized boundary, production storage and backups, identity and audit controls; do not claim the preview satisfies those gates. Preserve the existing VPS services and document any subsequent firewall or service changes.
