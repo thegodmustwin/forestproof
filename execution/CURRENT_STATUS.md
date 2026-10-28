@@ -78,3 +78,8 @@ The repository's locked Next.js 14.2.35 is outside the supported release lines. 
 
 
 The first upgrade candidate passed API tests, web tests, typecheck, build and loopback smoke checks on 2026-10-28, but npm's production dependency audit reported MapLibre and PostCSS advisories. The revised candidate upgrades both the mapping library and Next.js and adds a Node 24 check; final locked validation remains pending. Node 20 is end-of-life and must not be the proposed production runtime.
+
+
+### Owner-provided OVH terminal screenshot, 2026-10-28
+
+The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. The screenshot's TCP listener list shows port 22 on IPv4/IPv6 wildcard addresses, port 3389 bound to 127.0.0.1, and port 3350 bound to IPv6 loopback. SSH, xrdp, xrdp-sesman, Docker and containerd services were running. Ports 80 and 443 were not shown as TCP listeners in that snapshot. This does not establish firewall reachability, TLS, UDP listeners, container inventory, backup state, SSH authentication, service ownership, or future port availability. Preserve the existing remote desktop, SSH and container services.

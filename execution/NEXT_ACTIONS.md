@@ -30,3 +30,5 @@
 Before exposure, upgrade the unsupported Next.js 14 runtime to a supported release, commit its lockfile, and verify production build, proxy/page behavior, and dependency audit.
 
 Use a currently supported Node.js runtime for an OVH deployment; Node 20 remains a compatibility check only. Validate the upgraded map in a real browser before deployment.
+
+The owner supplied a read-only VPS screenshot on 2026-10-28: inspect Docker containers, firewall, backup status, DNS/TLS and authentication before deployment. Preserve SSH and loopback xrdp.

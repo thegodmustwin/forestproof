@@ -56,3 +56,8 @@ Do not put server passwords, SSH private keys, personal evidence, or access toke
 ## 2026-10-28 owner direction
 
 Continue toward an owner-only OVH pilot with a verified live feed. The owner reports Ubuntu 24.04 and working remote desktop access. Preserve existing VPS services and remote desktop; inventory the host before proposing changes. Codex Cloud environment publishing is not a prerequisite for OVH. Check any new paid service cost with the owner, and never request passwords, API keys, or private keys in chat. This direction authorizes pilot preparation; the source, authentication, backup, and host-readiness gates still require evidence.
+
+
+### Owner-provided OVH terminal screenshot, 2026-10-28
+
+The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. The screenshot's TCP listener list shows port 22 on IPv4/IPv6 wildcard addresses, port 3389 bound to 127.0.0.1, and port 3350 bound to IPv6 loopback. SSH, xrdp, xrdp-sesman, Docker and containerd services were running. Ports 80 and 443 were not shown as TCP listeners in that snapshot. This does not establish firewall reachability, TLS, UDP listeners, container inventory, backup state, SSH authentication, service ownership, or future port availability. Preserve the existing remote desktop, SSH and container services.

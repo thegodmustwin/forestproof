@@ -137,3 +137,5 @@ The RADD snapshot store includes an offline comparison of two explicitly saved v
 The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
 
 The revised web upgrade candidate uses MapLibre GL JS 6.16.0 and checks the Node 20 compatibility path plus supported Node 24; the final lockfile and CI are pending.
+
+The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a point-in-time inventory and not a deployment or firewall verification.
