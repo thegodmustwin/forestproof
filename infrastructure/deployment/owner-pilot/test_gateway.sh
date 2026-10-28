@@ -9,6 +9,8 @@ container=""
 upstream_pid=""
 
 cleanup() {
+  local result=$?
+  if [[ $result -ne 0 && -n "$container" ]]; then docker logs "$container" >&2 || true; fi
   if [[ -n "$container" ]]; then docker rm -f "$container" >/dev/null 2>&1 || true; fi
   if [[ -n "$upstream_pid" ]]; then kill "$upstream_pid" >/dev/null 2>&1 || true; fi
 }
@@ -44,16 +46,26 @@ if [[ "$ready" != true ]]; then
 fi
 
 status() { curl -sS --max-time 5 -o /dev/null -w '%{http_code}' "$@"; }
-[[ "$(status http://127.0.0.1:18080/)" == 401 ]]
-[[ "$(status http://127.0.0.1:18080/api/forestproof/cases)" == 401 ]]
-[[ "$(status -u owner:wrong http://127.0.0.1:18080/)" == 401 ]]
-[[ "$(curl -sS --max-time 5 -u "owner:$password" http://127.0.0.1:18080/)" == "authorization=absent" ]]
+expect_status() {
+  local label="$1" wanted="$2" actual="$3"
+  echo "$label: HTTP $actual (expected $wanted)"
+  if [[ "$actual" != "$wanted" ]]; then exit 1; fi
+}
+expect_status "Unauthenticated home" 401 "$(status http://127.0.0.1:18080/)"
+expect_status "Unauthenticated API" 401 "$(status http://127.0.0.1:18080/api/forestproof/cases)"
+expect_status "Wrong password" 401 "$(status -u owner:wrong http://127.0.0.1:18080/)"
+upstream_body=$(curl -sS --max-time 5 -u "owner:$password" http://127.0.0.1:18080/)
+if [[ "$upstream_body" != "authorization=absent" ]]; then
+  echo "Authenticated request failed or authorization reached upstream" >&2
+  exit 1
+fi
 
 spoofed=$(status -u "owner:$password" -H 'Host: untrusted.example' http://127.0.0.1:18080/)
-[[ "$spoofed" == 403 || "$spoofed" == 404 ]]
-[[ "$(status -u "owner:$password" -X POST http://127.0.0.1:18080/api/forestproof/cases)" == 403 ]]
-[[ "$(status -u "owner:$password" -X POST -H 'Origin: https://untrusted.example' http://127.0.0.1:18080/api/forestproof/cases)" == 403 ]]
-[[ "$(status -u "owner:$password" -X POST -H 'Origin: http://127.0.0.1:18080' http://127.0.0.1:18080/api/forestproof/cases)" == 200 ]]
+echo "Spoofed host: HTTP $spoofed"
+if [[ "$spoofed" != 403 && "$spoofed" != 404 ]]; then exit 1; fi
+expect_status "POST without origin" 403 "$(status -u "owner:$password" -X POST http://127.0.0.1:18080/api/forestproof/cases)"
+expect_status "Cross-origin POST" 403 "$(status -u "owner:$password" -X POST -H 'Origin: https://untrusted.example' http://127.0.0.1:18080/api/forestproof/cases)"
+expect_status "Same-origin POST" 200 "$(status -u "owner:$password" -X POST -H 'Origin: http://127.0.0.1:18080' http://127.0.0.1:18080/api/forestproof/cases)"
 
 ss -lnt | grep -Eq '127\.0\.0\.1:18080[[:space:]]'
 if ss -lnt | grep -Eq '(0\.0\.0\.0|\[::\]|\*):18080[[:space:]]'; then
