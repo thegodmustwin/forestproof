@@ -74,12 +74,14 @@ The owner has selected an owner-only first pilot and requires a live provider fe
 
 ## 2026-10-28 supported web runtime
 
-The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. The candidate passed a generated-lock CI run and now has a committed lockfile; the exact release must also pass CI. It does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
 
 
-The first upgrade candidate passed API tests, web tests, typecheck, build and loopback smoke checks on 2026-10-28, but npm's production dependency audit reported MapLibre and PostCSS advisories. The revised candidate upgrades both the mapping library and Next.js and adds a Node 24 check; final locked validation remains pending. Node 20 is end-of-life and must not be the proposed production runtime.
+The first upgrade candidate passed API tests, web tests, typecheck, build and loopback smoke checks on 2026-10-28, but npm's production dependency audit reported MapLibre and PostCSS advisories. The revised candidate passed API tests, web tests, typecheck, build, loopback proxy and case-page smoke checks on Node 20 and 24, and a headless synthetic map interaction on Node 24, in https://github.com/thegodmustwin/forestproof/actions/runs/40617936251. The production dependency audit reported zero known vulnerabilities at that time; CI on the committed lockfile must also pass. Node 20 is end-of-life and must not be the proposed production runtime.
 
 
 ### Owner-provided OVH terminal screenshot, 2026-10-28
 
 The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. The screenshot's TCP listener list shows port 22 on IPv4/IPv6 wildcard addresses, port 3389 bound to 127.0.0.1, and port 3350 bound to IPv6 loopback. SSH, xrdp, xrdp-sesman, Docker and containerd services were running. Ports 80 and 443 were not shown as TCP listeners in that snapshot. This does not establish firewall reachability, TLS, UDP listeners, container inventory, backup state, SSH authentication, service ownership, or future port availability. Preserve the existing remote desktop, SSH and container services.
+
+The optional development Compose configuration binds its host ports to 127.0.0.1 and is checked in CI. It remains an unauthenticated synthetic demo and is not an approved production deployment.

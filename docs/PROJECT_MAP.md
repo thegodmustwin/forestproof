@@ -80,7 +80,7 @@ The API only exposes the seeded DEMO organization. A caller-supplied organizatio
 
 ## Build and verification
 
-The project CI uses Python 3.12 and Node 20:
+The project CI uses Python 3.12 and tests the web with Node 20 for compatibility and supported Node 24:
 
     cd services/api
     python -m pip install -r requirements.txt
@@ -134,8 +134,10 @@ The RADD snapshot store includes an offline comparison of two explicitly saved v
 
 ## 2026-10-28 supported web runtime
 
-The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. The candidate passed a generated-lock CI run and now has a committed lockfile; the exact release must also pass CI. It does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
 
-The revised web upgrade candidate uses MapLibre GL JS 6.16.0 and checks the Node 20 compatibility path plus supported Node 24; the final lockfile and CI are pending.
+The web upgrade uses MapLibre GL JS 6.16.0 and tests Node 20 for compatibility and supported Node 24. Run https://github.com/thegodmustwin/forestproof/actions/runs/40617936251 passed API tests, web checks, production dependency audit, and a headless browser map interaction with synthetic fixtures and stubbed tiles. Deployment and real provider tiles remain unverified.
 
 The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a point-in-time inventory and not a deployment or firewall verification.
+
+Optional demo Compose host ports are restricted to loopback and checked in CI. Loopback is not owner authentication and Compose remains unsuitable for real evidence or production deployment.

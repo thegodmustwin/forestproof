@@ -23,6 +23,12 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: pip install -r requirements.txt
       - run: python -m pytest
+      - name: Check development Compose port bindings
+        working-directory: .
+        run: |
+          cp .env.example .env
+          docker compose --profile postgis config --format json > "$RUNNER_TEMP/forestproof-compose.json"
+          python -c 'import json,os; d=json.load(open(os.path.join(os.environ["RUNNER_TEMP"],"forestproof-compose.json"))); ports={(name,str(p["target"]),str(p["published"]),p.get("host_ip")) for name,s in d["services"].items() for p in s.get("ports", [])}; assert ports == {("db","5432","5432","127.0.0.1"),("api","8000","8000","127.0.0.1"),("web","3000","3000","127.0.0.1")}, ports'
 
   web:
     name: Web checks (Node ${{ matrix.node }})
@@ -41,13 +47,6 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
-      # Temporary PR preparation: capture a generated lockfile without writing to main.
-      - name: Generate review lockfile
-        run: |
-          npm install --package-lock-only --ignore-scripts
-          echo FORESTPROOF_LOCKFILE_BEGIN
-          base64 -w 1024 package-lock.json | sed 's/^/FORESTPROOF_LOCK_CHUNK=/'
-          echo FORESTPROOF_LOCKFILE_END
       - run: npm ci
       - run: npm test
       - run: npm run typecheck

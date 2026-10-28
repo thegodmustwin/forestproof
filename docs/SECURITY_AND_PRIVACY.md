@@ -40,3 +40,5 @@ The main branch lockfile uses Next.js 14.2.35, an unsupported major release acco
 
 
 The first candidate audit reported a critical MapLibre advisory and vulnerable PostCSS dependencies. The revised candidate uses MapLibre GL JS 6.16.0 and Next.js 16.4.3; their lockfile, build and audit must pass before exposure. The MapLibre advisory concerns rendering untrusted attribution HTML and its applicability to a specific deployment depends on data flows: https://github.com/maplibre/maplibre-gl-js/security/advisories/GHSA-jrc7-96c5-q579. Node.js 20 is end-of-life; retain the existing Node 20 CI check for compatibility and verify the production candidate under supported Node 24 as well: https://nodejs.org/en/about/previous-releases.
+
+Optional demo Compose host ports are loopback-only; that reduces accidental network exposure but does not authenticate the owner or protect real case material. The initial CI browser check uses synthetic data and stubbed tiles.
