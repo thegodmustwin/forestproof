@@ -125,3 +125,5 @@ Before changing a provider to VERIFIED_ACTIVE:
 - These are public documentation checks only. No authenticated request, alert-record query, account creation, provider activation, cost commitment, or paid subscription has occurred.
 
 WRI's public API source describes a successful POST query/json envelope as status success with data rows, but the deployed service and a RADD response have not been tested. See the pinned source and offline candidate parser note in docs/SATELLITE_INGESTION.md.
+
+**2026-10-28 access guide:** The provider's [API key guide](https://globalnaturewatch.org/help/developers/guides/create-and-use-an-api-key/) describes creating keys through MyGFW and says email/password registration rather than social login may be required; it discusses allowed domains, Origin and rate-limit tiers. Keys can expire and need managed rotation. This guidance does not verify ForestProof's account, access, quota, applicable price or right to retain responses. An unsent provider clarification draft is at `docs/GFW_ACCESS_REQUEST_DRAFT.md`.

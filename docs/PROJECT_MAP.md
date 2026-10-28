@@ -150,3 +150,5 @@ services/api/app/providers/gfw_radd_envelope.py provides a bounded offline candi
 ## 2026-10-28 owner-only gateway candidate
 
 A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.
+
+- `docs/GFW_ACCESS_REQUEST_DRAFT.md` — unsent questions about API access, pricing, attribution, local coverage and retention; no provider has been contacted.
