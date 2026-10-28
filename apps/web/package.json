@@ -11,8 +11,8 @@
     "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
-    "maplibre-gl": "^4.7.1",
-    "next": "15.5.28",
+    "maplibre-gl": "6.16.0",
+    "next": "16.4.3",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

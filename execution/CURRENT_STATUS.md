@@ -74,4 +74,7 @@ The owner has selected an owner-only first pilot and requires a live provider fe
 
 ## 2026-10-28 supported web runtime
 
-The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 15.5.28 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+
+
+The first upgrade candidate passed API tests, web tests, typecheck, build and loopback smoke checks on 2026-10-28, but npm's production dependency audit reported MapLibre and PostCSS advisories. The revised candidate upgrades both the mapping library and Next.js and adds a Node 24 check; final locked validation remains pending. Node 20 is end-of-life and must not be the proposed production runtime.

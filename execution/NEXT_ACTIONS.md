@@ -28,3 +28,5 @@
 5. Keep the existing VPS and recurring costs unchanged until the host audit and any new cost approval are complete. Codex Cloud publishing is not a prerequisite for OVH.
 
 Before exposure, upgrade the unsupported Next.js 14 runtime to a supported release, commit its lockfile, and verify production build, proxy/page behavior, and dependency audit.
+
+Use a currently supported Node.js runtime for an OVH deployment; Node 20 remains a compatibility check only. Validate the upgraded map in a real browser before deployment.

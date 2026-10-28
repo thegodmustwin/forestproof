@@ -55,3 +55,5 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.
 
 - PILOT SECURITY GATE: replace the unsupported Next.js 14 runtime with a supported, tested release before exposure.
+
+- PILOT SECURITY GATE: address the MapLibre and PostCSS advisories, use a supported Node runtime, and verify the map in a browser before exposure.
