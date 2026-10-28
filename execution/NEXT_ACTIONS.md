@@ -38,4 +38,4 @@ The verified read-only VPS inventory found UFW active with only an SSH rule, no 
 
 Validate the offline GFW envelope parser against a permitted, bounded RADD response only after API pricing, terms, account access and a suitable research area are established. Keep the provider disabled until the remaining pilot gates pass.
 
-Validate the owner-only SSH-tunnel gateway candidate on an isolated runner, then plan host-specific ports, private secrets, API binding and recovery before installing or starting it on OVH.
+The owner-only SSH-tunnel gateway candidate passed isolated runner checks in run 40625015460. Before installing or starting it on OVH, plan host-specific ports, private secrets, API binding and recovery, and test the full owner workflow.
