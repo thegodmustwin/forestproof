@@ -78,3 +78,10 @@ Use a supported Node.js LTS runtime, such as Node 24, for any eventual productio
 ## 2026-10-28 owner-only gateway candidate
 
 A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.
+
+
+## 2026-10-28 password-protected synthetic friends-and-family preview
+
+The synthetic preview is available at https://vps-8071f70a.vps.ovh.net/. It uses a Caddy HTTPS gateway with a shared tester credential, the web app on 127.0.0.1:13000, and an API with no host-published port. The demo database is shared, not private per tester, and is not suitable for personal data or real evidence. The gateway blocks evidence uploads. The owner can retrieve the password directly on the VPS from /home/ubuntu/forestproof-preview-20261028/private/preview-password; it must not be pasted into chat or committed. User name: tester. No live provider records or official Geta boundary are configured.
+
+The host has dedicated preview containers and volumes, a UFW allow rule for TCP 80 for certificates and limit rule for TCP 443, while prior SSH/xrdp services remain in place. Do not stop or remove unrelated containers or alter SSH/xrdp. TLS, unauthenticated 401, authenticated demo health and cross-origin/upload blocks passed at initial deployment; direct API port 8000 timed out from an external check. The source is the family-preview branch/PR; deployment is not evidence that it is a production live system. Testers share the same demo state; production backups, restore, audit attribution and per-user isolation remain unverified.

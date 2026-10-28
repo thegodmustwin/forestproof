@@ -1,0 +1,32 @@
+# Isolated synthetic demo candidate. No public ports; HTTPS gateway is separate.
+services:
+  api:
+    build:
+      context: ./services/api
+    environment:
+      FORESTPROOF_MODE: demo
+      FORESTPROOF_SQLITE_PATH: /data/forestproof.db
+      EVIDENCE_STORAGE_PATH: /data/evidence
+    volumes:
+      - preview_data:/data
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    networks: [preview]
+  web:
+    build:
+      context: ./apps/web
+    environment:
+      FORESTPROOF_API_INTERNAL_BASE_URL: http://api:8000/api/v1
+      NEXT_PUBLIC_ENABLE_GFW_GLAD_S2_CONTEXT: "false"
+    ports:
+      - "127.0.0.1:13000:3000"
+    depends_on: [api]
+    restart: unless-stopped
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    networks: [preview]
+networks:
+  preview: {}
+volumes:
+  preview_data:

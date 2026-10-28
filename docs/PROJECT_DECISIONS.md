@@ -66,3 +66,8 @@ The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. T
 ### Read-only SSH inventory, 2026-10-28
 
 The agent verified the ED25519 host fingerprint against the owner's VPS terminal screenshot and connected as ubuntu using existing local SSH credentials; no password or key was shared. Ubuntu reported Python 3.12.3 and Git 2.43.0. Root filesystem had approximately 90 GB available. The UFW status reported active, default deny incoming, with a rate-limited SSH rule; the screenshot showed xrdp listening on loopback. Docker and containerd were running, and sudo docker ps -a returned no containers at that moment. Node, npm, GitHub CLI, Caddy, nginx and Apache were not found on the account's PATH. No application backup was verified by the timer inventory; other backup mechanisms and OVH snapshots remain unknown. Firewall reachability, ports, running services and containers can change and must be rechecked before changes. This was read-only; no service, firewall or VPS software was changed.
+
+
+## 2026-10-28 time-sensitive shared synthetic preview
+
+The owner requested a shareable friends-and-family test today. A password-protected synthetic preview was deployed to the existing OVH hostname to support feedback while the live feed, authorized AOI, production storage, backups and identity controls remain open. This does not change the decision that an owner-only live pilot requires verified data and protected production operation, and it is not a claim of production readiness. No paid service or provider activation was added.

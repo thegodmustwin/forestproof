@@ -1,0 +1,32 @@
+# Candidate only. HTTPS must be verified before sharing a preview URL.
+{
+    admin off
+}
+
+{$FORESTPROOF_PREVIEW_HOST} {
+    @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'https://{$FORESTPROOF_PREVIEW_HOST}'})"
+    @evidence_upload {
+        method POST
+        path_regexp upload ^/api/forestproof/cases/[^/]+/evidence$
+    }
+    header {
+        Cache-Control "no-store"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Content-Security-Policy "frame-ancestors 'none'"
+        Referrer-Policy "no-referrer"
+    }
+    route {
+        basic_auth {
+            tester {$FORESTPROOF_PREVIEW_PASSWORD_HASH}
+        }
+        respond @unsafe "Forbidden" 403
+        respond @evidence_upload "Evidence uploads are disabled in this synthetic preview." 403
+        request_body {
+            max_size 256KB
+        }
+        reverse_proxy 127.0.0.1:13000 {
+            header_up -Authorization
+        }
+    }
+}
