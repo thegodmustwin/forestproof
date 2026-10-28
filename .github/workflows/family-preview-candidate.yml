@@ -30,3 +30,21 @@ jobs:
           test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: https://attacker.invalid' http://127.0.0.1:18081/api/forestproof/cases)" = 403
           test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: http://127.0.0.1:18081' http://127.0.0.1:18081/api/forestproof/cases/123/evidence)" = 403
           test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: http://127.0.0.1:18081' http://127.0.0.1:18081/api/forestproof/cases)" = 200
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and smoke-test isolated synthetic app
+        shell: bash
+        run: |
+          set -euo pipefail
+          trap 'docker compose -p forestproof-preview-ci -f docker-compose.preview.yml logs; docker compose -p forestproof-preview-ci -f docker-compose.preview.yml down -v' EXIT
+          docker compose -p forestproof-preview-ci -f docker-compose.preview.yml up -d --build
+          for i in {1..60}; do
+            if curl -fsS http://127.0.0.1:13000/api/forestproof/health > "$RUNNER_TEMP/health.json"; then break; fi
+            sleep 2
+          done
+          python3 -c 'import json,os; d=json.load(open(os.path.join(os.environ["RUNNER_TEMP"],"health.json"))); assert d["mode"] == "DEMO", d'
+          curl -fsS http://127.0.0.1:13000/ | grep -qi 'ForestProof'
+          docker compose -p forestproof-preview-ci -f docker-compose.preview.yml config --format json > "$RUNNER_TEMP/preview.json"
+          python3 -c 'import json,os; d=json.load(open(os.path.join(os.environ["RUNNER_TEMP"],"preview.json"))); assert not d["services"]["api"].get("ports"); p=d["services"]["web"]["ports"]; assert len(p)==1 and p[0]["host_ip"] == "127.0.0.1"'
