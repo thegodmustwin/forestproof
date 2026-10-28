@@ -1,4 +1,8 @@
 # Candidate only. HTTPS must be verified before sharing a preview URL.
+{
+    admin off
+}
+
 {$FORESTPROOF_PREVIEW_HOST} {
     @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'https://{$FORESTPROOF_PREVIEW_HOST}'})"
     @evidence_upload {

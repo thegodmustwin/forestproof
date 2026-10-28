@@ -39,3 +39,8 @@ The verified read-only VPS inventory found UFW active with only an SSH rule, no 
 Validate the offline GFW envelope parser against a permitted, bounded RADD response only after API pricing, terms, account access and a suitable research area are established. Keep the provider disabled until the remaining pilot gates pass.
 
 The owner-only SSH-tunnel gateway candidate passed isolated runner checks in run 40625015460. Before installing or starting it on OVH, plan host-specific ports, private secrets, API binding and recovery, and test the full owner workflow.
+
+
+## Time-sensitive friends-and-family test
+
+Verify the synthetic preview's localhost health and full user flow, then configure and verify password-protected HTTPS on the OVH hostname without changing existing SSH or remote desktop. Clearly distinguish it from the requested live pilot. Record the actual deployment result, URL, limitations and recovery instructions if and only if verified. Confirm feed access, terms, price and area coverage separately; do not represent the Geta research envelope as an official boundary.
