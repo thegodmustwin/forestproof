@@ -5,32 +5,47 @@ import { useEffect, useState } from "react";
 import { DemoNotice } from "@/components/demo-notice";
 import { StatusChip } from "@/components/status-chip";
 import { WorkflowStrip } from "@/components/workflow-strip";
-import { CaseStatus, caseStatusLabels, demoMode, formatDate, getCase, getObservation } from "@/lib/demo";
+import { CaseStatus, DemoCase, DemoObservation, caseStatusLabels, demoMode, findDemoCase, formatDate } from "@/lib/demo";
 import { attachDemoEvidence, fetchDossier, loadCaseRecord, transitionCase } from "@/lib/api";
 
 const order: CaseStatus[] = ["NEW", "UNDER_REVIEW", "FIELD_VERIFICATION", "ACTION_RECORDED", "FOLLOW_UP", "CLOSED"];
 
 export function CaseWorkspace({ id }: { id: string }) {
-  const [record, setRecord] = useState(() => getCase(id));
-  const [observation, setObservation] = useState(() => getObservation(getCase(id).observationId));
+  const [record, setRecord] = useState<DemoCase | null>(null);
+  const [observation, setObservation] = useState<DemoObservation | null>(null);
   const [fromApi, setFromApi] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [recorded, setRecorded] = useState<string | null>(null);
   useEffect(() => {
     let active = true;
-    setRecord(getCase(id));
-    setObservation(getObservation(getCase(id).observationId));
+    setRecord(null);
+    setObservation(null);
     setFromApi(false);
+    setLoading(true);
     setRecorded(null);
     void loadCaseRecord(id).then((loaded) => {
       if (!active) return;
       setRecord(loaded.record);
       setObservation(loaded.observation);
       setFromApi(loaded.fromApi);
+      setLoading(false);
     }).catch(() => {
-      // A static DEMO fixture remains usable when the API is not started.
+      if (!active) return;
+      const fixture = findDemoCase(id);
+      if (fixture) {
+        setRecord(fixture.record);
+        setObservation(fixture.observation);
+      }
+      setLoading(false);
     });
     return () => { active = false; };
   }, [id]);
+  if (loading || (record && record.id !== id)) {
+    return <div className="page"><p role="status">Loading case…</p></div>;
+  }
+  if (!record || !observation) {
+    return <div className="page"><div className="topline"><div><p className="eyebrow">Investigation case</p><h1>Case unavailable</h1><p className="lede">This case could not be found or the API is unavailable. No other case has been substituted.</p><Link className="link-arrow" href="/operations">Return to the case queue →</Link></div></div></div>;
+  }
   const currentIndex = order.indexOf(record.status);
   const next = currentIndex < 0
     ? "UNDER_REVIEW"

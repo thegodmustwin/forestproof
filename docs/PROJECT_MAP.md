@@ -45,7 +45,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 | --- | --- | --- |
 | / | apps/web/src/app/page.tsx | Product landing/dashboard; keep DEMO status visible. |
 | /monitor/aberdare | apps/web/src/app/monitor/aberdare/page.tsx, aberdare-monitor.tsx, aberdare-map.tsx | Illustrative Aberdare map and synthetic review cues, not an official AOI or live alert map. |
-| /cases/[id] | apps/web/src/app/cases/[id]/page.tsx, case-workspace.tsx | Human workflow, case history, evidence and review actions in DEMO scope. |
+| /cases/[id] | apps/web/src/app/cases/[id]/page.tsx, case-workspace.tsx | Human workflow, case history, evidence and review actions in DEMO scope. A missing case does not substitute an unrelated demo case, and an API response must match the requested case ID. |
 | /operations | apps/web/src/app/operations/page.tsx | Workflow counts/operations view, not conservation impact metrics. |
 | /outcomes | apps/web/src/app/outcomes/page.tsx, outcome-graph.tsx | P0 relational outcome summary; no causal impact claim. |
 | /sources | apps/web/src/app/sources/page.tsx | Provider status and source limitations; no validated live provider currently. |

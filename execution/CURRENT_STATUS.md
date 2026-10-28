@@ -1,6 +1,6 @@
 # Current Status
 
-**Last updated:** 2026-10-27
+**Last updated:** 2026-10-28
 **Milestone:** private GitHub source and Codex Cloud development environment established; production gates remain.
 
 ## Truthful snapshot
@@ -32,6 +32,7 @@
 
 ## Verification evidence
 
+- On 2026-10-28 the demo case screen was changed to wait for the requested API case or an exact matching local fixture. Missing cases no longer fall back to a different demonstration case; API responses with missing or mismatched case IDs are rejected. Seven web tests, TypeScript and the production web build passed locally. This is a demo correctness fix, not owner authentication or production deployment.
 - On 2026-10-27 the owner supplied copied Global Nature Watch Terms of Service text from the redirected legacy GFW terms page. It requires account API keys and attribution and refers to dataset-specific licenses. It contains separate Pro eligibility criteria, no API price/quota, and a $100 liability cap that is not a price. The owner-supplied text and its hash are documented in `docs/DATA_SOURCES.md`; the linked attribution requirements could not be fetched through this workspace. No account or API key was created and no live alert records were queried.
 - On 2026-10-27 a standalone RADD snapshot store was added and verified against synthetic rows. It preserves canonical source fields, a hash, cell/date identity, source release and receipt time; handles identical replays; keeps releases separate; and rolls back a batch when an existing cell/release has conflicting fields. The full API suite passes 28 tests. The store is not wired to live ingestion or production storage.
 - On 2026-10-27 the public GFW OpenAPI was retrieved again. The legacy terms URL returned HTTP 301 to `https://globalnaturewatch.org/terms`, whose host is blocked by the current workspace proxy. This explains the observed redirect failure but not the terms or API cost. No alert records were requested.

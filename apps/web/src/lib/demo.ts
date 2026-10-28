@@ -198,7 +198,12 @@ export const caseStatusLabels: Record<CaseStatus, string> = {
 };
 
 export const getObservation = (id: string) => observations.find((item) => item.id === id) ?? observations[0];
-export const getCase = (id: string) => cases.find((item) => item.id === id) ?? cases[0];
+/** A missing case or source observation must never resolve to another fixture. */
+export function findDemoCase(id: string): { record: DemoCase; observation: DemoObservation } | null {
+  const record = cases.find((item) => item.id === id);
+  const observation = record && observations.find((item) => item.id === record.observationId);
+  return record && observation ? { record, observation } : null;
+}
 
 export const formatDate = (value: string) =>
   Number.isNaN(Date.parse(value)) ? "Not provided" : new Intl.DateTimeFormat("en-KE", {

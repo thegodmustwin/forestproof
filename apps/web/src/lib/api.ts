@@ -59,6 +59,7 @@ export async function loadCaseRecord(id: string): Promise<LoadedCase> {
   const payload: unknown = await response.json();
   if (!payload || typeof payload !== "object") throw new Error("Case response was malformed");
   const raw = payload as UnknownRecord;
+  if (typeof raw.id !== "string" || raw.id !== id) throw new Error("Case response did not match the requested case");
   const observationRaw = raw.observation;
   if (!observationRaw || typeof observationRaw !== "object") throw new Error("Case response omitted its observation");
   const observation = normalizeDemoObservation(observationRaw as UnknownRecord);
