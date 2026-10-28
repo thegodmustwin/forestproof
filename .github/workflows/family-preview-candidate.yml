@@ -1,0 +1,32 @@
+name: Family preview gateway candidate
+on:
+  push:
+    branches: ["codex/friends-family-preview-20261028"]
+  pull_request:
+    paths:
+      - 'infrastructure/deployment/family-preview/**'
+      - '.github/workflows/family-preview-candidate.yml'
+jobs:
+  gateway:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test candidate on isolated loopback
+        shell: bash
+        run: |
+          set -euo pipefail
+          cfg="$RUNNER_TEMP/Caddyfile"
+          sed 's/{\$FORESTPROOF_PREVIEW_HOST}/http:\/\/127.0.0.1:18081/g;s|https://http://127.0.0.1:18081|http://127.0.0.1:18081|g' infrastructure/deployment/family-preview/Caddyfile > "$cfg"
+          hash=$(docker run --rm --network none caddy:2.11.7 caddy hash-password --plaintext forestproof-test-only)
+          python3 infrastructure/deployment/owner-pilot/mock_upstream.py &
+          upstream=$!
+          docker run -d --name preview-test --network host -v "$cfg:/etc/caddy/Caddyfile:ro" -e FORESTPROOF_PREVIEW_PASSWORD_HASH="$hash" caddy:2.11.7 >/dev/null
+          trap 'docker logs preview-test; docker rm -f preview-test; kill "$upstream" || true' EXIT
+          for i in {1..30}; do curl -s -o /dev/null http://127.0.0.1:18081/ && break; sleep 1; done
+          status() { curl -sS -o /dev/null -w '%{http_code}' "$@"; }
+          test "$(status http://127.0.0.1:18081/)" = 401
+          test "$(status -u tester:wrong http://127.0.0.1:18081/)" = 401
+          test "$(curl -sS -u tester:forestproof-test-only http://127.0.0.1:18081/)" = 'authorization=absent'
+          test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: https://attacker.invalid' http://127.0.0.1:18081/api/forestproof/cases)" = 403
+          test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: http://127.0.0.1:18081' http://127.0.0.1:18081/api/forestproof/cases/123/evidence)" = 403
+          test "$(status -u tester:forestproof-test-only -X POST -H 'Origin: http://127.0.0.1:18081' http://127.0.0.1:18081/api/forestproof/cases)" = 200
