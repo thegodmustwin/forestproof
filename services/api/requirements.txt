@@ -1,6 +1,5 @@
-fastapi==0.115.6
+# Runtime dependencies; test-only tools live in requirements-dev.txt.
+fastapi==0.161.1
+starlette==1.10.0
 uvicorn[standard]==0.32.1
-python-multipart==0.0.20
 pydantic==2.10.3
-pytest==8.3.4
-httpx==0.28.1

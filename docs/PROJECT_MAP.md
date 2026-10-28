@@ -83,7 +83,7 @@ The API only exposes the seeded DEMO organization. A caller-supplied organizatio
 The project CI uses Python 3.12 and tests the web with Node 20 for compatibility and supported Node 24:
 
     cd services/api
-    python -m pip install -r requirements.txt
+    python -m pip install -r requirements-dev.txt
     python -m pytest
 
     cd apps/web
@@ -141,3 +141,5 @@ The web upgrade uses MapLibre GL JS 6.16.0 and tests Node 20 for compatibility a
 The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a point-in-time inventory and not a deployment or firewall verification.
 
 Optional demo Compose host ports are restricted to loopback and checked in CI. Loopback is not owner authentication and Compose remains unsuitable for real evidence or production deployment.
+
+The API separates runtime dependencies in services/api/requirements.txt from test dependencies in services/api/requirements-dev.txt. CI audits the resolved development and runtime requirements; pinned direct dependencies do not constitute a fully pinned transitive production lockfile.

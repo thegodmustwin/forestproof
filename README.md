@@ -39,7 +39,7 @@ The private GitHub repository is live, and the first CI run passed. That means
 the source is backed up and build checks pass; it does **not** mean the website
 is deployed. The owner prefers Codex Cloud for development (to avoid laptop
 capacity bottlenecks) and an existing OVH VPS for eventual hosting. The OVH
-server details and deployment are not yet verified. See
+host has had a read-only SSH inventory, while deployment and backups remain unverified. See
 [deployment status and prerequisites](docs/DEPLOYMENT.md).
 
 Railway launch notes are historical and not the current hosting decision:
@@ -52,7 +52,7 @@ after installing their Python and npm dependencies.
 ## Checks
 
 ```text
-cd services/api && python -m pytest
+cd services/api && python -m pip install -r requirements-dev.txt && python -m pytest
 cd apps/web && npm run typecheck && npm run build
 ```
 

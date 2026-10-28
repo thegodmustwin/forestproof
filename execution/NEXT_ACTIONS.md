@@ -32,3 +32,6 @@ Before exposure, verify the exact supported web release and committed lockfile t
 Use a currently supported Node.js runtime for an OVH deployment; Node 20 remains a compatibility check only. A headless browser check covers synthetic markers and stubbed tiles; verify the intended owner's browser and permitted provider tiles before deployment.
 
 The owner supplied a read-only VPS screenshot on 2026-10-28: inspect Docker containers, firewall, backup status, DNS/TLS and authentication before deployment. Preserve SSH and loopback xrdp.
+
+
+The verified read-only VPS inventory found UFW active with only an SSH rule, no containers listed at that moment, and no Node/npm in PATH. Recheck before installation; preserve SSH, xrdp, Docker and firewall rules. Verify a real backup/restore and domain/TLS before deployment. The API dependency upgrade and audit must pass before any exposure.

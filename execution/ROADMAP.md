@@ -57,3 +57,5 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - PILOT SECURITY GATE: replace the unsupported Next.js 14 runtime with a supported, tested release before exposure.
 
 - PILOT SECURITY GATE: address the MapLibre and PostCSS advisories, use a supported Node runtime, and verify the map in a browser before exposure.
+
+- PILOT SECURITY GATE: resolve the initial Python dependency audit, separate runtime from test dependencies, and verify the upgraded API and its dependency audit before exposure.
