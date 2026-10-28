@@ -37,7 +37,16 @@ jobs:
           node-version: "20"
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
+      # Temporary PR preparation: capture a generated lockfile without writing to main.
+      - name: Generate review lockfile
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          echo FORESTPROOF_LOCKFILE_BEGIN
+          base64 -w 1024 package-lock.json | sed 's/^/FORESTPROOF_LOCK_CHUNK=/'
+          echo FORESTPROOF_LOCKFILE_END
       - run: npm ci
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
+      - run: npm run smoke
+      - run: npm audit --omit=dev --audit-level=high

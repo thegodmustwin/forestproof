@@ -130,3 +130,8 @@ Production PostGIS, live record-level satellite alerts, authoritative Aberdare b
 ## 2026-10-28 pilot preparation update
 
 The RADD snapshot store includes an offline comparison of two explicitly saved versions for the same derived cell/date identity. It reports raw source-field differences only; missing rows do not establish retraction, and changed alert dates are not automatically matched. The implementation and tests do not call a provider or enable LIVE. See the dated source and ingestion notes. GitHub main commit 6d552d29b5d3337a56b434010fa41a2f836aa373 passed its API and web CI checks at https://github.com/thegodmustwin/forestproof/actions/runs/40609084867.
+
+
+## 2026-10-28 supported web runtime
+
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 15.5.28 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.

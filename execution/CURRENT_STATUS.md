@@ -70,3 +70,8 @@ The owner has selected an owner-only first pilot and requires a live provider fe
 - The offline RADD snapshot store compares two explicitly stored releases of the same derived cell/date identity. It reports source field differences and cannot infer retractions from a missing row; there is no live ingestion or owner authentication.
 - WUR documents CC BY 4.0 reuse of the RADD dataset without royalty payment and identifies its primary humid tropical forest baseline. Local Geta coverage and GFW Data API access, cost, quota, exact integration attribution, response shape, and retention remain unverified. The PFMP-derived envelope is provisional and not an approved live filter.
 - Official Global Nature Watch terms and the linked Resource Watch attribution page were read; GFW Pro retirement on 2026-12-31 concerns Pro and does not itself establish a retirement of the separate Data API. See docs/DATA_SOURCES.md and docs/COSTS_AND_OPERATING_BUDGET.md.
+
+
+## 2026-10-28 supported web runtime
+
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 15.5.28 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. This is a candidate until the committed lockfile and CI checks pass; it does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.

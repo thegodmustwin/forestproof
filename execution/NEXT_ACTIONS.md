@@ -26,3 +26,5 @@
 3. Verify RADD's actual coverage over a lawfully reusable area, provider account/access, API pricing and quota, exact attribution and retention, then test a bounded response before wiring a live adapter. The provisional rectangle remains research-only.
 4. Integrate release comparisons only after the actual response and completeness semantics are established; missing rows alone are not retractions.
 5. Keep the existing VPS and recurring costs unchanged until the host audit and any new cost approval are complete. Codex Cloud publishing is not a prerequisite for OVH.
+
+Before exposure, upgrade the unsupported Next.js 14 runtime to a supported release, commit its lockfile, and verify production build, proxy/page behavior, and dependency audit.

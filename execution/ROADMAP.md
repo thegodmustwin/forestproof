@@ -53,3 +53,5 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - WORKING (offline groundwork): immutable synthetic RADD cell/release snapshots and field-level comparison of two saved releases. No missing-row retraction inference.
 - PARTIAL / UNVERIFIED: WUR dataset licensing and attribution source documented; local RADD coverage, GFW Data API account access, service cost, quotas, exact attribution mapping, retention, and response shape remain open.
 - PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.
+
+- PILOT SECURITY GATE: replace the unsupported Next.js 14 runtime with a supported, tested release before exposure.
