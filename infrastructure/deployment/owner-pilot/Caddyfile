@@ -5,7 +5,7 @@
     admin off
 }
 
-http://127.0.0.1:18080 {
+http://:18080 {
     bind 127.0.0.1
 
     @invalid_host not host 127.0.0.1
