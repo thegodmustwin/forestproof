@@ -80,10 +80,10 @@ The API only exposes the seeded DEMO organization. A caller-supplied organizatio
 
 ## Build and verification
 
-The project CI uses Python 3.12 and Node 20:
+The project CI uses Python 3.12 and tests the web with Node 20 for compatibility and supported Node 24:
 
     cd services/api
-    python -m pip install -r requirements.txt
+    python -m pip install -r requirements-dev.txt
     python -m pytest
 
     cd apps/web
@@ -125,3 +125,30 @@ On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net`
 ## Explicitly not implemented
 
 Production PostGIS, live record-level satellite alerts, authoritative Aberdare boundaries, legal document verification, real user authentication, organization isolation, protected production evidence storage, offline field sync, notification delivery, PDF dossiers, validated predictive ML, paid customers, and OVH deployment remain open unless a later dated status entry records testable evidence.
+
+
+## 2026-10-28 pilot preparation update
+
+The RADD snapshot store includes an offline comparison of two explicitly saved versions for the same derived cell/date identity. It reports raw source-field differences only; missing rows do not establish retraction, and changed alert dates are not automatically matched. The implementation and tests do not call a provider or enable LIVE. See the dated source and ingestion notes. GitHub main commit 6d552d29b5d3337a56b434010fa41a2f836aa373 passed its API and web CI checks at https://github.com/thegodmustwin/forestproof/actions/runs/40609084867.
+
+
+## 2026-10-28 supported web runtime
+
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. The candidate passed a generated-lock CI run and now has a committed lockfile; the exact release must also pass CI. It does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+
+The web upgrade uses MapLibre GL JS 6.16.0 and tests Node 20 for compatibility and supported Node 24. Run https://github.com/thegodmustwin/forestproof/actions/runs/40617936251 passed API tests, web checks, production dependency audit, and a headless browser map interaction with synthetic fixtures and stubbed tiles. Deployment and real provider tiles remain unverified.
+
+The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a point-in-time inventory and not a deployment or firewall verification.
+
+Optional demo Compose host ports are restricted to loopback and checked in CI. Loopback is not owner authentication and Compose remains unsuitable for real evidence or production deployment.
+
+The API separates runtime dependencies in services/api/requirements.txt from test dependencies in services/api/requirements-dev.txt. CI audits the resolved development and runtime requirements; pinned direct dependencies do not constitute a fully pinned transitive production lockfile.
+
+services/api/app/providers/gfw_radd_envelope.py provides a bounded offline candidate parser for WRI's published success envelope; services/api/tests/test_gfw_radd_envelope.py uses synthetic inputs. The deployed API envelope, actual provider data and LIVE ingestion remain unverified.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.
+
+- `docs/GFW_ACCESS_REQUEST_DRAFT.md` — unsent questions about API access, pricing, attribution, local coverage and retention; no provider has been contacted.

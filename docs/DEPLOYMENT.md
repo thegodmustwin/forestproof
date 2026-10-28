@@ -4,7 +4,7 @@
 
 **No public deployment exists.** The code is in the private GitHub repo and CI passes, but the public website has not been launched.
 
-The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The following are not yet verified here: current public IP, OS/version, SSH readiness, firewall, DNS/domain, TLS, backup configuration, server capacity, and deployed software.
+The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS and hardware capacity. The current public IP, SSH readiness, firewall, DNS/domain, TLS, backup configuration, existing services, and deployment path still require independent inspection.
 
 Railway was an earlier deployment proposal. It is superseded by the owner's OVH preference; RAILWAY_LAUNCH.md is retained only as historical context and is not the current deployment plan. Do not create a Railway project or deploy there unless the owner changes the decision.
 
@@ -14,7 +14,7 @@ Codex Cloud is the preferred development environment. It should use the same che
 
     Python 3.12
     Node 20
-    python -m pip install -r services/api/requirements.txt
+    python -m pip install -r services/api/requirements-dev.txt
     cd services/api && python -m pytest
     cd apps/web && npm ci && npm run typecheck && npm run build
 
@@ -46,3 +46,35 @@ Before real users or real case material:
 ## Deployment evidence
 
 Before marking deployment WORKING, record the host/runtime, release/commit, migration result, backup/restore test, source health, authenticated user-journey test, known limitations, responsible operator, date, and public URL if applicable. A passing local proxy check or GitHub CI run is not production deployment evidence.
+
+
+## Read-only OVH inventory for an owner-only pilot
+
+Inspect the VPS before selecting ports or installing anything. From the owner's existing remote desktop terminal, the following commands show the hostname, OS, root disk space, listening TCP ports, and running system services:
+
+    hostname
+    cat /etc/os-release
+    df -h /
+    ss -lnt
+    systemctl list-units --type=service --state=running --no-pager --no-legend
+
+These commands are read-only and do not display passwords, API keys, or private keys. Service names and addresses may still be operationally sensitive; review output before sharing. Record occupied ports and services, remote-desktop and SSH recovery paths, host-level firewall and backups before proposing a release. Do not change firewall rules, ports, existing services or remote-desktop access during this inventory.
+
+
+### Owner-provided OVH terminal screenshot, 2026-10-28
+
+The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. The screenshot's TCP listener list shows port 22 on IPv4/IPv6 wildcard addresses, port 3389 bound to 127.0.0.1, and port 3350 bound to IPv6 loopback. SSH, xrdp, xrdp-sesman, Docker and containerd services were running. Ports 80 and 443 were not shown as TCP listeners in that snapshot. This does not establish firewall reachability, TLS, UDP listeners, container inventory, backup state, SSH authentication, service ownership, or future port availability. Preserve the existing remote desktop, SSH and container services.
+
+The optional Compose file is development-only. Its published ports are restricted to loopback, but the DEMO API still has no owner authentication; this is not a production deployment recipe.
+
+
+### Read-only SSH inventory, 2026-10-28
+
+The agent verified the ED25519 host fingerprint against the owner's VPS terminal screenshot and connected as ubuntu using existing local SSH credentials; no password or key was shared. Ubuntu reported Python 3.12.3 and Git 2.43.0. Root filesystem had approximately 90 GB available. The UFW status reported active, default deny incoming, with a rate-limited SSH rule; the screenshot showed xrdp listening on loopback. Docker and containerd were running, and sudo docker ps -a returned no containers at that moment. Node, npm, GitHub CLI, Caddy, nginx and Apache were not found on the account's PATH. No application backup was verified by the timer inventory; other backup mechanisms and OVH snapshots remain unknown. Firewall reachability, ports, running services and containers can change and must be rechecked before changes. This was read-only; no service, firewall or VPS software was changed.
+
+Use a supported Node.js LTS runtime, such as Node 24, for any eventual production runtime. Installing a runtime, opening firewall ports, enabling a reverse proxy, or creating a backup requires a host-specific plan and verification first. The optional development web container uses Node 24 and is not a production deployment by itself.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.

@@ -25,3 +25,8 @@ The same check applies to any alternative feed: confirm the exact product licens
 ## Approval gate
 
 Before enabling a source in LIVE mode, record a bounded first-year cost estimate (including the existing host share where known), confirm the source's fees and quota, and make the estimate visible to the owner. Do not create a paid source account, enable billing, exceed a quota, or add a recurring service without explicit owner approval. If service terms or prices cannot be confirmed, keep the source disabled and label the cost unknown.
+
+
+## 2026-10-28 dataset-versus-service clarification
+
+WUR describes its RADD dataset as CC BY 4.0 and royalty-free with attribution: https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert. This does not quote a GFW Data API service price, quota, future processing cost, or OVH cost. The API service cost remains UNKNOWN, and no paid service or alert-record query is authorized without the applicable cost review. WUR's published Earth Engine production-compute estimate is a different cost and must not be treated as a GFW API price.

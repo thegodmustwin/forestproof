@@ -77,3 +77,67 @@ def test_invalid_or_unbounded_batches_are_rejected_without_partial_writes(snapsh
         snapshot_store.save_batch([{**sample_row, "unexpected": "x" * 70_000}], source_version="v20261018")
     cell = normalize_radd_pixel_row(sample_row, source_version="v20261018")
     assert snapshot_store.get_snapshot(forestproof_id=cell.forestproof_id, source_version="v20261018") is None
+
+
+
+def test_compare_releases_reports_source_field_changes_without_interpreting_them(snapshot_store, sample_row):
+    updated = {**sample_row, "wur_radd_alerts__confidence": 3, "new_source_field": None}
+    snapshot_store.save_batch([sample_row], source_version="v20261018")
+    snapshot_store.save_batch([updated], source_version="v20261025")
+    cell = normalize_radd_pixel_row(sample_row, source_version="v20261018")
+
+    compared = snapshot_store.compare_releases(
+        forestproof_id=cell.forestproof_id, from_version="v20261018", to_version="v20261025"
+    )
+
+    assert compared == {
+        "forestproof_id": cell.forestproof_id,
+        "source_product": "wur_radd_alerts",
+        "from_version": "v20261018",
+        "to_version": "v20261025",
+        "change": "SOURCE_FIELDS_CHANGED",
+        "changed_fields": ["new_source_field", "wur_radd_alerts__confidence"],
+    }
+    assert snapshot_store.get_snapshot(
+        forestproof_id=cell.forestproof_id, source_version="v20261018"
+    )["raw_fields"] == sample_row
+
+
+def test_compare_releases_is_independent_of_json_key_order(snapshot_store, sample_row):
+    first = {**sample_row, "metadata": {"a": 1, "b": [2, 3]}}
+    second = {**sample_row, "metadata": {"b": [2, 3], "a": 1}}
+    snapshot_store.save_batch([first], source_version="v1")
+    snapshot_store.save_batch([second], source_version="v2")
+    cell = normalize_radd_pixel_row(first, source_version="v1")
+
+    result = snapshot_store.compare_releases(
+        forestproof_id=cell.forestproof_id, from_version="v1", to_version="v2"
+    )
+    assert result["change"] == "UNCHANGED"
+    assert result["changed_fields"] == []
+
+
+def test_compare_releases_distinguishes_json_types(snapshot_store, sample_row):
+    snapshot_store.save_batch([{**sample_row, "metadata": {"flag": True}}], source_version="v1")
+    snapshot_store.save_batch([{**sample_row, "metadata": {"flag": 1}}], source_version="v2")
+    cell = normalize_radd_pixel_row(sample_row, source_version="v1")
+
+    result = snapshot_store.compare_releases(
+        forestproof_id=cell.forestproof_id, from_version="v1", to_version="v2"
+    )
+    assert result["changed_fields"] == ["metadata"]
+
+
+def test_compare_releases_requires_both_snapshots_and_distinct_versions(snapshot_store, sample_row):
+    snapshot_store.save_batch([sample_row], source_version="v1")
+    cell = normalize_radd_pixel_row(sample_row, source_version="v1")
+    with pytest.raises(ValueError, match="absent row does not establish a retraction"):
+        snapshot_store.compare_releases(
+            forestproof_id=cell.forestproof_id, from_version="v1", to_version="v2"
+        )
+    with pytest.raises(ValueError, match="distinct"):
+        snapshot_store.compare_releases(
+            forestproof_id=cell.forestproof_id, from_version="v1", to_version="v1"
+        )
+    with pytest.raises(ValueError, match="identity"):
+        snapshot_store.compare_releases(forestproof_id="", from_version="v1", to_version="v2")

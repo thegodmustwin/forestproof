@@ -82,3 +82,13 @@ Absence of alerts is not evidence of system health.
 ## P0 verification
 
 Test idempotency, invalid geometry, out-of-order timestamps, retry/backoff, source attribution, DEMO/LIVE separation, missing-data detection, and provider failures before representing ingestion as working.
+
+
+## 2026-10-28: offline release comparison
+
+The local RADD snapshot store now compares raw fields for two explicitly saved versions of the same ForestProof cell/date identity. It reports which top-level source fields differ, without interpreting confidence, declaring an alert retracted, or asserting that the releases are complete. It rejects missing snapshots and identical release identifiers. An alert date change yields a different identity and is not automatically linked. Tests use synthetic data only. This remains standalone SQLite groundwork: no live response has been fetched, parsed or ingested.
+
+
+## 2026-10-28 candidate GFW response envelope
+
+WRI's published API source at commit dd277b245debf8e37a98a8e6238c5ead8aeed115 shows POST query/json returning a Response with status success and data containing a list of row dictionaries: https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/routes/datasets/queries.py and https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/models/pydantic/responses.py. This is evidence of the source-code contract, not a verified response from the deployed service or proof of RADD coverage, access, pricing, quota, or retention rights. The standalone offline parser accepts this candidate shape, requires a concrete source release, bounds the parsed JSON and row count, rejects unsuccessful or malformed envelopes, and preserves a copy of parsed source fields. Its tests use synthetic inputs only. An empty result is not a source-health or coverage claim; raw HTTP-byte capture and response-size limits at the network boundary remain future work. LIVE remains disabled.

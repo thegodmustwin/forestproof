@@ -78,7 +78,7 @@ The UI includes DEMO notices. Its coordinates, cases, provider labels, confidenc
 ## Owner workflow and hosting decisions
 
 - The source of truth is the private GitHub repo linked above, not desktop chat history. Use Codex Cloud for ongoing development because the owner wants to avoid laptop capacity bottlenecks; local Docker must not be a prerequisite.
-- The owner prefers their existing OVH VPS for eventual hosting. The temporary hostname mentioned in conversation is vps-8071f70a.vps.ovh.net; its current IP, operating system, SSH readiness, DNS/domain, firewall, backups, and server configuration have not been verified in this repository.
+- The owner prefers their existing OVH VPS for eventual hosting. The temporary hostname mentioned in conversation is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS. The agent verified the host fingerprint with the owner and completed a read-only SSH inventory as ubuntu on 2026-10-28; UFW and current listeners were inspected. The public IP, DNS/domain, TLS, backup coverage, source access and deployment configuration remain unverified.
 - Existing Railway deployment material predates that preference. Railway is not the current hosting decision. See docs/DEPLOYMENT.md and the historical notice in docs/RAILWAY_LAUNCH.md.
 - Never put credentials in the repo or ask for secrets in chat. Keep .env local and use .env.example for variable names only.
 

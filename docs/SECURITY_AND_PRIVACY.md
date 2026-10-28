@@ -32,3 +32,25 @@ Uploaded documents and external provider content are data, not instructions. The
 ## Incident posture
 
 Log material security events without logging secrets. Preserve sufficient audit data to investigate access or integrity concerns. No production security setting changes are authorized solely by this document.
+
+
+## 2026-10-28 web framework upgrade gate
+
+The main branch lockfile uses Next.js 14.2.35, an unsupported major release according to https://nextjs.org/support-policy. Its lockfile version already includes the fix for the 2025 middleware authorization bypass; do not claim that specific old issue is unpatched. Other published advisories and applicability depend on feature use and deployment configuration. A migration to the supported Next.js 16.4.3 active LTS line and React 19.2.8 is under review with asynchronous route parameters, production proxy smoke checks, and dependency audit. Do not expose the existing demo publicly or use a framework upgrade as proof of owner authentication, protected storage, or production security.
+
+
+The first candidate audit reported a critical MapLibre advisory and vulnerable PostCSS dependencies. The revised candidate uses MapLibre GL JS 6.16.0 and Next.js 16.4.3; their lockfile, build and audit must pass before exposure. The MapLibre advisory concerns rendering untrusted attribution HTML and its applicability to a specific deployment depends on data flows: https://github.com/maplibre/maplibre-gl-js/security/advisories/GHSA-jrc7-96c5-q579. Node.js 20 is end-of-life; retain the existing Node 20 CI check for compatibility and verify the production candidate under supported Node 24 as well: https://nodejs.org/en/about/previous-releases.
+
+Optional demo Compose host ports are loopback-only; that reduces accidental network exposure but does not authenticate the owner or protect real case material. The initial CI browser check uses synthetic data and stubbed tiles.
+
+
+## 2026-10-28 Python dependency audit
+
+An initial pip-audit of the API requirements flagged advisories involving Starlette, python-multipart and pytest, with duplicate advisory entries in the report. Applicability depends on exposed features. The candidate removes the unused multipart parser, separates test-only packages from runtime, upgrades FastAPI and Starlette and uses a patched pytest, then adds pip-audit to CI. This remains a candidate until CI and audit pass. Resolving package advisories does not provide authentication, production storage, backup, or a full security review.
+
+The API dependency candidate passed pytest and pip-audit in https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. This does not prove absence of all vulnerabilities or complete production hardening.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.

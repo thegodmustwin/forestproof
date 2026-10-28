@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-type RouteContext = { params: { path: string[] } };
+type RouteContext = { params: Promise<{ path: string[] }> };
 
 const permittedMethods = new Set(["GET", "POST"]);
 const safePathSegment = /^[A-Za-z0-9._-]+$/;
@@ -34,7 +34,7 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
     );
   }
 
-  const segments = context.params.path;
+  const { path: segments } = await context.params;
   if (!segments.length || segments.some((segment) => !safePathSegment.test(segment))) {
     return NextResponse.json({ detail: "Invalid API path" }, { status: 400 });
   }

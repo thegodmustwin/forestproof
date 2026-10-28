@@ -46,3 +46,20 @@
 - Validated predictive prioritization, restoration monitoring, water/catchment analysis, multi-country support, and advanced outcome methods.
 
 No roadmap row is evidence of completion by itself. Update statuses only after implementation and verification.
+
+
+## 2026-10-28 owner-only pilot checkpoint
+
+- WORKING (offline groundwork): immutable synthetic RADD cell/release snapshots and field-level comparison of two saved releases. No missing-row retraction inference.
+- PARTIAL / UNVERIFIED: WUR dataset licensing and attribution source documented; local RADD coverage, GFW Data API account access, service cost, quotas, exact attribution mapping, retention, and response shape remain open.
+- PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.
+
+- PILOT SECURITY GATE: replace the unsupported Next.js 14 runtime with a supported, tested release before exposure.
+
+- PILOT SECURITY GATE: address the MapLibre and PostCSS advisories, use a supported Node runtime, and verify the map in a browser before exposure.
+
+- PILOT SECURITY GATE: resolve the initial Python dependency audit, separate runtime from test dependencies, and verify the upgraded API and its dependency audit before exposure.
+
+- PARTIAL (offline): bounded candidate GFW response envelope parser based on pinned WRI source and synthetic fixtures; no deployed-service response has been validated.
+
+- PARTIAL: a loopback-only owner gateway over an authenticated SSH tunnel is under CI verification; it is not installed on the VPS and does not satisfy live-feed or production-storage gates.

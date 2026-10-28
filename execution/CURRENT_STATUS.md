@@ -7,8 +7,8 @@
 
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
-| GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. The provisional research envelope and offline RADD normalization are in commit `c6377249b5b5dc587f289e55d9ba7794685503f3`; a status correction followed in `8bf1f02`. The app still does not ingest or display live records. |
-| GitHub CI | WORKING (latest run pending) | API and web checks passed through handoff commit `1df38e714fdfbae14294318e0326eadbaeb26af4` (run 40217118596). Commit `c6377249b5b5dc587f289e55d9ba7794685503f3` was just pushed; its Actions result has not been checked. |
+| GitHub source control | WORKING | The private main branch was 6d552d29b5d3337a56b434010fa41a2f836aa373 when this pilot preparation began. Pilot work is on a separate review branch; preserve the older, locally modified desktop checkout. |
+| GitHub CI | WORKING | Main commit `6d552d29b5d3337a56b434010fa41a2f836aa373` passed API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40609084867. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Pilot geography | PROVISIONAL RESEARCH ENVELOPE | `data/areas/geta-pfmp-research-envelope.geojson` converts the PFMP's published location range to a coarse rectangle for research and dry-runs. It is not an authoritative Geta boundary and is not approved for live alert filtering. |
@@ -17,8 +17,8 @@
 | Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
 | Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
 | Codex Cloud | CURRENT TASK WORKS; PUBLICATION UNCONFIRMED | After a readiness timeout, this task's checkout and Git read recovered on 2026-10-27. Saved draft revision 10 has not been confirmed published. The user captured an approval operation reporting RUNNING while the UI showed a publish error; the server-side cause remains unknown. Fresh-task restoration is not verified. |
-| OVH access | REMOTE DESKTOP WORKS; DEPLOYMENT PATH UNVERIFIED | The owner supplied terminal output from `vps-8071f70a`: Ubuntu 24.04.4 LTS, 6 CPUs, 11 GiB RAM and 90 GB root-disk free at that time. Codex CLI is installed, but the owner's HTTPS Git read could not authenticate. Direct access from this Cloud task, firewall, backups, TLS and deployment readiness remain unverified. |
-| Production deployment | NOT DEPLOYED | No public website or service has been deployed. The existing OVH account is paid according to the owner, but the VPS has not been accessed or audited. |
+| OVH access | READ-ONLY SSH VERIFIED | The owner provided the host fingerprint through the existing Ubuntu desktop; the agent matched it and connected as ubuntu. Ubuntu 24.04.4, active SSH/xrdp/Docker, UFW status, available disk and a point-in-time container inventory were inspected. TLS, backups, public deployment and ongoing access controls remain unverified. |
+| Production deployment | NOT DEPLOYED | The existing OVH VPS has had a read-only audit; no ForestProof service has been deployed or started. |
 | Data-source cost | UNKNOWN / NO FEED ACTIVE | GFW dataset metadata reports CC BY 4.0. The owner supplied general Global Nature Watch terms requiring account keys and attribution, but API pricing, quotas, exact attribution requirements and dataset-specific conditions remain unverified. No authenticated alert query or paid data service has been used. See `docs/COSTS_AND_OPERATING_BUDGET.md`. |
 
 ## Constraints and non-claims
@@ -61,3 +61,47 @@
 ## Next checkpoint
 
 The owner has selected an owner-only first pilot and requires a live provider feed. Continue provider/query engineering and coarse source-coverage research using the provisional envelope, while obtaining/validating a machine-readable Geta AOI and its reuse terms before operational filtering. Confirm the exact source terms and cost before any alert-record query. Implement owner authentication, production database/storage, and restore controls before real case material. Audit the OVH host and costs before any deployment.
+
+
+## 2026-10-28: pilot preparation and verified source notes
+
+- The owner confirms the intended pilot is owner-only, requires a verified live feed, and prefers the existing OVH VPS. They report Ubuntu 24.04 and working remote desktop access. At the start of this work no independent server inventory or verified SSH access was recorded; the subsequent read-only SSH inventory appears below. No production deployment is recorded.
+- The laptop checkout is at 71af70f with uncommitted documentation changes. GitHub main was 6d552d29b5d3337a56b434010fa41a2f836aa373 when this work began; its API and web CI passed in run 40609084867. Preserve local changes; do not reset that checkout.
+- The offline RADD snapshot store compares two explicitly stored releases of the same derived cell/date identity. It reports source field differences and cannot infer retractions from a missing row; there is no live ingestion or owner authentication.
+- WUR documents CC BY 4.0 reuse of the RADD dataset without royalty payment and identifies its primary humid tropical forest baseline. Local Geta coverage and GFW Data API access, cost, quota, exact integration attribution, response shape, and retention remain unverified. The PFMP-derived envelope is provisional and not an approved live filter.
+- Official Global Nature Watch terms and the linked Resource Watch attribution page were read; GFW Pro retirement on 2026-12-31 concerns Pro and does not itself establish a retirement of the separate Data API. See docs/DATA_SOURCES.md and docs/COSTS_AND_OPERATING_BUDGET.md.
+
+
+## 2026-10-28 supported web runtime
+
+The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. The candidate passed a generated-lock CI run and now has a committed lockfile; the exact release must also pass CI. It does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+
+
+The first upgrade candidate passed API tests, web tests, typecheck, build and loopback smoke checks on 2026-10-28, but npm's production dependency audit reported MapLibre and PostCSS advisories. The revised candidate passed API tests, web tests, typecheck, build, loopback proxy and case-page smoke checks on Node 20 and 24, and a headless synthetic map interaction on Node 24, in https://github.com/thegodmustwin/forestproof/actions/runs/40617936251. The production dependency audit reported zero known vulnerabilities at that time; CI on the committed lockfile must also pass. Node 20 is end-of-life and must not be the proposed production runtime.
+
+
+### Owner-provided OVH terminal screenshot, 2026-10-28
+
+The owner showed a terminal on host vps-8071f70a reporting Ubuntu 24.04.4 LTS. The screenshot's TCP listener list shows port 22 on IPv4/IPv6 wildcard addresses, port 3389 bound to 127.0.0.1, and port 3350 bound to IPv6 loopback. SSH, xrdp, xrdp-sesman, Docker and containerd services were running. Ports 80 and 443 were not shown as TCP listeners in that snapshot. This does not establish firewall reachability, TLS, UDP listeners, container inventory, backup state, SSH authentication, service ownership, or future port availability. Preserve the existing remote desktop, SSH and container services.
+
+The optional development Compose configuration binds its host ports to 127.0.0.1 and is checked in CI. It remains an unauthenticated synthetic demo and is not an approved production deployment.
+
+
+### Read-only SSH inventory, 2026-10-28
+
+The agent verified the ED25519 host fingerprint against the owner's VPS terminal screenshot and connected as ubuntu using existing local SSH credentials; no password or key was shared. Ubuntu reported Python 3.12.3 and Git 2.43.0. Root filesystem had approximately 90 GB available. The UFW status reported active, default deny incoming, with a rate-limited SSH rule; the screenshot showed xrdp listening on loopback. Docker and containerd were running, and sudo docker ps -a returned no containers at that moment. Node, npm, GitHub CLI, Caddy, nginx and Apache were not found on the account's PATH. No application backup was verified by the timer inventory; other backup mechanisms and OVH snapshots remain unknown. Firewall reachability, ports, running services and containers can change and must be rechecked before changes. This was read-only; no service, firewall or VPS software was changed.
+
+
+The initial Python dependency audit reported advisories in Starlette, python-multipart and pytest. The candidate separates test dependencies, removes the unused multipart parser, upgrades the affected packages and adds pip-audit to CI. Verification must pass on the exact branch commit; no API authentication or live feed is claimed. The web container template now uses supported Node 24 instead of end-of-life Node 20.
+
+The candidate web/API upgrades and optional web container build passed CI at https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. The Python dependency audit found no known vulnerabilities in its resolved requirements at that time; the npm production audit found no known vulnerabilities. Audits do not establish production security.
+
+
+## 2026-10-28 candidate GFW response envelope
+
+WRI's published API source at commit dd277b245debf8e37a98a8e6238c5ead8aeed115 shows POST query/json returning a Response with status success and data containing a list of row dictionaries: https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/routes/datasets/queries.py and https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/models/pydantic/responses.py. This is evidence of the source-code contract, not a verified response from the deployed service or proof of RADD coverage, access, pricing, quota, or retention rights. The standalone offline parser accepts this candidate shape, requires a concrete source release, bounds the parsed JSON and row count, rejects unsuccessful or malformed envelopes, and preserves a copy of parsed source fields. Its tests use synthetic inputs only. An empty result is not a source-health or coverage claim; raw HTTP-byte capture and response-size limits at the network boundary remain future work. LIVE remains disabled.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ has been tested on an isolated GitHub runner for a loopback-only owner gateway over the existing authenticated SSH tunnel. Its checks for required credentials, authentication, trusted host, Origin, stripped upstream authorization and loopback binding passed in GitHub Actions run 40625015460; this is not an end-to-end VPS test. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.
