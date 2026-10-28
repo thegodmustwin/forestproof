@@ -8,6 +8,8 @@
 http://127.0.0.1:18080 {
     bind 127.0.0.1
 
+    @invalid_host not host 127.0.0.1
+
     # Unsafe browser requests must come from the exact local tunnel origin.
     @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'http://127.0.0.1:18080'})"
 
@@ -20,6 +22,7 @@ http://127.0.0.1:18080 {
     }
 
     route {
+        respond @invalid_host "Invalid host" 403
         basic_auth {
             owner {$FORESTPROOF_OWNER_PASSWORD_HASH}
         }
