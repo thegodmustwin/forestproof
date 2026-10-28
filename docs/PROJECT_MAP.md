@@ -145,3 +145,8 @@ Optional demo Compose host ports are restricted to loopback and checked in CI. L
 The API separates runtime dependencies in services/api/requirements.txt from test dependencies in services/api/requirements-dev.txt. CI audits the resolved development and runtime requirements; pinned direct dependencies do not constitute a fully pinned transitive production lockfile.
 
 services/api/app/providers/gfw_radd_envelope.py provides a bounded offline candidate parser for WRI's published success envelope; services/api/tests/test_gfw_radd_envelope.py uses synthetic inputs. The deployed API envelope, actual provider data and LIVE ingestion remain unverified.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.

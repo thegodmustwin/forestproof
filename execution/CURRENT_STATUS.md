@@ -100,3 +100,8 @@ The candidate web/API upgrades and optional web container build passed CI at htt
 ## 2026-10-28 candidate GFW response envelope
 
 WRI's published API source at commit dd277b245debf8e37a98a8e6238c5ead8aeed115 shows POST query/json returning a Response with status success and data containing a list of row dictionaries: https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/routes/datasets/queries.py and https://github.com/wri/gfw-data-api/blob/dd277b245debf8e37a98a8e6238c5ead8aeed115/app/models/pydantic/responses.py. This is evidence of the source-code contract, not a verified response from the deployed service or proof of RADD coverage, access, pricing, quota, or retention rights. The standalone offline parser accepts this candidate shape, requires a concrete source release, bounds the parsed JSON and row count, rejects unsuccessful or malformed envelopes, and preserves a copy of parsed source fields. Its tests use synthetic inputs only. An empty result is not a source-health or coverage claim; raw HTTP-byte capture and response-size limits at the network boundary remain future work. LIVE remains disabled.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.

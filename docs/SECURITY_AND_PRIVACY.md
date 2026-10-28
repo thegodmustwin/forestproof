@@ -49,3 +49,8 @@ Optional demo Compose host ports are loopback-only; that reduces accidental netw
 An initial pip-audit of the API requirements flagged advisories involving Starlette, python-multipart and pytest, with duplicate advisory entries in the report. Applicability depends on exposed features. The candidate removes the unused multipart parser, separates test-only packages from runtime, upgrades FastAPI and Starlette and uses a patched pytest, then adds pip-audit to CI. This remains a candidate until CI and audit pass. Resolving package advisories does not provide authentication, production storage, backup, or a full security review.
 
 The API dependency candidate passed pytest and pip-audit in https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. This does not prove absence of all vulnerabilities or complete production hardening.
+
+
+## 2026-10-28 owner-only gateway candidate
+
+A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.

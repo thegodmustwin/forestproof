@@ -61,3 +61,5 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - PILOT SECURITY GATE: resolve the initial Python dependency audit, separate runtime from test dependencies, and verify the upgraded API and its dependency audit before exposure.
 
 - PARTIAL (offline): bounded candidate GFW response envelope parser based on pinned WRI source and synthetic fixtures; no deployed-service response has been validated.
+
+- PARTIAL: a loopback-only owner gateway over an authenticated SSH tunnel is under CI verification; it is not installed on the VPS and does not satisfy live-feed or production-storage gates.

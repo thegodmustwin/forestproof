@@ -25,6 +25,9 @@ jobs:
       - run: python -m pytest
       - run: python -m pip install pip-audit==2.10.1
       - run: pip-audit -r requirements-dev.txt --progress-spinner off
+      - name: Verify owner gateway candidate
+        working-directory: .
+        run: bash infrastructure/deployment/owner-pilot/test_gateway.sh
       - name: Check development Compose port bindings
         working-directory: .
         run: |
