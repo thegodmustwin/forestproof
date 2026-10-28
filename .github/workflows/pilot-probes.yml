@@ -1,0 +1,35 @@
+name: Temporary owner pilot readiness probes
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ovh-fingerprint:
+    name: Read-only OVH host fingerprint
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Retrieve public SSH host fingerprint
+        run: |
+          set -o pipefail
+          ssh-keyscan -T 10 -t ed25519 vps-8071f70a.vps.ovh.net > "$RUNNER_TEMP/forestproof-hostkey" 2>/dev/null
+          test -s "$RUNNER_TEMP/forestproof-hostkey"
+          echo FORESTPROOF_PUBLIC_HOST_KEY_BEGIN
+          cat "$RUNNER_TEMP/forestproof-hostkey"
+          echo FORESTPROOF_PUBLIC_HOST_KEY_END
+          ssh-keygen -lf "$RUNNER_TEMP/forestproof-hostkey"
+
+  python-audit:
+    name: Audit Python requirements
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pip-audit==2.10.1
+      - run: pip-audit -r services/api/requirements.txt --progress-spinner off
