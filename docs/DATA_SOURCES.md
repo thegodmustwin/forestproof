@@ -113,3 +113,13 @@ Before changing a provider to VERIFIED_ACTIVE:
 5. Preserve raw source identifiers, timestamps, method/version, and response metadata.
 6. Record health, latency, gaps, rate-limit behaviour, and a verification date.
 7. Confirm the UI labels a record as an observation—not a legal finding.
+
+
+## 2026-10-28 RADD and API source verification
+
+- Wageningen University & Research (WUR), the RADD producer, states that its RADD dataset is CC BY 4.0 and may be reused without royalty payment, with attribution: https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert. The same page provides the dataset reference and credits. Dataset licensing does not establish the cost, quota, or access rights of the GFW Data API service.
+- WUR says RADD is limited to its primary humid tropical forest baseline and describes excluded areas and other detection limitations. Regional African coverage is not proof that the provisional Geta research envelope is covered. A source mask or permitted bounded request and local coverage review remain necessary. The envelope is not an official forest boundary.
+- The official Global Nature Watch terms say API users must use an account API key and comply with the linked attribution requirements: https://globalnaturewatch.org/terms/. The linked Resource Watch attribution page specifies logo/link treatment for its API: https://resourcewatch.org/api-attribution-requirements. Confirm with the provider how those terms apply to this specific GFW Data API integration and dataset citation; do not assume a logo alone satisfies all requirements.
+- The public GFW Data API documentation describes key creation and says keys without listed domains use its lowest rate-limiting tier: https://data-api.globalforestwatch.org/. It does not establish this project's current access, specific quota, API price, local coverage, or the response envelope.
+- GFW Pro and its Pro API are announced to retire on 2026-12-31: https://globalnaturewatch.org/help/gfw-pro/guides/global-forest-watch-pro-license-agreement/. This announcement concerns Pro and is not evidence that the separate GFW Data API will retire.
+- These are public documentation checks only. No authenticated request, alert-record query, account creation, provider activation, cost commitment, or paid subscription has occurred.

@@ -17,3 +17,12 @@
 - Choose and document a deployment method only after the OVH inventory and production controls are understood. Railway is not the current choice.
 - Obtain practitioner feedback and one design partner before expanding billing, enterprise features, or predictive ML.
 - Get explicit current approval before recurring paid services, public deployment, external outreach, notifications, or legally consequential communication.
+
+
+## 2026-10-28 immediate pilot work
+
+1. Obtain a read-only VPS inventory from the existing remote desktop, including listening ports and running services, before selecting deployment ports or changing anything. Keep remote desktop and existing services available.
+2. Implement and verify owner-only authentication and a private API boundary, production storage and a restore-tested off-host backup plan. The existing DEMO path is not suitable for real evidence.
+3. Verify RADD's actual coverage over a lawfully reusable area, provider account/access, API pricing and quota, exact attribution and retention, then test a bounded response before wiring a live adapter. The provisional rectangle remains research-only.
+4. Integrate release comparisons only after the actual response and completeness semantics are established; missing rows alone are not retractions.
+5. Keep the existing VPS and recurring costs unchanged until the host audit and any new cost approval are complete. Codex Cloud publishing is not a prerequisite for OVH.

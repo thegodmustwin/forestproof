@@ -4,7 +4,7 @@
 
 **No public deployment exists.** The code is in the private GitHub repo and CI passes, but the public website has not been launched.
 
-The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The following are not yet verified here: current public IP, OS/version, SSH readiness, firewall, DNS/domain, TLS, backup configuration, server capacity, and deployed software.
+The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS and hardware capacity. The current public IP, SSH readiness, firewall, DNS/domain, TLS, backup configuration, existing services, and deployment path still require independent inspection.
 
 Railway was an earlier deployment proposal. It is superseded by the owner's OVH preference; RAILWAY_LAUNCH.md is retained only as historical context and is not the current deployment plan. Do not create a Railway project or deploy there unless the owner changes the decision.
 
@@ -46,3 +46,16 @@ Before real users or real case material:
 ## Deployment evidence
 
 Before marking deployment WORKING, record the host/runtime, release/commit, migration result, backup/restore test, source health, authenticated user-journey test, known limitations, responsible operator, date, and public URL if applicable. A passing local proxy check or GitHub CI run is not production deployment evidence.
+
+
+## Read-only OVH inventory for an owner-only pilot
+
+Inspect the VPS before selecting ports or installing anything. From the owner's existing remote desktop terminal, the following commands show the hostname, OS, root disk space, listening TCP ports, and running system services:
+
+    hostname
+    cat /etc/os-release
+    df -h /
+    ss -lnt
+    systemctl list-units --type=service --state=running --no-pager --no-legend
+
+These commands are read-only and do not display passwords, API keys, or private keys. Service names and addresses may still be operationally sensitive; review output before sharing. Record occupied ports and services, remote-desktop and SSH recovery paths, host-level firewall and backups before proposing a release. Do not change firewall rules, ports, existing services or remote-desktop access during this inventory.

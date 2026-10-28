@@ -46,3 +46,10 @@
 - Validated predictive prioritization, restoration monitoring, water/catchment analysis, multi-country support, and advanced outcome methods.
 
 No roadmap row is evidence of completion by itself. Update statuses only after implementation and verification.
+
+
+## 2026-10-28 owner-only pilot checkpoint
+
+- WORKING (offline groundwork): immutable synthetic RADD cell/release snapshots and field-level comparison of two saved releases. No missing-row retraction inference.
+- PARTIAL / UNVERIFIED: WUR dataset licensing and attribution source documented; local RADD coverage, GFW Data API account access, service cost, quotas, exact attribution mapping, retention, and response shape remain open.
+- PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.

@@ -8,7 +8,7 @@
 | Area | Status | Evidence / limitation |
 | --- | --- | --- |
 | GitHub source control | WORKING | Private repo thegodmustwin/forestproof, default branch main. The provisional research envelope and offline RADD normalization are in commit `c6377249b5b5dc587f289e55d9ba7794685503f3`; a status correction followed in `8bf1f02`. The app still does not ingest or display live records. |
-| GitHub CI | WORKING (latest run pending) | API and web checks passed through handoff commit `1df38e714fdfbae14294318e0326eadbaeb26af4` (run 40217118596). Commit `c6377249b5b5dc587f289e55d9ba7794685503f3` was just pushed; its Actions result has not been checked. |
+| GitHub CI | WORKING | Main commit `6d552d29b5d3337a56b434010fa41a2f836aa373` passed API and web checks: https://github.com/thegodmustwin/forestproof/actions/runs/40609084867. |
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Pilot geography | PROVISIONAL RESEARCH ENVELOPE | `data/areas/geta-pfmp-research-envelope.geojson` converts the PFMP's published location range to a coarse rectangle for research and dry-runs. It is not an authoritative Geta boundary and is not approved for live alert filtering. |
@@ -61,3 +61,12 @@
 ## Next checkpoint
 
 The owner has selected an owner-only first pilot and requires a live provider feed. Continue provider/query engineering and coarse source-coverage research using the provisional envelope, while obtaining/validating a machine-readable Geta AOI and its reuse terms before operational filtering. Confirm the exact source terms and cost before any alert-record query. Implement owner authentication, production database/storage, and restore controls before real case material. Audit the OVH host and costs before any deployment.
+
+
+## 2026-10-28: pilot preparation and verified source notes
+
+- The owner confirms the intended pilot is owner-only, requires a verified live feed, and prefers the existing OVH VPS. They report Ubuntu 24.04 and working remote desktop access. No independent server inventory, production deployment, or verified SSH access is recorded.
+- The laptop checkout is at 71af70f with uncommitted documentation changes. GitHub main was 6d552d29b5d3337a56b434010fa41a2f836aa373 when this work began; its API and web CI passed in run 40609084867. Preserve local changes; do not reset that checkout.
+- The offline RADD snapshot store compares two explicitly stored releases of the same derived cell/date identity. It reports source field differences and cannot infer retractions from a missing row; there is no live ingestion or owner authentication.
+- WUR documents CC BY 4.0 reuse of the RADD dataset without royalty payment and identifies its primary humid tropical forest baseline. Local Geta coverage and GFW Data API access, cost, quota, exact integration attribution, response shape, and retention remain unverified. The PFMP-derived envelope is provisional and not an approved live filter.
+- Official Global Nature Watch terms and the linked Resource Watch attribution page were read; GFW Pro retirement on 2026-12-31 concerns Pro and does not itself establish a retirement of the separate Data API. See docs/DATA_SOURCES.md and docs/COSTS_AND_OPERATING_BUDGET.md.

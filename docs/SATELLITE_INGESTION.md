@@ -82,3 +82,8 @@ Absence of alerts is not evidence of system health.
 ## P0 verification
 
 Test idempotency, invalid geometry, out-of-order timestamps, retry/backoff, source attribution, DEMO/LIVE separation, missing-data detection, and provider failures before representing ingestion as working.
+
+
+## 2026-10-28: offline release comparison
+
+The local RADD snapshot store now compares raw fields for two explicitly saved versions of the same ForestProof cell/date identity. It reports which top-level source fields differ, without interpreting confidence, declaring an alert retracted, or asserting that the releases are complete. It rejects missing snapshots and identical release identifiers. An alert date change yields a different identity and is not automatically linked. Tests use synthetic data only. This remains standalone SQLite groundwork: no live response has been fetched, parsed or ingested.

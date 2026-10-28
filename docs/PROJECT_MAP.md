@@ -125,3 +125,8 @@ On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net`
 ## Explicitly not implemented
 
 Production PostGIS, live record-level satellite alerts, authoritative Aberdare boundaries, legal document verification, real user authentication, organization isolation, protected production evidence storage, offline field sync, notification delivery, PDF dossiers, validated predictive ML, paid customers, and OVH deployment remain open unless a later dated status entry records testable evidence.
+
+
+## 2026-10-28 pilot preparation update
+
+The RADD snapshot store includes an offline comparison of two explicitly saved versions for the same derived cell/date identity. It reports raw source-field differences only; missing rows do not establish retraction, and changed alert dates are not automatically matched. The implementation and tests do not call a provider or enable LIVE. See the dated source and ingestion notes. GitHub main commit 6d552d29b5d3337a56b434010fa41a2f836aa373 passed its API and web CI checks at https://github.com/thegodmustwin/forestproof/actions/runs/40609084867.

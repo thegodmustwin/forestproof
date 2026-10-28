@@ -7,7 +7,7 @@ This is the compact record of durable owner choices and important unresolved fac
 | Date | Decision | Consequence |
 | --- | --- | --- |
 | 2026-10-26 | Keep momentum while KFS boundary and provider access questions are pending by using the PFMP's published coordinate extent as a provisional Geta research envelope. | Use only for source-coverage research and engineering dry-runs. It is not a forest boundary, not approved for live filtering, and does not settle data reuse, API cost, legal scope, or alert validity. Replace it when authoritative GIS geometry and terms are verified. |
-| 2026-10-26 | Use GFW RADD as the lead provider candidate for the first feed adapter; keep GLAD-L as a comparison and defer GFW Integrated Alerts. | This is an engineering priority based on RADD's Sentinel-1 radar, 10 m weekly product, and documented humid-tropical-forest/Africa scope. Validate local coverage, terrain limits, terms, and service cost before any record query or LIVE use; no paid access or feed activation is authorized. |
+| 2026-10-26 | Use GFW RADD as the lead provider candidate for the first feed adapter; keep GLAD-L as a comparison and defer GFW Integrated Alerts. | This is an engineering priority based on RADD's Sentinel-1 radar, 10 m weekly product, and documented humid-tropical-forest/Africa scope. Validate local coverage, terrain limits, terms, and service cost before any record query or LIVE use; new paid access requires owner approval. |
 | 2026-10-25 | Use the owner's personal GitHub account thegodmustwin and private repository thegodmustwin/forestproof; default branch is main. | Keep source private; don't publish or transfer to the university account. |
 | 2026-10-25 | Continue development in Codex Cloud to reduce laptop capacity pressure. | Prepare a repository-backed Cloud environment; preserve context in GitHub because desktop chat history is not the project source of truth. |
 | 2026-10-25 | Do not make local Docker a prerequisite for the owner's workflow. | Prefer Cloud setup and CI-equivalent Python/npm checks. Docker Compose may remain for optional use. |
@@ -51,3 +51,8 @@ Do not put server passwords, SSH private keys, personal evidence, or access toke
     Consequences:
     Revisit when:
 
+
+
+## 2026-10-28 owner direction
+
+Continue toward an owner-only OVH pilot with a verified live feed. The owner reports Ubuntu 24.04 and working remote desktop access. Preserve existing VPS services and remote desktop; inventory the host before proposing changes. Codex Cloud environment publishing is not a prerequisite for OVH. Check any new paid service cost with the owner, and never request passwords, API keys, or private keys in chat. This direction authorizes pilot preparation; the source, authentication, backup, and host-readiness gates still require evidence.

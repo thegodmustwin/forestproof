@@ -123,3 +123,49 @@ class RaddSnapshotStore:
         result_dict = dict(result)
         result_dict["raw_fields"] = json.loads(result_dict.pop("raw_fields_json"))
         return result_dict
+
+
+    def compare_releases(
+        self, *, forestproof_id: str, from_version: str, to_version: str
+    ) -> dict[str, Any]:
+        """Compare two saved cell snapshots without inferring absent alerts.
+
+        The caller supplies the same ForestProof cell/date identity and both
+        explicitly saved releases. This is an offline raw-field comparison,
+        not a provider event, a retraction, or a live-ingestion result.
+        Release ordering and meaning must be verified separately.
+        """
+        if not isinstance(forestproof_id, str) or not forestproof_id.strip():
+            raise ValueError("A ForestProof cell identity is required")
+        if not isinstance(from_version, str) or not isinstance(to_version, str):
+            raise ValueError("Two distinct source release identifiers are required")
+        from_version, to_version = from_version.strip(), to_version.strip()
+        if not from_version or not to_version or from_version == to_version:
+            raise ValueError("Two distinct source release identifiers are required")
+
+        before = self.get_snapshot(forestproof_id=forestproof_id, source_version=from_version)
+        after = self.get_snapshot(forestproof_id=forestproof_id, source_version=to_version)
+        if before is None or after is None:
+            raise ValueError(
+                "Both snapshots must exist; an absent row does not establish a retraction"
+            )
+
+        old_fields = before["raw_fields"]
+        new_fields = after["raw_fields"]
+
+        def canonical(value: Any) -> str:
+            return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+
+        changed_fields = [
+            key
+            for key in sorted(old_fields.keys() | new_fields.keys())
+            if key not in old_fields or key not in new_fields or canonical(old_fields[key]) != canonical(new_fields[key])
+        ]
+        return {
+            "forestproof_id": forestproof_id,
+            "source_product": RADD_PRODUCT,
+            "from_version": from_version,
+            "to_version": to_version,
+            "change": "SOURCE_FIELDS_CHANGED" if changed_fields else "UNCHANGED",
+            "changed_fields": changed_fields,
+        }
