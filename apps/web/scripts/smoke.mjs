@@ -72,6 +72,52 @@ try {
   assert.equal(casePage.status, 200);
   assert.match(casePage.headers.get("content-type") ?? "", /text\/html/);
   assert.match(await casePage.text(), /ForestProof/i);
+  if (process.argv.includes("--browser")) {
+    const executablePath = process.env.FORESTPROOF_CHROME_EXECUTABLE;
+    if (!executablePath) throw new Error("Set FORESTPROOF_CHROME_EXECUTABLE to a local Chrome or Chromium binary");
+    const { chromium } = await import("playwright-core");
+    const browser = await chromium.launch({
+      executablePath,
+      headless: true,
+      args: ["--no-sandbox", "--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
+    });
+    try {
+      const page = await browser.newPage();
+      const pageErrors = [];
+      page.on("pageerror", (error) => pageErrors.push(error.message));
+      const tile = Buffer.from(
+        "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+        "base64",
+      );
+      await page.route("**/*", async (route) => {
+        const url = route.request().url();
+        if (url.startsWith(base + "/")) return route.continue();
+        if (url.startsWith("https://tile.openstreetmap.org/")) {
+          return route.fulfill({ status: 200, contentType: "image/png", body: tile });
+        }
+        return route.abort();
+      });
+      await page.goto(base + "/monitor/aberdare", { waitUntil: "domcontentloaded" });
+      await page.waitForSelector(".maplibregl-canvas", { timeout: 30000 });
+      await page.waitForSelector(".fp-map-marker", { timeout: 30000 });
+      const markers = page.locator(".fp-map-marker");
+      assert.ok(await markers.count() >= 2, "Synthetic map markers did not render");
+      assert.equal(await page.locator(".map-canvas").count(), 0, "Map is still in fallback mode");
+      assert.match(await page.locator("body").innerText(), /DEMO/i);
+      const selectedLabel = await markers.nth(1).getAttribute("aria-label");
+      assert.ok(selectedLabel);
+      await markers.nth(1).click();
+      await page.waitForFunction(
+        (label) => document.querySelector(".fp-map-marker.selected")?.getAttribute("aria-label") === label,
+        selectedLabel,
+        { timeout: 30000 },
+      );
+      assert.deepEqual(pageErrors, [], "The map page raised a browser error");
+      console.log("Browser map smoke passed with synthetic fixtures and local tiles.");
+    } finally {
+      await browser.close();
+    }
+  }
   console.log("Production web smoke checks passed (loopback fake API).");
 } catch (error) {
   console.error(serverLog);
