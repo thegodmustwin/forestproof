@@ -12,6 +12,7 @@ class Settings:
     evidence_directory: Path
     web_origin: str
     internal_api_token: str | None = field(default=None, repr=False)
+    copernicus_catalog_enabled: bool = False
 
 
 def get_settings() -> Settings:
@@ -25,4 +26,5 @@ def get_settings() -> Settings:
         evidence_directory=Path(os.getenv("EVIDENCE_STORAGE_PATH", root / "data" / "local" / "evidence")),
         web_origin=os.getenv("WEB_ORIGIN", "http://localhost:3000"),
         internal_api_token=os.getenv("FORESTPROOF_INTERNAL_API_TOKEN"),
+        copernicus_catalog_enabled=os.getenv("FORESTPROOF_COPERNICUS_CATALOG_ENABLED", "false").lower() == "true",
     )

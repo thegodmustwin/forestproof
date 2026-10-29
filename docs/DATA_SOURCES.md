@@ -4,7 +4,7 @@
 
 Live integrations are DOCUMENTED_NOT_TESTED unless this file is updated with a verification date, successful health check, applicable licence decision, and implementation status. Documentation access is not proof that a feed is operational, commercially reusable, or appropriate for the Aberdare area of interest.
 
-No source below is currently represented by this document as a live ForestProof feed.
+No source below is currently represented as a validated production forest-alert feed. An opt-in, owner-demo-only Copernicus scene-metadata lookup is separate from alert ingestion.
 
 ## Current engineering choice (not an activation decision)
 
@@ -54,7 +54,7 @@ The same catalog lists UMD/GLAD/NASA DIST-ALERT as a comparison candidate: globa
 ## Cost and billing guardrail
 
 - A dataset's open license is not proof that its API, hosting, quotas, or redistribution path have no charges. Record the data license separately from API/service fees and rate limits.
-- No source is currently marked as having a verified $0 service cost. For GFW, a price schedule and applicable service terms remain unverified; do not query or activate the feed until this is resolved and the owner approves any non-zero or recurring cost.
+- GFW API pricing remains unverified; do not query or activate that alert feed until this is resolved and the owner approves any non-zero or recurring cost. Copernicus describes free worldwide access and a free tier with quotas; bounded anonymous scene-catalog requests have been tested without an account or billing. This does not establish zero cost for every Copernicus service, commercial use, or OVH traffic.
 - Prefer existing owner-paid OVH capacity and no-new-service designs while the owner-only pilot is being proven. Do not create paid accounts, subscriptions, overage use, or recurring services without explicit approval.
 - Track any verified monthly/annual host cost, source API fee/quota, storage/backup/egress cost, and attribution obligations in `docs/COSTS_AND_OPERATING_BUDGET.md` before production use.
 
@@ -67,7 +67,13 @@ The same catalog lists UMD/GLAD/NASA DIST-ALERT as a comparison candidate: globa
 - **Purpose:** scene discovery and imagery context, not an off-the-shelf disturbance-alert feed.
 - **Access mechanism:** STAC discovery is documented; asset download requires a token.
 - **Known limitations:** optical cloud contamination; SAR needs careful interpretation; a scene is not a disturbance finding.
-- **Operational status:** DOCUMENTED_NOT_TESTED.
+- **Operational status:** EXPERIMENTAL CONTEXT ONLY. An opt-in owner-demo lookup has been tested locally against the public STAC catalog; it is off by default, unavailable in the shared demo, and not deployed or a live forest-alert feed.
+
+**2026-10-29 bounded catalog verification:** `GET /v1/search` with `sentinel-2-l2a`, the provisional Geta-area research rectangle, a 30-day interval, and a limit of three returned recent scene metadata without credentials. The bounded test returned three records; the newest two were acquired on 2026-10-29 and reported 57.9% and 59.42% scene-wide cloud cover. Their bounding boxes overlap the broad rectangle; this does not establish full area coverage, an official boundary, usable local imagery, forest change, or a legal finding. The response is limited and may be incomplete. Only metadata was requested; no imagery was downloaded or alert cases created.
+
+`services/api/app/providers/copernicus_stac.py` implements an on-demand, fixed-host lookup with a small field projection, response-size and time bounds, redirect rejection, input validation, and a 15-minute per-process success/failure cooldown. `GET /api/v1/context/copernicus-scenes` requires the authenticated `owner_demo` service boundary and the explicit `FORESTPROOF_COPERNICUS_CATALOG_ENABLED=true` flag. The `/sources` screen labels acquisitions, provenance, timestamps, cloud-cover limitations and the provisional area; it never turns a scene into an alert. Standard tests and CI do not query the provider; an explicitly opted-in local browser smoke did. This is not production identity, storage, a scheduled live feed, or an OVH deployment.
+
+The provider's official documentation says its data and services are available worldwide under EU policy, describes open/free services and free-tier quotas, and specifies `Copernicus Sentinel data [Year]` attribution: [FAQ source](https://github.com/eu-cdse/documentation/blob/7ba7153f7497b826be1edd4c0d65b095ca065369/FAQ.qmd), [ecosystem](https://github.com/eu-cdse/documentation/blob/7ba7153f7497b826be1edd4c0d65b095ca065369/Ecosystem.qmd), [quotas](https://github.com/eu-cdse/documentation/blob/7ba7153f7497b826be1edd4c0d65b095ca065369/Quotas.qmd), and [STAC documentation](https://github.com/eu-cdse/documentation/blob/7ba7153f7497b826be1edd4c0d65b095ca065369/APIs/STAC.qmd). The full linked legal notice and applicable service terms still require review before production or redistribution. No paid account or subscription was created; existing OVH traffic and compute costs are not established by this check.
 
 ### NASA FIRMS
 

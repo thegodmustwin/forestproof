@@ -5,19 +5,21 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 from typing import Annotated, Any
 
-from fastapi import Depends, FastAPI, Header, HTTPException, status
+from fastapi import Depends, FastAPI, Header, HTTPException, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import get_settings
 from .demo_data import DEMO_AREA, DEMO_ORGANIZATION_ID, DEMO_SOURCES
 from .models import ActionCreate, AssignmentCreate, CaseCreate, EvidenceCreate, FollowUpCreate, StatusTransition
 from .owner_access import InternalAccessNotConfigured, valid_internal_token
+from .providers.copernicus_stac import CatalogUnavailable, CopernicusCatalog
 from .providers.gfw import status as gfw_status
 from .store import Store
 
 
 settings = get_settings()
 store = Store(settings)
+copernicus_catalog = CopernicusCatalog()
 
 
 @asynccontextmanager
@@ -130,6 +132,18 @@ def sources(_: Org) -> dict[str, Any]:
             }
         ],
     }
+
+
+@app.get("/api/v1/context/copernicus-scenes")
+def copernicus_scenes(response: Response, _: Org) -> dict[str, Any]:
+    """Opt-in, owner-demo-only scene context; not live forest alerts."""
+    response.headers["Cache-Control"] = "no-store"
+    if settings.mode != "owner_demo" or not settings.copernicus_catalog_enabled:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Satellite scene lookup is not enabled")
+    try:
+        return copernicus_catalog.latest()
+    except CatalogUnavailable:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Satellite scene lookup is temporarily unavailable") from None
 
 
 @app.get("/api/v1/observations")

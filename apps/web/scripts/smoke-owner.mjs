@@ -10,6 +10,8 @@ import { promisify } from "node:util";
 
 // Isolated synthetic integration: no VPS, provider or real secret.
 // Set FORESTPROOF_SMOKE_CADDY to additionally exercise the owner gateway.
+// FORESTPROOF_SMOKE_REAL_CATALOG=1 explicitly opts into a bounded public
+// Copernicus scene-metadata request; it is never enabled by the CI workflow.
 async function freePort() {
   const server = createServer();
   await new Promise((resolveListen) => server.listen(0, "127.0.0.1", resolveListen));
@@ -30,6 +32,7 @@ const apiBase = `http://127.0.0.1:${apiPort}`;
 const webBase = `http://127.0.0.1:${webPort}`;
 const apiDir = resolve(process.cwd(), "../../services/api");
 const python = process.env.FORESTPROOF_SMOKE_PYTHON || "python3";
+const realCatalog = process.env.FORESTPROOF_SMOKE_REAL_CATALOG === "1";
 const children = [];
 const syntheticSecrets = [token];
 let logs = "";
@@ -62,6 +65,7 @@ try {
     cwd: apiDir,
     env: { ...process.env, FORESTPROOF_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
       FORESTPROOF_SQLITE_PATH: join(temp, "demo.sqlite"), EVIDENCE_STORAGE_PATH: join(temp, "evidence"),
+      FORESTPROOF_COPERNICUS_CATALOG_ENABLED: realCatalog ? "true" : "false",
       WEB_ORIGIN: gatewayPort === null ? webBase : `http://127.0.0.1:${gatewayPort}` },
   });
   await waitFor(`${apiBase}/api/v1/health`, api);
@@ -142,6 +146,15 @@ try {
   assert.equal(evidence.status, 409);
   const live = await fetch(`${entryBase}/api/forestproof/ingestion/live/gfw`, { method: "POST", headers: { ...authHeaders, Origin: entryBase } });
   assert.equal(live.status, 409);
+  assert.equal((await fetch(`${apiBase}/api/v1/context/copernicus-scenes`)).status, 401);
+  const sceneResponse = await fetch(`${entryBase}/api/forestproof/context/copernicus-scenes`, { headers: authHeaders });
+  assert.equal(sceneResponse.status, realCatalog ? 200 : 503);
+  const scenePayload = realCatalog ? await sceneResponse.json() : null;
+  if (scenePayload) {
+    assert.equal(scenePayload.collection, "sentinel-2-l2a");
+    assert.ok(Array.isArray(scenePayload.scenes) && scenePayload.scenes.length <= 3);
+    assert.match(scenePayload.notice, /not a forest-loss alert/);
+  }
 
   if (process.env.FORESTPROOF_CHROME_EXECUTABLE) {
     const { chromium } = await import("playwright-core");
@@ -206,13 +219,20 @@ try {
       assert.equal(await page.getByText("Closed", { exact: true }).count(), 1);
       await page.goto(`${entryBase}/`, { waitUntil: "domcontentloaded" });
       await page.getByText("No open demo cases yet.").waitFor();
+      await page.goto(`${entryBase}/sources`, { waitUntil: "domcontentloaded" });
+      await page.getByRole("button", { name: "Look up recent scenes" }).click();
+      if (realCatalog) {
+        await page.getByText("Catalog checked", { exact: false }).waitFor();
+        if (scenePayload.scenes.length > 0) await page.getByText(scenePayload.scenes[0].id, { exact: true }).waitFor();
+      } else await page.getByText("The owner-only scene lookup is disabled or temporarily unavailable.", { exact: false }).waitFor();
       assert.deepEqual(pageErrors, []);
       console.log("Browser workflow passed through the saved demo case, action, follow-up and closure.");
     } finally { await browser.close(); }
   }
   console.log(caddyPath ? "Owner gateway and web/API boundary smoke passed with synthetic data and loopback services."
     : "Owner-demo web/API boundary smoke passed with synthetic data and loopback services; gateway authentication was not exercised.");
-  console.log("VPS deployment and live ingestion were not exercised.");
+  if (realCatalog) console.log("A bounded public Copernicus scene-metadata lookup was also exercised; scenes are not alerts.");
+  console.log("VPS deployment and live alert ingestion were not exercised.");
 } catch (error) {
   // These are synthetic values; redact them even if a child logs them.
   for (const secret of syntheticSecrets) logs = logs.replaceAll(secret, "[redacted]");

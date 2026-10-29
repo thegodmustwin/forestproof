@@ -33,6 +33,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed. `services/api/app/providers/raster_identity.py` and `gfw_radd.py` contain tested identity/normalization primitives; neither makes live requests or persists alerts.
 - services/api/app/providers/radd_snapshot_store.py — standalone local SQLite groundwork for retaining synthetic RADD cell/release snapshots, replay detection and conflict rollback. It is not connected to the API, a live feed, or the production PostGIS target.
 - services/api/app/providers/gfw_radd_research.py — default-deny, standalone bounded research transport candidate. Its tests use synthetic and loopback-only mocks; it is not wired to the API or a worker and has not queried live alerts.
+- services/api/app/providers/copernicus_stac.py and apps/web/src/components/copernicus-context.tsx — optional owner-demo-only, bounded live scene-metadata context. It is off by default, has a 15-minute per-process cooldown, and does not create observations, download imagery or enable alerts.
 - data/demo/ and data/fixtures/ — documented synthetic/demo material; local mutable data under data/local/ is ignored by Git.
 - data/areas/ — provisional, clearly non-authoritative research geography; not an operational forest boundary or LIVE alert filter.
 - infrastructure/ — Docker Compose/PostGIS initialization and deployment notes. These are not a production deployment.
@@ -50,7 +51,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 | /cases/[id] | apps/web/src/app/cases/[id]/page.tsx, case-workspace.tsx | Human workflow, case history, evidence and review actions in DEMO scope. A missing case does not substitute an unrelated demo case, and an API response must match the requested case ID. |
 | /operations | apps/web/src/app/operations/page.tsx | Workflow counts/operations view, not conservation impact metrics. |
 | /outcomes | apps/web/src/app/outcomes/page.tsx, outcome-graph.tsx | P0 relational outcome summary; no causal impact claim. |
-| /sources | apps/web/src/app/sources/page.tsx | Provider status and source limitations; no validated live provider currently. |
+| /sources | apps/web/src/app/sources/page.tsx | Provider status and an optional owner-demo Copernicus scene lookup; no validated live alert feed. |
 | /legal | apps/web/src/app/legal/page.tsx | Human-review/legal source gate; no verified legal corpus is configured. |
 | /api/forestproof/* | apps/web/src/app/api/forestproof/[...path]/route.ts | Same-origin proxy to the API in hosted layouts; it is not an authentication layer. |
 
@@ -65,6 +66,7 @@ Shared UI pieces are under apps/web/src/components/; API normalization and HTTP 
 The app is declared in services/api/app/main.py; request contracts are in models.py, fixtures in demo_data.py, settings in config.py, persistence/workflow rules in store.py, and source-health placeholder in providers/gfw.py.
 
 - Health, monitoring area, and source status: /api/v1/health, /monitoring-areas, /sources.
+- Optional scene context: GET /api/v1/context/copernicus-scenes; only available with owner-demo service authentication and an explicit enable flag, never a forest-alert endpoint.
 - Observations: GET /observations, GET /observations/{id}, and idempotent DEMO ingestion at POST /ingestion/demo.
 - Live-provider guard: POST /ingestion/live/gfw currently returns NOT_STARTED/HTTP 409 with prerequisites; no active feed is claimed.
 - Cases: collection/detail, transitions, assignments, actions, follow-ups, evidence attachment, and dossier under /cases.

@@ -60,6 +60,32 @@ export async function loadCaseQueue(): Promise<CaseSummary[]> {
   });
 }
 
+export type CopernicusScene = { id: string; acquiredAt: string; platform: string | null; sceneCloudCoverPercent: number | null };
+export type CopernicusSceneContext = { checkedAt: string; scenes: CopernicusScene[] };
+
+export async function loadCopernicusSceneContext(): Promise<CopernicusSceneContext> {
+  const response = await fetch(`${apiBase}/context/copernicus-scenes`, { headers: { Accept: "application/json" }, cache: "no-store" });
+  if (!response.ok) throw new Error("Satellite scene lookup is unavailable");
+  const payload: unknown = await response.json();
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) throw new Error("Satellite scene response was malformed");
+  const raw = payload as UnknownRecord;
+  if (raw.collection !== "sentinel-2-l2a" || !Array.isArray(raw.scenes) || raw.scenes.length > 3) throw new Error("Satellite scene response was malformed");
+  const checkedAt = requiredString(raw.checked_at, "catalog check time");
+  if (Number.isNaN(Date.parse(checkedAt))) throw new Error("Satellite catalog check time was malformed");
+  const scenes = raw.scenes.map((item: unknown): CopernicusScene => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error("Satellite scene was malformed");
+    const scene = item as UnknownRecord;
+    const cloud = scene.scene_cloud_cover_percent;
+    if (cloud !== null && (typeof cloud !== "number" || !Number.isFinite(cloud) || cloud < 0 || cloud > 100)) throw new Error("Satellite scene cloud cover was malformed");
+    if (scene.platform !== null && typeof scene.platform !== "string") throw new Error("Satellite scene platform was malformed");
+    const acquiredAt = requiredString(scene.acquired_at, "scene date");
+    if (Number.isNaN(Date.parse(acquiredAt))) throw new Error("Satellite scene date was malformed");
+    return { id: requiredString(scene.id, "scene ID"), acquiredAt,
+      platform: scene.platform as string | null, sceneCloudCoverPercent: cloud as number | null };
+  });
+  return { checkedAt, scenes };
+}
+
 export async function loadObservations(): Promise<{ items: DemoObservation[]; fromApi: boolean }> {
   const response = await fetch(`${apiBase}/observations`, { headers: { Accept: "application/json" }, cache: "no-store" });
   if (!response.ok) throw new Error(`Observation request failed (${response.status})`);
