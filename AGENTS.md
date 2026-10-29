@@ -23,7 +23,7 @@ Before substantial work, read:
 - Prefer integrating licensed upstream datasets over rebuilding satellite infrastructure. Avoid a decorative globe, speculative ML, Kubernetes, Kafka, GPUs, or recurring paid services without demonstrated need and user approval.
 - Keep DEMO and LIVE paths separate and fail closed when required auth, source terms, provenance, or configuration is missing.
 - The user prefers Codex Cloud because of laptop capacity constraints and does not want local Docker as a prerequisite. Use Python 3.12 and Node 20 CI-equivalent checks; Docker Compose is optional, not the default onboarding path.
-- The user's preferred production host is their OVH VPS. OVH access and deployment are not yet verified. Railway instructions in the repository are historical and must not be followed as the current plan unless the user changes that decision.
+- The user's preferred production host is their OVH VPS. A prior session deployed and initially verified a password-protected synthetic preview there; the live pilot is not deployed. Current access and server state must be rechecked before changes. Railway instructions in the repository are historical and must not be followed as the current plan unless the user changes that decision.
 - Never deploy, change production security, contact partners, send external notifications, or incur recurring charges unless the current user request clearly authorizes that action.
 
 When implementation or a material decision changes, update the relevant status, roadmap, and map documentation in the same change. Report what was tested and what remains unverified.

@@ -36,7 +36,7 @@ The long-term differentiating asset is the **Forest Intervention Outcome Graph**
 
 ## Initial operating context and sensitivities
 
-- **Pilot geography:** Aberdare water tower and connected catchments in Kenya; Geta Forest is the first research focus. A coarse PFMP-text-derived Geta research envelope now supports engineering dry-runs, but it is not an authoritative boundary or an operational alert filter. The app's DEMO map remains illustrative.
+- **Pilot geography:** Aberdare water tower and connected catchments in Kenya; Geta Forest is the first research focus. A coarse PFMP-text-derived envelope supports engineering dry-runs; it is not an authoritative boundary or currently an operational alert filter. The owner wants a provisional path that does not wait indefinitely for KFS: a future owner-only pilot may monitor a clearly labeled broader region once area assumptions, source terms, coverage and other pilot controls are verified. It must not describe pixels as inside Geta Forest on the basis of the rectangle. The app's DEMO map remains illustrative.
 - **Use case:** triage candidate forest disturbance and help legitimate organizations investigate and document it.
 - **Important archived claim:** the origin prompts discuss October 2026 court reporting and an expected Geta Forest visit. The repository currently contains no verified operative order, official legal record, permit corpus, or human-reviewed legal conclusion. Recheck authoritative sources before any present-day use.
 - **Alternative explanations:** plantation management, authorized harvesting, fire, storm damage, seasonal vegetation, roads, sensor error, and classification uncertainty must remain possible until evidence distinguishes them.
@@ -73,21 +73,21 @@ The UI includes DEMO notices. Its coordinates, cases, provider labels, confidenc
 - No official legal-order/permit library has been loaded or reviewed.
 - No production PostGIS runtime adapter, user authentication, roles, real multi-tenancy, private production object storage, upload scanning, backup/restore drill, or operational alerting has been verified.
 - No real external user, organization, paid pilot, endorsement, or measured environmental outcome is recorded.
-- No public deployment exists. The GitHub repo being private does not make the website live.
+- A password-protected synthetic preview was deployed to the existing OVH hostname and verified by a prior session. It is not a live-data or production deployment; the current session has not rechecked the VPS.
 
 ## Owner workflow and hosting decisions
 
 - The source of truth is the private GitHub repo linked above, not desktop chat history. Use Codex Cloud for ongoing development because the owner wants to avoid laptop capacity bottlenecks; local Docker must not be a prerequisite.
-- The owner prefers their existing OVH VPS for eventual hosting. The temporary hostname mentioned in conversation is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS. The agent verified the host fingerprint with the owner and completed a read-only SSH inventory as ubuntu on 2026-10-28; UFW and current listeners were inspected. The public IP, DNS/domain, TLS, backup coverage, source access and deployment configuration remain unverified.
+- The owner prefers their existing OVH VPS for hosting. The temporary hostname is vps-8071f70a.vps.ovh.net. A prior session verified the host fingerprint, inspected the server and deployed the password-protected synthetic preview with HTTPS. Access and current server configuration must be rechecked; production backup coverage and live source access remain unverified.
 - Existing Railway deployment material predates that preference. Railway is not the current hosting decision. See docs/DEPLOYMENT.md and the historical notice in docs/RAILWAY_LAUNCH.md.
 - Never put credentials in the repo or ask for secrets in chat. Keep .env local and use .env.example for variable names only.
 
 ## Work sequence from here
 
 1. Codex Cloud setup has been exercised with Python 3.12 and Node 20: API tests, web typecheck/build, and local API/web smoke checks passed on 2026-10-25. Install/start instructions are saved; restoration in a fresh task is not independently verified.
-2. The first production pilot is owner-only and requires a live provider feed. Use the provisional PFMP research envelope to advance offline engineering, with direct GFW RADD as the lead feed candidate and GLAD-L as a comparison. Establish a lawfully reusable AOI and verify terms, cost, access, coverage, latency, and source metadata before activation.
+2. The first production pilot is owner-only and requires a live provider feed. Use the provisional PFMP research envelope to advance engineering, with direct GFW RADD as the lead feed candidate and GLAD-L as a comparison. A clearly labeled wider-area pilot need not wait for an official forest boundary, but its geometry assumptions and lawful use must be reviewed; verify terms, cost, access, coverage, latency, and source metadata before activation.
 3. Complete production security boundaries (identity, role/tenant isolation, protected evidence storage, upload scanning, backups, and restore tests) before accepting real case material.
-4. Audit the OVH VPS and select a deployment method only after confirming host/IP/OS/SSH, firewall, TLS/domain, backup, operating cost, and security requirements. No deployment has happened.
+4. Recheck the OVH VPS and choose a production deployment method after confirming access, firewall, TLS/domain, backups, operating cost, and security requirements. Preserve the existing synthetic preview and remote desktop.
 5. Validate the workflow with a legitimate conservation or watershed professional; only then expand the commercial scope.
 
 ## Source of truth and reading order

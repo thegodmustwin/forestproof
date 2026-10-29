@@ -122,13 +122,13 @@ On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net`
 - docs/SECURITY_AND_PRIVACY.md — current controls, gaps, and sensitive-data policy.
 - docs/ALPHAZERO_DOCTRINE.md, docs/GOLDEN_ECONOMICS.md, docs/COMMERCIAL_STRATEGY.md, docs/PILOT_PARTNERSHIPS.md, docs/GRANTS_AND_INCENTIVES.md — strategic and business hypotheses, not validated demand.
 - docs/DEMO_SCRIPT.md — demonstration path and truthful DEMO labels.
-- docs/DEPLOYMENT.md — current OVH preference and unverified launch prerequisites.
+- docs/DEPLOYMENT.md — deployed synthetic OVH preview and unverified live-pilot prerequisites.
 - execution/CURRENT_STATUS.md, execution/NEXT_ACTIONS.md, execution/ROADMAP.md — dated execution state and priorities.
 - docs/origin/ — original prompts, retained for history only.
 
 ## Explicitly not implemented
 
-Production PostGIS, live record-level satellite alerts, authoritative Aberdare boundaries, legal document verification, real user authentication, organization isolation, protected production evidence storage, offline field sync, notification delivery, PDF dossiers, validated predictive ML, paid customers, and OVH deployment remain open unless a later dated status entry records testable evidence.
+Production PostGIS, live record-level satellite alerts, authoritative Aberdare boundaries, legal document verification, real user authentication, organization isolation, protected production evidence storage, offline field sync, notification delivery, PDF dossiers, validated predictive ML, paid customers, and live-pilot deployment remain open. A prior session deployed and verified a synthetic OVH preview; see `execution/CURRENT_STATUS.md` for its limitations.
 
 
 ## 2026-10-28 pilot preparation update
@@ -138,9 +138,9 @@ The RADD snapshot store includes an offline comparison of two explicitly saved v
 
 ## 2026-10-28 supported web runtime
 
-The repository's locked Next.js 14.2.35 is outside the supported release lines. A change in this pilot-preparation branch upgrades to Next.js 16.4.3 and React 19.2.8, migrates asynchronous route parameters, and adds a loopback production proxy/page smoke check and a production dependency audit. The candidate passed a generated-lock CI run and now has a committed lockfile; the exact release must also pass CI. It does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant current advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
+The earlier Next.js 14.2.35 lockfile was outside the supported release lines. The current lockfile uses Next.js 16.4.3 and React 19.2.8, with asynchronous route parameters, a loopback proxy/page smoke check and a dependency audit. The candidate passed CI as recorded in `execution/CURRENT_STATUS.md`; a framework upgrade does not implement owner authentication or enable LIVE. Next.js support policy: https://nextjs.org/support-policy. Relevant advisory: https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r.
 
-The web upgrade uses MapLibre GL JS 6.16.0 and tests Node 20 for compatibility and supported Node 24. Run https://github.com/thegodmustwin/forestproof/actions/runs/40617936251 passed API tests, web checks, production dependency audit, and a headless browser map interaction with synthetic fixtures and stubbed tiles. Deployment and real provider tiles remain unverified.
+The web upgrade uses MapLibre GL JS 6.16.0 and tests Node 20 for compatibility and supported Node 24. Run https://github.com/thegodmustwin/forestproof/actions/runs/40617936251 passed API tests, web checks, production dependency audit, and a headless browser map interaction with synthetic fixtures and stubbed tiles. A synthetic preview was deployed later; live production and real provider tiles remain unverified.
 
 The owner-provided OVH screenshot is summarized in docs/DEPLOYMENT.md; it is a point-in-time inventory and not a deployment or firewall verification.
 
@@ -158,3 +158,7 @@ A Caddy configuration under infrastructure/deployment/owner-pilot/ is being test
 - `docs/GFW_ACCESS_REQUEST_DRAFT.md` — unsent questions about API access, pricing, attribution, local coverage and retention; no provider has been contacted.
 
 - `docker-compose.preview.yml` and `infrastructure/deployment/family-preview/` — synthetic friends-and-family preview; shared test account, HTTPS gateway, no real evidence or live source.
+
+## 2026-10-29 pilot area and release selection
+
+The owner accepts a provisional wider-region path without waiting indefinitely for an official KFS boundary. The current envelope is still research-only until its assumptions and use are reviewed; it cannot establish that observations are inside Geta Forest. Public RADD metadata also showed an older content date behind the `latest` alias than another listed release. See `docs/DATA_SOURCES.md` and `execution/NEXT_ACTIONS.md` before choosing a source version or enabling any live request.

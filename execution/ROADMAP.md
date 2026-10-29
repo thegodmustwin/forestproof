@@ -14,7 +14,7 @@
 | Order | Milestone | Status | Completion evidence / remaining work |
 | --- | --- | --- | --- |
 | 1 | Repository and development environment | PARTIAL | The current Cloud task recovered after a readiness failure and can access the checkout and GitHub. Draft revision 10 publication and fresh-task restoration are not verified. The owner also has an OVH remote desktop; its CLI shell and GitHub authentication need follow-up. |
-| 2 | Architecture and source verification | PARTIAL | Architecture and source manifest exist; a PFMP-derived research envelope is available for non-operational coverage work; authoritative AOI and live-provider validation remain. |
+| 2 | Architecture and source verification | PARTIAL | Architecture and source manifest exist; a PFMP-derived envelope is available for non-operational coverage work. A clearly labeled wider-area pilot may be considered after geometry assumptions, lawful use and live-provider validation; it cannot establish an official forest boundary. |
 | 3 | PostGIS database and monitored area | PARTIAL | SQL target exists; API still uses SQLite. The provisional Geta envelope is not the official boundary or an operational AOI. |
 | 4 | Typed observation schema | PARTIAL | Pydantic geometry and source metadata are present; production persistence and provider contract need extension. |
 | 5 | Deterministic DEMO provider | WORKING | Synthetic fixtures are idempotent and explicitly labeled. |
@@ -27,7 +27,7 @@
 | 12 | EvidenceProof dossier | PARTIAL | JSON dossier and hash status exist; PDF output and complete production manifest remain. |
 | 13 | Authentication and tenancy | PARTIAL (SYNTHETIC ONLY) | Experimental owner-demo adds internal web-to-API token checks and server-derived owner audit labels, with isolated gateway/web/API smoke tests. The web endpoint still requires the separate owner gateway; person-level identity, secure production deployment, isolation and LIVE access are absent. |
 | 14 | End-to-end acceptance | PARTIAL | API tests exercise the core workflow; browser-level end-to-end proof is not recorded. |
-| 15 | Deployment and external feedback | DEFERRED | OVH remote desktop access is confirmed. Publishing a reusable Codex environment is not a hosting prerequisite; production still requires server audit, security gates and real-user participation. |
+| 15 | Deployment and external feedback | PARTIAL (SYNTHETIC PREVIEW) | A prior session deployed and verified a password-protected synthetic preview on OVH. Publishing a reusable Codex environment is not a hosting prerequisite; the live pilot still requires access recheck, security gates and real-user participation. |
 
 ## P1 — only after P0 evidence warrants it
 
@@ -54,11 +54,11 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - PARTIAL / UNVERIFIED: WUR dataset licensing and attribution source documented; local RADD coverage, GFW Data API account access, service cost, quotas, exact attribution mapping, retention, and response shape remain open.
 - PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.
 
-- PILOT SECURITY GATE: replace the unsupported Next.js 14 runtime with a supported, tested release before exposure.
+- COMPLETED DEPENDENCY WORK: the lockfile was upgraded from Next.js 14 to Next.js 16.4.3; a local Node 24 build passed and prior candidate CI passed. A framework upgrade does not establish production security.
 
-- PILOT SECURITY GATE: address the MapLibre and PostCSS advisories, use a supported Node runtime, and verify the map in a browser before exposure.
+- PILOT SECURITY GATE: recheck current dependency advisories and the intended owner's browser/map for the production release. Prior candidate CI and dependency audits passed; verify a supported Node runtime on the eventual production host.
 
-- PILOT SECURITY GATE: resolve the initial Python dependency audit, separate runtime from test dependencies, and verify the upgraded API and its dependency audit before exposure.
+- COMPLETED DEPENDENCY WORK: the initial Python dependency audit was addressed, runtime/test dependencies were separated, and candidate CI/audit passed. Recheck advisories for the production release.
 
 - PARTIAL (offline): bounded candidate GFW response envelope parser based on pinned WRI source and synthetic fixtures; no deployed-service response has been validated.
 

@@ -6,6 +6,7 @@ This is the compact record of durable owner choices and important unresolved fac
 
 | Date | Decision | Consequence |
 | --- | --- | --- |
+| 2026-10-29 | Keep moving without waiting indefinitely for an official Geta GIS boundary; the owner accepts a provisional approach. | A future owner-only pilot may monitor an explicitly labeled broader region after the area assumptions, permitted data use, coverage and pilot controls are verified. Do not represent the coarse rectangle as a forest boundary or claim that a pixel lies inside Geta Forest. The current research envelope is not yet activated for LIVE use. |
 | 2026-10-26 | Keep momentum while KFS boundary and provider access questions are pending by using the PFMP's published coordinate extent as a provisional Geta research envelope. | Use only for source-coverage research and engineering dry-runs. It is not a forest boundary, not approved for live filtering, and does not settle data reuse, API cost, legal scope, or alert validity. Replace it when authoritative GIS geometry and terms are verified. |
 | 2026-10-26 | Use GFW RADD as the lead provider candidate for the first feed adapter; keep GLAD-L as a comparison and defer GFW Integrated Alerts. | This is an engineering priority based on RADD's Sentinel-1 radar, 10 m weekly product, and documented humid-tropical-forest/Africa scope. Validate local coverage, terrain limits, terms, and service cost before any record query or LIVE use; new paid access requires owner approval. |
 | 2026-10-25 | Use the owner's personal GitHub account thegodmustwin and private repository thegodmustwin/forestproof; default branch is main. | Keep source private; don't publish or transfer to the university account. |
@@ -33,9 +34,9 @@ The prompts also discuss candidate providers, grants, customer types, and market
 
 ## Operational facts still to establish
 
-- OVH service details: OS, owner remote desktop, SSH identity and UFW status were inspected on 2026-10-28. Current public IP, backups, DNS/domain, TLS, installed production runtime and deployment path remain to be established.
+- OVH service details: a prior session inspected the server and verified HTTPS for the deployed synthetic preview. Current access, server state, backup/restore and the production deployment path remain to be established.
 - Codex Cloud: environment setup and CI-equivalent checks completed in the onboarding task; saved install/start instructions are present. Fresh-task restoration is not independently verified, and a narrow egress allowlist for public source documentation awaits review/publication.
-- Data: authoritative/lawfully reusable Aberdare AOI, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance. A PFMP-derived provisional envelope now supports non-operational research; the gates remain.
+- Data: a lawfully usable and accurately labeled area, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance. A PFMP-derived provisional envelope supports non-operational research today; a wider-area pilot can be considered without asserting an official forest boundary once its remaining gates pass.
 - GFW access: the owner is unsure whether an approved project API account exists. Do not request or store a key until terms and cost are reviewed; if required, use environment settings rather than chat.
 - Product validation: first legitimate practitioner interview, design partner, pilot criteria, and willingness to pay.
 - Production security: authentication, role boundaries, tenant isolation, object-store access, retention, backup and restore, monitoring, incident handling.
