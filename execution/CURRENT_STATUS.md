@@ -1,6 +1,6 @@
 # Current Status
 
-**Last updated:** 2026-10-28
+**Last updated:** 2026-10-29
 **Milestone:** private GitHub source and Codex Cloud development environment established; production gates remain.
 
 ## Truthful snapshot
@@ -12,7 +12,7 @@
 | DEMO vertical slice | WORKING | Synthetic observation → case → transition/assignment → evidence hash → action/follow-up → JSON dossier/outcome graph is implemented and covered by API checks. |
 | Live data | DOCUMENTED_NOT_TESTED | GFW, Copernicus, NASA FIRMS, and KFS remain candidates. No record-level live feed is active or represented as validated. |
 | Pilot geography | PROVISIONAL RESEARCH ENVELOPE | `data/areas/geta-pfmp-research-envelope.geojson` converts the PFMP's published location range to a coarse rectangle for research and dry-runs. It is not an authoritative Geta boundary and is not approved for live alert filtering. |
-| Lead feed engineering target | RADD CANDIDATE | Direct GFW RADD is the first adapter target; GLAD-L remains a comparator. Offline normalization and local snapshot persistence accept synthetic rows only in tests. Local coverage, terrain performance, exact response shape, service terms, and cost remain unverified. No live records queried or feed activated. |
+| Lead feed engineering target | RADD CANDIDATE | Direct GFW RADD is the first adapter target; GLAD-L remains a comparator. A default-deny standalone bounded research transport, offline normalization and local snapshots are tested with synthetic data; none is connected to live ingestion. Local coverage, deployed query behavior, terms and cost remain unverified. No live records queried or feed activated. |
 | Legal context | PLANNED | No verified court order, permit, restriction, or qualified human legal review is loaded. |
 | Persistence | PARTIAL | SQLite is the DEMO development adapter. PostGIS SQL exists as a target; production runtime is not connected to it. |
 | Authentication and tenancy | PLANNED | DEMO is constrained to one seeded organization. Non-demo requests fail closed. No real identity or multi-tenant operation. |
@@ -32,6 +32,8 @@
 
 ## Verification evidence
 
+- On 2026-10-29 a standalone, default-deny RADD research transport candidate was added. Tests exercised prerequisite gates, fixed endpoint and header-only key, small request bounds, byte/time limits, duplicate JSON, incomplete responses, error handling, no retry and redirect protection; a real redirect check used only two local mock servers. The full API suite passed 85 tests with the current pinned Python dependencies. No provider credentials or live alert data were used, and no network transport is wired to the application. The candidate's caller attestations are not audited proof or production authorization.
+- On 2026-10-29 public GFW `/fields` metadata listed the RADD confidence values 2/3/4 as nominal/high/highest. This is catalog metadata only, not proof that the live response shape, local coverage, service cost or legal terms are verified.
 - On 2026-10-28 the demo case screen was changed to wait for the requested API case or an exact matching local fixture. Missing cases no longer fall back to a different demonstration case; API responses with missing or mismatched case IDs are rejected. Seven web tests, TypeScript and the production web build passed locally. This is a demo correctness fix, not owner authentication or production deployment.
 - On 2026-10-27 the owner supplied copied Global Nature Watch Terms of Service text from the redirected legacy GFW terms page. It requires account API keys and attribution and refers to dataset-specific licenses. It contains separate Pro eligibility criteria, no API price/quota, and a $100 liability cap that is not a price. The owner-supplied text and its hash are documented in `docs/DATA_SOURCES.md`; the linked attribution requirements could not be fetched through this workspace. No account or API key was created and no live alert records were queried.
 - On 2026-10-27 a standalone RADD snapshot store was added and verified against synthetic rows. It preserves canonical source fields, a hash, cell/date identity, source release and receipt time; handles identical replays; keeps releases separate; and rolls back a batch when an existing cell/release has conflicting fields. The full API suite passes 28 tests. The store is not wired to live ingestion or production storage.
