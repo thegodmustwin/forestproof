@@ -56,7 +56,7 @@ export type DemoCase = {
 export const demoMode = {
   label: "DEMO MODE",
   description:
-    "All case records and point observations below are deterministic synthetic fixtures. They are not live alerts, legal findings, boundaries, permits, or allegations.",
+    "All observations and cases are for synthetic demonstration only. They are not live alerts, legal findings, official boundaries, permits, or allegations. Do not enter real or personal information.",
 };
 
 export const monitoredArea = {
@@ -197,7 +197,6 @@ export const caseStatusLabels: Record<CaseStatus, string> = {
   REOPENED: "Reopened",
 };
 
-export const getObservation = (id: string) => observations.find((item) => item.id === id) ?? observations[0];
 /** A missing case or source observation must never resolve to another fixture. */
 export function findDemoCase(id: string): { record: DemoCase; observation: DemoObservation } | null {
   const record = cases.find((item) => item.id === id);

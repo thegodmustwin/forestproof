@@ -17,8 +17,9 @@
 html { background: var(--ground); }
 body { margin: 0; color: var(--ink); background: var(--ground); font-family: Arial, Helvetica, sans-serif; }
 a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
+button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
 
 .app-shell { min-height: 100vh; display: grid; grid-template-columns: 248px minmax(0, 1fr); }
 .sidebar { position: sticky; top: 0; height: 100vh; padding: 28px 16px; background: #102e21; color: #eff3e8; display: flex; flex-direction: column; gap: 26px; }
@@ -117,6 +118,11 @@ h3 { margin: 0; font-size: 15px; }
 .button:hover { background: var(--forest-bright); }
 .button.secondary { background: var(--paper); color: var(--forest); border-color: #93aa99; }
 .button-row { display: flex; gap: 9px; flex-wrap: wrap; }
+.review-form { display: grid; gap: 9px; max-width: 680px; }
+.review-form label { font-size: 13px; font-weight: 700; }
+.review-form textarea, .review-form select { width: 100%; padding: 10px; background: white; border: 1px solid #a6b7aa; border-radius: 4px; color: var(--ink); }
+.review-form textarea { min-height: 90px; resize: vertical; }
+.review-form .button { justify-self: start; }
 
 .timeline { position: relative; padding-left: 21px; display: grid; gap: 20px; }
 .timeline::before { content: ""; position: absolute; top: 5px; bottom: 6px; left: 5px; width: 1px; background: #c9d7c7; }

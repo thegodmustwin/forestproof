@@ -76,8 +76,10 @@ try {
 
   let entryBase = webBase;
   let authHeaders = {};
+  let gatewayPassword;
   if (caddyPath) {
     const password = randomBytes(24).toString("base64url");
+    gatewayPassword = password;
     const { stdout } = await promisify(execFile)(caddyPath, ["hash-password", "--plaintext", password]);
     const passwordHash = stdout.trim();
     assert.match(passwordHash, /^\$2[aby]\$/);
@@ -140,6 +142,74 @@ try {
   assert.equal(evidence.status, 409);
   const live = await fetch(`${entryBase}/api/forestproof/ingestion/live/gfw`, { method: "POST", headers: { ...authHeaders, Origin: entryBase } });
   assert.equal(live.status, 409);
+
+  if (process.env.FORESTPROOF_CHROME_EXECUTABLE) {
+    const { chromium } = await import("playwright-core");
+    const browser = await chromium.launch({ executablePath: process.env.FORESTPROOF_CHROME_EXECUTABLE, headless: true,
+      args: ["--no-sandbox", "--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    try {
+      const context = await browser.newContext(gatewayPassword ? { httpCredentials: { username: "owner", password: gatewayPassword } } : {});
+      const page = await context.newPage();
+      const pageErrors = [];
+      page.on("pageerror", (error) => pageErrors.push(error.message));
+      const tile = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64");
+      await page.route("**/*", async (route) => {
+        const url = route.request().url();
+        if (url.startsWith(`${entryBase}/`)) return route.continue();
+        if (url.startsWith("https://tile.openstreetmap.org/")) return route.fulfill({ status: 200, contentType: "image/png", body: tile });
+        return route.abort();
+      });
+      await page.goto(`${entryBase}/monitor/aberdare`, { waitUntil: "domcontentloaded" });
+      await page.getByText("API connected.", { exact: false }).waitFor();
+      await page.getByRole("button", { name: "Create review case" }).click();
+      const openRecord = page.getByRole("link", { name: "Open the review record" });
+      await openRecord.waitFor();
+      assert.equal(await openRecord.getAttribute("href"), `/cases/${caseId}`);
+
+      await page.goto(`${entryBase}/operations`, { waitUntil: "domcontentloaded" });
+      await page.getByText(caseId, { exact: false }).waitFor();
+      const queueRow = page.locator("tbody tr").filter({ hasText: caseId });
+      assert.equal(await queueRow.count(), 1);
+      assert.match(await queueRow.innerText(), /Synthetic owner smoke/);
+      await page.goto(`${entryBase}/cases/${caseId}`, { waitUntil: "domcontentloaded" });
+      await page.getByRole("button", { name: "Advance to Under review" }).click();
+      await page.getByRole("button", { name: "Advance to Field verification" }).click();
+      const advanceAction = page.getByRole("button", { name: "Advance to Action recorded" });
+      await advanceAction.waitFor();
+      assert.equal(await advanceAction.isDisabled(), true);
+      await page.getByLabel("What action was taken?").fill("Synthetic request for a review.");
+      await page.getByRole("button", { name: "Save demo action" }).click();
+      await page.getByText("Synthetic action saved. You can now advance the case.").waitFor();
+      await advanceAction.click();
+      await page.getByRole("button", { name: "Advance to Follow-up" }).click();
+      const close = page.getByRole("button", { name: "Advance to Closed" });
+      await close.waitFor();
+      assert.equal(await close.isDisabled(), true);
+      await page.getByLabel("What did the follow-up find?").fill("Synthetic follow-up remains unresolved.");
+      await page.getByRole("button", { name: "Save demo follow-up" }).click();
+      await page.getByText("Synthetic follow-up saved. You can now close the case.").waitFor();
+      await close.click();
+      await page.getByText("Saved: Follow-up → Closed.").waitFor();
+      await page.reload({ waitUntil: "domcontentloaded" });
+      await page.getByText("Synthetic request for a review.").waitFor();
+      await page.getByText("Synthetic follow-up remains unresolved.").waitFor();
+      await page.getByRole("link", { name: observations.items[0].id, exact: true }).click();
+      await page.locator(".detail-panel").getByText(observations.items[0].id, { exact: true }).waitFor();
+      await page.goto(`${entryBase}/monitor/aberdare?observation=${encodeURIComponent(observations.items[1].id)}`, { waitUntil: "domcontentloaded" });
+      await page.locator(".detail-panel").getByText(observations.items[1].id, { exact: true }).waitFor();
+      assert.equal(await page.locator(".detail-panel").getByText(observations.items[0].id, { exact: true }).count(), 0);
+      await page.goto(`${entryBase}/monitor/aberdare?observation=missing-example`, { waitUntil: "domcontentloaded" });
+      await page.getByText("Observation unavailable", { exact: true }).waitFor();
+      assert.equal(await page.getByRole("button", { name: "Create review case" }).count(), 0);
+      await page.goto(`${entryBase}/operations`, { waitUntil: "domcontentloaded" });
+      await page.getByText(caseId, { exact: false }).waitFor();
+      assert.equal(await page.getByText("Closed", { exact: true }).count(), 1);
+      await page.goto(`${entryBase}/`, { waitUntil: "domcontentloaded" });
+      await page.getByText("No open demo cases yet.").waitFor();
+      assert.deepEqual(pageErrors, []);
+      console.log("Browser workflow passed through the saved demo case, action, follow-up and closure.");
+    } finally { await browser.close(); }
+  }
   console.log(caddyPath ? "Owner gateway and web/API boundary smoke passed with synthetic data and loopback services."
     : "Owner-demo web/API boundary smoke passed with synthetic data and loopback services; gateway authentication was not exercised.");
   console.log("VPS deployment and live ingestion were not exercised.");

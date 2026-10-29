@@ -10,7 +10,7 @@ export function WorkflowStrip({ current }: { current: CaseStatus }) {
         <div className={`workflow-step ${index <= currentIndex ? "active" : "pending"}`} key={step}>
           <span className="workflow-dot">{index + 1}</span>
           <div className="workflow-name">{caseStatusLabels[step]}</div>
-          <div className="workflow-detail">{index === currentIndex ? "Current state" : index < currentIndex ? "Recorded" : "Not yet recorded"}</div>
+          <div className="workflow-detail">{current === "REOPENED" ? "See retained history" : index === currentIndex ? "Current state" : index < currentIndex ? "Recorded" : "Not yet recorded"}</div>
         </div>
       ))}
     </div>

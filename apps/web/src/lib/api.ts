@@ -16,7 +16,48 @@ function stringValue(value: unknown, fallback: string): string {
 
 function caseStatusFrom(value: unknown): CaseStatus {
   const states: CaseStatus[] = ["NEW", "UNDER_REVIEW", "FIELD_VERIFICATION", "ACTION_RECORDED", "FOLLOW_UP", "CLOSED", "REOPENED"];
-  return typeof value === "string" && states.includes(value as CaseStatus) ? value as CaseStatus : "NEW";
+  if (typeof value !== "string" || !states.includes(value as CaseStatus)) throw new Error("Case response contained an unknown status");
+  return value as CaseStatus;
+}
+
+function requiredString(value: unknown, field: string): string {
+  if (typeof value !== "string" || !value.trim()) throw new Error(`Case response omitted ${field}`);
+  return value;
+}
+
+export type CaseSummary = {
+  id: string;
+  title: string;
+  status: CaseStatus;
+  owner: string;
+  observationId: string;
+  observationClassification: string;
+  openedAt: string;
+};
+
+export async function loadCaseQueue(): Promise<CaseSummary[]> {
+  const response = await fetch(`${apiBase}/cases`, { headers: { Accept: "application/json" }, cache: "no-store" });
+  if (!response.ok) throw new Error(`Case queue request failed (${response.status})`);
+  const payload: unknown = await response.json();
+  if (!payload || typeof payload !== "object" || !Array.isArray((payload as UnknownRecord).items)) {
+    throw new Error("Case queue response was malformed");
+  }
+  return ((payload as UnknownRecord).items as unknown[]).map((item) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error("Case queue contained an invalid record");
+    const raw = item as UnknownRecord;
+    if (!Array.isArray(raw.quality_flags) || !raw.quality_flags.includes("DEMO_DATA")) {
+      throw new Error("Only explicitly labelled demo cases are supported");
+    }
+    return {
+      id: requiredString(raw.id, "case ID"),
+      title: requiredString(raw.title, "case title"),
+      status: caseStatusFrom(raw.status),
+      owner: stringValue(raw.owner_organization, "Unassigned"),
+      observationId: requiredString(raw.observation_id, "observation ID"),
+      observationClassification: stringValue(raw.observation_classification, "Classification unavailable"),
+      openedAt: stringValue(raw.created_at, ""),
+    };
+  });
 }
 
 export async function loadObservations(): Promise<{ items: DemoObservation[]; fromApi: boolean }> {
@@ -34,7 +75,7 @@ export async function loadObservations(): Promise<{ items: DemoObservation[]; fr
   return { items, fromApi: true };
 }
 
-export async function createCase(observation: DemoObservation): Promise<{ id?: string }> {
+export async function createCase(observation: DemoObservation): Promise<{ id: string }> {
   const response = await fetch(`${apiBase}/cases`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -48,10 +89,12 @@ export async function createCase(observation: DemoObservation): Promise<{ id?: s
   if (!response.ok) throw new Error(`Case creation failed (${response.status})`);
   const payload: unknown = await response.json();
   const result = payload && typeof payload === "object" ? payload as UnknownRecord : {};
-  return { id: typeof result.id === "string" ? result.id : undefined };
+  return { id: requiredString(result.id, "case ID") };
 }
 
-export type LoadedCase = { record: DemoCase; observation: DemoObservation; fromApi: boolean };
+export type CaseAction = { id: string; actionType: string; summary: string; occurredAt: string; recordedBy: string };
+export type CaseFollowUp = { id: string; assessment: string; summary: string; observedAt: string; recordedBy: string };
+export type LoadedCase = { record: DemoCase; observation: DemoObservation; fromApi: boolean; actions: CaseAction[]; followUps: CaseFollowUp[] };
 
 export async function loadCaseRecord(id: string): Promise<LoadedCase> {
   const response = await fetch(`${apiBase}/cases/${encodeURIComponent(id)}`, { headers: { Accept: "application/json" }, cache: "no-store" });
@@ -63,6 +106,21 @@ export async function loadCaseRecord(id: string): Promise<LoadedCase> {
   const observationRaw = raw.observation;
   if (!observationRaw || typeof observationRaw !== "object") throw new Error("Case response omitted its observation");
   const observation = normalizeDemoObservation(observationRaw as UnknownRecord);
+  if (!Array.isArray(raw.actions) || !Array.isArray(raw.follow_ups)) throw new Error("Case response omitted workflow records");
+  const actions: CaseAction[] = raw.actions.map((item: unknown) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error("Case action was malformed");
+    const action = item as UnknownRecord;
+    return { id: requiredString(action.id, "action ID"), actionType: requiredString(action.action_type, "action type"),
+      summary: requiredString(action.summary, "action summary"), occurredAt: stringValue(action.occurred_at, ""),
+      recordedBy: stringValue(action.recorded_by, "Unknown actor") };
+  });
+  const followUps: CaseFollowUp[] = raw.follow_ups.map((item: unknown) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error("Case follow-up was malformed");
+    const followUp = item as UnknownRecord;
+    return { id: requiredString(followUp.id, "follow-up ID"), assessment: requiredString(followUp.assessment, "follow-up assessment"),
+      summary: requiredString(followUp.summary, "follow-up summary"), observedAt: stringValue(followUp.observed_at, ""),
+      recordedBy: stringValue(followUp.recorded_by, "Unknown actor") };
+  });
   const rawEvents = Array.isArray(raw.events) ? raw.events : [];
   const timeline: TimelineEntry[] = rawEvents.filter((entry): entry is UnknownRecord => Boolean(entry) && typeof entry === "object").map((entry) => {
     const details = entry.payload && typeof entry.payload === "object" ? entry.payload as UnknownRecord : {};
@@ -84,7 +142,7 @@ export async function loadCaseRecord(id: string): Promise<LoadedCase> {
     evidenceCount: Array.isArray(raw.evidence) ? raw.evidence.length : 0,
     timeline,
   };
-  return { record, observation, fromApi: true };
+  return { record, observation, fromApi: true, actions, followUps };
 }
 
 export async function transitionCase(caseId: string, toStatus: CaseStatus): Promise<void> {
@@ -94,6 +152,24 @@ export async function transitionCase(caseId: string, toStatus: CaseStatus): Prom
     body: JSON.stringify({ to_status: toStatus, actor: "Demo analyst", note: "Workflow transition recorded from the ForestProof P0 interface." }),
   });
   if (!response.ok) throw new Error(`Case transition failed (${response.status})`);
+}
+
+export async function recordDemoAction(caseId: string, summary: string): Promise<void> {
+  const response = await fetch(`${apiBase}/cases/${encodeURIComponent(caseId)}/actions`, {
+    method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ action_type: "DEMO_REVIEW", summary, actor: "Demo analyst" }),
+  });
+  if (!response.ok) throw new Error(`Action request failed (${response.status})`);
+}
+
+export type FollowUpAssessment = "VERIFIED_INCIDENT" | "FALSE_POSITIVE" | "INSUFFICIENT_EVIDENCE" | "UNRESOLVED";
+
+export async function recordDemoFollowUp(caseId: string, assessment: FollowUpAssessment, summary: string): Promise<void> {
+  const response = await fetch(`${apiBase}/cases/${encodeURIComponent(caseId)}/follow-ups`, {
+    method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ assessment, summary, actor: "Demo analyst" }),
+  });
+  if (!response.ok) throw new Error(`Follow-up request failed (${response.status})`);
 }
 
 export async function attachDemoEvidence(caseId: string): Promise<void> {

@@ -75,6 +75,8 @@ jobs:
       - name: Exercise owner-demo web/API boundary on loopback
         if: matrix.node == '24'
         run: npm run smoke:owner
+        env:
+          FORESTPROOF_CHROME_EXECUTABLE: /usr/bin/google-chrome
       - name: Browser map smoke (Node 24)
         if: matrix.node == '24'
         run: npm run smoke:browser

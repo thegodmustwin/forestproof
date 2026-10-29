@@ -300,6 +300,16 @@ class Store:
             allowed = VALID_TRANSITIONS.get(case["status"], set())
             if to_status not in allowed:
                 raise HTTPException(status_code=409, detail={"message": "Invalid case-state transition", "from": case["status"], "to": to_status, "allowed": sorted(allowed)})
+            # A workflow label must not claim work that has not been recorded.
+            # Check within the same lock and transaction as the transition.
+            if to_status in {"ACTION_RECORDED", "FOLLOW_UP", "CLOSED"} and not connection.execute(
+                "SELECT 1 FROM case_actions WHERE case_id = ? LIMIT 1", (case_id,)
+            ).fetchone():
+                raise HTTPException(status_code=409, detail="Record an action before advancing to this state.")
+            if to_status == "CLOSED" and not connection.execute(
+                "SELECT 1 FROM follow_up_assessments WHERE case_id = ? LIMIT 1", (case_id,)
+            ).fetchone():
+                raise HTTPException(status_code=409, detail="Record a follow-up before closing this case.")
             now = utc_now()
             connection.execute("UPDATE investigation_cases SET status = ?, updated_at = ? WHERE id = ?", (to_status, now, case_id))
             connection.execute("INSERT INTO case_events VALUES (?, ?, ?, ?, ?, ?)",
@@ -347,6 +357,8 @@ class Store:
                         "allowed": ["ACTION_RECORDED", "FOLLOW_UP"],
                     },
                 )
+            if not connection.execute("SELECT 1 FROM case_actions WHERE case_id = ? LIMIT 1", (case_id,)).fetchone():
+                raise HTTPException(status_code=409, detail="Record an action before adding a follow-up.")
             connection.execute("INSERT INTO follow_up_assessments VALUES (?, ?, ?, ?, ?, ?, ?)", (follow_up_id, case_id, assessment, summary, observed_at or now, now, actor))
             connection.execute("INSERT INTO case_events VALUES (?, ?, ?, ?, ?, ?)", (str(uuid4()), case_id, "FOLLOW_UP_RECORDED", actor, now, json.dumps({"assessment": assessment})))
             self._audit(connection, case["organization_id"], "CASE", case_id, "FOLLOW_UP_RECORDED", actor, {"assessment": assessment})

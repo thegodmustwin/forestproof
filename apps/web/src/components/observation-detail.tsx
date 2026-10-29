@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { DemoObservation, formatDate, toPriorityScore } from "@/lib/demo";
 
-export function ObservationDetail({ observation, onCreateCase }: { observation: DemoObservation; onCreateCase?: () => void | Promise<void> }) {
+export function ObservationDetail({ observation, onCreateCase, creating = false }: { observation: DemoObservation; onCreateCase?: () => void | Promise<void>; creating?: boolean }) {
   return (
     <>
       <div className="card-head">
@@ -26,8 +26,8 @@ export function ObservationDetail({ observation, onCreateCase }: { observation: 
           <div className="fact"><span className="fact-label">Quality flags</span><span className="flag-list">{observation.qualityFlags.map((flag) => <span className="flag" key={flag}>{flag}</span>)}</span></div>
         </div>
         <div className="button-row">
-          <Link className="button secondary" href={`/cases/DEMO-CASE-0017?observation=${observation.id}`}>Open review record</Link>
-          {onCreateCase && <button className="button" onClick={() => { void onCreateCase(); }}>Create review case</button>}
+          <Link className="button secondary" href="/operations">View case queue</Link>
+          {onCreateCase && <button className="button" disabled={creating} onClick={() => { void onCreateCase(); }}>{creating ? "Opening case…" : "Create review case"}</button>}
         </div>
       </div>
     </>

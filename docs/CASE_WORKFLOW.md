@@ -18,6 +18,10 @@ The API enforces this P0 state machine. It does not determine a legal conclusion
 follow-up assessment values separately record `VERIFIED_INCIDENT`,
 `FALSE_POSITIVE`, `INSUFFICIENT_EVIDENCE`, or `UNRESOLVED`.
 
+In the current SQLite demo, advancing to `ACTION_RECORDED` or `FOLLOW_UP` requires a saved action; closing requires both an action and a saved follow-up. A follow-up cannot be added merely by setting an action-looking state. The demo case screen can record synthetic action and follow-up descriptions, and the dashboard and operations queue read saved API cases. Existing inconsistent demo records remain visible, but cannot pass a new guarded transition until the required records exist. This is a workflow integrity control, not production authentication or a legal determination.
+
+An isolated browser test exercises observation → saved case → queue → synthetic action → synthetic follow-up → closure through the owner-demo gateway. The deployed shared preview has not been updated or reverified by this change. It remains synthetic-only and is not suitable for personal or real field information.
+
 ## Transition record
 
 Every P0 state transition appends:

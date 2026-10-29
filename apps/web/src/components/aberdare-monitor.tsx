@@ -10,48 +10,66 @@ import { createCase, loadObservations } from "@/lib/api";
 
 export function AberdareMonitor() {
   const [records, setRecords] = useState<DemoObservation[]>(observations);
-  const [selected, setSelected] = useState<DemoObservation>(observations[0]);
+  const [selected, setSelected] = useState<DemoObservation | null>(null);
+  const [loading, setLoading] = useState(true);
   const [connection, setConnection] = useState("Loading API-backed observations; deterministic demo fixtures remain available if the API is offline.");
   const [created, setCreated] = useState<string | null>(null);
   const [createdCaseId, setCreatedCaseId] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
   const isDemo = records.every((item) => item.qualityFlags.includes("DEMO_DATA"));
 
   useEffect(() => {
     let active = true;
+    const requestedId = new URLSearchParams(window.location.search).get("observation");
+    const selectRequested = (items: DemoObservation[]) => requestedId
+      ? items.find((item) => item.id === requestedId) ?? null
+      : items[0] ?? null;
     void loadObservations()
       .then(({ items }) => {
         if (!active) return;
         setRecords(items);
-        setSelected(items[0]);
-        setConnection("API connected. The source provenance and quality flags shown with each record remain decisive for interpretation.");
+        const match = selectRequested(items);
+        setSelected(match);
+        setConnection(requestedId && !match
+          ? "The requested observation is unavailable. Select a marker to review another demo record."
+          : "API connected. The source provenance and quality flags shown with each record remain decisive for interpretation.");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) return;
-        setConnection("API records unavailable or unsupported. Showing deterministic, local demo fixtures only; no live source connection is implied.");
+        const match = selectRequested(observations);
+        setSelected(match);
+        setConnection(requestedId && !match
+          ? "The API and the requested observation are unavailable. Select a marker to review a local demo example."
+          : "API records unavailable or unsupported. Showing deterministic, local demo fixtures only; no live source connection is implied.");
+        setLoading(false);
       });
     return () => { active = false; };
   }, []);
 
   const selectObservation = useCallback((item: DemoObservation) => {
+    if (creating) return;
     setSelected(item);
     setCreated(null);
     setCreatedCaseId(null);
-  }, []);
+  }, [creating]);
 
   const submitCase = useCallback(async () => {
-    setCreated("Creating a review record through the configured API…");
+    if (creating || !selected) return;
+    setCreating(true);
+    setCreated("Opening a review record through the configured API…");
     setCreatedCaseId(null);
     try {
       const result = await createCase(selected);
-      setCreatedCaseId(result.id ?? null);
-      setCreated(result.id
-        ? `Review record ${result.id} created through the API. It is a workflow record, not a finding of wrongdoing.`
-        : "Review record created through the API. It is a workflow record, not a finding of wrongdoing.");
+      setCreatedCaseId(result.id);
+      setCreated(`Review record ${result.id} is ready. It is a workflow record, not a finding of wrongdoing.`);
     } catch {
       setCreatedCaseId(null);
-      setCreated("The API could not create a case. No server-side record was written; this screen remains in local demo mode.");
+      setCreated("The API could not confirm the request. Check the case queue before trying again.");
+    } finally {
+      setCreating(false);
     }
-  }, [selected]);
+  }, [selected, creating]);
 
   return (
     <div className="page">
@@ -59,9 +77,10 @@ export function AberdareMonitor() {
       {isDemo ? <DemoNotice /> : <aside className="notice" role="note"><span aria-hidden="true">⚑</span><span><b>API-BACKED RECORDS.</b> These records still require source-grounded, authorised human review. An observation does not establish legal status or wrongdoing.</span></aside>}
       <p className="detail-note" style={{ margin: "-11px 0 18px" }} aria-live="polite">{connection}</p>
       <div className="map-layout">
-        <AberdareMap selectedId={selected.id} observations={records} onSelect={selectObservation} />
+        <AberdareMap selectedId={selected?.id ?? ""} observations={records} onSelect={selectObservation} />
         <aside className="card detail-panel">
-          <ObservationDetail observation={selected} onCreateCase={submitCase} />
+          {selected ? <ObservationDetail observation={selected} onCreateCase={submitCase} creating={creating} />
+            : <div className="card-body"><h2>{loading ? "Loading observation…" : "Observation unavailable"}</h2><p className="detail-note">{loading ? "Checking the connected demo API." : "Select a marker to review a different synthetic record."}</p></div>}
           {created && <div className="notice" style={{ margin: "0 18px 18px" }}><span aria-hidden="true">✓</span><span>{created} {createdCaseId && <Link className="link-arrow" href={`/cases/${createdCaseId}`}>Open the review record →</Link>}</span></div>}
         </aside>
       </div>

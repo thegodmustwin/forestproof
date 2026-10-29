@@ -28,7 +28,7 @@ test("case API rejects a different or missing identity and accepts the requested
   await assert.rejects(loadCaseRecord("requested-case"), /requested case/);
   global.fetch = async () => Response.json({ observation });
   await assert.rejects(loadCaseRecord("requested-case"), /requested case/);
-  global.fetch = async () => Response.json({ id: "requested-case", observation });
+  global.fetch = async () => Response.json({ id: "requested-case", observation, status: "NEW", actions: [], follow_ups: [] });
   const result = await loadCaseRecord("requested-case");
   assert.equal(result.record.id, "requested-case");
   assert.equal(result.observation.id, "demo-observation");

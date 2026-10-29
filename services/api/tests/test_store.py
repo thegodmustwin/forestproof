@@ -70,3 +70,39 @@ def test_invalid_state_transitions_and_tenant_boundaries_are_rejected(store):
     with pytest.raises(HTTPException) as tenant_error:
         store.assert_case_access(case["id"], "org_other")
     assert tenant_error.value.status_code == 404
+
+
+def test_case_states_cannot_claim_unrecorded_action_or_follow_up(store):
+    observation = store.list_observations(DEMO_ORGANIZATION_ID)[0]
+    case = store.create_case(DEMO_ORGANIZATION_ID, observation["id"], "Truthful state test", "Demo team", None)
+    case_id = case["id"]
+    store.transition_case(case_id, "UNDER_REVIEW", "Reviewer", "Begin review.")
+    store.transition_case(case_id, "FIELD_VERIFICATION", "Reviewer", "Begin verification.")
+
+    for destination in ("ACTION_RECORDED", "FOLLOW_UP"):
+        with pytest.raises(HTTPException) as missing_action:
+            store.transition_case(case_id, destination, "Reviewer", "No action recorded yet.")
+        assert missing_action.value.status_code == 409
+        assert store.get_case(case_id)["status"] == "FIELD_VERIFICATION"
+
+    store.record_action(case_id, "REVIEW", "Synthetic review action.", "Reviewer", None)
+    store.transition_case(case_id, "ACTION_RECORDED", "Reviewer", "Action recorded.")
+    store.transition_case(case_id, "FOLLOW_UP", "Reviewer", "Follow-up is due.")
+    with pytest.raises(HTTPException) as missing_follow_up:
+        store.transition_case(case_id, "CLOSED", "Reviewer", "No follow-up recorded yet.")
+    assert missing_follow_up.value.status_code == 409
+    assert store.get_case(case_id)["status"] == "FOLLOW_UP"
+    store.record_follow_up(case_id, "UNRESOLVED", "Synthetic assessment.", "Reviewer", None)
+    assert store.transition_case(case_id, "CLOSED", "Reviewer", "Follow-up recorded.")["status"] == "CLOSED"
+
+
+def test_inconsistent_old_case_cannot_record_follow_up_without_an_action(store):
+    observation = store.list_observations(DEMO_ORGANIZATION_ID)[0]
+    case = store.create_case(DEMO_ORGANIZATION_ID, observation["id"], "Legacy state test", "Demo team", None)
+    with store._connection() as connection:
+        connection.execute("UPDATE investigation_cases SET status = 'FOLLOW_UP' WHERE id = ?", (case["id"],))
+        connection.commit()
+    with pytest.raises(HTTPException) as missing_action:
+        store.record_follow_up(case["id"], "UNRESOLVED", "No action exists.", "Reviewer", None)
+    assert missing_action.value.status_code == 409
+    assert not store.get_case(case["id"])["follow_ups"]

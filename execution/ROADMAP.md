@@ -20,13 +20,13 @@
 | 5 | Deterministic DEMO provider | WORKING | Synthetic fixtures are idempotent and explicitly labeled. |
 | 6 | One approved live provider | DOCUMENTED_NOT_TESTED | RADD identity, row normalization, standalone SQLite snapshots and a default-deny bounded research transport are tested with synthetic inputs only. Attribution details, dataset conditions, cost, credentials, AOI, an actual permitted response, health and production persistence remain before activation. |
 | 7 | Observation map and detail | WORKING (DEMO) | Map/detail UI accepts explicitly labelled DEMO records; missing source values are no longer filled from unrelated fixtures. The current display rejects live records and is not a live operational map. |
-| 8 | Case and review workflow | WORKING (DEMO) | Case state transitions, assignments, and audit history are covered by API tests. The web case screen rejects mismatched API IDs and does not substitute another demo case for an unknown ID. |
+| 8 | Case and review workflow | WORKING (DEMO) | Dashboard and queue show saved API cases; the web flow records synthetic actions and follow-ups, preserves the correct observation link, and checks that required records exist before advancing. API and browser tests passed locally. |
 | 9 | Evidence and integrity | PARTIAL | Local evidence metadata and SHA-256 checks work; production storage, malware scanning, access classes, and retention remain. |
 | 10 | Legal context references | PLANNED | No official order/permit corpus or qualified review is configured. |
 | 11 | Actions and outcomes | WORKING (DEMO) | Actions, follow-ups, and bounded outcome labels are available; no causal claims. |
 | 12 | EvidenceProof dossier | PARTIAL | JSON dossier and hash status exist; PDF output and complete production manifest remain. |
 | 13 | Authentication and tenancy | PARTIAL (SYNTHETIC ONLY) | Experimental owner-demo adds internal web-to-API token checks and server-derived owner audit labels, with isolated gateway/web/API smoke tests. The web endpoint still requires the separate owner gateway; person-level identity, secure production deployment, isolation and LIVE access are absent. |
-| 14 | End-to-end acceptance | PARTIAL | API tests exercise the core workflow; browser-level end-to-end proof is not recorded. |
+| 14 | End-to-end acceptance | PARTIAL (DEMO) | An isolated browser test exercised observation → case → saved action → saved follow-up → closure through the owner gateway, web app and API. A real-data, protected-storage and deployed-owner acceptance test remains open. |
 | 15 | Deployment and external feedback | PARTIAL (SYNTHETIC PREVIEW) | A prior session deployed and verified a password-protected synthetic preview on OVH. Publishing a reusable Codex environment is not a hosting prerequisite; the live pilot still requires access recheck, security gates and real-user participation. |
 
 ## P1 — only after P0 evidence warrants it
