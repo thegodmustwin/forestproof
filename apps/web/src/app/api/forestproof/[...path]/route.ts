@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { internalApiConfig } from "@/lib/internal-api-config";
 
 export const dynamic = "force-dynamic";
 
@@ -7,27 +8,13 @@ type RouteContext = { params: Promise<{ path: string[] }> };
 const permittedMethods = new Set(["GET", "POST"]);
 const safePathSegment = /^[A-Za-z0-9._-]+$/;
 
-function apiBase(): string | null {
-  const configured = process.env.FORESTPROOF_API_INTERNAL_BASE_URL?.trim();
-  if (!configured) return null;
-
-  try {
-    const url = new URL(configured);
-    return (url.protocol === "http:" || url.protocol === "https:")
-      ? configured.replace(/\/$/, "")
-      : null;
-  } catch {
-    return null;
-  }
-}
-
 async function proxy(request: NextRequest, context: RouteContext): Promise<NextResponse> {
   if (!permittedMethods.has(request.method)) {
     return NextResponse.json({ detail: "Method not allowed" }, { status: 405, headers: { Allow: "GET, POST, OPTIONS" } });
   }
 
-  const base = apiBase();
-  if (!base) {
+  const config = internalApiConfig(process.env);
+  if (!config) {
     return NextResponse.json(
       { detail: "ForestProof API proxy is not configured for this deployment." },
       { status: 503 },
@@ -35,15 +22,19 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
   }
 
   const { path: segments } = await context.params;
-  if (!segments.length || segments.some((segment) => !safePathSegment.test(segment))) {
+  if (!segments.length || segments.some((segment) => segment === "." || segment === ".." || !safePathSegment.test(segment))) {
     return NextResponse.json({ detail: "Invalid API path" }, { status: 400 });
   }
 
   const incomingUrl = new URL(request.url);
-  const target = `${base}/${segments.map(encodeURIComponent).join("/")}${incomingUrl.search}`;
+  const target = `${config.base}/${segments.map(encodeURIComponent).join("/")}${incomingUrl.search}`;
   const headers = new Headers({ Accept: request.headers.get("accept") ?? "application/json" });
   const contentType = request.headers.get("content-type");
   if (contentType) headers.set("Content-Type", contentType);
+  if (config.ownerDemoToken) {
+    headers.set("X-Forestproof-Internal-Token", config.ownerDemoToken);
+    headers.set("X-Forestproof-Require-Owner-Demo", "1");
+  }
 
   try {
     const upstream = await fetch(target, {
@@ -51,6 +42,8 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
       headers,
       body: request.method === "POST" ? await request.arrayBuffer() : undefined,
       cache: "no-store",
+      // A redirect must never forward an internal service token to another host.
+      redirect: "error",
     });
     const responseHeaders = new Headers();
     const responseContentType = upstream.headers.get("content-type");

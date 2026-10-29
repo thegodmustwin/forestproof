@@ -5,13 +5,13 @@
     admin off
 }
 
-http://:18080 {
+http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
     bind 127.0.0.1
 
     @invalid_host not host 127.0.0.1
 
     # Unsafe browser requests must come from the exact local tunnel origin.
-    @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'http://127.0.0.1:18080'})"
+    @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'http://127.0.0.1:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT}'})"
 
     header {
         Cache-Control "no-store"
@@ -30,7 +30,7 @@ http://:18080 {
         request_body {
             max_size 2MB
         }
-        reverse_proxy 127.0.0.1:13000 {
+        reverse_proxy 127.0.0.1:{$FORESTPROOF_OWNER_WEB_PORT:INVALID_REQUIRED_PORT} {
             header_up -Authorization
         }
     }

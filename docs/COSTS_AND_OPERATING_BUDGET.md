@@ -1,13 +1,14 @@
 # ForestProof — costs and operating budget
 
-**Status:** initial ledger; no production feed or public service is active.
+**Status:** initial ledger; a password-protected synthetic preview is deployed, but no production pilot or live feed is active.
 
 ## Current spend and commitments
 
 | Item | Current evidence | Project action/status |
 | --- | --- | --- |
-| OVH VPS | The owner says the OVH account is already paid. The plan, renewal date, and exact monthly/annual cost have not been inspected. | No server change or deployment has been made. Prefer using existing capacity after an owner-approved host audit. |
+| OVH VPS | The owner says the OVH account is already paid. The plan, renewal date, and exact monthly/annual cost have not been inspected. | A prior task records a password-protected synthetic preview on the existing VPS. This task has not rechecked it or ordered additional hosting. |
 | Codex Cloud | The owner reports that Codex usage is within the current allocation. This agent cannot inspect the account meter or billing settings. | Development continues within the owner's account. No separate data-service or hosting subscription was started here. |
+| GitHub Actions | The private repository runs automated checks on pushes. This session cannot inspect the owner's included minutes, usage, spending limit or billing configuration. | Checks consume GitHub-hosted runner time; charges, if any, depend on the account's plan, remaining allowance and spending settings. No additional CI service was ordered. |
 | GFW Integrated Alerts | Dataset metadata labels the data CC BY 4.0. The query API has authenticated routes; the published terms, rate limits, and any API fee have not been verified. | No credential has been added and no alert records queried. Treat service cost as **unknown**, not $0. |
 | Other candidate data | Copernicus, NASA FIRMS, and DIST-ALERT are documented research candidates with different access requirements and scopes. Their exact service terms/costs are not verified for ForestProof. | No paid account, query integration, or recurring data service has been activated. |
 | New third-party services | No production database, object storage, monitoring, email/SMS, or external hosting service has been provisioned by this work. | Any such service needs a cost/need review before activation. |

@@ -18,17 +18,31 @@ trap cleanup EXIT
 
 # A missing hash must not create an unprotected gateway.
 if docker run --rm --network none -v "$config:/etc/caddy/Caddyfile:ro" \
+  -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 -e FORESTPROOF_OWNER_WEB_PORT=13000 \
   "$image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
   echo "Gateway accepted a missing password hash" >&2
   exit 1
 fi
 
 hash=$(docker run --rm --network none "$image" caddy hash-password --plaintext "$password")
+if docker run --rm --network none -v "$config:/etc/caddy/Caddyfile:ro" \
+  -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 \
+  "$image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
+  echo "Gateway accepted a missing web port" >&2
+  exit 1
+fi
+if docker run --rm --network none -v "$config:/etc/caddy/Caddyfile:ro" \
+  -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" -e FORESTPROOF_OWNER_WEB_PORT=13000 \
+  "$image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
+  echo "Gateway accepted a missing gateway port" >&2
+  exit 1
+fi
 python3 infrastructure/deployment/owner-pilot/mock_upstream.py >"$RUNNER_TEMP/forestproof-mock.log" 2>&1 &
 upstream_pid=$!
 container=$(docker run -d --rm --network host \
   -v "$config:/etc/caddy/Caddyfile:ro" \
   -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" \
+  -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 -e FORESTPROOF_OWNER_WEB_PORT=13000 \
   "$image" caddy run --config /etc/caddy/Caddyfile --adapter caddyfile)
 
 ready=false

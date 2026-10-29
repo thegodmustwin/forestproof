@@ -18,7 +18,7 @@
 ## P0 implementation boundary
 
 - **WORKING in DEMO:** request validation, coordinate bounds/shape validation, case-state gates, SHA-256 evidence records, hash re-check at dossier generation, audit records, and a fixed seeded demo organization.
-- **Fail closed outside DEMO:** authentication is not yet configured, so the API rejects live or multi-organization operation rather than trusting an organization header.
+- **Fail closed in LIVE:** the API rejects live or multi-organization operation rather than trusting an organization header. An experimental `owner_demo` mode accepts only synthetic data and requires a separately configured internal service token; it does not enable LIVE or establish end-user identity.
 - **PLANNED before real material:** authenticated identities, role-based authorization, encrypted private object storage, upload malware scanning, rate limiting, backups, and tenant-scoped production repository access.
 
 ## Sensitive data
@@ -36,17 +36,17 @@ Log material security events without logging secrets. Preserve sufficient audit 
 
 ## 2026-10-28 web framework upgrade gate
 
-The main branch lockfile uses Next.js 14.2.35, an unsupported major release according to https://nextjs.org/support-policy. Its lockfile version already includes the fix for the 2025 middleware authorization bypass; do not claim that specific old issue is unpatched. Other published advisories and applicability depend on feature use and deployment configuration. A migration to the supported Next.js 16.4.3 active LTS line and React 19.2.8 is under review with asynchronous route parameters, production proxy smoke checks, and dependency audit. Do not expose the existing demo publicly or use a framework upgrade as proof of owner authentication, protected storage, or production security.
+The earlier lockfile used Next.js 14.2.35, an unsupported major release according to https://nextjs.org/support-policy. The current lockfile uses Next.js 16.4.3 and React 19.2.8 with asynchronous route parameters, proxy smoke checks, and dependency audit. The separately deployed, password-protected OVH preview is synthetic only. Do not treat a framework upgrade as proof of owner authentication, protected storage, or production security.
 
 
-The first candidate audit reported a critical MapLibre advisory and vulnerable PostCSS dependencies. The revised candidate uses MapLibre GL JS 6.16.0 and Next.js 16.4.3; their lockfile, build and audit must pass before exposure. The MapLibre advisory concerns rendering untrusted attribution HTML and its applicability to a specific deployment depends on data flows: https://github.com/maplibre/maplibre-gl-js/security/advisories/GHSA-jrc7-96c5-q579. Node.js 20 is end-of-life; retain the existing Node 20 CI check for compatibility and verify the production candidate under supported Node 24 as well: https://nodejs.org/en/about/previous-releases.
+The first candidate audit reported a critical MapLibre advisory and vulnerable PostCSS dependencies. The revised lockfile uses MapLibre GL JS 6.16.0 and Next.js 16.4.3; the candidate build and audit passed in CI as recorded in `execution/CURRENT_STATUS.md`. The MapLibre advisory concerns rendering untrusted attribution HTML and its applicability to a specific deployment depends on data flows: https://github.com/maplibre/maplibre-gl-js/security/advisories/GHSA-jrc7-96c5-q579. Node.js 20 is end-of-life; retain the existing Node 20 CI check for compatibility and verify the production candidate under supported Node 24 as well: https://nodejs.org/en/about/previous-releases.
 
 Optional demo Compose host ports are loopback-only; that reduces accidental network exposure but does not authenticate the owner or protect real case material. The initial CI browser check uses synthetic data and stubbed tiles.
 
 
 ## 2026-10-28 Python dependency audit
 
-An initial pip-audit of the API requirements flagged advisories involving Starlette, python-multipart and pytest, with duplicate advisory entries in the report. Applicability depends on exposed features. The candidate removes the unused multipart parser, separates test-only packages from runtime, upgrades FastAPI and Starlette and uses a patched pytest, then adds pip-audit to CI. This remains a candidate until CI and audit pass. Resolving package advisories does not provide authentication, production storage, backup, or a full security review.
+An initial pip-audit of the API requirements flagged advisories involving Starlette, python-multipart and pytest, with duplicate advisory entries in the report. Applicability depends on exposed features. The revised requirements remove the unused multipart parser, separate test-only packages from runtime, upgrade FastAPI and Starlette and use a patched pytest, with pip-audit in CI. Resolving package advisories does not provide authentication, production storage, backup, or a full security review.
 
 The API dependency candidate passed pytest and pip-audit in https://github.com/thegodmustwin/forestproof/actions/runs/40621397262. This does not prove absence of all vulnerabilities or complete production hardening.
 
@@ -54,3 +54,13 @@ The API dependency candidate passed pytest and pip-audit in https://github.com/t
 ## 2026-10-28 owner-only gateway candidate
 
 A Caddy configuration under infrastructure/deployment/owner-pilot/ is being tested for a loopback-only owner gateway over the existing authenticated SSH tunnel. It is not installed or running on the OVH VPS. It guards all proxied web paths with a hashed owner credential and rejects cross-origin mutations; the API and web upstream must remain separately bound to VPS loopback. It is not suitable as a public HTTP endpoint. Source access, application authentication semantics, protected storage, backups and production operation remain open.
+
+## 2026-10-29 owner-demo internal service boundary
+
+An isolated `owner_demo` mode is implemented for synthetic development data. Its API requires a server-generated `FORESTPROOF_INTERNAL_API_TOKEN` of at least 32 random bytes encoded as a 43–128 character URL-safe string. Configuration validation checks format, not entropy; generate it with a secure random source and inject it privately at runtime. Missing/malformed configuration returns 503 and missing or wrong credentials return 401. A supplied organization header cannot choose a tenant. Mutations record the single gateway principal `owner` instead of caller-supplied actor strings. Evidence uploads are disabled, and LIVE mode continues to fail closed.
+
+The Next.js server proxy enters this mode only with `FORESTPROOF_API_MODE=owner_demo`, the matching server-only token and an explicit `127.0.0.1` or `::1` API URL. It ignores client-supplied internal headers, marks requests as requiring owner-demo mode, and refuses redirects to avoid forwarding the token elsewhere. A misconfigured demo-mode API rejects that marker. Loopback restricts the current candidate to a single trusted host/network namespace; the current preview's Docker DNS topology is not compatible without a separate, verified deployment design.
+
+**Trust boundary:** the service token authenticates the web service to the API, not a person. Anyone able to access the Next.js server directly can use the proxy; anyone with the internal token or privileged host access can act as the owner. The separately authenticated loopback-only Caddy/SSH gateway must guard every web path, and no other web/API listener may bypass it. Do not expose either upstream directly, rely on header identity as individual authentication, or use this synthetic mode for real evidence or personal information. Application-level identity, individual audit attribution, rate limiting, production storage and backup remain unfinished.
+
+Tests use synthetic credentials. The API and proxy unit tests cover missing and incorrect tokens, mode mismatch, spoofed tenant and actor claims, loopback restrictions and redirects. `npm run smoke:owner` starts isolated local API and web processes; with `FORESTPROOF_SMOKE_CADDY` set to a Caddy binary it also exercises the owner gateway's password and cross-origin checks end to end. This verifies the candidate locally only; it has not been deployed or validated on OVH.

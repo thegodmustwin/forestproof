@@ -32,6 +32,8 @@ const next = spawn(process.execPath, [
   env: {
     ...process.env,
     NODE_ENV: "production",
+    FORESTPROOF_API_MODE: "demo",
+    FORESTPROOF_INTERNAL_API_TOKEN: "",
     FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:" + upstream.address().port + "/api/v1",
   },
   stdio: ["ignore", "pipe", "pipe"],

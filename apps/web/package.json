@@ -9,7 +9,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "smoke": "node scripts/smoke.mjs",
-    "smoke:browser": "node scripts/smoke.mjs --browser"
+    "smoke:browser": "node scripts/smoke.mjs --browser",
+    "smoke:owner": "node scripts/smoke-owner.mjs"
   },
   "dependencies": {
     "maplibre-gl": "6.16.0",

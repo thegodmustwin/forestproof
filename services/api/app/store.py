@@ -153,7 +153,7 @@ class Store:
             if "integrity_status" not in evidence_columns:
                 # Lightweight forward migration for existing local demo databases.
                 connection.execute("ALTER TABLE evidence_assets ADD COLUMN integrity_status TEXT NOT NULL DEFAULT 'PENDING'")
-            if self.settings.mode == "demo":
+            if self.settings.mode in {"demo", "owner_demo"}:
                 self.seed_demo_observations(connection)
 
     def seed_demo_observations(self, connection: sqlite3.Connection | None = None) -> int:
@@ -241,7 +241,7 @@ class Store:
             return observation
 
     def create_case(self, organization_id: str, observation_id: str, title: str, owner_organization: str,
-                    reviewer: str | None) -> dict[str, Any]:
+                    reviewer: str | None, actor: str | None = None) -> dict[str, Any]:
         with self._lock, self._connection() as connection:
             self.get_observation(organization_id, observation_id)
             existing = self._row(connection.execute(
@@ -255,12 +255,13 @@ class Store:
                 "INSERT INTO investigation_cases VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (case_id, organization_id, observation_id, title, "NEW", owner_organization, reviewer, now, now),
             )
+            recorded_actor = actor or reviewer or "system"
             connection.execute(
                 "INSERT INTO case_events VALUES (?, ?, ?, ?, ?, ?)",
-                (str(uuid4()), case_id, "CASE_CREATED", reviewer or "system", now,
+                (str(uuid4()), case_id, "CASE_CREATED", recorded_actor, now,
                  json.dumps({"status": "NEW", "observation_id": observation_id})),
             )
-            self._audit(connection, organization_id, "CASE", case_id, "CASE_CREATED", reviewer or "system", {"observation_id": observation_id})
+            self._audit(connection, organization_id, "CASE", case_id, "CASE_CREATED", recorded_actor, {"observation_id": observation_id})
             connection.commit()
             return self._require_case(connection, case_id)
 

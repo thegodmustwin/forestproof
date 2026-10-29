@@ -27,6 +27,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - docs/origin/ — verbatim user-authored inception prompts with an archival, non-authoritative warning.
 - apps/web/ — Next.js/TypeScript/React UI, MapLibre components, API client, and demo fallbacks.
 - apps/web/src/lib/observation-normalization.ts — demo-only API observation validation; missing provenance is displayed as missing and records without a valid ID, point, or DEMO_DATA flag are rejected. It does not implement live display.
+- apps/web/src/lib/internal-api-config.ts and services/api/app/owner_access.py — isolated owner-demo service boundary. The proxy forwards a server-only token solely to a literal loopback API; the API validates it and derives the single demo actor. This is not person-level authentication or live operation.
 - services/api/ — FastAPI app, Pydantic contracts, deterministic demo data, SQLite store, source status, SQL target migration, and API tests.
 - services/worker/ — reserved/documented worker service; it is not a live ingestion worker today.
 - pipelines/forest_alerts/ — provider interface, demo adapter, and GFW raster overlay. The raster overlay is map context only, not an individual alert feed. `services/api/app/providers/raster_identity.py` and `gfw_radd.py` contain tested identity/normalization primitives; neither makes live requests or persists alerts.
@@ -52,6 +53,8 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 | /sources | apps/web/src/app/sources/page.tsx | Provider status and source limitations; no validated live provider currently. |
 | /legal | apps/web/src/app/legal/page.tsx | Human-review/legal source gate; no verified legal corpus is configured. |
 | /api/forestproof/* | apps/web/src/app/api/forestproof/[...path]/route.ts | Same-origin proxy to the API in hosted layouts; it is not an authentication layer. |
+
+The optional `owner_demo` configuration adds internal web-to-API service authentication, but the web server itself remains unauthenticated unless guarded by the separately configured owner gateway. The mode is synthetic only and blocks evidence uploads. LIVE is still disabled.
 
 Shared UI pieces are under apps/web/src/components/; API normalization and HTTP helpers are in apps/web/src/lib/api.ts; synthetic UI fixtures and labels are in apps/web/src/lib/demo.ts.
 

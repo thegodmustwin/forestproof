@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .config import get_settings
 from .demo_data import DEMO_AREA, DEMO_ORGANIZATION_ID, DEMO_SOURCES
 from .models import ActionCreate, AssignmentCreate, CaseCreate, EvidenceCreate, FollowUpCreate, StatusTransition
+from .owner_access import InternalAccessNotConfigured, valid_internal_token
 from .providers.gfw import status as gfw_status
 from .store import Store
 
@@ -48,14 +49,31 @@ app.add_middleware(
 )
 
 
-def organization_id(x_organization_id: Annotated[str | None, Header()] = None) -> str:
-    """Constrain P0 to one known demo tenant until real authentication is present.
+def organization_id(
+    x_organization_id: Annotated[str | None, Header()] = None,
+    x_forestproof_internal_token: Annotated[str | None, Header()] = None,
+    x_forestproof_require_owner_demo: Annotated[str | None, Header()] = None,
+) -> str:
+    """Constrain P0 to the synthetic demo tenant; LIVE remains disabled.
 
     A caller-supplied tenant header is never an authentication mechanism. Rather
     than pretending the header provides multi-tenant security, non-demo mode is
     fail-closed and demo mode only exposes the seeded demo organization.
     """
-    if settings.mode != "demo":
+    if x_forestproof_require_owner_demo is not None and (
+        x_forestproof_require_owner_demo != "1" or settings.mode != "owner_demo"
+    ):
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                            detail="Owner demo API mode is not active")
+    if settings.mode == "owner_demo":
+        try:
+            authorized = valid_internal_token(settings.internal_api_token, x_forestproof_internal_token)
+        except InternalAccessNotConfigured:
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                                detail="Owner demo internal access is not configured") from None
+        if not authorized:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Internal service authentication required")
+    elif settings.mode != "demo":
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="Authentication is not configured. Live or multi-organization operation is disabled.",
@@ -66,6 +84,11 @@ def organization_id(x_organization_id: Annotated[str | None, Header()] = None) -
 
 
 Org = Annotated[str, Depends(organization_id)]
+
+
+def recorded_actor(provided: str) -> str:
+    """The owner-demo gateway represents one owner, not caller-supplied actors."""
+    return "owner" if settings.mode == "owner_demo" else provided
 
 
 def ensure_case_access(case_id: str, organization: str) -> None:
@@ -125,7 +148,7 @@ def observation(observation_id: str, organization: Org) -> dict[str, Any]:
 
 @app.post("/api/v1/ingestion/demo", status_code=status.HTTP_201_CREATED)
 def ingest_demo(_: Org) -> dict[str, Any]:
-    if settings.mode != "demo":
+    if settings.mode not in {"demo", "owner_demo"}:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Demo ingestion is disabled outside DEMO mode")
     return {"inserted": store.seed_demo_observations(), "mode": "DEMO", "notice": "Fixtures are idempotent synthetic observations."}
 
@@ -146,7 +169,8 @@ def ingest_live_gfw(_: Org) -> dict[str, Any]:
 
 @app.post("/api/v1/cases", status_code=status.HTTP_201_CREATED)
 def create_case(payload: CaseCreate, organization: Org) -> dict[str, Any]:
-    return store.create_case(organization, payload.observation_id, payload.title, payload.owner_organization, payload.reviewer)
+    return store.create_case(organization, payload.observation_id, payload.title, payload.owner_organization,
+                             payload.reviewer, actor="owner" if settings.mode == "owner_demo" else None)
 
 
 @app.get("/api/v1/cases")
@@ -163,30 +187,32 @@ def case(case_id: str, organization: Org) -> dict[str, Any]:
 @app.post("/api/v1/cases/{case_id}/transitions")
 def transition_case(case_id: str, payload: StatusTransition, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.transition_case(case_id, payload.to_status, payload.actor, payload.note)
+    return store.transition_case(case_id, payload.to_status, recorded_actor(payload.actor), payload.note)
 
 
 @app.post("/api/v1/cases/{case_id}/assignments", status_code=status.HTTP_201_CREATED)
 def assign_case(case_id: str, payload: AssignmentCreate, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.assign_case(case_id, payload.assignee, payload.role, payload.actor)
+    return store.assign_case(case_id, payload.assignee, payload.role, recorded_actor(payload.actor))
 
 
 @app.post("/api/v1/cases/{case_id}/actions", status_code=status.HTTP_201_CREATED)
 def record_action(case_id: str, payload: ActionCreate, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.record_action(case_id, payload.action_type, payload.summary, payload.actor, as_iso(payload.occurred_at))
+    return store.record_action(case_id, payload.action_type, payload.summary, recorded_actor(payload.actor), as_iso(payload.occurred_at))
 
 
 @app.post("/api/v1/cases/{case_id}/follow-ups", status_code=status.HTTP_201_CREATED)
 def record_follow_up(case_id: str, payload: FollowUpCreate, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.record_follow_up(case_id, payload.assessment, payload.summary, payload.actor, as_iso(payload.observed_at))
+    return store.record_follow_up(case_id, payload.assessment, payload.summary, recorded_actor(payload.actor), as_iso(payload.observed_at))
 
 
 @app.post("/api/v1/cases/{case_id}/evidence", status_code=status.HTTP_201_CREATED)
 def attach_evidence(case_id: str, payload: EvidenceCreate, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
+    if settings.mode == "owner_demo":
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Evidence uploads are disabled in the owner demo")
     return store.attach_evidence(case_id, payload.file_name, payload.media_type, payload.content_base64,
                                  payload.source_description, payload.actor, as_iso(payload.observed_at))
 

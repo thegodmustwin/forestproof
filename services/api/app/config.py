@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 
@@ -11,10 +11,11 @@ class Settings:
     database_path: Path
     evidence_directory: Path
     web_origin: str
+    internal_api_token: str | None = field(default=None, repr=False)
 
 
 def get_settings() -> Settings:
-    """Read only non-secret configuration used by the local development slice."""
+    """Read runtime configuration; internal service tokens must not be logged."""
     parents = Path(__file__).resolve().parents
     # Container paths can be shallower than the repository checkout.
     root = parents[3] if len(parents) > 3 else parents[1]
@@ -23,4 +24,5 @@ def get_settings() -> Settings:
         database_path=Path(os.getenv("FORESTPROOF_SQLITE_PATH", root / "data" / "local" / "forestproof.db")),
         evidence_directory=Path(os.getenv("EVIDENCE_STORAGE_PATH", root / "data" / "local" / "evidence")),
         web_origin=os.getenv("WEB_ORIGIN", "http://localhost:3000"),
+        internal_api_token=os.getenv("FORESTPROOF_INTERNAL_API_TOKEN"),
     )

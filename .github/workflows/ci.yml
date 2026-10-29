@@ -57,6 +57,24 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run smoke
+      - uses: actions/setup-python@v5
+        if: matrix.node == '24'
+        with:
+          python-version: "3.12"
+      - name: Install API runtime for isolated owner-demo smoke
+        if: matrix.node == '24'
+        run: python -m pip install -r ../../services/api/requirements.txt
+      - name: Prepare isolated Caddy test binary
+        if: matrix.node == '24'
+        run: |
+          test_container=$(docker create --network none caddy:2.11.7)
+          trap 'docker rm "$test_container" >/dev/null 2>&1 || true' EXIT
+          docker cp "$test_container":/usr/bin/caddy "$RUNNER_TEMP/forestproof-caddy"
+          chmod +x "$RUNNER_TEMP/forestproof-caddy"
+          printf 'FORESTPROOF_SMOKE_CADDY=%s\n' "$RUNNER_TEMP/forestproof-caddy" >> "$GITHUB_ENV"
+      - name: Exercise owner-demo web/API boundary on loopback
+        if: matrix.node == '24'
+        run: npm run smoke:owner
       - name: Browser map smoke (Node 24)
         if: matrix.node == '24'
         run: npm run smoke:browser

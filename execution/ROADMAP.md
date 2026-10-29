@@ -25,7 +25,7 @@
 | 10 | Legal context references | PLANNED | No official order/permit corpus or qualified review is configured. |
 | 11 | Actions and outcomes | WORKING (DEMO) | Actions, follow-ups, and bounded outcome labels are available; no causal claims. |
 | 12 | EvidenceProof dossier | PARTIAL | JSON dossier and hash status exist; PDF output and complete production manifest remain. |
-| 13 | Authentication and tenancy | PLANNED | Demo-only boundary fails closed; real identity and isolation are absent. |
+| 13 | Authentication and tenancy | PARTIAL (SYNTHETIC ONLY) | Experimental owner-demo adds internal web-to-API token checks and server-derived owner audit labels, with isolated gateway/web/API smoke tests. The web endpoint still requires the separate owner gateway; person-level identity, secure production deployment, isolation and LIVE access are absent. |
 | 14 | End-to-end acceptance | PARTIAL | API tests exercise the core workflow; browser-level end-to-end proof is not recorded. |
 | 15 | Deployment and external feedback | DEFERRED | OVH remote desktop access is confirmed. Publishing a reusable Codex environment is not a hosting prerequisite; production still requires server audit, security gates and real-user participation. |
 
