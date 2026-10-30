@@ -2,6 +2,8 @@
 
 ## Immediate: define a credible first pilot
 
+The owner reported creating an ArcGIS account associated with MyGFW on 2026-10-30; determine which account and product it covers and verify any API access, quota and price without collecting credentials in chat. Continue a screen-by-screen review of the synthetic preview while the live pilot gates below are completed.
+
 1. Complete the initial release for one authenticated owner. The synthetic `owner_demo` candidate now authenticates the web service to the API and uses server-derived owner audit labels, but it still relies on the separate owner gateway for human authentication. Verify deployment topology, credentials, rate limiting, person-level identity and storage before real use; defer multi-organization onboarding.
    The synthetic web case queue, action and follow-up workflow now uses persisted API records and has a browser-level test; continue from this implementation rather than assuming the demo fixtures are saved cases.
 2. Use `data/areas/geta-pfmp-research-envelope.geojson` now for engineering dry-runs and coarse coverage research. It is a PFMP-text-derived bounding rectangle, not the Geta forest boundary and not approved for LIVE alert filtering.

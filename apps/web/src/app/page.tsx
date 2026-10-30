@@ -20,16 +20,16 @@ export default function CommandCenterPage() {
   const openCases = state.status === "ready" ? state.cases.filter((item) => item.status !== "CLOSED") : null;
 
   return <div className="page">
-    <div className="topline"><div><p className="eyebrow">ForestProof · Aberdare Monitor</p><h1>Make the response as visible as the signal.</h1><p className="lede">A case-operating system for documenting environmental observations, responsible review, authorised interventions, and follow-up—not for declaring wrongdoing from a map.</p></div><span className="demo-chip">{demoMode.label}</span></div>
+    <div className="topline"><div><p className="eyebrow">ForestProof · Aberdare Monitor</p><h1>From observation to action.</h1><p className="lede">Review an observation, document what you learn, and keep track of the response and follow-up. Every step starts with human review.</p><div className="button-row dashboard-actions"><Link className="button" href="/monitor/aberdare">Explore demo observations →</Link><Link className="button secondary" href="/operations">View demo cases</Link></div></div><span className="demo-chip">{demoMode.label}</span></div>
     <DemoNotice />
     <section className="metric-grid" aria-label="Demo operations summary">
       <article className="metric"><p className="metric-label">Demo observations</p><p className="metric-value">{observationCount ?? "—"}</p><p className="metric-help">{observationCount === null ? "Connect to the API to load records." : "Synthetic records available for human review."}</p></article>
       <article className="metric metric-alert"><p className="metric-label">Open review records</p><p className="metric-value">{openCases?.length ?? "—"}</p><p className="metric-help">{openCases ? "Saved synthetic cases that are not closed." : "Loading or unable to reach saved cases."}</p></article>
-      <article className="metric"><p className="metric-label">Verified outcomes</p><p className="metric-value">0</p><p className="metric-help">No environmental outcomes are asserted in demo mode.</p></article>
+      <article className="metric"><p className="metric-label">Environmental outcomes</p><p className="metric-value">—</p><p className="metric-help">Not measured in this demo.</p></article>
       <article className="metric"><p className="metric-label">Source status</p><p className="metric-value">Demo</p><p className="metric-help">A verified live observation feed is not yet connected.</p></article>
     </section>
     <div className="dashboard-grid">
-      <section className="card"><div className="card-head"><div><h2>Response queue</h2><p className="card-subtitle">Saved demo cases needing a next step.</p></div><Link className="link-arrow" href="/operations">View operations →</Link></div><div className="card-body">
+      <section className="card"><div className="card-head"><div><h2>Open cases</h2><p className="card-subtitle">Saved demo cases available for review.</p></div><Link className="link-arrow" href="/operations">View all cases →</Link></div><div className="card-body">
         {state.status === "loading" && <p className="detail-note" role="status">Loading saved cases…</p>}
         {state.status === "unavailable" && <div role="status"><p className="detail-note">Saved cases are unavailable.</p><button className="button secondary" onClick={retry}>Try again</button></div>}
         {openCases && openCases.length === 0 && <div><p className="detail-note">No open demo cases yet.</p><Link className="link-arrow" href="/monitor/aberdare">Review a demo observation →</Link></div>}

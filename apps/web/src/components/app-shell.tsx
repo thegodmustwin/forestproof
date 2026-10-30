@@ -29,7 +29,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           {navigation.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
             return (
-              <Link className={`nav-item ${active ? "active" : ""}`} href={item.href} key={item.href}>
+              <Link className={`nav-item ${active ? "active" : ""}`} href={item.href} key={item.href} aria-current={active ? "page" : undefined}>
                 <span className="nav-icon" aria-hidden="true">{item.icon}</span>
                 {item.label}
               </Link>
