@@ -166,3 +166,10 @@ A Caddy configuration under infrastructure/deployment/owner-pilot/ is being test
 ## 2026-10-29 pilot area and release selection
 
 The owner accepts a provisional wider-region path without waiting indefinitely for an official KFS boundary. The current envelope is still research-only until its assumptions and use are reviewed; it cannot establish that observations are inside Geta Forest. Public RADD metadata also showed an older content date behind the `latest` alias than another listed release. See `docs/DATA_SOURCES.md` and `execution/NEXT_ACTIONS.md` before choosing a source version or enabling any live request.
+
+
+## 2026-11-05 design and operating-value work
+
+- DESIGN.md defines the field-atlas / evidence-ledger visual direction.
+- .agents/skills/ and docs/UI_SKILLS.md provide portable original art-direction, UX interaction and rendered-review skills. Local user-skill copies are installed separately; Cloud uses repository discovery/installation.
+- docs/LOW_COST_DATA_AND_VALUE_PLAN.md records lower-cost licensed source candidates and a commercial workflow hypothesis; no feed or paid service is activated.
