@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFile, spawn } from "node:child_process";
 import { randomBytes } from "node:crypto";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -178,6 +178,22 @@ try {
       const openRecord = page.getByRole("link", { name: "Open the review record" });
       await openRecord.waitFor();
       assert.equal(await openRecord.getAttribute("href"), `/cases/${caseId}`);
+
+      if (process.env.FORESTPROOF_SCREENSHOT_DIR) {
+        const captureDir = resolve(process.env.FORESTPROOF_SCREENSHOT_DIR);
+        await mkdir(captureDir, { recursive: true });
+        for (const [name, viewport] of [["desktop", { width: 1440, height: 1100 }], ["mobile", { width: 390, height: 844 }]]) {
+          await page.setViewportSize(viewport);
+          await page.goto(entryBase, { waitUntil: "networkidle" });
+          await page.getByText("Synthetic owner smoke", { exact: true }).waitFor();
+          assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "Page overflows the viewport");
+          const brand = await page.locator(".brand").boundingBox();
+          const sidebar = await page.locator(".sidebar").boundingBox();
+          assert.ok(brand && sidebar && brand.x + brand.width <= sidebar.x + sidebar.width + 1, "Brand overflows navigation");
+          await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
+        }
+        await page.setViewportSize({ width: 1440, height: 1100 });
+      }
 
       await page.goto(`${entryBase}/operations`, { waitUntil: "domcontentloaded" });
       await page.getByText(caseId, { exact: false }).waitFor();
