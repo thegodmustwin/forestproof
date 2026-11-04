@@ -63,3 +63,10 @@ No roadmap row is evidence of completion by itself. Update statuses only after i
 - PARTIAL (offline): bounded candidate GFW response envelope parser based on pinned WRI source and synthetic fixtures; no deployed-service response has been validated.
 
 - PARTIAL: a loopback-only owner gateway over an authenticated SSH tunnel is under CI verification; it is not installed on the VPS and does not satisfy live-feed or production-storage gates.
+
+
+## 2026-11-05 design quality and economic resilience
+
+- PARTIAL: original UI skill set installed locally and packaged in the repository; visual upgrade candidate and rendered desktop/mobile checks added. Test evidence describes the branch, not an OVH release.
+- DOCUMENTED_NOT_TESTED: direct GLAD-L and NASA OPERA as alternative alert/vegetation products; no activation or paid dependency. MyGFW API costs remain unverified.
+- PLANNED / HYPOTHESIS: validate a one-project review-to-dossier workflow offer with actual practitioners, measured analyst/reporting effort and willingness to pay before billing expansion.

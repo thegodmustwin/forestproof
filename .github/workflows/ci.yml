@@ -77,6 +77,15 @@ jobs:
         run: npm run smoke:owner
         env:
           FORESTPROOF_CHROME_EXECUTABLE: /usr/bin/google-chrome
+          FORESTPROOF_SCREENSHOT_DIR: ${{ runner.temp }}/forestproof-design
+      - name: Upload synthetic UI captures
+        if: always() && matrix.node == '24'
+        uses: actions/upload-artifact@v4
+        with:
+          name: forestproof-design
+          path: ${{ runner.temp }}/forestproof-design/*.png
+          if-no-files-found: warn
+          retention-days: 7
       - name: Browser map smoke (Node 24)
         if: matrix.node == '24'
         run: npm run smoke:browser

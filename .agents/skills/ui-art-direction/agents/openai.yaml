@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI Art Direction"
+  short_description: "Give product interfaces a coherent visual point of view."
+  default_prompt: "Use $ui-art-direction to give this interface a distinctive visual direction and implement it."
+policy:
+  allow_implicit_invocation: true

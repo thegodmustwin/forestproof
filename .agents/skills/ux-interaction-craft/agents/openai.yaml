@@ -1,0 +1,6 @@
+interface:
+  display_name: "UX Interaction Craft"
+  short_description: "Make interface actions, states and access clear."
+  default_prompt: "Use $ux-interaction-craft to improve the primary user flow and its accessibility."
+policy:
+  allow_implicit_invocation: true

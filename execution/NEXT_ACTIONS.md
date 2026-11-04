@@ -53,3 +53,8 @@ Verify the synthetic preview's localhost health and full user flow, then configu
 ## Deployed preview follow-up
 
 Ask the owner to privately retrieve the test password from the VPS and share it only with intended testers. Confirm their browser map and navigation; never collect real evidence or personal data in this shared synthetic database. Continue verified live-source access, cost and coverage work, authorized boundary, production storage and backups, identity and audit controls; do not claim the preview satisfies those gates. Preserve the existing VPS services and document any subsequent firewall or service changes.
+
+
+## 2026-11-05 design and source-cost follow-up
+
+Use the portable UI skills and DESIGN.md for subsequent interface work. Inspect the synthetic desktop/mobile captures, test keyboard/focus and the primary workflow, and re-establish OVH access before deploying a new UI release. Verify the exact MyGFW Data API terms, price and quota before any alert query; evaluate direct GLAD-L and NASA OPERA only after their specific assets, reuse conditions, local coverage and semantics are checked. Test the narrow project-manager offer through authorized practitioner feedback; do not contact anyone without the owner's instruction.

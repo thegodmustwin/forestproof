@@ -1,0 +1,6 @@
+interface:
+  display_name: "UI Render Review"
+  short_description: "Inspect rendered screens and finish visual details."
+  default_prompt: "Use $ui-render-review to inspect and refine this interface at desktop and mobile sizes."
+policy:
+  allow_implicit_invocation: true
