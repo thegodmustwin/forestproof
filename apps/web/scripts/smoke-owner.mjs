@@ -186,11 +186,12 @@ try {
           await page.setViewportSize(viewport);
           await page.goto(entryBase, { waitUntil: "networkidle" });
           await page.getByText("Synthetic owner smoke", { exact: true }).waitFor();
-          assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "Page overflows the viewport");
+          await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
+          const overflow = await page.evaluate(() => ({ width: window.innerWidth, scrollWidth: document.documentElement.scrollWidth, offenders: [...document.querySelectorAll("body *")].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right > window.innerWidth + 1 && getComputedStyle(el).position !== "absolute"; }).slice(0, 8).map(el => el.className) }));
+          assert.ok(overflow.scrollWidth <= overflow.width + 1, `Page overflows the viewport: ${JSON.stringify(overflow)}`);
           const brand = await page.locator(".brand").boundingBox();
           const sidebar = await page.locator(".sidebar").boundingBox();
           assert.ok(brand && sidebar && brand.x + brand.width <= sidebar.x + sidebar.width + 1, "Brand overflows navigation");
-          await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
         }
         await page.setViewportSize({ width: 1440, height: 1100 });
       }
