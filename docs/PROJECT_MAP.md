@@ -24,6 +24,7 @@ Today this path runs in DEMO mode with seeded synthetic records and a SQLite ada
 - docs/PROJECT_CONTEXT.md — origin, strategy, current facts, decisions, and next sequence.
 - docs/PROJECT_MAP.md — this code/data flow and document index.
 - docs/PROJECT_DECISIONS.md — dated owner choices and unresolved facts.
+- docs/LAUNCH_STRATEGY.md — 2026-11-06 code-verified readiness, minimum account needs, separate preview/live acceptance criteria and UI review sequence.
 - docs/origin/ — verbatim user-authored inception prompts with an archival, non-authoritative warning.
 - apps/web/ — Next.js/TypeScript/React UI, MapLibre components, API client, and demo fallbacks.
 - apps/web/src/lib/observation-normalization.ts — demo-only API observation validation; missing provenance is displayed as missing and records without a valid ID, point, or DEMO_DATA flag are rejected. It does not implement live display.

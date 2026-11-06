@@ -1,5 +1,7 @@
 # Next Actions
 
+Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Recheck OVH reachability before any preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
+
 ## Immediate: define a credible first pilot
 
 The owner reported creating an ArcGIS account associated with MyGFW on 2026-10-30; determine which account and product it covers and verify any API access, quota and price without collecting credentials in chat. Continue a screen-by-screen review of the synthetic preview while the live pilot gates below are completed.

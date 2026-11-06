@@ -2,7 +2,7 @@
 
 ## Current status and owner preference
 
-**No public deployment exists.** The code is in the private GitHub repo and CI passes, but the public website has not been launched.
+**A password-protected synthetic preview was deployed and verified on 2026-10-28; current availability is unconfirmed.** No live-production pilot has been verified. The later dated deployment record below describes the historical preview. The latest design is in private GitHub main and has not been verified on OVH. See [the launch assessment](LAUNCH_STRATEGY.md) for the current release sequence.
 
 The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS and hardware capacity. The current public IP, SSH readiness, firewall, DNS/domain, TLS, backup configuration, existing services, and deployment path still require independent inspection.
 
@@ -82,6 +82,6 @@ A Caddy configuration under infrastructure/deployment/owner-pilot/ is being test
 
 ## 2026-10-28 password-protected synthetic friends-and-family preview
 
-The synthetic preview is available at https://vps-8071f70a.vps.ovh.net/. It uses a Caddy HTTPS gateway with a shared tester credential, the web app on 127.0.0.1:13000, and an API with no host-published port. The demo database is shared, not private per tester, and is not suitable for personal data or real evidence. The gateway blocks evidence uploads. The owner can retrieve the password directly on the VPS from /home/ubuntu/forestproof-preview-20261028/private/preview-password; it must not be pasted into chat or committed. User name: tester. No live provider records or official Geta boundary are configured.
+The synthetic preview was initially verified at https://vps-8071f70a.vps.ovh.net/ on 2026-10-28; its current availability is unconfirmed. Its recorded configuration uses a Caddy HTTPS gateway with a shared tester credential, the web app on 127.0.0.1:13000, and an API with no host-published port. The demo database is shared, not private per tester, and is not suitable for personal data or real evidence. The gateway blocks evidence uploads. The owner can retrieve the password directly on the VPS from /home/ubuntu/forestproof-preview-20261028/private/preview-password; it must not be pasted into chat or committed. User name: tester. No live provider records or official Geta boundary are configured.
 
 The host has dedicated preview containers and volumes, a UFW allow rule for TCP 80 for certificates and limit rule for TCP 443, while prior SSH/xrdp services remain in place. Do not stop or remove unrelated containers or alter SSH/xrdp. TLS, unauthenticated 401, authenticated demo health and cross-origin/upload blocks passed at initial deployment; direct API port 8000 timed out from an external check. The source is the family-preview branch/PR; deployment is not evidence that it is a production live system. Testers share the same demo state; production backups, restore, audit attribution and per-user isolation remain unverified.

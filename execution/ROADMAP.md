@@ -47,6 +47,10 @@
 
 No roadmap row is evidence of completion by itself. Update statuses only after implementation and verification.
 
+## 2026-11-06 verified launch scope
+
+See `docs/LAUNCH_STRATEGY.md`. Latest main's synthetic workflow and desktop/mobile command center were exercised locally; live mode, live UI contracts, source ingestion and production recovery still require implementation. Account setup is a parallel dependency, not the entire remaining task. The minimum proposed pilot is one owner/region/source and a source-linked review/action/follow-up/dossier loop, with field/personal uploads disabled initially and a tested private storage/restore design. Current OVH reachability is unconfirmed; no new deployment is recorded. Repository skills were copied into this runtime's user directory; automatic discovery and fresh-session persistence remain unverified.
+
 
 ## 2026-10-28 owner-only pilot checkpoint
 

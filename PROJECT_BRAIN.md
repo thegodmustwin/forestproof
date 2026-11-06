@@ -42,7 +42,7 @@ The first coherent vertical slice is:
 | Live forest-alert provider | DOCUMENTED_NOT_TESTED | No provider is represented as operational until credentials, licence, AOI coverage, and ingestion are verified. |
 | Legal corpus | PLANNED | No court order or permit is treated as authoritative until an official source and human review are recorded. |
 | Outcome Graph | WORKING (P0) | A relational observation → case → action/follow-up graph is exposed; it does not assert environmental causality. |
-| Commercial deployment | DEFERRED | No public deployment or external notification has been completed. The owner prefers OVH; server access, configuration, and deployment are unverified. Railway documents are historical. |
+| Deployment | PARTIAL (SYNTHETIC PREVIEW) | A password-protected synthetic preview was deployed and verified on OVH on 2026-10-28. Current availability, the newer UI release and the live-production pilot are unverified. Railway documents are historical. See docs/LAUNCH_STRATEGY.md. |
 
 ## Product boundary
 
