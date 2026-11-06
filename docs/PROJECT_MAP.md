@@ -173,3 +173,8 @@ The owner accepts a provisional wider-region path without waiting indefinitely f
 - DESIGN.md defines the field-atlas / evidence-ledger visual direction.
 - .agents/skills/ and docs/UI_SKILLS.md provide portable original art-direction, UX interaction and rendered-review skills. Local user-skill copies are installed separately; Cloud uses repository discovery/installation.
 - docs/LOW_COST_DATA_AND_VALUE_PLAN.md records lower-cost licensed source candidates and a commercial workflow hypothesis; no feed or paid service is activated.
+
+
+## 2026-11-06 Cloud handoff
+
+- `docs/CLOUD_HANDOFF.md` is a concise continuation brief covering the project's origin, current limitations, OVH and GitHub state, design skills, data-cost research and next priorities. Recheck current main and facts before acting.

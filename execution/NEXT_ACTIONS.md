@@ -58,3 +58,8 @@ Ask the owner to privately retrieve the test password from the VPS and share it 
 ## 2026-11-05 design and source-cost follow-up
 
 Use the portable UI skills and DESIGN.md for subsequent interface work. Inspect the synthetic desktop/mobile captures, test keyboard/focus and the primary workflow, and re-establish OVH access before deploying a new UI release. Verify the exact MyGFW Data API terms, price and quota before any alert query; evaluate direct GLAD-L and NASA OPERA only after their specific assets, reuse conditions, local coverage and semantics are checked. Test the narrow project-manager offer through authorized practitioner feedback; do not contact anyone without the owner's instruction.
+
+
+## 2026-11-06 Cloud continuation
+
+Begin with `docs/CLOUD_HANDOFF.md`, then inspect the current code, main and execution status. Verify the MyGFW account type and applicable source costs/terms before any alert-record query. Continue source-independent implementation, identity/storage/backup preparation and meaningful tests while access is resolved. Recheck OVH availability without disturbing existing services. Apply the repository design skills to appropriate UI tasks and preserve the current DEMO/LIVE distinction.
