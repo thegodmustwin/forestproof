@@ -11,3 +11,10 @@ Invoke a skill explicitly with its dollar-name when useful, or let normal skill 
 The reference library at .agents/skills/ui-art-direction/references/design-library.md records original/public sources, licensing context and the distinction between inspiration and copying. Sources include Anthropic frontend-design, Impeccable, Vercel Web Interface Guidelines, W3C, GOV.UK, Carbon and public design galleries. This is a considered selection, not a ranking of all online UI resources or a guarantee of quality.
 
 Start ForestProof UI work with DESIGN.md, current product context and the affected live code. A small bug should remain a small fix. Skills do not establish production security or permission to publish.
+
+
+## Cross-project use, 2026-11-06
+
+The owner's Windows Codex user directory also has a concise `~/.codex/AGENTS.md` design preference. It asks local sessions to use these skills when relevant while respecting each project's identity and scope. The preference was observed in the current desktop conversation. It does not transfer the Windows file to remote environments or guarantee a skill is selected on every turn.
+
+A ForestProof Cloud checkout has the three portable skill folders under `.agents/skills/`, and the root `AGENTS.md` points agents to them. For other Cloud projects, make the same three folders available in that Cloud environment's user skills directory (or the other project's `.agents/skills/`) with appropriate access to this private repository. Preserve existing skills and avoid replacing conflicting names. Environment persistence and setup publication vary; verify in a new Cloud session rather than assuming the files sync across all environments. A supported reusable environment setup may automate the copy where available, but no Cloud environment configuration was modified by this handoff.

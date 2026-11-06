@@ -7,6 +7,11 @@ Before substantial work, read:
 3. PROJECT_BRAIN.md, execution/CURRENT_STATUS.md, and execution/NEXT_ACTIONS.md.
 4. The relevant domain document linked from the project map.
 
+## Design and Cloud handoff
+
+- For visual or interaction work, read DESIGN.md and use the relevant repository skills in .agents/skills/: ui-art-direction, ux-interaction-craft, and ui-render-review. Match the product and task; keep small fixes focused and report actual visual verification.
+- For a fresh Cloud continuation, read docs/CLOUD_HANDOFF.md, then recheck current code, main and dated status; the handoff is not a substitute for current user instructions.
+
 ## Evidence and safety invariants
 
 - ForestProof is an evidence-and-response workflow above observation providers, not a satellite operator or an automated enforcement system.
