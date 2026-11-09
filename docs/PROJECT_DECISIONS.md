@@ -35,6 +35,8 @@ The prompts also discuss candidate providers, grants, customer types, and market
 
 ## Operational facts still to establish
 
+- Contabo `vmi3711898`: on 2026-11-10 a read-only SSH test from the owner's laptop succeeded with its existing key and strict host-key checking; the host reported Ubuntu 24.04.5 LTS and RDP was listening on loopback. Cloud access, current service/port inventory, firewall, deployment, and transfer and restore verification of the owner's reported laptop backup remain open. The desktop uses `ubuntu` and an SSH tunnel according to the owner; keep RDP private, preserve other services, and never use `content-engine-vps` for Contabo.
+
 - OVH service details: a prior session inspected the server and verified HTTPS for the deployed synthetic preview. Current access, server state, backup/restore and the production deployment path remain to be established.
 - Codex Cloud: environment setup and CI-equivalent checks completed in the onboarding task; saved install/start instructions are present. Fresh-task restoration is not independently verified, and a narrow egress allowlist for public source documentation awaits review/publication.
 - Data: a lawfully usable and accurately labeled area, one suitable record-level source, product license and attribution, latency/coverage, successful bounded request and provenance. A PFMP-derived provisional envelope supports non-operational research today; a wider-area pilot can be considered without asserting an official forest boundary once its remaining gates pass.
