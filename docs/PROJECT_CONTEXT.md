@@ -77,8 +77,12 @@ The UI includes DEMO notices. Its coordinates, cases, provider labels, confidenc
 
 ## Owner workflow and hosting decisions
 
+**Current hosting update (2026-11-10):** The owner has selected Contabo `vmi3711898` (reported Ubuntu 24.04) for next-stage hosting. A read-only SSH test using the laptop's existing key and strict host-key checking reached `vmi3711898` on 2026-11-10. This confirms laptop connectivity, not Codex Cloud access or deployment readiness. The owner reports the private ForestProof backup is on the laptop; transfer to Contabo has not been completed or verified. `content-engine-vps` names the old OVH server, not Contabo. Keep RDP private over its existing SSH tunnel; preserve existing services, projects and recovery access. Do not reinstall the server. Cloud tasks must not assume access to Windows files or SSH keys; arrange a separately configured secure connection if needed. Never put passwords, passphrases or private keys in chat or Git.
+
+Earlier OVH choices and observations below are historical; they are not the Contabo deployment plan.
+
 - The source of truth is the private GitHub repo linked above, not desktop chat history. Use Codex Cloud for ongoing development because the owner wants to avoid laptop capacity bottlenecks; local Docker must not be a prerequisite.
-- The owner prefers their existing OVH VPS for hosting. The temporary hostname is vps-8071f70a.vps.ovh.net. A prior session verified the host fingerprint, inspected the server and deployed the password-protected synthetic preview with HTTPS. Access and current server configuration must be rechecked; production backup coverage and live source access remain unverified.
+- Historically, the owner preferred their existing OVH VPS for hosting. The temporary hostname is vps-8071f70a.vps.ovh.net. A prior session verified the host fingerprint, inspected the server and deployed the password-protected synthetic preview with HTTPS. Access and current server configuration must be rechecked; production backup coverage and live source access remain unverified.
 - Existing Railway deployment material predates that preference. Railway is not the current hosting decision. See docs/DEPLOYMENT.md and the historical notice in docs/RAILWAY_LAUNCH.md.
 - Never put credentials in the repo or ask for secrets in chat. Keep .env local and use .env.example for variable names only.
 
@@ -87,7 +91,7 @@ The UI includes DEMO notices. Its coordinates, cases, provider labels, confidenc
 1. Codex Cloud setup has been exercised with Python 3.12 and Node 20: API tests, web typecheck/build, and local API/web smoke checks passed on 2026-10-25. Install/start instructions are saved; restoration in a fresh task is not independently verified.
 2. The first production pilot is owner-only and requires a live provider feed. Use the provisional PFMP research envelope to advance engineering, with direct GFW RADD as the lead feed candidate and GLAD-L as a comparison. A clearly labeled wider-area pilot need not wait for an official forest boundary, but its geometry assumptions and lawful use must be reviewed; verify terms, cost, access, coverage, latency, and source metadata before activation.
 3. Complete production security boundaries (identity, role/tenant isolation, protected evidence storage, upload scanning, backups, and restore tests) before accepting real case material.
-4. Recheck the OVH VPS and choose a production deployment method after confirming access, firewall, TLS/domain, backups, operating cost, and security requirements. Preserve the existing synthetic preview and remote desktop.
+4. Inventory Contabo safely and choose a deployment method after confirming access, occupied ports, firewall, TLS/domain, backups, operating cost, and security requirements. Preserve its existing services and private remote desktop. The older OVH synthetic preview is historical.
 5. Validate the workflow with a legitimate conservation or watershed professional; only then expand the commercial scope.
 
 ## Source of truth and reading order
