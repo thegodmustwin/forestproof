@@ -128,6 +128,7 @@ On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net`
 - docs/ALPHAZERO_DOCTRINE.md, docs/GOLDEN_ECONOMICS.md, docs/COMMERCIAL_STRATEGY.md, docs/PILOT_PARTNERSHIPS.md, docs/GRANTS_AND_INCENTIVES.md — strategic and business hypotheses, not validated demand.
 - docs/DEMO_SCRIPT.md — demonstration path and truthful DEMO labels.
 - docs/DEPLOYMENT.md — current Contabo hosting handoff, historical synthetic OVH preview, and unverified live-pilot prerequisites.
+- docs/CLOUD_HANDOFF.md and execution/CURRENT_STATUS.md — reported private November 1 OVH rescue archive, recovery limitations and reconciliation guardrails; the archive itself stays off GitHub.
 - execution/CURRENT_STATUS.md, execution/NEXT_ACTIONS.md, execution/ROADMAP.md — dated execution state and priorities.
 - docs/origin/ — original prompts, retained for history only.
 
