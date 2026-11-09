@@ -1,5 +1,7 @@
 # ForestProof — verified readiness and launch strategy
 
+**Hosting update, 2026-11-10:** The current target is Contabo `vmi3711898`; the old OVH host and `content-engine-vps` alias are historical. Read-only SSH from the laptop reached Contabo with strict host-key checking; Cloud access, safe host inventory, backup transfer and a ForestProof deployment on Contabo remain unverified. Keep RDP private via its existing SSH tunnel and preserve other services. Do not treat the old OVH preview as a Contabo deployment.
+
 **Assessed:** 2026-11-06 (Africa/Nairobi). Code inspected and exercised: private main `85dbc77` (handoff merge). This assessment is a plan and dated verification record, not a production release or provider authorization.
 
 ## Product and first customer
@@ -25,7 +27,7 @@ The first live release remains one authenticated owner, one explicitly described
 ## Accounts: the minimum useful set
 
 - **Existing personal GitHub:** already usable for private source; keep the university account separate.
-- **Existing OVH:** recover/verify current access and service health; do not order another host by default.
+- **Existing Contabo:** inventory current access, occupied ports, services and backup/restore before selecting a deployment; do not order another host by default.
 - **MyGFW / GFW Data API:** needed if the RADD route is selected. The recorded official guide describes an email/password account and API-key capability. An ArcGIS or social-login account does not establish that capability. Keep passwords/keys out of chat and Git; use private server/environment secret handling after access and terms are reviewed.
 - **ArcGIS:** no current application SDK/integration or established technical requirement. Do not buy credits or an upgrade for ForestProof without a demonstrated need and approval.
 - **NASA Earthdata:** only if the OPERA alternative is selected and validated. Do not create it alongside MyGFW merely for completeness.
@@ -36,7 +38,7 @@ The first live release remains one authenticated owner, one explicitly described
 
 ### 1. Restore the feedback surface
 
-Determine OVH's current service state/address through an authorized console or existing trusted access. Recheck DNS, ingress and containers without resetting the server or disrupting SSH/remote desktop. Once access is available, deploy the latest synthetic preview to the already authorized protected preview boundary. Verify HTTPS, denied anonymous access, upload restrictions and the full synthetic browser flow. This milestone produces a feedback link; it does not satisfy the live-pilot requirement.
+Inventory Contabo through authorized trusted access. Check DNS, ingress and existing services without resetting the server or disrupting SSH/remote desktop or other projects. Verify any backup transfer and choose a non-conflicting deployment plan before deploying the latest synthetic preview to a protected preview boundary. Verify HTTPS, denied anonymous access, upload restrictions and the full synthetic browser flow. This milestone produces a feedback link; it does not satisfy the live-pilot requirement.
 
 ### 2. Build the private real-data path while source access is resolved
 
@@ -68,7 +70,7 @@ The redesigned opening provides a strong identity. For repeated operational use,
 
 No new paid data, hosting or other recurring service was ordered in this assessment. The RADD dataset is documented royalty-free; the GFW API fee/quota remain unknown, not assumed paid or free. Existing OVH, backup entitlement, Codex usage and GitHub Actions allowance/billing are not inspected. Display an actual budget before any paid commitment.
 
-The two useful owner checks are (1) whether the actual MyGFW account offers API-key creation and any shown price/limit, and (2) whether OVH Manager reports the VPS running at the expected address. Screens or text used for these checks must omit secrets. A domain purchase, ArcGIS upgrade, new database subscription or additional Cloud publication attempt is not a prerequisite to continuing code and design work.
+The two useful owner checks are (1) whether the actual MyGFW account offers API-key creation and any shown price/limit, and (2) whether a secure Cloud connection to Contabo can be configured if required. Screens or text used for these checks must omit secrets. A domain purchase, ArcGIS upgrade, new database subscription or additional Cloud publication attempt is not a prerequisite to continuing code and design work.
 
 ## Verification in this assessment
 
