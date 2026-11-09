@@ -6,6 +6,7 @@ This is the compact record of durable owner choices and important unresolved fac
 
 | Date | Decision | Consequence |
 | --- | --- | --- |
+| 2026-11-10 | Use the existing Contabo VPS `vmi3711898` as the target for future ForestProof hosting; OVH is the previous host. | Laptop read-only strict-host-key SSH reached that hostname. Preserve existing projects, services and private RDP tunnel; do not use `content-engine-vps` (the old OVH alias). Backup transfer and Cloud access are unverified. |
 | 2026-10-29 | Keep moving without waiting indefinitely for an official Geta GIS boundary; the owner accepts a provisional approach. | A future owner-only pilot may monitor an explicitly labeled broader region after the area assumptions, permitted data use, coverage and pilot controls are verified. Do not represent the coarse rectangle as a forest boundary or claim that a pixel lies inside Geta Forest. The current research envelope is not yet activated for LIVE use. |
 | 2026-10-26 | Keep momentum while KFS boundary and provider access questions are pending by using the PFMP's published coordinate extent as a provisional Geta research envelope. | Use only for source-coverage research and engineering dry-runs. It is not a forest boundary, not approved for live filtering, and does not settle data reuse, API cost, legal scope, or alert validity. Replace it when authoritative GIS geometry and terms are verified. |
 | 2026-10-26 | Use GFW RADD as the lead provider candidate for the first feed adapter; keep GLAD-L as a comparison and defer GFW Integrated Alerts. | This is an engineering priority based on RADD's Sentinel-1 radar, 10 m weekly product, and documented humid-tropical-forest/Africa scope. Validate local coverage, terrain limits, terms, and service cost before any record query or LIVE use; new paid access requires owner approval. |
@@ -56,7 +57,7 @@ Do not put server passwords, SSH private keys, personal evidence, or access toke
 
 ## 2026-10-28 owner direction
 
-Continue toward an owner-only OVH pilot with a verified live feed. The owner reports Ubuntu 24.04 and working remote desktop access. Preserve existing VPS services and remote desktop; inventory the host before proposing changes. Codex Cloud environment publishing is not a prerequisite for OVH. Check any new paid service cost with the owner, and never request passwords, API keys, or private keys in chat. This direction authorizes pilot preparation; the source, authentication, backup, and host-readiness gates still require evidence.
+Historical direction, superseded on 2026-11-10 by the Contabo target: continue toward an owner-only pilot with a verified live feed. The owner reports Ubuntu 24.04 and working remote desktop access. Preserve existing VPS services and remote desktop; inventory the host before proposing changes. Codex Cloud environment publishing is not a prerequisite for OVH. Check any new paid service cost with the owner, and never request passwords, API keys, or private keys in chat. This direction authorizes pilot preparation; the source, authentication, backup, and host-readiness gates still require evidence.
 
 
 ### Owner-provided OVH terminal screenshot, 2026-10-28
