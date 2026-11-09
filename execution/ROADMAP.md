@@ -1,5 +1,7 @@
 # ForestProof Roadmap
 
+**Hosting update, 2026-11-10:** Contabo `vmi3711898` is now the target. The laptop reached it via a read-only strict-host-key SSH test. Cloud access, backup transfer and ForestProof deployment are unverified. Preserve other projects and keep RDP private over its existing SSH tunnel. Older OVH entries below are historical.
+
 ## Status legend
 
 - WORKING: implemented and verified at the stated scope.
@@ -56,7 +58,7 @@ See `docs/LAUNCH_STRATEGY.md`. Latest main's synthetic workflow and desktop/mobi
 
 - WORKING (offline groundwork): immutable synthetic RADD cell/release snapshots and field-level comparison of two saved releases. No missing-row retraction inference.
 - PARTIAL / UNVERIFIED: WUR dataset licensing and attribution source documented; local RADD coverage, GFW Data API account access, service cost, quotas, exact attribution mapping, retention, and response shape remain open.
-- PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive OVH deployment after the host inventory.
+- PLANNED: owner authentication, production storage and tested backups, permitted live ingestion, and a non-disruptive Contabo deployment after the host inventory.
 
 - COMPLETED DEPENDENCY WORK: the lockfile was upgraded from Next.js 14 to Next.js 16.4.3; a local Node 24 build passed and prior candidate CI passed. A framework upgrade does not establish production security.
 

@@ -1,5 +1,7 @@
 # ForestProof — costs and operating budget
 
+**Hosting update, 2026-11-10:** The user has an existing Contabo VPS and selected it as the target. Its plan, recurring charges, traffic and backup costs have not been independently inspected. Previous OVH amounts or preview history must not be assumed to describe Contabo. Do not add paid services without the owner's cost approval.
+
 **Status:** initial ledger; a password-protected synthetic preview is deployed, but no production pilot or live feed is active.
 
 ## Current spend and commitments

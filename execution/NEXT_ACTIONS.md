@@ -1,6 +1,17 @@
 # Next Actions
 
-Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Recheck OVH reachability before any preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
+Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Inventory the new Contabo host and verify any backup transfer before planning a preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
+
+## Current host handoff — 2026-11-10
+
+**Current hosting update (2026-11-10):** The owner has selected Contabo `vmi3711898` (Ubuntu 24.04.5 LTS verified by read-only SSH) for next-stage hosting. A read-only SSH test using the laptop's existing key and strict host-key checking reached `vmi3711898` on 2026-11-10. This confirms laptop connectivity, not Codex Cloud access or deployment readiness. The owner reports the private ForestProof backup is on the laptop; transfer to Contabo has not been completed or verified. `content-engine-vps` names the old OVH server, not Contabo. A read-only listener check found RDP on loopback; keep it private over the existing SSH tunnel and preserve existing services, projects and recovery access. Do not reinstall the server. Cloud tasks must not assume access to Windows files or SSH keys; arrange a separately configured secure connection if needed. Never put passwords, passphrases or private keys in chat or Git.
+
+1. On the laptop only, read `D:\content-engine\docs\CONTABO_AGENT_HANDOFF.md` and use its verified connection approach. In Cloud, request a separately configured secure connection only if access is needed; never request credentials in chat.
+2. Inspect host identity, occupied ports, running services, firewall, storage and existing project ownership read-only before choosing paths or making changes. Keep SSH and tunnel-only RDP usable; do not reinstall or stop other projects.
+3. Identify the private laptop backup without exposing its contents or credentials, then plan a safe, conflict-free transfer and a restore verification before claiming Contabo has the project or recoverable data.
+4. Continue live-feed, access-control, storage and UI work independently; do not claim a live service or deployment without verification.
+
+Older OVH-specific tasks below are historical unless explicitly updated.
 
 ## Immediate: define a credible first pilot
 
@@ -17,14 +28,16 @@ The owner reported creating an ArcGIS account associated with MyGFW on 2026-10-3
 ## Before pilot or deployment
 
 - Implement authenticated identity, server-side role/tenant checks, protected object storage, upload scanning, retention, rate limits, monitoring, and tested backup/restore before real evidence.
-- Continue development in the working Cloud task while available, preserving work in source control; fresh-task restoration is not verified. The failed environment publication is not an OVH hosting prerequisite.
-- The owner can reach the OVH VPS through remote desktop. Audit its SSH access, firewall, backups, DNS/domain/TLS, runtime and operating cost before deployment. Direct access from Cloud and GitHub authentication on the VPS are unverified; do not request passwords or private keys in chat.
-- Choose and document a deployment method only after the OVH inventory and production controls are understood. Railway is not the current choice.
+- Continue development in the working Cloud task while available, preserving work in source control; fresh-task restoration is not verified. The failed environment publication is not a Contabo hosting prerequisite.
+- On Contabo, audit occupied ports and services, firewall, backups, DNS/domain/TLS, runtime and operating cost before deployment. Direct access from Cloud and GitHub authentication on the VPS are unverified; do not request passwords or private keys in chat.
+- Choose and document a deployment method only after the Contabo inventory and production controls are understood. Railway is not the current choice.
 - Obtain practitioner feedback and one design partner before expanding billing, enterprise features, or predictive ML.
 - Get explicit current approval before recurring paid services, public deployment, external outreach, notifications, or legally consequential communication.
 
 
-## 2026-10-28 immediate pilot work
+## Historical 2026-10-28 immediate pilot work — OVH
+
+The section below preserves the original plan and OVH inventory as history. It is not authorization or an instruction to deploy on OVH; see the Contabo handoff above. Apply any still-relevant general security or live-feed gates independently to Contabo after verifying its current conditions.
 
 1. Recheck the read-only VPS inventory immediately before deployment; SSH access and the initial listener, firewall and container inventory were verified on 2026-10-28. Keep remote desktop and existing services available.
 2. Implement and verify owner-only authentication and a private API boundary, production storage and a restore-tested off-host backup plan. The existing DEMO path is not suitable for real evidence.
@@ -47,21 +60,29 @@ Validate the offline GFW envelope parser against a permitted, bounded RADD respo
 The owner-only SSH-tunnel gateway candidate passed isolated runner checks in run 40625015460. Before installing or starting it on OVH, plan host-specific ports, private secrets, API binding and recovery, and test the full owner workflow.
 
 
-## Time-sensitive friends-and-family test
+## Historical 2026-10-28 friends-and-family test — OVH
+
+This was the original OVH preview plan, retained as history. Do not perform its host-specific instructions on OVH or assume the preview exists on Contabo.
 
 Verify the synthetic preview's localhost health and full user flow, then configure and verify password-protected HTTPS on the OVH hostname without changing existing SSH or remote desktop. Clearly distinguish it from the requested live pilot. Record the actual deployment result, URL, limitations and recovery instructions if and only if verified. Confirm feed access, terms, price and area coverage separately; do not represent the Geta research envelope as an official boundary.
 
 
-## Deployed preview follow-up
+## Historical deployed preview follow-up — OVH
+
+This follow-up concerned the earlier OVH preview. Its password location and deployment state must not be assumed to apply to Contabo.
 
 Ask the owner to privately retrieve the test password from the VPS and share it only with intended testers. Confirm their browser map and navigation; never collect real evidence or personal data in this shared synthetic database. Continue verified live-source access, cost and coverage work, authorized boundary, production storage and backups, identity and audit controls; do not claim the preview satisfies those gates. Preserve the existing VPS services and document any subsequent firewall or service changes.
 
 
-## 2026-11-05 design and source-cost follow-up
+## Historical 2026-11-05 design and source-cost follow-up
+
+The OVH-specific instruction below is historical; use the Contabo host handoff above. The design and source-verification principles remain useful.
 
 Use the portable UI skills and DESIGN.md for subsequent interface work. Inspect the synthetic desktop/mobile captures, test keyboard/focus and the primary workflow, and re-establish OVH access before deploying a new UI release. Verify the exact MyGFW Data API terms, price and quota before any alert query; evaluate direct GLAD-L and NASA OPERA only after their specific assets, reuse conditions, local coverage and semantics are checked. Test the narrow project-manager offer through authorized practitioner feedback; do not contact anyone without the owner's instruction.
 
 
-## 2026-11-06 Cloud continuation
+## Historical 2026-11-06 Cloud continuation
+
+The OVH availability instruction below is historical and superseded by the Contabo host handoff above.
 
 Begin with `docs/CLOUD_HANDOFF.md`, then inspect the current code, main and execution status. Verify the MyGFW account type and applicable source costs/terms before any alert-record query. Continue source-independent implementation, identity/storage/backup preparation and meaningful tests while access is resolved. Recheck OVH availability without disturbing existing services. Apply the repository design skills to appropriate UI tasks and preserve the current DEMO/LIVE distinction.

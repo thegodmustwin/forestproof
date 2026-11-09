@@ -5,6 +5,8 @@ New contributors and AI platforms: begin with [AGENTS.md](AGENTS.md),
 [PROJECT_MAP.md](docs/PROJECT_MAP.md). Original inception prompts are archived
 under docs/origin/ as historical material, not verified current facts.
 
+**Current hosting (2026-11-10):** The target is Contabo `vmi3711898`, not the old OVH alias `content-engine-vps`. Laptop read-only SSH access succeeded; Cloud access and deployment are not verified. Keep RDP private, preserve other projects, and verify backup transfer before reliance. See [deployment context](docs/DEPLOYMENT.md).
+
 ## Purpose
 
 ForestProof is an environmental-intelligence and evidence-workflow platform. Its first operating context is the Aberdare water tower in Kenya. The product does not decide whether activity is illegal. It helps authorized people turn a sourced environmental observation into a reviewable case, documented response, and evidence-backed follow-up.

@@ -127,7 +127,7 @@ On 2026-10-26, draft revision 9 was saved to add only `vps-8071f70a.vps.ovh.net`
 - docs/SECURITY_AND_PRIVACY.md — current controls, gaps, and sensitive-data policy.
 - docs/ALPHAZERO_DOCTRINE.md, docs/GOLDEN_ECONOMICS.md, docs/COMMERCIAL_STRATEGY.md, docs/PILOT_PARTNERSHIPS.md, docs/GRANTS_AND_INCENTIVES.md — strategic and business hypotheses, not validated demand.
 - docs/DEMO_SCRIPT.md — demonstration path and truthful DEMO labels.
-- docs/DEPLOYMENT.md — deployed synthetic OVH preview and unverified live-pilot prerequisites.
+- docs/DEPLOYMENT.md — current Contabo hosting handoff, historical synthetic OVH preview, and unverified live-pilot prerequisites.
 - execution/CURRENT_STATUS.md, execution/NEXT_ACTIONS.md, execution/ROADMAP.md — dated execution state and priorities.
 - docs/origin/ — original prompts, retained for history only.
 
@@ -178,4 +178,4 @@ The owner accepts a provisional wider-region path without waiting indefinitely f
 
 ## 2026-11-06 Cloud handoff
 
-- `docs/CLOUD_HANDOFF.md` is a concise continuation brief covering the project's origin, current limitations, OVH and GitHub state, design skills, data-cost research and next priorities. Recheck current main and facts before acting.
+- `docs/CLOUD_HANDOFF.md` is a concise continuation brief covering the project's origin, current limitations, Contabo and GitHub state, historical OVH deployment, design skills, data-cost research and next priorities. Recheck current main and facts before acting.
