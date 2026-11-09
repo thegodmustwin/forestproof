@@ -1,6 +1,17 @@
 # Next Actions
 
-Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Recheck OVH reachability before any preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
+Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Inventory the new Contabo host and verify any backup transfer before planning a preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
+
+## Current host handoff — 2026-11-10
+
+**Current hosting update (2026-11-10):** The owner has selected Contabo `vmi3711898` (reported Ubuntu 24.04) for next-stage hosting. A read-only SSH test using the laptop's existing key and strict host-key checking reached `vmi3711898` on 2026-11-10. This confirms laptop connectivity, not Codex Cloud access or deployment readiness. The owner reports the private ForestProof backup is on the laptop; transfer to Contabo has not been completed or verified. `content-engine-vps` names the old OVH server, not Contabo. Keep RDP private over its existing SSH tunnel; preserve existing services, projects and recovery access. Do not reinstall the server. Cloud tasks must not assume access to Windows files or SSH keys; arrange a separately configured secure connection if needed. Never put passwords, passphrases or private keys in chat or Git.
+
+1. On the laptop only, read `D:\content-engine\docs\CONTABO_AGENT_HANDOFF.md` and use its verified connection approach. In Cloud, request a separately configured secure connection only if access is needed; never request credentials in chat.
+2. Inspect host identity, occupied ports, running services, firewall, storage and existing project ownership read-only before choosing paths or making changes. Keep SSH and tunnel-only RDP usable; do not reinstall or stop other projects.
+3. Identify the private laptop backup without exposing its contents or credentials, then plan a safe, conflict-free transfer and a restore verification before claiming Contabo has the project or recoverable data.
+4. Continue live-feed, access-control, storage and UI work independently; do not claim a live service or deployment without verification.
+
+Older OVH-specific tasks below are historical unless explicitly updated.
 
 ## Immediate: define a credible first pilot
 
