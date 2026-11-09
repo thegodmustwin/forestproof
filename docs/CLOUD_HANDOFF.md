@@ -49,6 +49,12 @@ The desktop checkout at `D:\\FORESTPROOF` was older and contained uncommitted an
 
 Cloud environment publication had previously been unreliable; publication is not a prerequisite for developing from GitHub or deploying to Contabo. Current Cloud session restoration and network capabilities need verification. Do not assume desktop chat history, files, credentials or SSH identities are available in Cloud.
 
+## Private recovery snapshot
+
+**Owner-provided recovery context (2026-11-10):** Another chat reported a private laptop archive `C:\Users\Owner\Documents\OVH-Rescue-2026-10-30\forestproof-rescue-2026-11-01.tar.gz`, plus an older 2026-10-30 copy in the same folder. The 2026-11-01 archive reportedly contains the old synthetic preview's website/API files, deployment configuration, a SQLite snapshot, and private preview credentials/configuration. At creation the database reportedly passed an integrity check and the transferred archive matched the OVH copy. This is historical reported evidence; this session has not inspected the archive, independently rechecked integrity, or tested a restore. It cannot contain changes made after 2026-11-01. The separate PostgreSQL volume's project ownership is unknown; do not associate it with ForestProof without evidence. The old OVH preview was reported running when checked on 2026-11-01; its present status is unknown. ForestProof has not yet been transferred to Contabo.
+
+Keep the archive and all credentials private and out of GitHub, chat, logs, and shared environments. This is recovery context, not permission to restore, deploy, or replace newer work. The GitHub `main` source and ongoing Cloud development must be preserved: if recovery is later authorized, inventory the archive safely in isolation, compare versions and configuration with current `main`, reconcile only needed data/configuration without overwriting newer code or existing services, then verify a private restore and database integrity before relying on it. Never execute archived scripts or trust old credentials by default; identify the PostgreSQL volume separately before any use. Cloud cannot assume it has the laptop archive or SSH key.
+
 ## Highest-priority work
 
 1. Inspect current repo/main, branch and CI, then identify the highest-impact unblocked pilot work. Protect existing changes. Keep LIVE fail-closed until source, area, authorization, provenance, storage and access gates are verified.
