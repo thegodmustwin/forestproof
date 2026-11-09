@@ -2,11 +2,15 @@
 
 ## Current status and owner preference
 
+**Current hosting update (2026-11-10):** The owner has selected Contabo `vmi3711898` (reported Ubuntu 24.04) for next-stage hosting. A read-only SSH test using the laptop's existing key and strict host-key checking reached `vmi3711898` on 2026-11-10. This confirms laptop connectivity, not Codex Cloud access or deployment readiness. The owner reports the private ForestProof backup is on the laptop; transfer to Contabo has not been completed or verified. `content-engine-vps` names the old OVH server, not Contabo. Keep RDP private over its existing SSH tunnel; preserve existing services, projects and recovery access. Do not reinstall the server. Cloud tasks must not assume access to Windows files or SSH keys; arrange a separately configured secure connection if needed. Never put passwords, passphrases or private keys in chat or Git.
+
+The remaining dated OVH inventory and deployment records are historical. They do not establish Contabo's ports, software, firewall, backup state, or an installed ForestProof release.
+
 **A password-protected synthetic preview was deployed and verified on 2026-10-28; current availability is unconfirmed.** No live-production pilot has been verified. The later dated deployment record below describes the historical preview. The latest design is in private GitHub main and has not been verified on OVH. See [the launch assessment](LAUNCH_STRATEGY.md) for the current release sequence.
 
-The owner prefers an existing OVH VPS for eventual hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS and hardware capacity. The current public IP, SSH readiness, firewall, DNS/domain, TLS, backup configuration, existing services, and deployment path still require independent inspection.
+Historically, the owner preferred an existing OVH VPS for hosting and does not want local Docker to be required for development. The temporary hostname recorded in prior project discussion is vps-8071f70a.vps.ovh.net. The owner reports Ubuntu 24.04 and working remote desktop access; earlier owner-supplied terminal output recorded Ubuntu 24.04.4 LTS and hardware capacity. The current public IP, SSH readiness, firewall, DNS/domain, TLS, backup configuration, existing services, and deployment path still require independent inspection.
 
-Railway was an earlier deployment proposal. It is superseded by the owner's OVH preference; RAILWAY_LAUNCH.md is retained only as historical context and is not the current deployment plan. Do not create a Railway project or deploy there unless the owner changes the decision.
+Railway was an earlier deployment proposal. It is superseded by the owner's current Contabo preference; RAILWAY_LAUNCH.md is retained only as historical context and is not the current deployment plan. Do not create a Railway project or deploy there unless the owner changes the decision.
 
 ## Development without local Docker
 
