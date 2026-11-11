@@ -2,7 +2,7 @@
 
 ## Synthetic SQLite recovery candidate — 2026-11-11
 
-`app.demo_db_copy` uses SQLite's backup API to create a new, integrity-checked copy in a trusted private directory and refuses to overwrite existing destinations. It is limited to synthetic demo database files: evidence objects, credentials and PostgreSQL are excluded. The source-independent tests exercise committed WAL data, a separate restore, invalid input and collision handling. This is a candidate pending its PR checks, not verification of the private rescue archive, encryption, production backups, or an actual Contabo restore. See `docs/DEMO_SQLITE_RECOVERY.md`.
+`app.demo_db_copy` uses SQLite's backup API to create a new, integrity-checked copy in a trusted private directory and refuses to overwrite existing destinations. Its CLI requires an explicit synthetic-only attestation; schema checks do not prove the data is synthetic. It is limited to synthetic demo database files: evidence objects, credentials and PostgreSQL are excluded. The source-independent tests exercise committed WAL data, a separate restore, invalid input and collision handling. This is a candidate pending its PR checks, not verification of the private rescue archive, encryption, production backups, or an actual Contabo restore. See `docs/DEMO_SQLITE_RECOVERY.md`.
 
 **Last updated:** 2026-11-10
 **Milestone:** private GitHub source and Codex Cloud development environment established; production gates remain.
