@@ -2,6 +2,8 @@
 
 **Hosting update, 2026-11-10:** The current target is Contabo `vmi3711898`; the old OVH host and `content-engine-vps` alias are historical. Read-only SSH from the laptop reached Contabo with strict host-key checking; Cloud access, safe host inventory, backup transfer and a ForestProof deployment on Contabo remain unverified. Keep RDP private via its existing SSH tunnel and preserve other services. Do not treat the old OVH preview as a Contabo deployment.
 
+**GNW account update (2026-11-11):** The owner supplied a screenshot of the laptop setup reporting successful creation and Windows CurrentUser DPAPI-protected storage of an API key, after successful email/password authentication and a zero-item existing-key check. The reviewed helper is designed to read back and verify its encrypted file before reporting success; this record is based on the screenshot, not an independent key or provider-access test. The protected file is `%LOCALAPPDATA%\ForestProof\gnw-api-key.secure.txt` on that Windows account. It is not automatically available to Codex Cloud or Contabo. Never put the key, its file, passwords or tokens in chat, Git, logs or screenshots. No alert-record query or feed activation was made. API price, quota, applicable terms, attribution, retention, source coverage and real feed access remain unverified; no paid subscription is authorized.
+
 **Assessed:** 2026-11-06 (Africa/Nairobi). Code inspected and exercised: private main `85dbc77` (handoff merge). This assessment is a plan and dated verification record, not a production release or provider authorization.
 
 ## Product and first customer
@@ -20,7 +22,7 @@ The first live release remains one authenticated owner, one explicitly described
 | Live frontend | DEMO identity and source safeguards work. | Observation and case parsing explicitly reject non-DEMO_DATA records. Implement a real-data contract/UI without weakening demo protections or mixing databases. |
 | Identity and storage | Isolated synthetic owner-demo service-token boundary exists. SQLite/local evidence are demo adapters. | Identify/authenticate the actual owner, enforce private API access and audit attribution, productionize persistence and demonstrate backup/restore. |
 | Hosting | A prior session verified a protected synthetic preview on OVH on 2026-10-28. | Current host state and deployed version unconfirmed. A 2026-11-06 Cloud HTTPS request received proxy HTTP 503, with an upstream connection-timeout message. No SSH credentials or TCP grants are configured in this runtime. This does not diagnose the VPS power, DNS, firewall or app. |
-| Source access and price | Owner reports an ArcGIS account. RADD dataset reuse is documented separately from GFW API service terms. | Confirm actual MyGFW/API-key capability, service cost/quota, attribution, retention, release freshness, local baseline coverage and a permitted bounded response. |
+| Source access and price | On 2026-11-11, the owner showed a successful My GNW authentication and reported key creation/protected storage in the laptop helper. RADD dataset reuse is separate from API service terms. | Independently validate applicable feed access, service cost/quota, attribution, retention, release freshness, local baseline coverage and a permitted bounded response before activation. |
 
 **Account completion alone cannot enable live monitoring.** The backend and frontend still require implementation. A key must not simply be dropped into the existing demo.
 
@@ -28,7 +30,7 @@ The first live release remains one authenticated owner, one explicitly described
 
 - **Existing personal GitHub:** already usable for private source; keep the university account separate.
 - **Existing Contabo:** inventory current access, occupied ports, services and backup/restore before selecting a deployment; do not order another host by default.
-- **MyGFW / GFW Data API:** needed if the RADD route is selected. The recorded official guide describes an email/password account and API-key capability. An ArcGIS or social-login account does not establish that capability. Keep passwords/keys out of chat and Git; use private server/environment secret handling after access and terms are reviewed.
+- **My GNW / GFW Data API:** needed if the RADD route is selected. The owner has authenticated and the laptop helper reported creation and Windows-protected storage of a key. This does not verify feed authorization or pricing; keep secrets out of chat and Git and choose appropriate private server/environment secret handling after terms are reviewed.
 - **ArcGIS:** no current application SDK/integration or established technical requirement. Do not buy credits or an upgrade for ForestProof without a demonstrated need and approval.
 - **NASA Earthdata:** only if the OPERA alternative is selected and validated. Do not create it alongside MyGFW merely for completeness.
 - **Copernicus account:** not required for the implemented anonymous, bounded scene-catalog lookup; scenes are context, not the requested alert feed.
@@ -70,7 +72,7 @@ The redesigned opening provides a strong identity. For repeated operational use,
 
 No new paid data, hosting or other recurring service was ordered in this assessment. The RADD dataset is documented royalty-free; the GFW API fee/quota remain unknown, not assumed paid or free. Existing OVH, backup entitlement, Codex usage and GitHub Actions allowance/billing are not inspected. Display an actual budget before any paid commitment.
 
-The two useful owner checks are (1) whether the actual MyGFW account offers API-key creation and any shown price/limit, and (2) whether a secure Cloud connection to Contabo can be configured if required. Screens or text used for these checks must omit secrets. A domain purchase, ArcGIS upgrade, new database subscription or additional Cloud publication attempt is not a prerequisite to continuing code and design work.
+The useful remaining checks are (1) the applicable API price, quota and source terms, and (2) whether a secure Cloud connection to Contabo can be configured if required. Screens or text used for these checks must omit secrets. A domain purchase, ArcGIS upgrade, new database subscription or additional Cloud publication attempt is not a prerequisite to continuing code and design work.
 
 ## Verification in this assessment
 
