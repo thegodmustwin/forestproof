@@ -1,5 +1,7 @@
 # Next Actions
 
+**GNW account update (2026-11-11):** The owner supplied a screenshot of the laptop setup reporting successful creation and Windows CurrentUser DPAPI-protected storage of an API key, after successful email/password authentication and a zero-item existing-key check. The reviewed helper is designed to read back and verify its encrypted file before reporting success; this record is based on the screenshot, not an independent key or provider-access test. The protected file is `%LOCALAPPDATA%\ForestProof\gnw-api-key.secure.txt` on that Windows account. It is not automatically available to Codex Cloud or Contabo. Never put the key, its file, passwords or tokens in chat, Git, logs or screenshots. No alert-record query or feed activation was made. API price, quota, applicable terms, attribution, retention, source coverage and real feed access remain unverified; no paid subscription is authorized.
+
 ## Demo recovery candidate — 2026-11-11
 
 Review `docs/DEMO_SQLITE_RECOVERY.md` and the synthetic test results. Before depending on recovery for a real pilot, separately design and test encrypted off-host database and evidence backup, retention, access controls, integrity, operational restores and reconciliation with the private OVH archive. No private archive was accessed by this candidate.
@@ -25,7 +27,7 @@ Older OVH-specific tasks below are historical unless explicitly updated.
 
 ## Immediate: define a credible first pilot
 
-The owner reported creating an ArcGIS account associated with MyGFW on 2026-10-30; determine which account and product it covers and verify any API access, quota and price without collecting credentials in chat. Continue a screen-by-screen review of the synthetic preview while the live pilot gates below are completed.
+The owner authenticated to My GNW and the laptop setup helper reported protected API key creation on 2026-11-11. Verify applicable real-feed access, quota, price and terms without collecting credentials in chat. Continue a screen-by-screen review of the synthetic preview while the live pilot gates below are completed.
 
 1. Complete the initial release for one authenticated owner. The synthetic `owner_demo` candidate now authenticates the web service to the API and uses server-derived owner audit labels, but it still relies on the separate owner gateway for human authentication. Verify deployment topology, credentials, rate limiting, person-level identity and storage before real use; defer multi-organization onboarding.
    The synthetic web case queue, action and follow-up workflow now uses persisted API records and has a browser-level test; continue from this implementation rather than assuming the demo fixtures are saved cases.
