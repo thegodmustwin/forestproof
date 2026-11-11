@@ -19,7 +19,7 @@ def store(tmp_path):
 
 
 @pytest.fixture
-def request():
+def fixture_request():
     return {
         "receipt_id": str(uuid4()),
         "source_version": "v20261018",
@@ -37,10 +37,10 @@ def request():
     }
 
 
-def test_receipt_persists_exact_fixture_hash_and_metadata_only(store, request):
-    assert store.record(**request) == "inserted"
-    result = store.get(request["receipt_id"])
-    assert result["response_sha256"] == hashlib.sha256(request["raw_response"]).hexdigest()
+def test_receipt_persists_exact_fixture_hash_and_metadata_only(store, fixture_request):
+    assert store.record(**fixture_request) == "inserted"
+    result = store.get(fixture_request["receipt_id"])
+    assert result["response_sha256"] == hashlib.sha256(fixture_request["raw_response"]).hexdigest()
     assert result["source_version"] == "v20261018"
     assert result["received_at"] == "2026-10-20T12:00:00+00:00"
     assert result["row_count"] == 1
@@ -49,21 +49,21 @@ def test_receipt_persists_exact_fixture_hash_and_metadata_only(store, request):
     assert "data" not in result
 
 
-def test_replay_is_idempotent_and_changed_receipt_is_rejected(store, request):
-    assert store.record(**request) == "inserted"
-    assert store.record(**request) == "unchanged"
-    before = store.get(request["receipt_id"])
+def test_replay_is_idempotent_and_changed_receipt_is_rejected(store, fixture_request):
+    assert store.record(**fixture_request) == "inserted"
+    assert store.record(**fixture_request) == "unchanged"
+    before = store.get(fixture_request["receipt_id"])
     # A byte-level change produces a different digest even when JSON is equivalent.
-    changed = {**request, "raw_response": request["raw_response"] + b" "}
+    changed = {**fixture_request, "raw_response": fixture_request["raw_response"] + b" "}
     with pytest.raises(ReceiptConflict):
         store.record(**changed)
-    assert store.get(request["receipt_id"]) == before
+    assert store.get(fixture_request["receipt_id"]) == before
 
 
-def test_empty_result_does_not_imply_complete_coverage(store, request):
-    request["raw_response"] = b'{"status":"success","data":[]}'
-    store.record(**request)
-    result = store.get(request["receipt_id"])
+def test_empty_result_does_not_imply_complete_coverage(store, fixture_request):
+    fixture_request["raw_response"] = b'{"status":"success","data":[]}'
+    store.record(**fixture_request)
+    result = store.get(fixture_request["receipt_id"])
     assert result["row_count"] == 0
     assert result["completeness"] == "UNKNOWN"
 
@@ -80,18 +80,18 @@ def test_empty_result_does_not_imply_complete_coverage(store, request):
     {"raw_response": b"\xff"},
     {"raw_response": b"x" * 2_000_001},
 ])
-def test_invalid_input_fails_before_any_write(store, request, change):
+def test_invalid_input_fails_before_any_write(store, fixture_request, change):
     with pytest.raises(ValueError):
-        store.record(**{**request, **change})
+        store.record(**{**fixture_request, **change})
     with sqlite3.connect(store.database_path) as connection:
         assert connection.execute("SELECT COUNT(*) FROM radd_fixture_receipts").fetchone()[0] == 0
 
 
-def test_different_receipt_ids_do_not_imply_a_retraction(store, request):
-    store.record(**request)
-    second = {**request, "receipt_id": str(uuid4()),
+def test_different_receipt_ids_do_not_imply_a_retraction(store, fixture_request):
+    store.record(**fixture_request)
+    second = {**fixture_request, "receipt_id": str(uuid4()),
               "raw_response": b'{"status":"success","data":[]}'}
     store.record(**second)
-    assert store.get(request["receipt_id"])["row_count"] == 1
+    assert store.get(fixture_request["receipt_id"])["row_count"] == 1
     assert store.get(second["receipt_id"])["row_count"] == 0
     assert store.get(second["receipt_id"])["completeness"] == "UNKNOWN"
