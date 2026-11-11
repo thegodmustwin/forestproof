@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Recovery candidate — 2026-11-11
+
+`services/api/app/demo_db_copy.py` and its tests implement a synthetic-only, non-overwriting SQLite copy/restore drill; usage and limits are in `docs/DEMO_SQLITE_RECOVERY.md`. It does not back up evidence objects or establish production recovery readiness.
+
 **Snapshot:** 2026-10-25, private repo thegodmustwin/forestproof, branch `main`; application code is at `71af70f81318ea98e4d1ab20bd52739aa97012c1` and subsequent commits maintain the context package.  
 This map separates the current DEMO implementation from the intended production architecture.
 
