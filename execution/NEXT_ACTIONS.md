@@ -1,5 +1,9 @@
 # Next Actions
 
+## Demo recovery candidate — 2026-11-11
+
+Review `docs/DEMO_SQLITE_RECOVERY.md` and the synthetic test results. Before depending on recovery for a real pilot, separately design and test encrypted off-host database and evidence backup, retention, access controls, integrity, operational restores and reconciliation with the private OVH archive. No private archive was accessed by this candidate.
+
 Start with the code-verified [launch strategy](../docs/LAUNCH_STRATEGY.md), assessed on 2026-11-06. Prioritize the real-data backend/UI and private persistence/restore while source access is resolved; a key alone cannot activate the current synthetic implementation. Inventory the new Contabo host and verify any backup transfer before planning a preview update. For UI review, begin with monitoring/source detail and the case workspace rather than another homepage redesign.
 
 ## Private recovery context — 2026-11-10
