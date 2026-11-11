@@ -16,8 +16,13 @@ encryption is provided.
 
 From `services/api`, make a new copy and then a **separate test restore**:
 
-    python -m app.demo_db_copy /private/demo.db /private/backups/demo-copy.db
-    python -m app.demo_db_copy /private/backups/demo-copy.db /private/drills/demo-restored.db
+    python -m app.demo_db_copy --synthetic-only /private/demo.db /private/backups/demo-copy.db
+    python -m app.demo_db_copy --synthetic-only /private/backups/demo-copy.db /private/drills/demo-restored.db
+
+The required `--synthetic-only` flag is the operator's explicit attestation that
+the database contains only synthetic demo data. The schema check cannot determine
+whether records, notes, or evidence references are synthetic, and the flag is not
+a security control or a privacy guarantee.
 
 The destination and its SQLite sidecars must not already exist; the utility
 does not overwrite them. It validates SQLite integrity and checks for the
