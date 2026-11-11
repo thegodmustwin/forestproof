@@ -184,3 +184,7 @@ The owner accepts a provisional wider-region path without waiting indefinitely f
 ## 2026-11-06 Cloud handoff
 
 - `docs/CLOUD_HANDOFF.md` is a concise continuation brief covering the project's origin, current limitations, Contabo and GitHub state, historical OVH deployment, design skills, data-cost research and next priorities. Recheck current main and facts before acting.
+
+## 2026-11-11 synthetic RADD receipt ledger
+
+`services/api/app/providers/radd_fixture_receipts.py` stores bounded synthetic fixture receipt metadata and exact-byte hashes, not raw rows, provenance proof, production data, or a live feed. See `docs/RADD_FIXTURE_RECEIPTS.md`.
