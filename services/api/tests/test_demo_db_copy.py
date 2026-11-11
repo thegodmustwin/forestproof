@@ -6,7 +6,7 @@ import pytest
 
 from app.config import Settings
 from app.demo_data import DEMO_ORGANIZATION_ID
-from app.demo_db_copy import RecoveryError, copy_demo_database
+from app.demo_db_copy import RecoveryError, copy_demo_database, main
 from app.store import Store
 
 
@@ -89,3 +89,19 @@ def test_existing_destination_sidecar_is_never_touched(tmp_path):
         copy_demo_database(source, destination)
     assert not destination.exists()
     assert sidecar.read_bytes() == b"preserve"
+
+
+def test_cli_requires_synthetic_attestation_before_creating_a_copy(tmp_path, monkeypatch):
+    source = tmp_path / "working.db"
+    _demo_store(source, tmp_path / "evidence")
+    destination = tmp_path / "backup.db"
+    monkeypatch.setattr("sys.argv", ["demo_db_copy", str(source), str(destination)])
+    with pytest.raises(SystemExit):
+        main()
+    assert not destination.exists()
+
+    monkeypatch.setattr(
+        "sys.argv", ["demo_db_copy", "--synthetic-only", str(source), str(destination)]
+    )
+    assert main() == 0
+    assert destination.is_file()
