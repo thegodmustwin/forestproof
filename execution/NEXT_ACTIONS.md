@@ -96,3 +96,7 @@ Use the portable UI skills and DESIGN.md for subsequent interface work. Inspect 
 The OVH availability instruction below is historical and superseded by the Contabo host handoff above.
 
 Begin with `docs/CLOUD_HANDOFF.md`, then inspect the current code, main and execution status. Verify the MyGFW account type and applicable source costs/terms before any alert-record query. Continue source-independent implementation, identity/storage/backup preparation and meaningful tests while access is resolved. Recheck OVH availability without disturbing existing services. Apply the repository design skills to appropriate UI tasks and preserve the current DEMO/LIVE distinction.
+
+## 2026-11-11 receipt provenance follow-up
+
+The synthetic-only receipt ledger is groundwork, not an ingestion path. Before real data, establish source and retention terms, protected storage and recovery, provenance verification, authorized geography, and identity controls. Do not treat fixture hashes or empty responses as provider proof.
