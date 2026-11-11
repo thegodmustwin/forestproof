@@ -29,7 +29,7 @@ def _check_database(connection: sqlite3.Connection) -> None:
         ).fetchall()
     }
     if not _REQUIRED_TABLES.issubset(tables):
-        raise RecoveryError("Not a recognized ForestProof demo database.")
+        raise RecoveryError("Not a recognized ForestProof database schema.")
 
 
 def copy_demo_database(source: Path, destination: Path) -> None:
@@ -73,6 +73,10 @@ def copy_demo_database(source: Path, destination: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Copy a synthetic ForestProof SQLite database to a new private file."
+    )
+    parser.add_argument(
+        "--synthetic-only", action="store_true", required=True,
+        help="Attest that this database contains synthetic demo data only.",
     )
     parser.add_argument("source", type=Path)
     parser.add_argument("destination", type=Path)
