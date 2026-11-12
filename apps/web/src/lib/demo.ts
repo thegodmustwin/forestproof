@@ -14,12 +14,20 @@ export type CaseStatus =
   | "CLOSED"
   | "REOPENED";
 
+export type SourceProvenance = {
+  processingVersion: string;
+  sourceRelease: string | null;
+  completeness: "UNKNOWN";
+  attribution: string | null;
+};
+
 export type DemoObservation = {
   id: string;
   title: string;
   source: string;
   product: string;
   sourceRecordId: string;
+  sourceProvenance?: SourceProvenance;
   observedAt: string;
   publishedAt: string;
   ingestedAt: string;
