@@ -14,6 +14,7 @@ from .models import ActionCreate, AssignmentCreate, CaseCreate, EvidenceCreate, 
 from .owner_access import InternalAccessNotConfigured, valid_internal_token
 from .providers.copernicus_stac import CatalogUnavailable, CopernicusCatalog
 from .providers.gfw import status as gfw_status
+from .source_provenance import demo_source_provenance
 from .store import Store
 
 
@@ -97,6 +98,16 @@ def ensure_case_access(case_id: str, organization: str) -> None:
     store.assert_case_access(case_id, organization)
 
 
+def with_source_provenance(observation: dict[str, Any]) -> dict[str, Any]:
+    """Expose provenance only when this record is an identified demo fixture."""
+    try:
+        provenance = demo_source_provenance(observation)
+    except (KeyError, TypeError, ValueError):
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                            detail="Observation source provenance is unavailable") from None
+    return {**observation, "source_provenance": provenance}
+
+
 def as_iso(value: datetime | None) -> str | None:
     return value.isoformat().replace("+00:00", "Z") if value else None
 
@@ -149,7 +160,7 @@ def copernicus_scenes(response: Response, _: Org) -> dict[str, Any]:
 @app.get("/api/v1/observations")
 def observations(organization: Org, source_id: str | None = None) -> dict[str, Any]:
     return {
-        "items": store.list_observations(organization, source_id),
+        "items": [with_source_provenance(item) for item in store.list_observations(organization, source_id)],
         "mode": settings.mode.upper(),
         "disclaimer": "An observation is not an incident finding, permit determination, or allegation of wrongdoing.",
     }
@@ -157,7 +168,7 @@ def observations(organization: Org, source_id: str | None = None) -> dict[str, A
 
 @app.get("/api/v1/observations/{observation_id}")
 def observation(observation_id: str, organization: Org) -> dict[str, Any]:
-    return store.get_observation(organization, observation_id)
+    return with_source_provenance(store.get_observation(organization, observation_id))
 
 
 @app.post("/api/v1/ingestion/demo", status_code=status.HTTP_201_CREATED)
@@ -195,7 +206,9 @@ def cases(organization: Org) -> dict[str, Any]:
 @app.get("/api/v1/cases/{case_id}")
 def case(case_id: str, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.get_case(case_id)
+    result = store.get_case(case_id)
+    result["observation"] = with_source_provenance(result["observation"])
+    return result
 
 
 @app.post("/api/v1/cases/{case_id}/transitions")
@@ -234,7 +247,9 @@ def attach_evidence(case_id: str, payload: EvidenceCreate, organization: Org) ->
 @app.get("/api/v1/cases/{case_id}/dossier")
 def dossier(case_id: str, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    return store.dossier(case_id)
+    result = store.dossier(case_id)
+    result["case"]["observation"] = with_source_provenance(result["case"]["observation"])
+    return result
 
 
 @app.get("/api/v1/outcome-graph")
