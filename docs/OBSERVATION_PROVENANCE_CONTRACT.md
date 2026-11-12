@@ -1,0 +1,11 @@
+# Observation provenance contract — development foundation
+
+The API adds a versioned `source_provenance` object to existing observation list/detail, case detail and dossier responses. In the currently supported application modes the object is derived solely from identified, explicitly labelled synthetic demo fixtures. Its source release and attribution remain null where no verified upstream information exists; completeness is always UNKNOWN.
+
+The contract separates provider/product, source release, processing version, record identity and identity kind, observation time or date, optional publication time, receipt time, quality labels and attribution. A date-only source does not acquire an invented time. A derived cell ID is distinguished from a provider-native ID. These are data structures and validation rules, not evidence that a provider's definitions, timestamps or licence have been verified.
+
+The currently active projection requires the demo organization, synthetic fixture source and ID, and both demo quality labels. If those checks or schema validation fail, the affected observation response fails closed with HTTP 503. This is not an integrity proof against a malicious party who can alter the demo database. Existing demo and owner-demo service-token rules remain in force.
+
+The underlying contract describes a possible LIVE record without enabling one: it rejects demo labels/fixture identity in LIVE, requires a concrete source release rather than `latest`, and requires source observation time or date and a timezone-aware receipt time. The application has no LIVE adapter or LIVE API mode. The schema alone does not authorize or verify ingestion and does not establish a valid source release, owner identity, operational geography, retention terms, durable real-data storage, encryption, tenancy, attribution or recovery. Source semantics, request boundaries, credentials and the actual owner access controls must still be implemented and reviewed before real data is processed.
+
+Tests exercise the existing synthetic observation-to-case-to-dossier route, schema separation, failure on non-demo rows, and current live/owner-demo authentication gates. They do not query a provider or store real records.
