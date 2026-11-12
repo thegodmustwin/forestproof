@@ -1,5 +1,9 @@
 # Current Status
 
+## NASA science sample inspection — 2026-11-12
+
+After the owner privately downloaded one NASA DIST-HLS status TIFF, a local bounded research check found non-nodata status values within the intersection of that tile and a provisional rectangle. Synthetic tool tests passed; other quality layers, event timing, official boundaries and field conditions remain unverified. No live feed was activated and no forest-loss conclusion is established. See `docs/NASA_DIST_SAMPLE_20261112.md`.
+
 ## Direct-source evaluation — 2026-11-12
 
 Public NASA metadata and a single whole-tile browse PNG were retrieved; a GLAD-L tile HEAD request returned current file metadata. Neither verifies valid Geta pixels, authorizes live use, or means any GNW alert query was made. See `docs/DIRECT_SOURCE_EVALUATION.md`.
