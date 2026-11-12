@@ -1,5 +1,9 @@
 # Next Actions
 
+## Direct-source evaluation — 2026-11-12
+
+Review `docs/DIRECT_SOURCE_EVALUATION.md`, verify GLAD-L product-specific reuse conditions and privately establish Earthdata access before testing science pixels. Keep LIVE disabled until source, area, owner auth, storage and recovery gates are met.
+
 ## Data-source independence research — 2026-11-12
 
 Review `docs/GNW_INDEPENDENCE_RESEARCH.md` and compare a bounded direct-source candidate with the GNW route after access, rights, costs, coverage and geography are verified. Keep source decisions and LIVE disabled until the existing gates are met.
