@@ -128,3 +128,8 @@ The synthetic-only receipt ledger is groundwork, not an ingestion path. Before r
 ## Source-neutral provenance follow-up — 2026-11-12
 
 Review `docs/OBSERVATION_PROVENANCE_CONTRACT.md`. Define provider-specific mappings and actual verified source semantics before connecting live records. Build real owner authentication, source verification, isolated storage and restore controls; do not enable LIVE merely because the contract exists.
+
+
+## NASA date/quality follow-up — 2026-11-12
+
+The owner supplied a first-detection-date band; its bounded status comparison is documented in `docs/NASA_DIST_SAMPLE_20261112.md`. Next independently obtain and evaluate the matching last-assessed-date and current-scene mask, then relevant quality/cloud layers and overlapping tiles. Keep provider detection dates separate from actual event dates and do not infer an official boundary or legal finding. Continue source-neutral integration, owner authentication, separate storage and recovery; LIVE remains disabled.
