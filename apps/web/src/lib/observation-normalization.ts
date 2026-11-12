@@ -1,4 +1,4 @@
-import type { DemoObservation, ObservationStatus } from "./demo";
+import type { DemoObservation, ObservationStatus, SourceProvenance } from "./demo";
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -10,6 +10,33 @@ function reviewStatus(value: unknown): ObservationStatus {
   const statuses: ObservationStatus[] = ["REQUIRES_HUMAN_REVIEW", "AUTHORIZATION_UNKNOWN", "DOCUMENTED_AUTHORIZATION", "INSUFFICIENT_EVIDENCE", "FALSE_POSITIVE"];
   return typeof value === "string" && statuses.includes(value as ObservationStatus)
     ? value as ObservationStatus : "REQUIRES_HUMAN_REVIEW";
+}
+
+/** Parse an optional versioned API source contract without promoting mixed records. */
+function demoProvenance(record: UnknownRecord): SourceProvenance | undefined {
+  const value = record.source_provenance;
+  // Older demo servers and local fixtures do not provide the new contract.
+  if (value === undefined) return undefined;
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Source provenance was malformed");
+  const source = value as UnknownRecord;
+  const optionalText = (item: unknown) => item === null || (typeof item === "string" && item.trim().length > 0);
+  if (source.contract_version !== "1" || source.data_mode !== "DEMO" ||
+      source.record_key_kind !== "SYNTHETIC_FIXTURE" ||
+      typeof source.record_key !== "string" || !source.record_key.trim() ||
+      source.record_key !== record.source_record_id ||
+      typeof source.source_id !== "string" || source.source_id !== record.source_id ||
+      !Array.isArray(source.quality_flags) || !source.quality_flags.includes("DEMO_DATA") ||
+      typeof source.processing_version !== "string" || !source.processing_version.trim() ||
+      !optionalText(source.source_release) || !optionalText(source.attribution) ||
+      source.completeness !== "UNKNOWN") {
+    throw new Error("Source provenance did not match this demo observation");
+  }
+  return {
+    processingVersion: source.processing_version,
+    sourceRelease: source.source_release as string | null,
+    completeness: "UNKNOWN",
+    attribution: source.attribution as string | null,
+  };
 }
 
 /** This UI is a demo. Reject other records until a real-source display is implemented. */
@@ -35,6 +62,7 @@ export function normalizeDemoObservation(record: UnknownRecord): DemoObservation
     source: text(record.source_name ?? record.source ?? record.source_id, "Not provided"),
     product: text(record.source_product ?? record.product, "Not provided"),
     sourceRecordId: text(record.source_record_id, "Not provided"),
+    sourceProvenance: demoProvenance(record),
     observedAt: text(record.observed_at, ""),
     publishedAt: text(record.published_at, ""),
     ingestedAt: text(record.ingested_at, ""),
