@@ -141,12 +141,17 @@ class Store:
         self._lock = threading.RLock()
 
     def _connection(self) -> sqlite3.Connection:
+        if self.settings.mode not in {"demo", "owner_demo"}:
+            raise RuntimeError("Storage is disabled outside supported synthetic modes")
         self.settings.database_path.parent.mkdir(parents=True, exist_ok=True)
         connection = sqlite3.connect(self.settings.database_path, check_same_thread=False)
         connection.row_factory = sqlite3.Row
         return connection
 
     def prepare(self) -> None:
+        # Disabled modes must not even create or migrate the configured path.
+        if self.settings.mode not in {"demo", "owner_demo"}:
+            return
         with self._lock, self._connection() as connection:
             connection.executescript(SCHEMA)
             evidence_columns = {row[1] for row in connection.execute("PRAGMA table_info(evidence_assets)").fetchall()}
@@ -157,6 +162,8 @@ class Store:
                 self.seed_demo_observations(connection)
 
     def seed_demo_observations(self, connection: sqlite3.Connection | None = None) -> int:
+        if self.settings.mode not in {"demo", "owner_demo"}:
+            raise RuntimeError("Demo seeding is disabled outside synthetic modes")
         owns_connection = connection is None
         if owns_connection:
             connection = self._connection()
