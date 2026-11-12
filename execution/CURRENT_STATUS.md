@@ -1,5 +1,10 @@
 # Current Status
 
+## Independence research — 2026-11-12
+
+`docs/GNW_INDEPENDENCE_RESEARCH.md` records provider-independent architecture options, GNW self-hosting terms and competing workflow capabilities. RADD remains the lead candidate; no production source, live alert request or feed integration has been verified.
+
+
 **GNW account update (2026-11-11):** The owner supplied a screenshot of the laptop setup reporting successful creation and Windows CurrentUser DPAPI-protected storage of an API key, after successful email/password authentication and a zero-item existing-key check. The reviewed helper is designed to read back and verify its encrypted file before reporting success. A subsequent nonsecret metadata check independently confirmed that the protected file exists and the pending marker is absent; the key itself and live-record access were not independently tested. The protected file is `%LOCALAPPDATA%\ForestProof\gnw-api-key.secure.txt` on that Windows account. It is not automatically available to Codex Cloud or Contabo. Never put the key, its file, passwords or tokens in chat, Git, logs or screenshots. No alert-record query or feed activation was made. API price, quota, applicable terms, attribution, retention, source coverage and real feed access remain unverified; no paid subscription is authorized.
 
 ## Synthetic SQLite recovery candidate — 2026-11-11
