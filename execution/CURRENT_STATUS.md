@@ -47,6 +47,10 @@ Keep the archive and all credentials private and out of GitHub, chat, logs, and 
 | Production deployment | HISTORICAL SYNTHETIC PREVIEW ONLY | Project notes record a password-protected shared demo at `https://vps-8071f70a.vps.ovh.net/`, verified during initial deployment. The current service and deployed release remain independently unverified after an unsuccessful HTTPS check. No live-production pilot has been verified. |
 | Data-source cost | COPERNICUS FREE-TIER CONTEXT; ALERT COST UNKNOWN | Copernicus documents free worldwide access and a free tier; bounded anonymous catalog metadata queries succeeded without billing. OVH traffic/compute and full legal terms remain unverified. GFW API pricing and quotas remain unknown; no alert query or paid data service has been used. See `docs/COSTS_AND_OPERATING_BUDGET.md`. |
 
+## Disabled-mode storage guard — 2026-11-12
+
+Unsupported API modes no longer create or migrate the configured SQLite file during startup; direct demo storage and seeding calls also reject unsupported modes. Regression tests cover absent and preexisting paths. This does not implement LIVE storage, identity or production backup/restore.
+
 ## Constraints and non-claims
 
 1. The Aberdare map area is illustrative, not an official licensed boundary.
