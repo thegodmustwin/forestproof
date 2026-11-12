@@ -1,5 +1,10 @@
 # ForestProof — repository and system map
 
+## Research update — 2026-11-12
+
+`docs/GNW_INDEPENDENCE_RESEARCH.md` compares GNW capabilities, self-hosted options, direct-source candidates, licensing and defensibility hypotheses. It does not change the lead feed or claim a live integration.
+
+
 ## Recovery candidate — 2026-11-11
 
 `services/api/app/demo_db_copy.py` and its tests implement a synthetic-only, non-overwriting SQLite copy/restore drill; usage and limits are in `docs/DEMO_SQLITE_RECOVERY.md`. It does not back up evidence objects or establish production recovery readiness.
