@@ -21,6 +21,11 @@ export function ObservationDetail({ observation, onCreateCase, creating = false 
           <div className="fact"><span className="fact-label">Ingested</span><span>{formatDate(observation.ingestedAt)}</span></div>
           <div className="fact"><span className="fact-label">Source</span><span>{observation.source}</span></div>
           <div className="fact"><span className="fact-label">Product</span><span>{observation.product}</span></div>
+          <div className="fact"><span className="fact-label">Source record</span><span>{observation.sourceRecordId}</span></div>
+          <div className="fact"><span className="fact-label">Processing version</span><span>{observation.sourceProvenance?.processingVersion ?? "Not provided"}</span></div>
+          <div className="fact"><span className="fact-label">Source release</span><span>{observation.sourceProvenance?.sourceRelease ?? "Not provided"}</span></div>
+          <div className="fact"><span className="fact-label">Coverage completeness</span><span>{observation.sourceProvenance ? "Unknown" : "Not provided"}</span></div>
+          <div className="fact"><span className="fact-label">Attribution</span><span>{observation.sourceProvenance?.attribution ?? "Not provided"}</span></div>
           <div className="fact"><span className="fact-label">Confidence</span><span>{observation.confidence}{observation.confidenceScore !== null ? ` · ${observation.confidenceScore}%` : ""}</span></div>
           <div className="fact"><span className="fact-label">Triage heuristic</span><span>{toPriorityScore(observation) === null ? "Not available" : `${toPriorityScore(observation)}/100 · not a decision`}</span></div>
           <div className="fact"><span className="fact-label">Quality flags</span><span className="flag-list">{observation.qualityFlags.map((flag) => <span className="flag" key={flag}>{flag}</span>)}</span></div>
