@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## NASA sample inspection — 2026-11-12
+
+`docs/NASA_DIST_SAMPLE_20261112.md` records a local, bounded NASA DIST-HLS status-layer inspection and its limits. It is research, not live monitoring or an official boundary.
+
 ## Direct-source evaluation — 2026-11-12
 
 `docs/DIRECT_SOURCE_EVALUATION.md` records the direct NASA metadata/browse and GLAD-L file-metadata tests, access and licence caveats.

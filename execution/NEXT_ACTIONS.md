@@ -1,8 +1,12 @@
 # Next Actions
 
+## NASA science sample follow-up — 2026-11-12
+
+Review the bounded status-layer findings in `docs/NASA_DIST_SAMPLE_20261112.md`; verify additional overlapping tiles, quality/cloud and date semantics, source terms and an authorized geography before considering integration. Keep LIVE disabled and demo/real storage separate until identity, storage, recovery and source gates are met.
+
 ## Direct-source evaluation — 2026-11-12
 
-Review `docs/DIRECT_SOURCE_EVALUATION.md`, verify GLAD-L product-specific reuse conditions and privately establish Earthdata access before testing science pixels. Keep LIVE disabled until source, area, owner auth, storage and recovery gates are met.
+Review `docs/DIRECT_SOURCE_EVALUATION.md`, verify GLAD-L product-specific reuse conditions and build on the owner-downloaded Earthdata sample and verify further science pixels. Keep LIVE disabled until source, area, owner auth, storage and recovery gates are met.
 
 ## Data-source independence research — 2026-11-12
 
