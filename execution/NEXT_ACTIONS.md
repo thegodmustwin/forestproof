@@ -46,6 +46,10 @@ The owner authenticated to My GNW and the laptop setup helper reported protected
 5. Obtain the official KFS GIS geometry and reuse conditions when available, without making a response a prerequisite for an honestly labeled wider-area owner pilot. Before any provisional pilot use, verify the region's assumptions, lawful use and source coverage; never claim its rectangle establishes Geta Forest membership. Check official replacement geometry for CRS, topology, area against the 21,644.37 ha PFMP figure, source/version, and use permission.
 6. Keep LIVE disabled and fail closed until source terms/cost, AOI permissions, credentials, response shape, persistence, and health checks pass. Then exercise the owner-only observation-to-case-to-follow-up flow against real source data.
 
+## Storage isolation follow-up — 2026-11-12
+
+See `docs/DISABLED_MODE_STORAGE_GUARD.md`. Design a separately configured LIVE store, real identity controls, migrations, private off-host backups and an operational restore test before enabling LIVE. This disabled-mode guard does not classify or secure data in an explicitly configured DEMO database.
+
 ## Before pilot or deployment
 
 - Implement authenticated identity, server-side role/tenant checks, protected object storage, upload scanning, retention, rate limits, monitoring, and tested backup/restore before real evidence.
