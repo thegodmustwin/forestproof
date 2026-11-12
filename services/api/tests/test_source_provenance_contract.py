@@ -82,9 +82,12 @@ def test_provider_neutral_contract_preserves_date_precision_and_rejects_demo_mix
     assert record.completeness == "UNKNOWN"
     for invalid in (
         {"quality_flags": ["DEMO_DATA"]},
+        {"quality_flags": [" demo_data "]},
+        {"source_id": "demo-synthetic-v1"},
         {"record_key_kind": "SYNTHETIC_FIXTURE"},
         {"source_release": None},
         {"source_release": "latest"},
+        {"source_release": " LATEST "},
         {"observed_at": datetime(2026, 11, 10, tzinfo=timezone.utc)},
         {"received_at": datetime(2026, 11, 12)},
     ):
