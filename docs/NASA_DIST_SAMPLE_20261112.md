@@ -33,6 +33,46 @@ NASA's categories describe vegetation-cover disturbance relative to the product 
 
 The inspection was performed locally, with no account credentials read, no science data transferred into GitHub, and no GNW query or live ingestion. The tool first passed three synthetic tests: known nodata/category counts; rejection of invalid status and nonintersecting input; and a projected-UTM intersection. Dependencies were installed only into a temporary virtual environment.
 
-Only the selected VEG-DIST-STATUS layer and tile intersection were checked. Other overlapping tiles and separate quality/cloud, date, duration, forest-mask and contextual layers were not examined. A nodata count of zero in this band is not a full quality assessment. No exact boundary, per-pixel validation, NASA-provided checksum, scientific accuracy assessment, official land-cover classification or field verification was established. Do not infer cleared forest area, product coverage outside the tile, or legal conclusions.
+At the time of the initial inspection, only the selected VEG-DIST-STATUS layer and tile intersection had been checked. The subsequent date and scene-mask checks are recorded below. Other overlapping tiles and separate cloud-quality, duration, forest-mask and contextual layers remain unexamined. A nodata count of zero in this band is not a full quality assessment. No exact boundary, per-pixel validation, NASA-provided checksum, scientific accuracy assessment, official land-cover classification or field verification was established. Do not infer cleared forest area, product coverage outside the tile, or legal conclusions.
 
 Before product use, verify source and attribution/retention terms, current source freshness and quality semantics, define a lawful area, integrate identity/provenance and protected separate storage, and demonstrate backup/restore. This work does not change the lead-feed decision or make ForestProof's live endpoint operational.
+
+
+## First-disturbance date layer — 2026-11-12
+
+The owner downloaded the matching `VEG-DIST-DATE` GeoTIFF for the same NASA granule. The file was 6,172,916 bytes and had local SHA-256 `1d73095f991b1bf8b7112f51bbf316e63f93e76ec92192af734fda3f77732769`; this fingerprint was not compared with a NASA checksum. The bounded local tool verified matching granule filenames, CRS, transform, dimensions and data types. It selected pixel centres within the same provisional research rectangle and same tile intersection described above.
+
+Both supplied status and date bands were present at all 12,432 selected pixel centres; this is a band-level result, not a comprehensive quality or coverage assessment. All 1,477 centres with a nonzero NASA vegetation-disturbance status had a positive initial-detection date. Across those centres the source dates ranged from **2025-11-03 through 2026-11-03**, inclusive. The dates represent the algorithm's first anomaly detection for the most recent disturbance event in its reporting window, not the exact date of an on-the-ground event.
+
+| NASA status code | First-detection date range | Pixel centres |
+| --- | --- | ---: |
+| 1 | 2026-10-19 to 2026-11-03 | 146 |
+| 2 | 2026-09-29 to 2026-11-02 | 74 |
+| 3 | 2025-11-03 to 2026-10-01 | 369 |
+| 4 | 2026-11-02 | 3 |
+| 5 | 2026-10-11 | 2 |
+| 6 | 2025-11-16 to 2026-08-05 | 172 |
+| 7 | 2025-11-03 to 2026-09-19 | 498 |
+| 8 | 2025-11-03 to 2026-08-30 | 213 |
+
+See the status definitions and cautions above and the [NASA product specification](https://lpdaac.usgs.gov/documents/1766/OPERA_DIST_HLS_Product_Specification_V1.pdf). First, provisional and confirmed are provider categories, not proof of forest loss, cause, legality, current conditions or field verification. Finished statuses may refer to older changes; no date establishes when an actual action occurred. The provisional rectangle is not an official forest boundary. Other overlapping tiles and independent quality/cloud layers have not been checked, nor has usable coverage outside this intersection. The scene mask was checked separately as described below. No completeness, loss area or absence-of-disturbance claim follows.
+
+The script was re-executed locally after **five synthetic tests passed**, covering matching inputs, masked and missing values, pairwise denominators, mismatched grids, invalid/future dates and disjoint geography. The owner’s original downloaded files were not modified; no raster, pixel locations, credentials, token, or account data were committed, and no live integration was activated.
+
+
+### Matching last-assessed date band
+
+The owner also downloaded the matching `VEG-LAST-DATE` GeoTIFF. Its size was 899,517 bytes and its locally calculated SHA-256 was `3a44dc83c1e0fd3f95bbd586b230964ea59aa366ede5bd3879b55155f79119c3`; the fingerprint was not independently checked against a NASA checksum. A three-band rerun validated the same granule name, grids and data types. All 12,432 selected pixel centres were nonmissing in the three supplied bands. Their positive last-assessed dates ranged from **2026-10-04 through 2026-11-03**, inclusive. Zero nonzero-status pixels had a last-assessed date before its first-detection date.
+
+Per the NASA specification, this band represents the last quality-assessed HLS observation flagged as land or water with enough observations to calculate the vegetation baseline; it is not the date of an on-the-ground event, nor proof that every pixel had a clear observation on November 3. It cannot establish conditions after acquisition or compensate for absent cloud/quality layers, an unexamined second tile, lack of forest masking or an official boundary. No raster, per-pixel locations, account credentials or tokens were committed.
+
+
+### Matching current-scene mask
+
+The owner also downloaded the same granule's `DATA-MASK` GeoTIFF. Its size was 108,885 bytes and its local SHA-256 was `6b0e560fe4abeade982f638f72d2e34fe843cf59068018b5560622e00aa8f0ea`; this fingerprint was not compared with an official NASA checksum. The four-band analysis validated matching granule filenames, CRS, grid, dimensions and data types. Across the 12,432 selected pixel centres, no supplied-band values were masked or marked nodata by their respective raster metadata.
+
+The scene mask had **11,710 centres with code 0, 722 with code 1, and none with code 2**. Nonzero vegetation-disturbance statuses occurred at 1,266 of the code-0 centres and 211 of the code-1 centres. These are pixel-centre counts within one tile's intersection with a provisional rectangle, not measurements of forest loss, land-cover area, an official boundary or field-verified events.
+
+NASA's [V1 product specification](https://lpdaac.usgs.gov/documents/1766/OPERA_DIST_HLS_Product_Specification_V1.pdf) describes this as the mask of pixels to which the algorithms apply in the **current** HLS scene and labels codes 0, 1 and 2 respectively “Not land,” “Land” and “Water”. The downloaded TIFF's embedded `flag_meanings` instead labels them `no_data_or_masked,land,water`. The exact reason for code 0 in these particular pixels is unverified; do not infer that they are permanently non-land or determine whether clouds or another condition caused masking. The data-mask code-0 value is a meaningful mask code and must not be confused with the raster's nodata metadata.
+
+Status layers can report ongoing or finished events and may reflect earlier observations; a nonzero status alongside a current-scene code 0 is not by itself proof of a contradiction or proof of a current observation. Precise status retention under masked conditions remains unverified. The last-assessed dates range from 2026-10-04 to 2026-11-03, but that does not mean every pixel was assessed on November 3. Separate cloud/quality layers and the second overlapping tile remain unexamined. No raw raster, pixel coordinates or credentials were committed.

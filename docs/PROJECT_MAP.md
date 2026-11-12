@@ -214,3 +214,6 @@ The owner accepts a provisional wider-region path without waiting indefinitely f
 ## Source provenance contract foundation — 2026-11-12
 
 `services/api/app/source_provenance.py` defines a versioned source-neutral contract. Existing observation and case/dossier API responses expose only an identified synthetic fixture projection; mismatched rows fail closed. See `docs/OBSERVATION_PROVENANCE_CONTRACT.md`. This is not live ingestion or owner authentication.
+
+
+**NASA date follow-up (2026-11-12):** The bounded status/first-detection-date comparison and limitations are recorded in `docs/NASA_DIST_SAMPLE_20261112.md`. It is a research check, not a live feed or official geography.
