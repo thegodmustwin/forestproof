@@ -193,3 +193,7 @@ The owner accepts a provisional wider-region path without waiting indefinitely f
 ## 2026-11-11 synthetic RADD receipt ledger
 
 `services/api/app/providers/radd_fixture_receipts.py` stores bounded synthetic fixture receipt metadata and exact-byte hashes, not raw rows, provenance proof, production data, or a live feed. See `docs/RADD_FIXTURE_RECEIPTS.md`.
+
+## Source provenance contract foundation — 2026-11-12
+
+`services/api/app/source_provenance.py` defines a versioned source-neutral contract. Existing observation and case/dossier API responses expose only an identified synthetic fixture projection; mismatched rows fail closed. See `docs/OBSERVATION_PROVENANCE_CONTRACT.md`. This is not live ingestion or owner authentication.
