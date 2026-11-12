@@ -16,6 +16,10 @@
 **Snapshot:** 2026-10-25, private repo thegodmustwin/forestproof, branch `main`; application code is at `71af70f81318ea98e4d1ab20bd52739aa97012c1` and subsequent commits maintain the context package.  
 This map separates the current DEMO implementation from the intended production architecture.
 
+## Disabled-mode storage guard — 2026-11-12
+
+`services/api/app/store.py` prevents unsupported modes from opening or migrating the configured SQLite path. See `docs/DISABLED_MODE_STORAGE_GUARD.md`. This is not a LIVE store or backup.
+
 ## System in one view
 
     Synthetic DEMO fixtures / future approved providers
