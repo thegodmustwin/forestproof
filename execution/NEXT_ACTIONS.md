@@ -107,3 +107,7 @@ Begin with `docs/CLOUD_HANDOFF.md`, then inspect the current code, main and exec
 ## 2026-11-11 receipt provenance follow-up
 
 The synthetic-only receipt ledger is groundwork, not an ingestion path. Before real data, establish source and retention terms, protected storage and recovery, provenance verification, authorized geography, and identity controls. Do not treat fixture hashes or empty responses as provider proof.
+
+## Source-neutral provenance follow-up — 2026-11-12
+
+Review `docs/OBSERVATION_PROVENANCE_CONTRACT.md`. Define provider-specific mappings and actual verified source semantics before connecting live records. Build real owner authentication, source verification, isolated storage and restore controls; do not enable LIVE merely because the contract exists.

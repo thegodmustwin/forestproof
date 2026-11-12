@@ -161,3 +161,7 @@ The user's requested Cloud continuation brief is in `docs/CLOUD_HANDOFF.md`. Git
 ## 2026-11-11 synthetic RADD receipt candidate
 
 A standalone local receipt ledger preserves synthetic fixture response hashes and bounded query metadata, with UNKNOWN completeness and explicit synthetic attestation. It performs no provider calls, does not link to case storage, and does not establish production readiness or live source provenance. See `docs/RADD_FIXTURE_RECEIPTS.md`.
+
+## 2026-11-12 source provenance foundation
+
+The API exposes a versioned, source-neutral provenance projection for identified synthetic observations through list/detail and case/dossier responses. The contract separates derived/fixture/provider identity, source release and time precision, and explicitly marks completeness unknown. Schema validation cannot establish truth, access rights or source health. LIVE remains disabled, and real owner authentication, source authorization, live storage and restore remain unimplemented.
