@@ -1,5 +1,10 @@
 # Next Actions
 
+## Source context follow-up — 2026-11-12
+
+The demo observation detail exposes validated optional provenance. Future live adapters must independently implement and verify source-specific semantics, access and storage before enabling any real-data path; do not promote fixture metadata into live evidence.
+
+
 ## NASA science sample follow-up — 2026-11-12
 
 Review the bounded status-layer findings in `docs/NASA_DIST_SAMPLE_20261112.md`; verify additional overlapping tiles, quality/cloud and date semantics, source terms and an authorized geography before considering integration. Keep LIVE disabled and demo/real storage separate until identity, storage, recovery and source gates are met.

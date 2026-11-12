@@ -174,6 +174,25 @@ try {
       });
       await page.goto(`${entryBase}/monitor/aberdare`, { waitUntil: "domcontentloaded" });
       await page.getByText("API connected.", { exact: false }).waitFor();
+      assert.equal(await page.getByText("Source record", { exact: true }).count(), 1);
+      assert.match(await page.locator(".fact").filter({ hasText: "Coverage completeness" }).innerText(), /Unknown/);
+      if (process.env.FORESTPROOF_SCREENSHOT_DIR) {
+        const captureDir = resolve(process.env.FORESTPROOF_SCREENSHOT_DIR);
+        await mkdir(captureDir, { recursive: true });
+        for (const [name, viewport] of [["monitor-desktop", { width: 1440, height: 1100 }], ["monitor-mobile", { width: 390, height: 844 }]]) {
+          await page.setViewportSize(viewport);
+          const sourceValue = page.locator(".fact").filter({ hasText: "Source record" }).locator("span").last();
+          const originalSource = await sourceValue.innerText();
+          if (name === "monitor-mobile") {
+            await sourceValue.evaluate((el) => { el.textContent = "DEMO-" + "a".repeat(220); });
+          }
+          await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
+          const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+          assert.equal(overflow, false, `Monitoring view overflows ${name}`);
+          await sourceValue.evaluate((el, text) => { el.textContent = text; }, originalSource);
+        }
+        await page.setViewportSize({ width: 1440, height: 1100 });
+      }
       await page.getByRole("button", { name: "Create review case" }).click();
       const openRecord = page.getByRole("link", { name: "Open the review record" });
       await openRecord.waitFor();

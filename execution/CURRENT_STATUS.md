@@ -1,5 +1,10 @@
 # Current Status
 
+## Source context in observation detail — 2026-11-12
+
+The monitoring detail displays source-record identity and validated API provenance with explicit missing/unknown values. Older demo servers without the optional provenance object remain supported; malformed or mixed provenance is rejected. This does not enable LIVE or authenticate a provider.
+
+
 ## NASA science sample inspection — 2026-11-12
 
 After the owner privately downloaded one NASA DIST-HLS status TIFF, a local bounded research check found non-nodata status values within the intersection of that tile and a provisional rectangle. Synthetic tool tests passed; other quality layers, event timing, official boundaries and field conditions remain unverified. No live feed was activated and no forest-loss conclusion is established. See `docs/NASA_DIST_SAMPLE_20261112.md`.
