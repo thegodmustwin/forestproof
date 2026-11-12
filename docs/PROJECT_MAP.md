@@ -1,5 +1,10 @@
 # ForestProof — repository and system map
 
+## Source context in observation detail — 2026-11-12
+
+`apps/web/src/lib/observation-normalization.ts` validates the optional versioned demo provenance contract and `observation-detail.tsx` shows source record, processing version, release, completeness and attribution without guessing missing values. This remains synthetic-only and is not live-source activation.
+
+
 ## NASA sample inspection — 2026-11-12
 
 `docs/NASA_DIST_SAMPLE_20261112.md` records a local, bounded NASA DIST-HLS status-layer inspection and its limits. It is research, not live monitoring or an official boundary.
