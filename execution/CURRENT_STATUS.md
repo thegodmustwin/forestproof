@@ -1,5 +1,9 @@
 # Current Status
 
+## Direct-source evaluation — 2026-11-12
+
+Public NASA metadata and a single whole-tile browse PNG were retrieved; a GLAD-L tile HEAD request returned current file metadata. Neither verifies valid Geta pixels, authorizes live use, or means any GNW alert query was made. See `docs/DIRECT_SOURCE_EVALUATION.md`.
+
 ## Independence research — 2026-11-12
 
 `docs/GNW_INDEPENDENCE_RESEARCH.md` records provider-independent architecture options, GNW self-hosting terms and competing workflow capabilities. RADD remains the lead candidate; no production source, live alert request or feed integration has been verified.

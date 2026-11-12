@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Direct-source evaluation — 2026-11-12
+
+`docs/DIRECT_SOURCE_EVALUATION.md` records the direct NASA metadata/browse and GLAD-L file-metadata tests, access and licence caveats.
+
 ## Research update — 2026-11-12
 
 `docs/GNW_INDEPENDENCE_RESEARCH.md` compares GNW capabilities, self-hosted options, direct-source candidates, licensing and defensibility hypotheses. It does not change the lead feed or claim a live integration.
