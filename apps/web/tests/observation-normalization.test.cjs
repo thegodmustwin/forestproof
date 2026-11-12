@@ -49,3 +49,33 @@ test("unknown or non-normalized confidence does not invent a percentage", () => 
   assert.equal(normalizeDemoObservation({ ...record, confidence_value: null }).confidenceScore, null);
   assert.equal(normalizeDemoObservation({ ...record, confidence_value: 80 }).confidenceScore, null);
 });
+
+
+test("versioned demo provenance is preserved without inventing missing attribution or release", () => {
+  const item = { ...record, source_id: "demo-synthetic-v1", source_record_id: "DEMO-123" };
+  const provenance = { contract_version: "1", data_mode: "DEMO", source_id: item.source_id,
+    record_key: item.source_record_id, record_key_kind: "SYNTHETIC_FIXTURE",
+    quality_flags: ["DEMO_DATA"], processing_version: "fixture-v1",
+    source_release: null, completeness: "UNKNOWN", attribution: null };
+  assert.deepEqual(normalizeDemoObservation({ ...item, source_provenance: provenance }).sourceProvenance, {
+    processingVersion: "fixture-v1", sourceRelease: null, completeness: "UNKNOWN", attribution: null,
+  });
+  assert.equal(normalizeDemoObservation(item).sourceProvenance, undefined);
+});
+
+test("mixed, foreign, unknown, or malformed source provenance is rejected", () => {
+  const item = { ...record, source_id: "demo-synthetic-v1", source_record_id: "DEMO-123" };
+  const provenance = { contract_version: "1", data_mode: "DEMO", source_id: item.source_id,
+    record_key: item.source_record_id, record_key_kind: "SYNTHETIC_FIXTURE",
+    quality_flags: ["DEMO_DATA"], processing_version: "fixture-v1",
+    source_release: null, completeness: "UNKNOWN", attribution: null };
+  for (const changed of [
+    { data_mode: "LIVE" }, { record_key_kind: "PROVIDER_NATIVE" },
+    { record_key: "DEMO-OTHER" }, { source_id: "other-source" },
+    { quality_flags: [] }, { processing_version: "" },
+    { completeness: "COMPLETE" }, { contract_version: "2" },
+  ]) {
+    assert.throws(() => normalizeDemoObservation({ ...item, source_provenance: { ...provenance, ...changed } }), /provenance/);
+  }
+  assert.throws(() => normalizeDemoObservation({ ...item, source_provenance: null }), /provenance/);
+});
