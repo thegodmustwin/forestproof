@@ -57,9 +57,11 @@ class SourceProvenance(BaseModel):
             if self.record_key_kind != "SYNTHETIC_FIXTURE" or "DEMO_DATA" not in self.quality_flags:
                 raise ValueError("Demo provenance requires a synthetic fixture identity and label")
         else:
-            if self.record_key_kind == "SYNTHETIC_FIXTURE" or "DEMO_DATA" in self.quality_flags:
+            if (self.record_key_kind == "SYNTHETIC_FIXTURE"
+                    or self.source_id == "demo-synthetic-v1"
+                    or any(flag.strip().upper() == "DEMO_DATA" for flag in self.quality_flags)):
                 raise ValueError("Live provenance cannot contain a demo identity or label")
-            if self.source_release is None or self.source_release.lower() == "latest":
+            if self.source_release is None or self.source_release.strip().lower() == "latest":
                 raise ValueError("Live provenance requires a concrete source release")
         return self
 
