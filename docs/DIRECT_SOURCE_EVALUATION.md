@@ -4,7 +4,7 @@
 
 ## Summary
 
-- NASA OPERA DIST-HLS V1 catalog metadata and a public browse PNG were accessible without login. The owner subsequently used a free Earthdata Login to download four science bands for one granule. The [bounded sample inspection](NASA_DIST_SAMPLE_20261112.md) verified band alignment and examined pixel statuses, dates, and scene masking in one tile. The second overlapping tile and suitability for operational monitoring remain unverified.
+- NASA OPERA DIST-HLS V1 catalog metadata and a public browse PNG were accessible without login. The owner used Earthdata Login to download four science bands for each of two granules from the November 3 Landsat 8 acquisition. The [two-tile comparison](NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) verified band alignment and complete geometric overlap within the provisional rectangle. Both grids had a November 3 last-assessed date for only 722 of 12,432 sampled centres (5.8%). Operational suitability remains unverified.
 - GLAD-L's own download page exposes current Google Cloud Storage GeoTIFF paths without using the GNW Data API or running Earth Engine. One 10-degree tile containing the research box responded to an unauthenticated HTTP HEAD request. We did not download this GLAD alert TIFF or query GNW alert records. Current source-specific commercial reuse/retention terms and actual usable pixels remain unverified.
 - Both sources remain research candidates. The NASA files support a local sample analysis. ForestProof has no recurring ingestion or verified live feed from either provider.
 
@@ -33,7 +33,7 @@ The matching second tile is NASA CMR granule [G4404845759-LPCLOUD](https://cmr.e
 - [`VEG-LAST-DATE`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_VEG-LAST-DATE.tif)
 - [`DATA-MASK`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_DATA-MASK.tif)
 
-Run the same bounded diagnostic independently for each tile. A WGS84 rectangle can intersect both product grids. Compare their scene mask and date results side by side until the grid overlap has been checked. Adding the counts could double-count ground area. Keep the provisional geography and cloud limitations visible in any interpretation.
+The owner downloaded all four files. The [completed comparison](NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) found that both tiles cover the entire provisional rectangle geometrically. Keep their native-grid counts separate to avoid counting the same ground twice.
 
 ## GLAD-L direct route
 
@@ -47,4 +47,4 @@ The product page provides a citation but the specific GLAD-L alert dataset's mac
 
 One GLAD-L status file was ~13.0 MiB at this check. As a simple planning calculation, downloading that same size once on each of 30 days would transfer ~390 MiB per month and retain ~390 MiB if every daily copy were kept, before the separately required date/quality layers, compression differences, retries, backups or cloud charges. This is traffic/storage arithmetic, **not a provider fee quotation**. `Accept-Ranges` does not prove the TIFF is cloud-optimized or that a particular small-area read is efficient. Confirm current network, provider terms and actual measured bytes before estimating expenses; no paid account or subscription was created.
 
-For NASA, the remaining research checks are the second intersecting tile, recent granules across multiple dates, quality and mask behavior, and exact product terms for the intended use. For GLAD-L, verify the product licence and bounded machine-readable pixel access. Record product and release, acquisition and receipt times, source bytes and unknown freshness or coverage explicitly. An operational pilot requires an approved area, separate storage, owner authentication and tested recovery. Missing or masked pixels leave disturbance status unknown.
+For NASA, the remaining research checks are matching HLS Fmask QA, usable coverage and lag across multiple acquisition dates, and exact product terms for the intended use. For GLAD-L, verify the product licence and bounded machine-readable pixel access. Record product and release, acquisition and receipt times, source bytes and unknown freshness or coverage explicitly. An operational pilot requires an approved area, separate storage, owner authentication and tested recovery. Missing or masked pixels leave disturbance status unknown.
