@@ -1,5 +1,9 @@
 # Next Actions
 
+Review `docs/PREVIEW_UPLOAD_GUARD.md` and its tests before deploying. Keep
+both API and gateway denial for shared synthetic previews; implement real owner
+identity, protected storage and recovery separately before accepting evidence.
+
 ## Reproducible NASA research — 2026-11-13
 
 Use `tools/nasa_dist_research/` only for isolated, explicitly bounded local research. Verify cloud/quality layers, neighboring tiles, data rights and operational area before considering any provider integration. Never interpret source disturbance status as proof of forest loss or legality.

@@ -1,5 +1,8 @@
 # ForestProof — repository and system map
 
+`docs/PREVIEW_UPLOAD_GUARD.md` records the default-off synthetic evidence
+upload guard at both API and storage boundaries; it is not owner identity.
+
 ## Reproducible NASA research tool — 2026-11-13
 
 `tools/nasa_dist_research/` contains an offline, explicitly bounded single-granule multi-layer diagnostic with synthetic tests and separate optional dependencies. It does not download data, enable LIVE, establish an official boundary, or make forest-loss claims.

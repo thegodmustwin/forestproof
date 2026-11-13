@@ -238,8 +238,8 @@ def record_follow_up(case_id: str, payload: FollowUpCreate, organization: Org) -
 @app.post("/api/v1/cases/{case_id}/evidence", status_code=status.HTTP_201_CREATED)
 def attach_evidence(case_id: str, payload: EvidenceCreate, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
-    if settings.mode == "owner_demo":
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Evidence uploads are disabled in the owner demo")
+    if settings.mode != "demo" or not settings.demo_evidence_uploads_enabled:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Evidence uploads are disabled")
     return store.attach_evidence(case_id, payload.file_name, payload.media_type, payload.content_base64,
                                  payload.source_description, payload.actor, as_iso(payload.observed_at))
 

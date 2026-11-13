@@ -13,7 +13,7 @@ from app.store import Store
 
 @pytest.fixture()
 def store(tmp_path):
-    instance = Store(Settings("demo", tmp_path / "forestproof.db", tmp_path / "evidence", "http://localhost:3000"))
+    instance = Store(Settings("demo", tmp_path / "forestproof.db", tmp_path / "evidence", "http://localhost:3000", demo_evidence_uploads_enabled=True))
     instance.prepare()
     return instance
 

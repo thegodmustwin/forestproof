@@ -1,5 +1,13 @@
 # Current Status
 
+## Synthetic evidence upload guard candidate — 2026-11-13
+
+The API and storage adapter deny demo evidence uploads by default, with an
+explicit opt-in for isolated local `demo` mode only. Shared-preview Compose
+explicitly disables the flag; the gateway retains its separate denial. This
+change does not provide person-level authentication or authorize LIVE; exact
+deployed versions must be verified. See `docs/PREVIEW_UPLOAD_GUARD.md`.
+
 ## Offline NASA research diagnostic — 2026-11-13
 
 A separately invoked NASA DIST-HLS V1 research utility accepts explicitly supplied local layers and a bounded WGS84 rectangle, validates matching grids and reports aggregate dates and status/mask values. Synthetic tests are in a dedicated Python 3.12 workflow; no private rasters or coordinates are committed. This is not a live provider integration, production evidence store, or replacement for the unresolved quality/geography gates.

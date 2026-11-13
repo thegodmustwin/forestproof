@@ -221,6 +221,18 @@ try {
       assert.equal(await queueRow.count(), 1);
       assert.match(await queueRow.innerText(), /Synthetic owner smoke/);
       await page.goto(`${entryBase}/cases/${caseId}`, { waitUntil: "domcontentloaded" });
+      await page.getByText("Demo evidence attachments may be disabled in this preview.", { exact: false }).waitFor();
+      if (process.env.FORESTPROOF_SCREENSHOT_DIR) {
+        const captureDir = resolve(process.env.FORESTPROOF_SCREENSHOT_DIR);
+        await mkdir(captureDir, { recursive: true });
+        for (const [name, viewport] of [["case-desktop", { width: 1440, height: 1100 }], ["case-mobile", { width: 390, height: 844 }]]) {
+          await page.setViewportSize(viewport);
+          await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
+          const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+          assert.equal(overflow, false, `Case view overflows ${name}`);
+        }
+        await page.setViewportSize({ width: 1440, height: 1100 });
+      }
       await page.getByRole("button", { name: "Advance to Under review" }).click();
       await page.getByRole("button", { name: "Advance to Field verification" }).click();
       const advanceAction = page.getByRole("button", { name: "Advance to Action recorded" });
