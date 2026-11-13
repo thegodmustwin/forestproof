@@ -1,5 +1,9 @@
 # Current Status
 
+## Offline NASA research diagnostic — 2026-11-13
+
+A separately invoked NASA DIST-HLS V1 research utility accepts explicitly supplied local layers and a bounded WGS84 rectangle, validates matching grids and reports aggregate dates and status/mask values. Synthetic tests are in a dedicated Python 3.12 workflow; no private rasters or coordinates are committed. This is not a live provider integration, production evidence store, or replacement for the unresolved quality/geography gates.
+
 ## Protected Contabo preview release — verified 2026-11-13
 
 The synthetic protected preview at https://vmi3711898.contaboserver.net/ was updated to pinned source commit `9bd49bcf92ebbfd14b75e042e3095d23c315eb5b`. The deployment operator reported successful external TLS and anonymous 401, authenticated home and DEMO health, source provenance on three synthetic observations, blocked cross-origin mutation and evidence uploads (403), and preserved database volume (one synthetic case and six events). A private pre-update SQLite snapshot and separate restore passed integrity checks; this is not an off-host or production backup. The operator reported a temporary isolated staging stack was stopped. Actual browser rendering of the deployed host was not independently verified; CI desktop/mobile synthetic renders for the source-context UI were inspected. On 2026-11-13 a separate read-only SSH recheck confirmed the preview web, API and gateway containers running and SSH, xrdp, MariaDB and PHP-FPM active. The web binding was loopback. Tester credentials remain private as in the prior deployment record. No live feed or real-evidence intake was enabled. Future source changes on GitHub may not be deployed; verify exact release.
