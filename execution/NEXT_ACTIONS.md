@@ -9,7 +9,7 @@ The highest-priority real pilot work is person-level owner authentication, separ
 
 ## Next NASA quality check — 2026-11-13
 
-NASA's public catalog listed November 3 as the newest acquisition on both intersecting tiles in the checked October 27–November 13 window. The four matching T37MBV links and catalog limitations are in [Direct-source evaluation](../docs/DIRECT_SOURCE_EVALUATION.md#catalog-freshness-and-the-second-tile-2026-11-13). Use the owner’s private Earthdata browser session for that download, then run the offline inspector per tile. Check overlap before combining any counts. The result stays in research until exact source terms, local quality, area and the operating controls for the pilot are verified.
+The [two-tile check](../docs/NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) is complete. Both grids cover the same provisional rectangle. Only 722 of 12,432 centres per grid had a November 3 last-assessed date, all with scene-mask code 1. Next, compare matching HLS Fmask QA and valid-observation dates across multiple acquisitions. Record how much of the proposed area is usable and how long observations take to arrive before selecting a source. An operational area, terms, owner access, protected storage, and tested recovery are still required.
 
 ## Reproducible NASA research — 2026-11-13
 
