@@ -5,7 +5,7 @@ New contributors and AI platforms: begin with [AGENTS.md](AGENTS.md),
 [PROJECT_MAP.md](docs/PROJECT_MAP.md). Original inception prompts are archived
 under docs/origin/ as historical material, not verified current facts.
 
-**Current hosting (2026-11-10):** The target is Contabo `vmi3711898`, not the old OVH alias `content-engine-vps`. Laptop read-only SSH access succeeded; Cloud access and deployment are not verified. Keep RDP private, preserve other projects, and verify backup transfer before reliance. See [deployment context](docs/DEPLOYMENT.md).
+**Current hosting and preview (verified 2026-11-13):** Contabo `vmi3711898` serves the protected synthetic preview at pinned source `38881dc79f04de9d21997fe85dea8712ef78e91d`. Its shared tester gate, DEMO API, upload denial, TLS and local SQLite snapshot/restore were checked; the deployed browser rendering and off-host production recovery were not. This is not a live or owner-authenticated production pilot. Keep RDP private and preserve other projects. The old OVH alias `content-engine-vps` is historical. See [deployment context](docs/DEPLOYMENT.md) and [release checks](execution/CURRENT_STATUS.md).
 
 ## Purpose
 
@@ -44,7 +44,7 @@ The first coherent vertical slice is:
 | Live forest-alert provider | DOCUMENTED_NOT_TESTED | No provider is represented as operational until credentials, licence, AOI coverage, and ingestion are verified. |
 | Legal corpus | PLANNED | No court order or permit is treated as authoritative until an official source and human review are recorded. |
 | Outcome Graph | WORKING (P0) | A relational observation → case → action/follow-up graph is exposed; it does not assert environmental causality. |
-| Deployment | PARTIAL (SYNTHETIC PREVIEW) | A password-protected synthetic preview was deployed and verified on OVH on 2026-10-28. Current availability, the newer UI release and the live-production pilot are unverified. Railway documents are historical. See docs/LAUNCH_STRATEGY.md. |
+| Deployment | WORKING (PROTECTED SYNTHETIC PREVIEW ONLY) | Contabo serves pinned release `38881dc` behind HTTPS and shared tester access. Gateway and API upload denial, DEMO health/source labels and a local SQLite restore passed. The deployed browser was not visually inspected. Person-level owner identity, off-host production recovery and a live pilot remain unfinished. OVH and Railway deployment notes are historical. See execution/CURRENT_STATUS.md. |
 
 ## Product boundary
 

@@ -1,8 +1,11 @@
 # Next Actions
 
-Review `docs/PREVIEW_UPLOAD_GUARD.md` and its tests before deploying. Keep
-both API and gateway denial for shared synthetic previews; implement real owner
-identity, protected storage and recovery separately before accepting evidence.
+## After verified Contabo preview release — 2026-11-13
+
+The protected synthetic preview now serves pinned source `38881dc79f04de9d21997fe85dea8712ef78e91d` on Contabo. Use `execution/CURRENT_STATUS.md` for the verified TLS, gateway/API denial, demo database restore, and host-service checks. The preview still uses shared tester access and synthetic data; do not collect real evidence or personal data. Review `docs/PREVIEW_UPLOAD_GUARD.md` before a future deployment and keep uploads denied at both gateway and API boundaries.
+
+The highest-priority real pilot work is person-level owner authentication, separate protected LIVE storage with tested off-host recovery, and one legally usable record-level feed with verified terms, cost/quota, provenance, geography, quality and freshness. Continue offline contract and workflow tests while these inputs are checked. Keep LIVE fail-closed. Before any future preview release, compare GitHub main with the deployed commit and repeat targeted staging, database restore and access/service checks. The deployed site's browser rendering is still unverified; inspect the actual authenticated desktop and mobile workflow when feasible without exposing credentials.
+
 
 ## Reproducible NASA research — 2026-11-13
 

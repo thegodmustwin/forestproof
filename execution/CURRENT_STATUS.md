@@ -1,18 +1,29 @@
 # Current Status
 
-## Synthetic evidence upload guard candidate — 2026-11-13
+## Protected Contabo synthetic preview — verified release 2026-11-13
+
+The protected synthetic preview at https://vmi3711898.contaboserver.net/ now serves pinned source commit `38881dc79f04de9d21997fe85dea8712ef78e91d` from `/opt/forestproof-preview-releases/38881dc`. The candidate API and web images were `forestproof_candidate_388-api:latest` and `forestproof_candidate_388-web:latest` under Compose project `forestproof_preview_20261112`. The existing named SQLite volume was retained; the separate Caddy gateway and unrelated services were not restarted. This is a shared-access DEMO preview, not a live or production pilot.
+
+Before the app-only API/web swap, a fresh private SQLite snapshot and a separate restore both passed integrity checks; the existing demo database retained one synthetic case and six events. An isolated loopback staging instance at `127.0.0.1:13002` passed DEMO health and returned three explicitly synthetic, source-labelled observations. Its API denied an evidence upload with HTTP 409. The staging stack was stopped after the release.
+
+After the swap, external HTTPS certificate validation from Windows succeeded with a zero exit code and anonymous access returned HTTP 401. Authenticated host checks returned HTTP 200 for the synthetic home and DEMO health, three synthetic observations with DEMO source provenance, HTTP 403 for gateway-blocked evidence upload and cross-origin mutation, and HTTP 409 for an upload sent directly to the running API. The API has no host-published port; the web listener is on loopback port 13000. SSH, xrdp, MariaDB and PHP-FPM remained active, and RDP remained bound to loopback port 3389.
+
+The deployed site's browser rendering was not visually verified. The private local SQLite snapshot and restore are not an off-host production backup. Person-level owner authentication, separate protected live storage and tested production recovery, source terms/coverage/cost, and a verified live feed remain unfinished. Do not submit personal or real field data or describe the preview's records as live observations.
+
+## Synthetic evidence upload guard — merged and deployed 2026-11-13
 
 The API and storage adapter deny demo evidence uploads by default, with an
 explicit opt-in for isolated local `demo` mode only. Shared-preview Compose
 explicitly disables the flag; the gateway retains its separate denial. This
-change does not provide person-level authentication or authorize LIVE; exact
-deployed versions must be verified. See `docs/PREVIEW_UPLOAD_GUARD.md`.
+change does not provide person-level authentication or authorize LIVE. Its
+Contabo deployment is verified in the release entry above. See
+`docs/PREVIEW_UPLOAD_GUARD.md`.
 
 ## Offline NASA research diagnostic — 2026-11-13
 
 A separately invoked NASA DIST-HLS V1 research utility accepts explicitly supplied local layers and a bounded WGS84 rectangle, validates matching grids and reports aggregate dates and status/mask values. Synthetic tests are in a dedicated Python 3.12 workflow; no private rasters or coordinates are committed. This is not a live provider integration, production evidence store, or replacement for the unresolved quality/geography gates.
 
-## Protected Contabo preview release — verified 2026-11-13
+## Prior protected Contabo preview release — verified 2026-11-13
 
 The synthetic protected preview at https://vmi3711898.contaboserver.net/ was updated to pinned source commit `9bd49bcf92ebbfd14b75e042e3095d23c315eb5b`. The deployment operator reported successful external TLS and anonymous 401, authenticated home and DEMO health, source provenance on three synthetic observations, blocked cross-origin mutation and evidence uploads (403), and preserved database volume (one synthetic case and six events). A private pre-update SQLite snapshot and separate restore passed integrity checks; this is not an off-host or production backup. The operator reported a temporary isolated staging stack was stopped. Actual browser rendering of the deployed host was not independently verified; CI desktop/mobile synthetic renders for the source-context UI were inspected. On 2026-11-13 a separate read-only SSH recheck confirmed the preview web, API and gateway containers running and SSH, xrdp, MariaDB and PHP-FPM active. The web binding was loopback. Tester credentials remain private as in the prior deployment record. No live feed or real-evidence intake was enabled. Future source changes on GitHub may not be deployed; verify exact release.
 
