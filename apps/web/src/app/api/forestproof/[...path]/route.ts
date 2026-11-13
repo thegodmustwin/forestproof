@@ -21,6 +21,12 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
     );
   }
 
+  // The gateway checks Origin too; enforce it again before the web service
+  // forwards its internal token. Missing Origin is denied in owner_demo.
+  if (config.ownerDemoToken && request.method === "POST" && request.headers.get("origin") !== config.ownerOrigin) {
+    return NextResponse.json({ detail: "Forbidden" }, { status: 403 });
+  }
+
   const { path: segments } = await context.params;
   if (!segments.length || segments.some((segment) => segment === "." || segment === ".." || !safePathSegment.test(segment))) {
     return NextResponse.json({ detail: "Invalid API path" }, { status: 400 });

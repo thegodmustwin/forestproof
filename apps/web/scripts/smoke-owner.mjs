@@ -74,7 +74,8 @@ try {
     "start", "-H", "127.0.0.1", "-p", String(webPort)], {
     cwd: process.cwd(),
     env: { ...process.env, NODE_ENV: "production", FORESTPROOF_API_MODE: "owner_demo",
-      FORESTPROOF_INTERNAL_API_TOKEN: token, FORESTPROOF_API_INTERNAL_BASE_URL: `${apiBase}/api/v1` },
+      FORESTPROOF_INTERNAL_API_TOKEN: token, FORESTPROOF_API_INTERNAL_BASE_URL: `${apiBase}/api/v1`,
+      FORESTPROOF_OWNER_GATEWAY_ORIGIN: gatewayPort === null ? webBase : `http://127.0.0.1:${gatewayPort}` },
   });
   await waitFor(webBase, web);
 

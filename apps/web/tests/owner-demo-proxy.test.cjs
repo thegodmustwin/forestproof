@@ -28,7 +28,7 @@ const route = loadTs("../src/app/api/forestproof/[...path]/route.ts", {
   "@/lib/internal-api-config": config,
 });
 const TOKEN = "A".repeat(43); // synthetic test fixture; never used for deployment
-const ENV_KEYS = ["FORESTPROOF_API_MODE", "FORESTPROOF_API_INTERNAL_BASE_URL", "FORESTPROOF_INTERNAL_API_TOKEN"];
+const ENV_KEYS = ["FORESTPROOF_API_MODE", "FORESTPROOF_API_INTERNAL_BASE_URL", "FORESTPROOF_INTERNAL_API_TOKEN", "FORESTPROOF_OWNER_GATEWAY_ORIGIN"];
 
 function restoreEnvironment(t) {
   const old = Object.fromEntries(ENV_KEYS.map((key) => [key, process.env[key]]));
@@ -49,6 +49,7 @@ const context = { params: Promise.resolve({ path: ["observations"] }) };
 test("owner-demo proxy discards browser-supplied identity headers and uses its server credential", async (t) => {
   restoreEnvironment(t);
   process.env.FORESTPROOF_API_MODE = "owner_demo";
+  process.env.FORESTPROOF_OWNER_GATEWAY_ORIGIN = "http://127.0.0.1:3000";
   process.env.FORESTPROOF_INTERNAL_API_TOKEN = TOKEN;
   process.env.FORESTPROOF_API_INTERNAL_BASE_URL = "http://127.0.0.1:8000/api/v1";
   let captured;
@@ -70,6 +71,7 @@ test("owner-demo proxy discards browser-supplied identity headers and uses its s
 test("misconfigured owner-demo proxy does not contact a remote upstream", async (t) => {
   restoreEnvironment(t);
   process.env.FORESTPROOF_API_MODE = "owner_demo";
+  process.env.FORESTPROOF_OWNER_GATEWAY_ORIGIN = "http://127.0.0.1:3000";
   process.env.FORESTPROOF_INTERNAL_API_TOKEN = TOKEN;
   process.env.FORESTPROOF_API_INTERNAL_BASE_URL = "https://example.org/api/v1";
   let called = false;
@@ -83,6 +85,7 @@ test("misconfigured owner-demo proxy does not contact a remote upstream", async 
 test("owner-demo proxy rejects dot segments before forwarding any credential", async (t) => {
   restoreEnvironment(t);
   process.env.FORESTPROOF_API_MODE = "owner_demo";
+  process.env.FORESTPROOF_OWNER_GATEWAY_ORIGIN = "http://127.0.0.1:3000";
   process.env.FORESTPROOF_INTERNAL_API_TOKEN = TOKEN;
   process.env.FORESTPROOF_API_INTERNAL_BASE_URL = "http://127.0.0.1:8000/api/v1";
   let called = false;
@@ -93,6 +96,33 @@ test("owner-demo proxy rejects dot segments before forwarding any credential", a
     assert.ok(!(await response.text()).includes(TOKEN));
   }
   assert.equal(called, false);
+});
+
+test("owner-demo proxy denies unsafe requests without the configured exact Origin", async (t) => {
+  restoreEnvironment(t);
+  process.env.FORESTPROOF_API_MODE = "owner_demo";
+  process.env.FORESTPROOF_OWNER_GATEWAY_ORIGIN = "http://127.0.0.1:3000";
+  process.env.FORESTPROOF_INTERNAL_API_TOKEN = TOKEN;
+  process.env.FORESTPROOF_API_INTERNAL_BASE_URL = "http://127.0.0.1:8000/api/v1";
+  let forwarded = 0;
+  global.fetch = async (_url, options) => {
+    forwarded += 1;
+    assert.equal(options.headers.get("X-Forestproof-Internal-Token"), TOKEN);
+    return Response.json({ ok: true }, { status: 201 });
+  };
+  const post = (origin) => new Request("http://127.0.0.1:3000/api/forestproof/cases", {
+    method: "POST", headers: origin ? { Origin: origin, "Content-Type": "application/json" } : { "Content-Type": "application/json" },
+    body: "{}",
+  });
+  const cases = { params: Promise.resolve({ path: ["cases"] }) };
+  for (const origin of [undefined, "https://untrusted.example", "http://127.0.0.1:3001"]) {
+    const response = await route.POST(post(origin), cases);
+    assert.equal(response.status, 403);
+    assert.ok(!(await response.text()).includes(TOKEN));
+  }
+  assert.equal(forwarded, 0);
+  assert.equal((await route.POST(post("http://127.0.0.1:3000"), cases)).status, 201);
+  assert.equal(forwarded, 1);
 });
 
 test("demo proxy does not pass the configured service token or client-spoofed token", async (t) => {
@@ -118,6 +148,7 @@ test("real fetch refuses redirects without forwarding the service token to the t
   });
   await new Promise((resolve) => upstream.listen(0, "127.0.0.1", resolve));
   process.env.FORESTPROOF_API_MODE = "owner_demo";
+  process.env.FORESTPROOF_OWNER_GATEWAY_ORIGIN = "http://127.0.0.1:3000";
   process.env.FORESTPROOF_INTERNAL_API_TOKEN = TOKEN;
   process.env.FORESTPROOF_API_INTERNAL_BASE_URL = `http://127.0.0.1:${upstream.address().port}/api/v1`;
   try {
