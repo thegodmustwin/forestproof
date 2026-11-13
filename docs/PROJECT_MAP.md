@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Reproducible NASA research tool — 2026-11-13
+
+`tools/nasa_dist_research/` contains an offline, explicitly bounded single-granule multi-layer diagnostic with synthetic tests and separate optional dependencies. It does not download data, enable LIVE, establish an official boundary, or make forest-loss claims.
+
 ## Source context in observation detail — 2026-11-12
 
 `apps/web/src/lib/observation-normalization.ts` validates the optional versioned demo provenance contract and `observation-detail.tsx` shows source record, processing version, release, completeness and attribution without guessing missing values. This remains synthetic-only and is not live-source activation.
