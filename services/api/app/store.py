@@ -374,6 +374,8 @@ class Store:
 
     def attach_evidence(self, case_id: str, file_name: str, media_type: str, content_base64: str, source_description: str,
                         actor: str, observed_at: str | None) -> dict[str, Any]:
+        if self.settings.mode != "demo" or not self.settings.demo_evidence_uploads_enabled:
+            raise HTTPException(status_code=409, detail="Evidence uploads are disabled")
         try:
             raw = base64.b64decode(content_base64, validate=True)
         except Exception as error:  # noqa: BLE001 - turn malformed input into a client error

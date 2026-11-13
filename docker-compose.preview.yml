@@ -5,6 +5,7 @@ services:
       context: ./services/api
     environment:
       FORESTPROOF_MODE: demo
+      FORESTPROOF_DEMO_EVIDENCE_UPLOADS_ENABLED: "false"
       FORESTPROOF_SQLITE_PATH: /data/forestproof.db
       EVIDENCE_STORAGE_PATH: /data/evidence
     volumes:

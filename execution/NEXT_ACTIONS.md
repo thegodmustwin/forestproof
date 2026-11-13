@@ -1,5 +1,9 @@
 # Next Actions
 
+Review `docs/PREVIEW_UPLOAD_GUARD.md` and its tests before deploying. Keep
+both API and gateway denial for shared synthetic previews; implement real owner
+identity, protected storage and recovery separately before accepting evidence.
+
 ## Source context follow-up — 2026-11-12
 
 The demo observation detail exposes validated optional provenance. Future live adapters must independently implement and verify source-specific semantics, access and storage before enabling any real-data path; do not promote fixture metadata into live evidence.

@@ -1,5 +1,8 @@
 # ForestProof — repository and system map
 
+`docs/PREVIEW_UPLOAD_GUARD.md` records the default-off synthetic evidence
+upload guard at both API and storage boundaries; it is not owner identity.
+
 ## Source context in observation detail — 2026-11-12
 
 `apps/web/src/lib/observation-normalization.ts` validates the optional versioned demo provenance contract and `observation-detail.tsx` shows source record, processing version, release, completeness and attribution without guessing missing values. This remains synthetic-only and is not live-source activation.
