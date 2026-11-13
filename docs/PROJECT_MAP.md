@@ -18,7 +18,7 @@ upload guard at both API and storage boundaries; it is not owner identity.
 
 ## NASA sample inspection — 2026-11-12
 
-`docs/NASA_DIST_SAMPLE_20261112.md` records a local, bounded NASA DIST-HLS status-layer inspection and its limits. It is research, not live monitoring or an official boundary.
+`docs/NASA_DIST_SAMPLE_20261112.md` records the local four-band checks and comparison of both overlapping November 3 NASA DIST-HLS tiles. It preserves native-grid counts, the current-scene and historical-date distinction, and the provisional geography.
 
 ## Direct-source evaluation — 2026-11-12
 
