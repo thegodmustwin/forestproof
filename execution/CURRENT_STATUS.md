@@ -27,6 +27,10 @@ The isolated owner demo web proxy requires the exact configured loopback gateway
 
 The source evaluation now links the four-band NASA sample and records the product DOI, citation, differing reuse metadata and limits of interpreting vegetation disturbance. The GNW reference documents default key expiry and the domain-based rate tier. Price, numeric quota and project alert access remain unverified. See `docs/DIRECT_SOURCE_EVALUATION.md` and `docs/DATA_SOURCES.md`.
 
+## NASA two-tile research comparison — 2026-11-13
+
+All four matching bands for T37MBV opened and aligned. The two November 3 Landsat 8 tiles fully overlap in the provisional rectangle. Each grid had 722 of 12,432 centres with a November 3 last-assessed date. Native summaries remain separate to avoid counting the same ground twice. See [the comparison](../docs/NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) for verification, local fingerprints, and quality limits. Operational NASA coverage and LIVE ingestion remain unverified.
+
 ## Offline NASA research diagnostic — 2026-11-13
 
 A separately invoked NASA DIST-HLS V1 research utility accepts explicitly supplied local layers and a bounded WGS84 rectangle, validates matching grids and reports aggregate dates and status/mask values. Synthetic tests are in a dedicated Python 3.12 workflow; no private rasters or coordinates are committed. This is not a live provider integration, production evidence store, or replacement for the unresolved quality/geography gates.
