@@ -4,6 +4,10 @@ Review `docs/PREVIEW_UPLOAD_GUARD.md` and its tests before deploying. Keep
 both API and gateway denial for shared synthetic previews; implement real owner
 identity, protected storage and recovery separately before accepting evidence.
 
+## Reproducible NASA research — 2026-11-13
+
+Use `tools/nasa_dist_research/` only for isolated, explicitly bounded local research. Verify cloud/quality layers, neighboring tiles, data rights and operational area before considering any provider integration. Never interpret source disturbance status as proof of forest loss or legality.
+
 ## Source context follow-up — 2026-11-12
 
 The demo observation detail exposes validated optional provenance. Future live adapters must independently implement and verify source-specific semantics, access and storage before enabling any real-data path; do not promote fixture metadata into live evidence.
