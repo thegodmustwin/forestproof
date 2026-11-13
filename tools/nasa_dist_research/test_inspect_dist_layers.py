@@ -4,7 +4,8 @@ from pathlib import Path
 
 import numpy as np
 import rasterio
-from rasterio.transform import from_origin
+from rasterio.transform import from_bounds, from_origin
+from rasterio.warp import transform_bounds
 from inspect_dist_layers import analyze
 
 PREFIX = 'OPERA_L3_DIST-ALERT-HLS_T00AAA_20261103T074255Z_20261107T181429Z_L8_30_v1'
@@ -73,6 +74,22 @@ class TestLayers(unittest.TestCase):
         self.write_all()
         with self.assertRaisesRegex(ValueError, 'Date value'):
             analyze(self.paths, BOX)
+
+    def test_projected_utm_grids_use_wgs84_research_bounds(self):
+        utm_bounds = transform_bounds('EPSG:4326', 'EPSG:32631', *BOX, densify_pts=21)
+        transform = from_bounds(*utm_bounds, 3, 3)
+        status = np.ones((3, 3), dtype='uint8')
+        dates = np.full((3, 3), 2100, dtype='int16')
+        for name, array, nodata in (('status', status, 255), ('first_date', dates, -1)):
+            with rasterio.open(self.paths[name], 'w', driver='GTiff', width=3, height=3,
+                               count=1, dtype=array.dtype.name, crs='EPSG:32631',
+                               transform=transform, nodata=nodata) as dataset:
+                dataset.write(array, 1)
+        result = analyze({'status': self.paths['status'], 'first_date': self.paths['first_date']}, BOX)
+        self.assertGreater(result['intersection_pixel_centres'], 0)
+        self.assertEqual(result['status_counts_all']['1'], result['intersection_pixel_centres'])
+        self.assertEqual(result['disturbance_status_first_detection_span']['pixels_with_date'],
+                         result['intersection_pixel_centres'])
 
     def test_invalid_bounds_rejected(self):
         for bounds in ((0, 0, 2, 2), (1, 0, 0, 1), (0, 0, float("nan"), 1)):
