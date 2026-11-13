@@ -8,6 +8,9 @@ deny remains a separate layer.
 
 For an isolated local `demo` only, developers may explicitly set
 `FORESTPROOF_DEMO_EVIDENCE_UPLOADS_ENABLED=true` to test synthetic evidence.
+The code does not verify network binding or locality: the operator must ensure
+the instance is isolated. Any deployment in `demo` mode with the flag set to
+`true` enables uploads, including one exposed on a network.
 Even an enabled flag does not permit evidence uploads in `owner_demo` or
 unsupported modes. Do not use the demo for real, personal or private evidence.
 
