@@ -7,6 +7,10 @@ The protected synthetic preview now serves pinned source `38881dc79f04de9d21997f
 The highest-priority real pilot work is person-level owner authentication, separate protected LIVE storage with tested off-host recovery, and one legally usable record-level feed with verified terms, cost/quota, provenance, geography, quality and freshness. Continue offline contract and workflow tests while these inputs are checked. Keep LIVE fail-closed. Before any future preview release, compare GitHub main with the deployed commit and repeat targeted staging, database restore and access/service checks. The deployed site's browser rendering is still unverified; inspect the actual authenticated desktop and mobile workflow when feasible without exposing credentials.
 
 
+## Next NASA quality check — 2026-11-13
+
+NASA's public catalog listed November 3 as the newest acquisition on both intersecting tiles in the checked October 27–November 13 window. The four matching T37MBV links and catalog limitations are in [Direct-source evaluation](../docs/DIRECT_SOURCE_EVALUATION.md#catalog-freshness-and-the-second-tile-2026-11-13). Use the owner’s private Earthdata browser session for that download, then run the offline inspector per tile. Check overlap before combining any counts. The result stays in research until exact source terms, local quality, area and the operating controls for the pilot are verified.
+
 ## Reproducible NASA research — 2026-11-13
 
 Use `tools/nasa_dist_research/` only for isolated, explicitly bounded local research. Verify cloud/quality layers, neighboring tiles, data rights and operational area before considering any provider integration. Never interpret source disturbance status as proof of forest loss or legality.
