@@ -20,6 +20,21 @@ The [NASA catalog](https://data.nasa.gov/dataset/opera-land-surface-disturbance-
 
 [DIST-HLS](https://glad.umd.edu/dataset/DIST-ALERT) reports vegetation-cover loss or spectral disturbance relative to a prior baseline. The [algorithm usage constraints](https://lpdaac.usgs.gov/documents/1835/OPERA_DIST_ATBD__V1.pdf) describe multiple possible causes and show how cloud, haze or shadow masking errors can create or hide signals. Keep acquisition, first detection and last quality-assessed dates distinct. A provider status by itself cannot establish forest cover, cause, or a field-verified event.
 
+### Catalog freshness and the second tile (2026-11-13)
+
+The public [NASA CMR query](https://cmr.earthdata.nasa.gov/search/granules.umm_json?collection_concept_id=C2746980408-LPCLOUD&bounding_box=36.60%2C-0.49%2C36.63%2C-0.46&temporal=2026-10-27T00%3A00%3A00Z%2C2026-11-13T23%3A59%3A59Z&sort_key=-start_date&page_size=100) for the provisional rectangle returned seven granules over October 27–November 13 UTC, with four catalog entries for T36MZE and three for T37MBV. Both tiles' newest listed acquisition was November 3, 07:42:55 UTC, with production timestamps on November 7. At the time of this check the latest acquisition date was ten calendar days old. This records the result of one catalog query. It gives no guarantee about delivery cadence, exact local image quality or absence of disturbance. The November 3 entries reported 50% and 57% tile-wide cloud cover for T36MZE and T37MBV, respectively. Tile-wide values cannot establish cloud or usable coverage within the rectangle.
+
+The [first sample's public granule metadata](https://cmr.earthdata.nasa.gov/search/granules.umm_json?concept_id=G4404844353-LPCLOUD) did not publish an archive/distribution checksum for the files in that response. Preserve the locally calculated hashes as fingerprints and keep provider checksum verification open.
+
+The matching second tile is NASA CMR granule [G4404845759-LPCLOUD](https://cmr.earthdata.nasa.gov/search/granules.umm_json?concept_id=G4404845759-LPCLOUD). Its four science downloads require an Earthdata browser session. Save these to the same local Downloads folder as the first tile:
+
+- [`VEG-DIST-STATUS`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_VEG-DIST-STATUS.tif)
+- [`VEG-DIST-DATE`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_VEG-DIST-DATE.tif)
+- [`VEG-LAST-DATE`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_VEG-LAST-DATE.tif)
+- [`DATA-MASK`](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/OPERA_L3_DIST-ALERT-HLS_V1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1/OPERA_L3_DIST-ALERT-HLS_T37MBV_20261103T074255Z_20261107T181630Z_L8_30_v1_DATA-MASK.tif)
+
+Run the same bounded diagnostic independently for each tile. A WGS84 rectangle can intersect both product grids. Compare their scene mask and date results side by side until the grid overlap has been checked. Adding the counts could double-count ground area. Keep the provisional geography and cloud limitations visible in any interpretation.
+
 ## GLAD-L direct route
 
 The [UMD GLAD-L product page](https://glad.umd.edu/dataset/glad-forest-alerts) links to the [GLAD-maintained direct download interface](https://glad-forest-alert.appspot.com/views/download/download-view.html). Its application generates 10-degree tile names. The provisional box falls in `030E_10S_040E_00N`; this is a broad grid tile, not a validated forest boundary. The page describes alert status 0/2/3 as no loss/probable/confirmed and a separate day-of-year file; preserve actual product semantics. It also specifies a scientific citation and warns that observation cadence depends on usable cloud-free imagery.
