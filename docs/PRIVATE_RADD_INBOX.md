@@ -37,4 +37,12 @@ The importer rejects malformed responses, cells outside the scope, future observ
 
 The copy uses SQLite's online backup API, validates the copied database and receipt links, and rechecks saved response bytes and corresponding rows. The restore drill uses a separate database path. The operator must provision private directory permissions, protect the backup in transit and at rest, and test a restore on the off-host target.
 
-Before importing any genuine response, confirm the right to retain exact provider bytes, verify the approved area and source configuration, and collect the named review record. The inbox has no HTTP route, owner session, scheduled provider client or connection to the case workflow. Tests cover only synthetic requests and local copies.
+Before importing any genuine response, confirm the right to retain exact provider bytes, verify the approved area and source configuration, and collect the named review record. The inbox has no HTTP route, owner session, scheduled provider client or connection to the case workflow. Tests cover only synthetic responses and local copies.
+
+## Source qualification
+
+A November 13 diagnostic on UMD's 2001 primary humid tropical forest raster found 422 of 14,400 sampled centres (2.93%) inside the historical class in the provisional rectangle. RADD uses that layer as an input and applies more exclusions, including mapped 2001–2018 loss in Africa and mangroves. Current coverage remains unmeasured. [UMD baseline](https://glad.umd.edu/dataset/primary-forest-humid-tropics) · [WUR RADD method](https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert)
+
+On November 14, the GNW catalog identified global RADD coverage release `v20240704` and a 10 m EPSG:4326 GeoTIFF asset. The published fields omit class and nodata definitions, and the coverage dataset entry does not specify its license. The separate Africa legacy release `v20210120` describes Congo Basin coverage. [Global coverage catalogue](https://data-api.globalforestwatch.org/dataset/wur_radd_coverage/v20240704) · [Field metadata](https://data-api.globalforestwatch.org/dataset/wur_radd_coverage/v20240704/fields)
+
+GNW's alert catalogue lists GLAD-L under CC BY 4.0 with route-specific credit. UMD's direct download page supplies the dataset citation. Confirm its intended-use and redistribution terms before selecting that route. RADD record access, fees, quotas, attribution and response retention remain open. The existing [unsent provider questions](GFW_ACCESS_REQUEST_DRAFT.md) cover those gaps. [GNW GLAD-L metadata](https://data-api.globalforestwatch.org/dataset/umd_glad_landsat_alerts) · [UMD direct download](https://glad-forest-alert.appspot.com/views/download/download-view.html)
