@@ -93,3 +93,17 @@ T37MBV local SHA-256 fingerprints are listed below. Provider checksums remain un
 - `VEG-DIST-DATE` (3,350,609 bytes) `c92d99fd96e716c39a728bf065b65da08952ff52d0e6c6da709e8435f3a16515`
 - `VEG-LAST-DATE` (1,104,462 bytes) `8f6118cd56e83031a785540203fe2ec3be4d6dfff7258576ce008224e0a0c368`
 - `DATA-MASK` (276,573 bytes) `1a68e633d3387bb8e3ea830b3ee0cb1ccd10006aad175c3eebd09d88db29a538`
+
+## Matching HLS quality files
+
+On November 14, the NASA CMR metadata for both OPERA granules identified
+their exact HLS L30 inputs. The corresponding HLS granule records list
+these Earthdata downloads. Store them with their original filenames and
+pass one at a time to the inspector with `--fmask`.
+
+- [T36MZE Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36MZE.2026307T074255.v2.0/HLS.L30.T36MZE.2026307T074255.v2.0.Fmask.tif) · CMR `G4404771464-LPCLOUD`
+- [T37MBV Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T37MBV.2026307T074255.v2.0/HLS.L30.T37MBV.2026307T074255.v2.0.Fmask.tif) · CMR `G4404774012-LPCLOUD`
+
+The download paths were verified in public catalog metadata. Local QA
+counts remain pending. Repeat on multiple acquisition dates before drawing
+conclusions about typical observation coverage.

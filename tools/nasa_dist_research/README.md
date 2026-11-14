@@ -23,6 +23,16 @@ dimensions, band count, and data type. Only the single tile's intersection is
 examined; no other tile, attribution or upstream checksum is verified. Hashes
 are locally calculated identifiers, not authentication.
 
+Add `--fmask PATH` to include the original HLS v2.0 quality band for the
+same tile and sensing time. Match the input granule named in OPERA's catalog
+metadata. The tool checks its filename and grid, excludes missing values,
+and counts each flag independently because one pixel can have several flags.
+It also counts pixels that pass a conservative research screen: no cloud,
+cloud or shadow adjacency, shadow, snow, water, or high aerosol. That screen
+does not reproduce OPERA's algorithm eligibility. With `--last-date` and
+`--mask`, the report compares HLS quality with the supplied DIST bands.
+[NASA HLS QA documentation](https://hls.gsfc.nasa.gov/data-products/#primary-data-products)
+
 The utility reports aggregate statuses, date spans, mask codes and the number
 of pixel centres in each denominator; it does not export pixel locations.
 First detection is an algorithm observation, not necessarily the date of a

@@ -64,6 +64,27 @@ class TestLayers(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'grids'):
             analyze(self.paths, BOX)
 
+    def test_matching_fmask_keeps_fill_separate_from_overlapping_quality_flags(self):
+        fmask = Path(self.tmp.name) / 'HLS.L30.T00AAA.2026307T074255.v2.0.Fmask.tif'
+        qa = np.array([[0, 2, 10], [255, 4, 32], [192, 16, 128]], dtype='uint8')
+        with rasterio.open(fmask, 'w', driver='GTiff', width=3, height=3, count=1,
+                           dtype='uint8', crs='EPSG:4326', transform=from_origin(0.10, 0.13, .01, .01),
+                           nodata=255) as dataset:
+            dataset.write(qa, 1)
+        result = analyze({**self.paths, 'fmask': fmask}, BOX)['hls_fmask']
+        self.assertEqual(result['present_count'], 8)
+        self.assertEqual(result['flag_counts_nonexclusive']['cloud'], 2)
+        self.assertEqual(result['flag_counts_nonexclusive']['cloud_shadow'], 1)
+        self.assertEqual(result['aerosol_level_counts'], {'0': 6, '2': 1, '3': 1})
+        self.assertEqual(result['passes_conservative_hls_screen_count'], 2)
+        self.assertEqual(result['screen_pass_by_dist_mask_code'], {'1': 2})
+
+    def test_rejects_fmask_from_another_acquisition(self):
+        fmask = Path(self.tmp.name) / 'HLS.L30.T00AAA.2026306T074255.v2.0.Fmask.tif'
+        fmask.touch()
+        with self.assertRaisesRegex(ValueError, 'Fmask filename'):
+            analyze({**self.paths, 'fmask': fmask}, BOX)
+
     def test_unknown_status_and_future_dates_rejected(self):
         self.values['status'][0,0] = 42
         self.write_all()

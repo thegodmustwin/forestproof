@@ -45,8 +45,17 @@ LAYERS = {
     'first_date': ('VEG-DIST-DATE', 'int16', -1),
     'last_date': ('VEG-LAST-DATE', 'int16', -1),
     'mask': ('DATA-MASK', 'uint8', 255),
+    'fmask': ('Fmask', 'uint8', 255),
 }
 EPOCH = date(2020, 12, 31)
+DIST_GRANULE = re.compile(
+    r'OPERA_L3_DIST-ALERT-HLS_(T\d{2}[A-Z]{3})_(\d{8}T\d{6})Z_'
+    r'\d{8}T\d{6}Z_(L8|L9|S2A|S2B|S2C)_30_v1'
+)
+FMASK_BITS = {
+    'cloud': 1, 'adjacent_to_cloud_or_shadow': 2, 'cloud_shadow': 3,
+    'snow_or_ice': 4, 'water': 5,
+}
 
 
 def _sha(path):
@@ -71,12 +80,39 @@ def _span(values):
             'pixels_with_date': int(positive.size)}
 
 
+def _fmask_summary(values, missing, acquisition_day):
+    qa = values['fmask']
+    present = ~missing['fmask']
+    flags = {name: (qa & (1 << bit)) != 0 for name, bit in FMASK_BITS.items()}
+    aot = qa >> 6
+    screened = present & ((qa & 0b00111110) == 0) & (aot != 3)
+    result = {
+        'present_count': int(present.sum()),
+        'flag_counts_nonexclusive': {name: int((present & flag).sum()) for name, flag in flags.items()},
+        'aerosol_level_counts': _counts(aot[present]),
+        'passes_conservative_hls_screen_count': int(screened.sum()),
+    }
+    if 'mask' in values:
+        comparable = present & ~missing['mask']
+        result['hls_and_dist_mask_present_count'] = int(comparable.sum())
+        result['screen_pass_by_dist_mask_code'] = _counts(values['mask'][comparable & screened])
+    if 'last_date' in values:
+        comparable = present & ~missing['last_date']
+        date_matched = comparable & (values['last_date'] == acquisition_day)
+        result['hls_and_last_assessed_present_count'] = int(comparable.sum())
+        result['last_assessed_on_acquisition_count'] = int(date_matched.sum())
+        result['last_assessed_on_acquisition_and_screen_pass_count'] = int((date_matched & screened).sum())
+    return result
+
+
 def analyze(paths, bounds):
     paths = {name: Path(paths[name]) for name in LAYERS if paths.get(name) is not None}
-    if 'status' not in paths or len(paths) < 2:
-        raise ValueError('Status plus at least one additional layer required')
+    if 'status' not in paths or len(paths.keys() - {'fmask'}) < 2:
+        raise ValueError('Status plus at least one additional DIST layer required')
     prefix = None
     for name in paths:
+        if name == 'fmask':
+            continue
         suffix, _, _ = LAYERS[name]
         expected = '_' + suffix + '.tif'
         path = paths[name]
@@ -87,10 +123,17 @@ def analyze(paths, bounds):
             prefix = this_prefix
         if this_prefix != prefix:
             raise ValueError('Layers do not belong to the same granule')
-    match = re.fullmatch(r'OPERA_L3_DIST-ALERT-HLS_T\d{2}[A-Z]{3}_(\d{8})T\d{6}Z_\d{8}T\d{6}Z_(?:L8|L9|S2A|S2B|S2C)_30_v1', prefix)
+    match = DIST_GRANULE.fullmatch(prefix)
     if not match:
         raise ValueError('Unexpected OPERA granule name')
-    acquisition = date.fromisoformat(f'{match[1][:4]}-{match[1][4:6]}-{match[1][6:8]}')
+    tile, sensing, satellite = match.groups()
+    acquisition = date(int(sensing[:4]), int(sensing[4:6]), int(sensing[6:8]))
+    if 'fmask' in paths:
+        product = 'L30' if satellite.startswith('L') else 'S30'
+        doy = (acquisition - date(acquisition.year, 1, 1)).days + 1
+        expected = f'HLS.{product}.{tile}.{acquisition.year:04d}{doy:03d}T{sensing[9:]}.v2.0.Fmask.tif'
+        if not paths['fmask'].is_file() or paths['fmask'].name != expected:
+            raise ValueError('Fmask filename must match the HLS tile, sensing time, and product')
     max_day = (acquisition - EPOCH).days
     with ExitStack() as stack:
         datasets = {name: stack.enter_context(rasterio.open(path)) for name, path in paths.items()}
@@ -144,8 +187,14 @@ def analyze(paths, bounds):
                 'Dates are source detection/last quality-assessed observation dates, not exact event dates.',
                 'DATA-MASK is a scene processing mask, not complete cloud quality, forest cover, or historical quality.',
                 'Vegetation disturbance status does not prove deforestation, illegality or ground conditions.',
-                'Other tile, quality bands and field verification were not checked.'],
+                'This diagnostic does not establish field verification.'],
         }
+        if 'fmask' in values:
+            result['hls_fmask'] = _fmask_summary(values, missing, max_day)
+            result['caveats'].append(
+                'The HLS screen excludes cloud, adjacency, shadow, snow, water, and high aerosol. '
+                'It is a research rule, not an implementation of OPERA processing eligibility.'
+            )
         if 'mask' in values:
             paired = ~missing['status'] & ~missing['mask']
             result['land_water_processing_mask_counts'] = _counts(values['mask'][~missing['mask']])
