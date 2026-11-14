@@ -4,6 +4,8 @@
 
 ## Status legend
 
+The [source-status publication preview](../tools/source_status/README.md) is a local static candidate. Production publication still requires a source and geography decision, rights review, recurring updates, and stale handling. The owner workflow, approved alert feed, and public release remain separate milestones.
+
 - WORKING: implemented and verified at the stated scope.
 - PARTIAL: implemented in part; limitations are named.
 - PLANNED: designed but not yet implemented.

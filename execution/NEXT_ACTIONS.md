@@ -1,5 +1,9 @@
 # Next Actions
 
+## Source-status publication — 2026-11-14
+
+Use the [standalone source-status preview](../tools/source_status/README.md) to check the wording and experience. Before a public release, select a publishable area and verify source rights for the aggregate metrics. Prove a recurring refresh and an explicit stale state. In parallel, qualify a record-level source and run one approved owner case through review, follow-up and recoverable storage; publish only reviewed records that are authorized for public use.
+
 ## Recurring source qualification for public launch — 2026-11-14
 
 Recheck GLAD-L on the next distinct published generation and qualify its alert eligibility separately. RADD remains a candidate for places explicitly covered by its native baseline. A zoom-14 map check is sparse across the provisional rectangle, and raw radar footprints cannot establish RADD processing. Obtain an authorized native coverage clip and check the documented Boolean baseline against its values, then select an approved monitoring area with a source that can serve it. Build the public read view from separately published, approved data with upstream update time, useful local observation age, gaps and attribution visible. Establish repeatable acquisition, usage rights, budget and a private review path before publishing real disturbance records. [Source checks](../docs/DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14)

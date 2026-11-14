@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Observation status | ForestProof</title>
+<style>
+:root{color-scheme:light;--paper:#f8f6ef;--ink:#1d3028;--quiet:#4d6054;--rule:#c7cbbb;--green:#225d43;--pale:#e7ebdf;--amber:#885522}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,sans-serif;line-height:1.55}
+a{color:var(--green);text-decoration-thickness:.08em;text-underline-offset:.21em}
+:is(a,summary):focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.skip{position:absolute;top:0;left:1rem;transform:translateY(-110%);padding:.65rem;background:var(--paper);z-index:2}
+.skip:focus{transform:translateY(0)}
+.frame{width:min(100% - 3rem,67rem);margin-inline:auto}
+.masthead{min-height:4.65rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--rule)}
+.brand{font-family:Georgia,serif;font-size:1.45rem;font-weight:bold;letter-spacing:-.05em}
+.flag{font-size:.8rem;font-weight:650;color:var(--amber)}
+.intro{padding:clamp(2rem,5vw,4rem) 0 1.65rem}
+.eyebrow{color:var(--quiet);font-size:.76rem;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+h1,h2,p{margin:0}
+h1{font:normal clamp(2.75rem,7vw,6rem)/.98 Georgia,serif;letter-spacing:-.064em;margin:.55rem 0 .9rem}
+h2{font-family:Georgia,serif;font-weight:normal;line-height:1.2}
+.intro>p:last-child{color:var(--quiet);max-width:60ch}
+.reading{display:grid;grid-template-columns:1.45fr 1fr;border:1px solid var(--rule);background:#edeee3}
+.headline{padding:clamp(1rem,3.4vw,2.4rem)}
+.headline h2{font:650 .9rem/1.45 system-ui,sans-serif}
+.headline .date{font:normal clamp(2rem,5.4vw,4.25rem)/1.09 Georgia,serif;letter-spacing:-.048em;margin:.65rem 0 .5rem}
+.headline>p:last-child{color:var(--quiet)}
+.clocks{margin:0;padding:.7rem clamp(1rem,3vw,2rem);border-left:1px solid var(--rule);display:grid;align-content:center}
+.clocks>div{padding:.55rem 0}
+.clocks>div+div{border-top:1px solid var(--rule)}
+dt{font-size:.8rem;color:var(--quiet)}
+dd{margin:0;font:600 .95rem/1.45 ui-monospace,Consolas,monospace}
+.coverage{margin:clamp(1.75rem,4.75vw,3.5rem) 0}
+.coverage h2,.unavailable h2{font-size:clamp(1.7rem,3vw,2.6rem);letter-spacing:-.038em}
+.coverage>p,.unavailable>p{color:var(--quiet);margin-top:.5rem}
+.windows{list-style:none;margin:1.35rem 0 1rem;padding:0;border-top:1px solid var(--rule)}
+.windows li{display:grid;grid-template-columns:5rem minmax(1rem,1fr) 4.75rem 8rem;gap:.85rem;align-items:center;min-height:3.12rem;border-bottom:1px solid var(--rule)}
+.windows strong,.windows small{text-align:right;font-variant-numeric:tabular-nums}
+.windows small{font-size:.82rem;color:var(--quiet)}
+.track{display:block;height:.66rem;background:var(--pale);border-radius:.15rem}
+.track span{display:block;height:100%;background:var(--green);border-radius:inherit}
+details{max-width:75ch}
+summary{cursor:pointer;color:var(--green);font-weight:650;min-height:2.75rem;padding:.55rem 0}
+details p{color:var(--quiet);margin:.25rem 0 .8rem}
+.unavailable{border:1px solid var(--rule);padding:1.5rem;margin-bottom:2.5rem}
+footer{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.35rem 1rem;color:var(--quiet);font-size:.86rem;border-top:1px solid var(--rule);padding:1.1rem 0 2rem}
+footer a{display:inline-block;padding:.3rem 0}
+@media(max-width:34rem){
+.frame{width:calc(100% - 2rem)}
+.reading{grid-template-columns:minmax(0,1fr)}
+.clocks{border-left:0;border-top:1px solid var(--rule)}
+.windows li{grid-template-columns:3.25rem minmax(.75rem,1fr) 3.55rem;gap:.52rem;padding:.4rem 0}
+.windows small{grid-column:2/-1;margin-top:-.45rem}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to observation status</a>
+<div class="frame">
+<header class="masthead"><div class="brand">ForestProof</div><p class="flag">Local research preview</p></header>
+<main id="main">
+<header class="intro"><p class="eyebrow">Provisional Geta research area</p>
+<h1>Observation status</h1>
+<p>How recently the GLAD-L source recorded a cloud-free view of this area.</p></header>
+<!-- STATUS CONTENT -->
+</main>
+<footer><p>Source: University of Maryland GLAD-L · Hansen et al. (2016)</p>
+<a href="https://glad.umd.edu/dataset/glad-forest-alerts">GLAD-L source and methods</a></footer>
+</div>
+</body>
+</html>

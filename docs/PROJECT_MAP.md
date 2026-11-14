@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Source-status publication preview
+
+`tools/source_status/` validates the fixed provisional GLAD-L report and generates a standalone read-only HTML page. The page displays the provider file update, ForestProof check, reporting day and local observation day as separate facts. See [local build and limits](../tools/source_status/README.md).
+
 ## GLAD-L observation-date diagnostic
 
 `tools/glad_l_research/` uses budgeted read-only byte ranges for one generation of the producer's observation-date raster. It produces a bounded recency summary and plumbs no data into the app. See [the documented check](DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).

@@ -5,12 +5,14 @@ on:
     paths:
       - 'tools/nasa_dist_research/**'
       - 'tools/glad_l_research/**'
+      - 'tools/source_status/**'
       - '.github/workflows/nasa-research.yml'
   push:
     branches: [main]
     paths:
       - 'tools/nasa_dist_research/**'
       - 'tools/glad_l_research/**'
+      - 'tools/source_status/**'
       - '.github/workflows/nasa-research.yml'
 
 permissions:
@@ -31,4 +33,6 @@ jobs:
       - run: python -m unittest -v test_inspect_dist_layers
       - name: Verify GLAD-L observation recency inspector
         working-directory: tools/glad_l_research
+        run: python -m unittest -v      - name: Verify source-status publication preview
+        working-directory: tools/source_status
         run: python -m unittest -v
