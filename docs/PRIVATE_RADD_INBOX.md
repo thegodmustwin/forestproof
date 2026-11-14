@@ -37,6 +37,10 @@ The importer rejects malformed responses, cells outside the scope, future observ
 
 The copy uses SQLite's online backup API, validates the copied database and receipt links, and rechecks saved response bytes and corresponding rows. The restore drill uses a separate database path. The operator must provision private directory permissions, protect the backup in transit and at rest, and test a restore on the off-host target.
 
+## Owner case rehearsal
+
+From `services/api`, run `python -m pytest -q tests/test_owner_case_recovery_rehearsal.py`. The test imports a synthetic response and links its release and receipt fingerprint to a known demo observation in a temporary owner demo database. It exercises the authenticated API through case review, action, follow-up, closure, and dossier retrieval. It then copies and restores both databases to new paths and checks that the same source receipt and dossier can be retrieved. The dossier's export time can change on each request. This is a local rehearsal. The receipt link is written by the test, and genuine ingestion, live case review, and off-server recovery still require verification.
+
 Before importing any genuine response, confirm the right to retain exact provider bytes, verify the approved area and source configuration, and collect the named review record. The inbox has no HTTP route, owner session, scheduled provider client or connection to the case workflow. Tests cover only synthetic responses and local copies.
 
 ## Source qualification
