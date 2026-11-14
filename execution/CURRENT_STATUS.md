@@ -4,9 +4,9 @@
 
 The synthetic owner identity candidate and the integration rehearsal passed GitHub checks. The rehearsal used a synthetic response, authenticated owner review, action, follow-up and dossier, then recovered both the saved receipt and dossier from separate local SQLite copies. Its link is test-only. The next release still requires a runtime adapter, an authorized source, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
 
-## NASA quality tooling and catalogue screen — 2026-11-14
+## NASA scene quality and catalog screen — 2026-11-14
 
-The offline inspector now compares a matching HLS Fmask band with DIST's own mask and last-assessed date. Nine synthetic raster tests passed. The bounded 90-day catalog check found 71 granule entries across 36 acquisition dates. The latest listed acquisition was November 3. The [QA files](../docs/NASA_DIST_SAMPLE_20261112.md#matching-hls-quality-files) are identified, and comparison of the actual bands remains pending.
+Both downloaded HLS Fmask bands matched their NASA inputs and aligned with the four DIST bands on each tile. Per overlapping grid, 722 of 12,432 centres (5.8%) had a November 3 last-assessed date and 237 (1.9% of all centres) also passed the conservative ForestProof QA screen. These two grids describe one acquisition. Nine synthetic inspector tests previously passed. The bounded 90-day catalog check found 71 entries across 36 acquisition dates, with November 3 the newest listed acquisition. Repeat usable coverage and operational fit remain unknown. See [quality results](../docs/NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3).
 
 ## Private RADD import and recovery rehearsal — 2026-11-14
 

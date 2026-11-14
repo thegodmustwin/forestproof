@@ -85,7 +85,7 @@ Status layers can report ongoing or finished events and may reflect earlier obse
 - Both native grids had 11,710 scene-mask code 0 and 722 code 1 (5.8%), with no code 2. Both TIFFs label code 0 `no_data_or_masked`. Only the code-1 centres had a November 3 last-assessed date, all 722 per grid. Code 0 occurred with a nonzero historical status at 1,266 T36MZE centres and 1,254 T37MBV centres. The scene mask alone does not identify why a centre was masked.
 - To compare values without averaging categorical codes, project each native centre into the other raster CRS and sample the cell containing it. With either reference grid, the masks agreed at all 12,432 sampled locations. Exact status codes agreed at 11,966 (96.3%), and 247 differed on whether the status was zero or nonzero. Last-assessed dates agreed at 11,930. Among the 722 centres marked code 1 in both grids, exact status agreed at 656 and differed at 66. The comparisons use sampled cell centres and are not one-to-one cell identities or a statistical accuracy estimate. Keep native summaries separate to avoid counting the same ground twice.
 
-The sample supports a local research workflow that distinguishes last-assessed date, current-scene masking, and past provider status. These counts cannot establish cleared area, cause, a legal finding, conditions on the ground, or operational coverage. The rectangle is provisional. The next quality evidence is the matching HLS Fmask QA band and more than one acquisition date. [NASA HLS QA description](https://hls.gsfc.nasa.gov/algorithms/#cloud-masking-and-quality-assessment)
+The sample supports a local research workflow that distinguishes last-assessed date, current-scene masking, and past provider status. These counts cannot establish cleared area, cause, a legal finding, conditions on the ground, or operational coverage. The rectangle is provisional. The matching HLS Fmask results follow below. More acquisition dates are needed to estimate repeat coverage. [NASA HLS QA description](https://hls.gsfc.nasa.gov/algorithms/#cloud-masking-and-quality-assessment)
 
 T37MBV local SHA-256 fingerprints are listed below. Provider checksums remain unverified.
 
@@ -104,14 +104,29 @@ pass one at a time to the inspector with `--fmask`.
 - [T36MZE Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36MZE.2026307T074255.v2.0/HLS.L30.T36MZE.2026307T074255.v2.0.Fmask.tif) · CMR `G4404771464-LPCLOUD`
 - [T37MBV Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T37MBV.2026307T074255.v2.0/HLS.L30.T37MBV.2026307T074255.v2.0.Fmask.tif) · CMR `G4404774012-LPCLOUD`
 
-The download paths were verified in public catalog metadata. Local QA
-counts remain pending. Repeat on multiple acquisition dates before drawing
-conclusions about typical observation coverage.
+The owner downloaded both files on November 14 and the checks below used those exact input names.
+
+## NASA quality results for November 3
+
+On November 14 the [offline inspector](../tools/nasa_dist_research/inspect_dist_layers.py) opened both downloaded Fmask files. Each matched the catalog's source tile and acquisition time, and its CRS, dimensions and affine grid matched the corresponding four OPERA bands. The inspector ran per tile with `--status`, `--first-date`, `--last-date`, `--mask`, `--fmask` and `--bounds 36.60 -0.49 36.63 -0.46`. Local SHA-256 fingerprints follow. Independent provider checksum verification is unavailable.
+
+- T36MZE (851,203 bytes) `36ba56d5b2420c489a04ee2dab78e7c54feb0e29d840e76e5cb2f2dc88718520`
+- T37MBV (2,471,745 bytes) `badea566fe37548ac23cecbdea4333657076b6cb1a7993b5f03f29e4e0922dd6`
+
+For each overlapping grid, 12,432 pixel centres were selected in the provisional rectangle. Both grids produced identical counts for each scene-mask code, assessments on November 3, and the QA groups below. They represent the same Landsat 8 acquisition and the counts are reported per grid.
+
+- **Outside the current land assessment.** All 11,710 `DATA-MASK` code-0 centres lacked a November 3 last-assessed date. Of these, 9,719 had a cloud or shadow flag, 1,979 had the adjacency flag with neither direct flag, and 12 had missing Fmask. Those groups cover all code-0 centres in this sample. They agree with the published OPERA mask logic. [OPERA v1.0 mask logic](https://github.com/gladumd/OPERA_DIST/blob/v1.0/v1/alert/02B.Veg_Ind.py#L67-L87) · [DIST-ALERT methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC12508086/#Sec9)
+- **Assessed on November 3.** All 722 code-1 centres (5.8%) had that date, complete QA and no cloud, shadow, adjacency, snow/ice, or water flag. HLS flagged 485 of them for high aerosol optical thickness. The released OPERA current-scene mask does not use aerosol bits. ForestProof's conservative research screen excludes any of the flags in bits 1–5 and high aerosol in bits 6–7. The 237 centres that passed represent 32.8% of assessed locations and 1.9% of all sampled centres. [NASA HLS quality guidance](https://hls.gsfc.nasa.gov/algorithms/#cloud-masking-and-quality-assessment)
+- **QA across the full sample.** Fmask was present at 12,420 centres. Among those, high aerosol was flagged at 11,248 (90.6%). The individual counts for cloud, shadow and adjacency were 6,636, 3,383 and 2,491, respectively. These flags can overlap. Snow/ice and water flags each counted zero. The aerosol class is an upstream quality flag with no physical source attribution. [NASA HLS data products](https://hls.gsfc.nasa.gov/data-products/)
+
+The cross-check used mask and date values from the aligned native pixel centres and removed QA fill value 255 or raster nodata before testing flags. It grouped cloud (bit 1) or shadow (bit 3) as a union, then counted adjacency (bit 2) only where neither direct flag was set. The aerosol counts remain independent of those groups. No raster files or pixel coordinates were added to the repository.
+
+This scene supports reporting a separate last-assessed date, current-scene quality and past disturbance status. A masked or unassessed place is unknown for this acquisition. The figures establish no typical cadence, verified forest change, or official boundary. A consecutive window of Landsat and Sentinel-2 acquisitions would let us measure how much of the rectangle is assessed at least once, gaps between valid assessments, and acquisition-to-publication lag.
 
 ## Ninety-day catalog screen
 
 A public NASA Common Metadata Repository check on November 14 covered August 16 through November 14 at 00:00 UTC and used the same provisional rectangle. It returned 71 DIST-ALERT-HLS granule entries across 36 UTC acquisition dates, with 38 entries for T36MZE and 33 for T37MBV. The neighboring tiles can share acquisitions. This is a catalog count and cannot be translated to 71 independent observations or 36 clear-sky days. The newest DIST entry was still November 3. Both November 3 tiles were inserted into the catalog November 7, about 4.4 days after acquisition.
 
-The same footprint and time query returned 30 HLS L30 granules and 41 HLS S30 granules. The newest Landsat input listed was November 3. The newest Sentinel-2 input listed was October 31. This check covered metadata only. It does not identify the cause of the gap or measure repeat usable pixel coverage. Use the matching quality files to compare quality within the rectangle and sample additional acquisition dates before recommending an operational cadence.
+The same footprint and time query returned 30 HLS L30 granules and 41 HLS S30 granules. The newest Landsat input listed was November 3. The newest Sentinel-2 input listed was October 31. This check covered metadata only. It does not identify the cause of the gap or measure repeat usable pixel coverage. The matching quality files verified one acquisition inside the rectangle. Compare additional dates before recommending an operational cadence.
 
 [NASA DIST catalogue search](https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2746980408-LPCLOUD&bounding_box=36.60%2C-0.49%2C36.63%2C-0.46&temporal=2026-08-16T00%3A00%3A00Z%2C2026-11-14T00%3A00%3A00Z&page_size=1000) · [NASA HLS data access](https://hls.gsfc.nasa.gov/data-access-and-tools/)
