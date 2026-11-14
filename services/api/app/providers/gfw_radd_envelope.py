@@ -27,6 +27,25 @@ class RaddQueryEnvelope:
     raw_envelope: dict[str, Any]
 
 
+def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("Duplicate JSON object key")
+        result[key] = value
+    return result
+
+
+def decode_radd_response(raw: bytes) -> Any:
+    """Decode one bounded UTF-8 response without discarding duplicate fields."""
+    if not isinstance(raw, bytes) or not 0 < len(raw) <= MAX_ENVELOPE_BYTES:
+        raise ValueError("Invalid GFW response size")
+    try:
+        return json.loads(raw.decode("utf-8"), object_pairs_hook=_unique_json_object)
+    except (ValueError, RecursionError):
+        raise ValueError("Invalid GFW response JSON") from None
+
+
 def _check_json_keys(value: Any) -> None:
     if isinstance(value, dict):
         for key, child in value.items():

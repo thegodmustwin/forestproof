@@ -1,5 +1,9 @@
 # Current Status
 
+## Private RADD import and recovery rehearsal — 2026-11-14
+
+The offline inbox can preserve exact RADD shaped response bytes, reject conflicting or out-of-scope cells, deduplicate replays, report stale receipts and observations independently, and export a receipt-linked unverified record. Its separate SQLite copy verifies response hashes and record linkage. Verification uses synthetic input and local restore paths. Actual provider access, case integration and off-host recovery remain open. See [the runbook](../docs/PRIVATE_RADD_INBOX.md).
+
 ## Protected Contabo synthetic preview — verified release 2026-11-13
 
 The protected synthetic preview at https://vmi3711898.contaboserver.net/ now serves pinned source commit `38881dc79f04de9d21997fe85dea8712ef78e91d` from `/opt/forestproof-preview-releases/38881dc`. The candidate API and web images were `forestproof_candidate_388-api:latest` and `forestproof_candidate_388-web:latest` under Compose project `forestproof_preview_20261112`. The existing named SQLite volume was retained; the separate Caddy gateway and unrelated services were not restarted. This is a shared-access DEMO preview, not a live or production pilot.

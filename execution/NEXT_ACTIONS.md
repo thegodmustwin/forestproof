@@ -1,5 +1,9 @@
 # Next Actions
 
+## Private pilot import handoff — 2026-11-14
+
+Rehearse with the [private RADD inbox](../docs/PRIVATE_RADD_INBOX.md) while verifying local eligibility and terms. Wire a verified source through scheduled receipt handling and authenticated case review before enabling LIVE. Run the restore from a protected off-host backup and confirm a genuine record's case export matches after recovery. Keep alternative sources in consideration as long as RADD coverage or access is uncertain.
+
 ## After verified Contabo preview release — 2026-11-13
 
 The protected synthetic preview now serves pinned source `38881dc79f04de9d21997fe85dea8712ef78e91d` on Contabo. Use `execution/CURRENT_STATUS.md` for the verified TLS, gateway/API denial, demo database restore, and host-service checks. The preview still uses shared tester access and synthetic data; do not collect real evidence or personal data. Review `docs/PREVIEW_UPLOAD_GUARD.md` before a future deployment and keep uploads denied at both gateway and API boundaries.
