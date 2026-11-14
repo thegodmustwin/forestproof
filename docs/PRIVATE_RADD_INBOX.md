@@ -39,9 +39,17 @@ The copy uses SQLite's online backup API, validates the copied database and rece
 
 ## Owner case rehearsal
 
-From `services/api`, run `python -m pytest -q tests/test_owner_case_recovery_rehearsal.py`. The test imports a synthetic response and links its release and receipt fingerprint to a known demo observation in a temporary owner demo database. It exercises the authenticated API through case review, action, follow-up, closure, and dossier retrieval. It then copies and restores both databases to new paths and checks that the same source receipt and dossier can be retrieved. The dossier's export time can change on each request. This is a local rehearsal. The receipt link is written by the test, and genuine ingestion, live case review, and off-server recovery still require verification.
+From `services/api`, create a separate fixture inbox in a private directory using a new path.
 
-Before importing any genuine response, confirm the right to retain exact provider bytes, verify the approved area and source configuration, and collect the named review record. The inbox has no HTTP route, owner session, scheduled provider client or connection to the case workflow. Tests cover only synthetic responses and local copies.
+```text
+python -m app.owner_receipt_rehearsal /private/owner-rehearsal.sqlite
+```
+
+Set `FORESTPROOF_OWNER_REHEARSAL_INBOX_PATH` to its absolute path in the isolated [owner-demo API](../infrastructure/deployment/owner-pilot/README.md). Use an isolated synthetic case database. The same stored receipt appears under `rehearsal_receipt` in the authenticated detail for `obs_demo_001`, its case, and the dossier. It shows the synthetic record key, fixture release, source day, and receipt timestamp, byte count, and SHA-256. The API checks the original bytes and normalized cell against the stored record, then matches the known fixture fingerprint. A missing or inconsistent configured inbox fails closed on those details. Basic DEMO, lists, and unrelated owner-demo observations omit receipt metadata. The source's raw response stays in the inbox.
+
+Run `python -m pytest -q tests/test_owner_case_recovery_rehearsal.py` to exercise the supported initializer, authenticated detail, review, action, follow-up, closure, dossier, and recovery of both local SQLite files. The restored dossier and receipt match apart from dossier export time.
+
+Before importing any genuine response, confirm the right to retain exact provider bytes, verify the approved area and source configuration, and collect the named review record. Owner-demo resolves only the built-in synthetic receipt. A scheduled provider client, live case review and off-host recovery are pending.
 
 ## Source qualification
 

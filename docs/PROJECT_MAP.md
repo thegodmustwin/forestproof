@@ -2,7 +2,7 @@
 
 ## Private RADD import rehearsal
 
-`services/api/app/pilot_radd_inbox.py` imports explicitly supplied response bytes into a separate SQLite inbox, records source and receipt identity, reports freshness, exports an unverified record and supports a checked copy. See [the operator runbook](PRIVATE_RADD_INBOX.md). The app continues to use its existing synthetic paths.
+`services/api/app/pilot_radd_inbox.py` imports explicitly supplied response bytes into a separate SQLite inbox, records source and receipt identity, reports freshness, exports an unverified record and supports a checked copy. See [the operator runbook](PRIVATE_RADD_INBOX.md). Opt-in `services/api/app/owner_receipt_rehearsal.py` creates a private built-in fixture inbox. The authenticated owner-demo API resolves that exact receipt in observation, case and dossier details. Regular DEMO is unaffected. Source-cleared ingestion and live case storage are pending.
 
 ## Owner-demo browser mutation guard — 2026-11-13
 

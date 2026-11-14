@@ -2,7 +2,7 @@
 
 ## Private owner workflow rehearsal — 2026-11-14
 
-The synthetic owner identity candidate and the integration rehearsal passed GitHub checks. The rehearsal used a synthetic response, authenticated owner review, action, follow-up and dossier, then recovered both the saved receipt and dossier from separate local SQLite copies. Its link is test-only. The next release still requires a runtime adapter, an authorized source, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
+The isolated owner-demo API now resolves the built-in synthetic observation's receipt when its private fixture inbox is explicitly configured. Observation, case and dossier details resolve the same receipt from the original bytes. The integration test uses the supported initializer and restores both SQLite files to separate local paths. The next release still requires verified source access and terms, a real-data adapter and storage, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
 
 ## NASA scene quality and catalog screen — 2026-11-14
 

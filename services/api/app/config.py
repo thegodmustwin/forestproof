@@ -15,6 +15,7 @@ class Settings:
     copernicus_catalog_enabled: bool = False
     demo_evidence_uploads_enabled: bool = False
     owner_subject: str | None = None
+    owner_rehearsal_inbox_path: Path | None = None
 
 
 def get_settings() -> Settings:
@@ -22,6 +23,7 @@ def get_settings() -> Settings:
     parents = Path(__file__).resolve().parents
     # Container paths can be shallower than the repository checkout.
     root = parents[3] if len(parents) > 3 else parents[1]
+    rehearsal_inbox = os.getenv("FORESTPROOF_OWNER_REHEARSAL_INBOX_PATH")
     return Settings(
         mode=os.getenv("FORESTPROOF_MODE", "demo").lower(),
         database_path=Path(os.getenv("FORESTPROOF_SQLITE_PATH", root / "data" / "local" / "forestproof.db")),
@@ -31,4 +33,5 @@ def get_settings() -> Settings:
         copernicus_catalog_enabled=os.getenv("FORESTPROOF_COPERNICUS_CATALOG_ENABLED", "false").lower() == "true",
         demo_evidence_uploads_enabled=os.getenv("FORESTPROOF_DEMO_EVIDENCE_UPLOADS_ENABLED", "false").lower() == "true",
         owner_subject=os.getenv("FORESTPROOF_OWNER_SUBJECT"),
+        owner_rehearsal_inbox_path=Path(rehearsal_inbox) if rehearsal_inbox else None,
     )
