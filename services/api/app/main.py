@@ -203,7 +203,7 @@ def ingest_live_gfw(_: Org) -> dict[str, Any]:
 @app.post("/api/v1/cases", status_code=status.HTTP_201_CREATED)
 def create_case(payload: CaseCreate, organization: Org) -> dict[str, Any]:
     return store.create_case(organization, payload.observation_id, payload.title, payload.owner_organization,
-                             payload.reviewer, actor=recorded_actor(payload.reviewer or "system"))
+                             payload.reviewer, actor=settings.owner_subject if settings.mode == "owner_demo" else None)
 
 
 @app.get("/api/v1/cases")

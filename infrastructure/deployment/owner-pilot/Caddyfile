@@ -10,6 +10,7 @@ http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
     bind 127.0.0.1
 
     @invalid_host not host 127.0.0.1
+    @invalid_owner_settings expression "!{env.FORESTPROOF_OWNER_SUBJECT}.matches('^[a-z][a-z0-9_-]{0,62}$') || !{env.FORESTPROOF_OWNER_GATEWAY_TOKEN}.matches('^[A-Za-z0-9_-]{43,128}$')"
 
     # Unsafe browser requests must come from the exact local tunnel origin.
     @unsafe expression "!method('GET', 'HEAD', 'OPTIONS') && !header({'Origin': 'http://127.0.0.1:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT}'})"
@@ -24,8 +25,9 @@ http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
 
     route {
         respond @invalid_host "Invalid host" 403
+        respond @invalid_owner_settings "Owner access unavailable" 503
         basic_auth {
-            {$FORESTPROOF_OWNER_SUBJECT} {$FORESTPROOF_OWNER_PASSWORD_HASH}
+            {$FORESTPROOF_OWNER_SUBJECT:INVALID_REQUIRED_OWNER} {$FORESTPROOF_OWNER_PASSWORD_HASH}
         }
         respond @unsafe "Forbidden" 403
         request_body {
@@ -34,7 +36,7 @@ http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
         reverse_proxy 127.0.0.1:{$FORESTPROOF_OWNER_WEB_PORT:INVALID_REQUIRED_PORT} {
             header_up -Authorization
             header_up X-Forestproof-Owner-Subject {http.auth.user.id}
-            header_up X-Forestproof-Owner-Gateway-Token {$FORESTPROOF_OWNER_GATEWAY_TOKEN}
+            header_up X-Forestproof-Owner-Gateway-Token {env.FORESTPROOF_OWNER_GATEWAY_TOKEN}
         }
     }
 }

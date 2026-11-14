@@ -40,43 +40,45 @@ if docker run --rm --network none -v "$config:/etc/caddy/Caddyfile:ro" \
   echo "Gateway accepted a missing gateway port" >&2
   exit 1
 fi
-for missing in FORESTPROOF_OWNER_SUBJECT FORESTPROOF_OWNER_GATEWAY_TOKEN; do
-  if docker run --rm --network none -v "$config:/etc/caddy/Caddyfile:ro" \
-    "${identity_options[@]}" -e "$missing=" -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" \
-    -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 -e FORESTPROOF_OWNER_WEB_PORT=13000 \
-    "$image" caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
-    echo "Gateway accepted missing owner configuration" >&2
-    exit 1
-  fi
-done
 python3 infrastructure/deployment/owner-pilot/mock_upstream.py >"$RUNNER_TEMP/forestproof-mock.log" 2>&1 &
 upstream_pid=$!
+
+status() { curl -sS --max-time 5 -o /dev/null -w '%{http_code}' "$@"; }
+wait_ready() {
+  for _ in {1..40}; do
+    if curl -sS --max-time 1 -o /dev/null http://127.0.0.1:18080/ 2>/dev/null; then return 0; fi
+    sleep 0.5
+  done
+  echo "Gateway did not start" >&2
+  return 1
+}
+expect_status() {
+  local label="$1" wanted="$2" actual="$3"
+  echo "$label: HTTP $actual (expected $wanted)"
+  if [[ "$actual" != "$wanted" ]]; then exit 1; fi
+}
+
+# Caddy can load this template with either identity setting absent. It must
+# return 503 before authentication and proxying in that configuration.
+for missing in FORESTPROOF_OWNER_SUBJECT FORESTPROOF_OWNER_GATEWAY_TOKEN; do
+  container=$(env -u "$missing" docker run -d --rm --network host \
+    -v "$config:/etc/caddy/Caddyfile:ro" "${identity_options[@]}" \
+    -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" \
+    -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 -e FORESTPROOF_OWNER_WEB_PORT=13000 \
+    "$image" caddy run --config /etc/caddy/Caddyfile --adapter caddyfile)
+  wait_ready
+  expect_status "Missing $missing" 503 "$(status -u "$FORESTPROOF_OWNER_SUBJECT:$password" http://127.0.0.1:18080/)"
+  docker rm -f "$container" >/dev/null
+  container=""
+done
+
 container=$(docker run -d --rm --network host \
   -v "$config:/etc/caddy/Caddyfile:ro" \
   "${identity_options[@]}" -e FORESTPROOF_OWNER_PASSWORD_HASH="$hash" \
   -e FORESTPROOF_OWNER_GATEWAY_PORT=18080 -e FORESTPROOF_OWNER_WEB_PORT=13000 \
   "$image" caddy run --config /etc/caddy/Caddyfile --adapter caddyfile)
 
-ready=false
-for _ in {1..40}; do
-  if curl -sS --max-time 1 -o /dev/null http://127.0.0.1:18080/ 2>/dev/null; then
-    ready=true
-    break
-  fi
-  sleep 0.5
-done
-if [[ "$ready" != true ]]; then
-  docker logs "$container" >&2 || true
-  echo "Gateway did not start" >&2
-  exit 1
-fi
-
-status() { curl -sS --max-time 5 -o /dev/null -w '%{http_code}' "$@"; }
-expect_status() {
-  local label="$1" wanted="$2" actual="$3"
-  echo "$label: HTTP $actual (expected $wanted)"
-  if [[ "$actual" != "$wanted" ]]; then exit 1; fi
-}
+wait_ready
 expect_status "Unauthenticated home" 401 "$(status http://127.0.0.1:18080/)"
 expect_status "Unauthenticated API" 401 "$(status http://127.0.0.1:18080/api/forestproof/cases)"
 expect_status "Wrong password" 401 "$(status -u "$FORESTPROOF_OWNER_SUBJECT:wrong" http://127.0.0.1:18080/)"
