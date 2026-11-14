@@ -107,3 +107,11 @@ pass one at a time to the inspector with `--fmask`.
 The download paths were verified in public catalog metadata. Local QA
 counts remain pending. Repeat on multiple acquisition dates before drawing
 conclusions about typical observation coverage.
+
+## Ninety-day catalog screen
+
+A public NASA Common Metadata Repository check on November 14 covered August 16 through November 14 at 00:00 UTC and used the same provisional rectangle. It returned 71 DIST-ALERT-HLS granule entries across 36 UTC acquisition dates, with 38 entries for T36MZE and 33 for T37MBV. The neighboring tiles can share acquisitions. This is a catalog count and cannot be translated to 71 independent observations or 36 clear-sky days. The newest DIST entry was still November 3. Both November 3 tiles were inserted into the catalog November 7, about 4.4 days after acquisition.
+
+The same footprint and time query returned 30 HLS L30 granules and 41 HLS S30 granules. The newest Landsat input listed was November 3. The newest Sentinel-2 input listed was October 31. This check covered metadata only. It does not identify the cause of the gap or measure repeat usable pixel coverage. Use the matching quality files to compare quality within the rectangle and sample additional acquisition dates before recommending an operational cadence.
+
+[NASA DIST catalogue search](https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2746980408-LPCLOUD&bounding_box=36.60%2C-0.49%2C36.63%2C-0.46&temporal=2026-08-16T00%3A00%3A00Z%2C2026-11-14T00%3A00%3A00Z&page_size=1000) · [NASA HLS data access](https://hls.gsfc.nasa.gov/data-access-and-tools/)
