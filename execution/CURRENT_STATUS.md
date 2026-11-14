@@ -1,5 +1,13 @@
 # Current Status
 
+## First genuine research case and restore — 2026-11-14
+
+FP-RESEARCH-001 documents an archived NASA OPERA DIST-ALERT-HLS V1 first vegetation anomaly in the provisional Geta research rectangle. The selected native pixel had November 3 first-detection and last-assessed dates, land mask code 1, and passed the conservative HLS quality screen. Seventeen of 19 qualifying primary-grid cells passed the same checks on the overlapping grid. Those grids describe a single Landsat 8 acquisition. The rectangle is a research extent. Ground conditions, forest classification, cause, area of change and legal applicability remain unknown. See the [NASA product specification](https://lpdaac.usgs.gov/documents/1766/OPERA_DIST_HLS_Product_Specification_V1.pdf) and [prior source analysis](../docs/NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3).
+
+The November 14 NASA CMR follow-up found no later cataloged DIST acquisition in the checked window. The technical review recommends keeping the case open for verification. Named owner decision and later quality-assessed follow-up are pending.
+
+A separately encrypted archive was backed up on Contabo using a private host path, downloaded to a separate Windows directory and restored. Sixteen file hashes, including all ten downloaded GeoTIFFs, passed. Rerunning the analysis reproduced the observation from those files. The decryption key uses Windows CurrentUser protection. This recovery verified the Contabo-to-laptop route with the current Windows profile. Independent key recovery after loss of that profile and off-host recovery for a production case service remain unverified. The private evidence bundle lives outside Git. The hosted preview remains synthetic.
+
 ## Private owner workflow rehearsal — 2026-11-14
 
 The isolated owner-demo API now resolves the built-in synthetic observation's receipt when its private fixture inbox is explicitly configured. Observation, case and dossier details resolve the same receipt from the original bytes. The integration test uses the supported initializer and restores both SQLite files to separate local paths. The next release still requires verified source access and terms, a real-data adapter and storage, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
