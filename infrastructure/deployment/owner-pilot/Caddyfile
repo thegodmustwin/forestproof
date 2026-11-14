@@ -3,6 +3,7 @@
 {
     auto_https off
     admin off
+    persist_config off
 }
 
 http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
