@@ -1,5 +1,9 @@
 # Current Status
 
+## Radar acquisition and RADD baseline check — 2026-11-14
+
+Nine Sentinel-1 radar acquisition footprints intersected the provisional rectangle over a month, most recently on November 11. RADD's published coverage tiles rendered 2.88% of sampled display pixels in the coverage colour at zoom 14. The native asset combines historical regional baselines, including the Africa input labelled `v20201208`. Native sampling and operational eligibility remain unverified. The same GLAD-L tile generation reproduced the November 3 latest local clear date. [Source checks](../docs/DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14)
+
 ## Direct GLAD-L recency verified — 2026-11-14
 
 A generation-pinned UMD observation-date read found that 14.8% of centres in the provisional research rectangle had a cloud-free observation in the previous 14 days, and zero in the previous seven. The latest cloud-free day was November 3 despite a November 13 regional publication. This measured real observation metadata, with no alert raster or GNW account request. See [measured recency and source limits](../docs/DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).
