@@ -21,7 +21,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-from .gfw_radd_envelope import MAX_ENVELOPE_BYTES, RaddQueryEnvelope, parse_radd_query_envelope
+from .gfw_radd_envelope import MAX_ENVELOPE_BYTES, RaddQueryEnvelope, decode_radd_response, parse_radd_query_envelope
 
 
 _API_ORIGIN = "https://data-api.globalforestwatch.org"
@@ -158,15 +158,6 @@ def _read_limited(response: Any) -> bytes:
     return bytes(body)
 
 
-def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-    result: dict[str, Any] = {}
-    for key, value in pairs:
-        if key in result:
-            raise ValueError("Duplicate JSON object key")
-        result[key] = value
-    return result
-
-
 def fetch_radd_research(
     *,
     source_version: str,
@@ -225,11 +216,11 @@ def fetch_radd_research(
         raise ProviderQueryError("Provider connection failed or timed out") from None
 
     try:
-        payload_json = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique_json_object)
+        payload_json = decode_radd_response(raw)
         if isinstance(payload_json, dict) and isinstance(payload_json.get("data"), list) and len(payload_json["data"]) > max_rows:
             raise ResponseIncomplete("Provider returned more rows than the research limit; narrow the query")
         envelope = parse_radd_query_envelope(payload_json, source_version=source_version)
-    except (UnicodeDecodeError, json.JSONDecodeError, ValueError, RecursionError):
+    except (ValueError, RecursionError):
         raise ProviderQueryError("Provider returned an invalid or unsupported response") from None
     return ResearchQueryResult(source_version=source_version, received_at=datetime.now(timezone.utc),
                                raw_sha256=hashlib.sha256(raw).hexdigest(), raw_response=raw, envelope=envelope)

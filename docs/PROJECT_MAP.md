@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Private RADD import rehearsal
+
+`services/api/app/pilot_radd_inbox.py` imports explicitly supplied response bytes into a separate SQLite inbox, records source and receipt identity, reports freshness, exports an unverified record and supports a checked copy. See [the operator runbook](PRIVATE_RADD_INBOX.md). The app continues to use its existing synthetic paths.
+
 ## Owner-demo browser mutation guard — 2026-11-13
 
 `apps/web/src/lib/internal-api-config.ts` requires an explicit HTTP IPv4 loopback gateway origin in synthetic `owner_demo` mode. The Next.js proxy rejects missing or mismatched `Origin` on POST before forwarding its internal service token, alongside the separate owner gateway check. The isolated smoke and proxy tests exercise this boundary. This is a CSRF defense for the uninstalled owner-demo candidate, not human authentication, protection for an exposed web listener, or LIVE authorization.
