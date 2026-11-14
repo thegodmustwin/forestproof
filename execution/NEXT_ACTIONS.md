@@ -1,5 +1,11 @@
 # Next Actions
 
+## Private pilot acceptance — 2026-11-14
+
+The [owner case rehearsal](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal) passed with synthetic input and local restores. Use the same acceptance path for the next tranche of runtime work: one authenticated owner, one source-cleared observation linked to its original receipt, review and documented follow-up, a reproducible dossier, and a restore from an off-host backup of both the observation and case records. Implement the connection deliberately. The test-only fixture linkage is not a runtime import path.
+
+The [NASA quality file references](../docs/NASA_DIST_SAMPLE_20261112.md#matching-hls-quality-files) are matched by NASA catalog input identifiers. Run the revised inspector on the downloaded QA bands and repeat over additional acquisitions before assigning an operational cadence or coverage target.
+
 ## Private pilot import handoff — 2026-11-14
 
 Rehearse with the [private RADD inbox](../docs/PRIVATE_RADD_INBOX.md) while verifying local eligibility and terms. Wire a verified source through scheduled receipt handling and authenticated case review before enabling LIVE. Run the restore from a protected off-host backup and confirm a genuine record's case export matches after recovery. Keep alternative sources in consideration as long as RADD coverage or access is uncertain.

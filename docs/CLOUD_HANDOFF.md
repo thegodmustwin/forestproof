@@ -6,6 +6,12 @@
 
 **Original brief prepared:** 2026-11-06. Hosting updated 2026-11-10; verified releases above supersede older deployment claims. This is a continuation brief, not a provider authorization or a replacement for current user instructions. At preparation, private GitHub main was `48693afb13505df69e3b4863e9f3e1f68be792d2`; it may have advanced. Re-read the latest main and existing work before editing.
 
+## Private pilot checkpoint (2026-11-14)
+
+The code on main includes three pieces of the same path. The [private inbox](PRIVATE_RADD_INBOX.md) preserves response bytes, release, receipt time and record identity, and exports an explicitly unverified input. The [owner gateway candidate](../infrastructure/deployment/owner-pilot/README.md) binds audit records to one authenticated owner subject in the isolated synthetic setup. The [case rehearsal](PRIVATE_RADD_INBOX.md#owner-case-rehearsal) verified the synthetic review, action, follow-up, dossier and separate local restores of both SQLite files. The test itself links the receipt to a known fixture.
+
+The next runtime work is a protected read and review path for one source-cleared observation with its receipt and confidence limits visible. Keep the owner pilot's data separate, verify restore from a genuinely off-host copy, and connect a bounded scheduled import only after selecting an authorized source and area. Source qualification is in the inbox runbook. NASA QA discovery and the 90-day catalogue snapshot are in [the sample research](NASA_DIST_SAMPLE_20261112.md#matching-hls-quality-files). Metadata counts do not establish pixel quality or a live feed.
+
 ## Start here
 
 Continue developing ForestProof toward a credible owner-only live pilot and an excellent synthetic preview, using the existing private repository and the owner's existing Contabo VPS. The owner wants sustained progress with minimal busywork, prefers Codex Cloud because of laptop constraints, and does not want local Docker as a prerequisite. Complete independent code, tests and documentation work while waiting for genuinely necessary access details. Communicate actual results and limitations plainly.

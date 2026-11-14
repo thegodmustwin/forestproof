@@ -1,5 +1,13 @@
 # Current Status
 
+## Private owner workflow rehearsal — 2026-11-14
+
+The synthetic owner identity candidate and the integration rehearsal passed GitHub checks. The rehearsal used a synthetic response, authenticated owner review, action, follow-up and dossier, then recovered both the saved receipt and dossier from separate local SQLite copies. Its link is test-only. The next release still requires a runtime adapter, an authorized source, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
+
+## NASA quality tooling and catalogue screen — 2026-11-14
+
+The offline inspector now compares a matching HLS Fmask band with DIST's own mask and last-assessed date. Nine synthetic raster tests passed. The bounded 90-day catalog check found 71 granule entries across 36 acquisition dates. The latest listed acquisition was November 3. The [QA files](../docs/NASA_DIST_SAMPLE_20261112.md#matching-hls-quality-files) are identified, and comparison of the actual bands remains pending.
+
 ## Private RADD import and recovery rehearsal — 2026-11-14
 
 The offline inbox can preserve exact RADD shaped response bytes, reject conflicting or out-of-scope cells, deduplicate replays, report stale receipts and observations independently, and export a receipt-linked unverified record. Its separate SQLite copy verifies response hashes and record linkage. Verification uses synthetic input and local restore paths. Actual provider access, case integration and off-host recovery remain open. See [the runbook](../docs/PRIVATE_RADD_INBOX.md).
