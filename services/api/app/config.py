@@ -14,6 +14,7 @@ class Settings:
     internal_api_token: str | None = field(default=None, repr=False)
     copernicus_catalog_enabled: bool = False
     demo_evidence_uploads_enabled: bool = False
+    owner_subject: str | None = None
 
 
 def get_settings() -> Settings:
@@ -29,4 +30,5 @@ def get_settings() -> Settings:
         internal_api_token=os.getenv("FORESTPROOF_INTERNAL_API_TOKEN"),
         copernicus_catalog_enabled=os.getenv("FORESTPROOF_COPERNICUS_CATALOG_ENABLED", "false").lower() == "true",
         demo_evidence_uploads_enabled=os.getenv("FORESTPROOF_DEMO_EVIDENCE_UPLOADS_ENABLED", "false").lower() == "true",
+        owner_subject=os.getenv("FORESTPROOF_OWNER_SUBJECT"),
     )

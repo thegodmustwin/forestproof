@@ -1,9 +1,4 @@
-"""Internal service authentication for an isolated, synthetic owner demo.
-
-This is not end-user authentication. The web service must be reachable only
-through the separately authenticated owner gateway; both services must bind to
-the trusted host's loopback interface. LIVE mode remains disabled.
-"""
+"""Validate the trusted web service and its owner identity assertion."""
 
 from __future__ import annotations
 
@@ -12,6 +7,7 @@ import re
 
 
 _TOKEN = re.compile(r"[A-Za-z0-9_-]{43,128}")
+_SUBJECT = re.compile(r"[a-z][a-z0-9_-]{0,62}")
 
 
 class InternalAccessNotConfigured(ValueError):
@@ -29,3 +25,10 @@ def valid_internal_token(configured: str | None, supplied: str | None) -> bool:
     if not isinstance(supplied, str) or not _TOKEN.fullmatch(supplied):
         return False
     return hmac.compare_digest(configured, supplied)
+
+
+def valid_owner_subject(configured: str | None, supplied: str | None) -> bool:
+    """Accept only the one subject assigned to this isolated owner instance."""
+    if not isinstance(configured, str) or not _SUBJECT.fullmatch(configured):
+        raise InternalAccessNotConfigured("Owner demo identity is not configured")
+    return supplied == configured

@@ -1,9 +1,23 @@
-/** Server-side configuration for the Next.js API proxy.
- * The owner demo is an isolated synthetic development mode, not user auth.
- */
-export type InternalApiConfig = { base: string; ownerDemoToken?: string; ownerOrigin?: string };
+import { timingSafeEqual } from "node:crypto";
+
+/** Server-side configuration for the synthetic owner gateway and API proxy. */
+type OwnerAccess = { apiToken: string; gatewayToken: string; origin: string; subject: string };
+export type InternalApiConfig = { base: string; owner?: OwnerAccess };
 
 const invalidTokenCharacter = /[^A-Za-z0-9_-]/;
+const invalidSubjectCharacter = /[^a-z0-9_-]/;
+
+function validToken(value: string | undefined): value is string {
+  return value !== undefined && value.length >= 43 && value.length <= 128 && !invalidTokenCharacter.test(value);
+}
+
+export function ownerFromGateway(headers: Headers, owner: OwnerAccess): string | null {
+  const assertion = headers.get("x-forestproof-owner-gateway-token");
+  if (!assertion || assertion.length !== owner.gatewayToken.length || invalidTokenCharacter.test(assertion)
+      || !timingSafeEqual(Buffer.from(assertion), Buffer.from(owner.gatewayToken))) return null;
+  const subject = headers.get("x-forestproof-owner-subject");
+  return subject === owner.subject ? subject : null;
+}
 
 function loopbackOwnerOrigin(configured: string | undefined): string | null {
   if (!configured) return null;
@@ -27,13 +41,16 @@ export function internalApiConfig(env: NodeJS.ProcessEnv): InternalApiConfig | n
     const url = new URL(configured);
     if ((url.protocol !== "http:" && url.protocol !== "https:") || url.username || url.password || url.search || url.hash) return null;
     if (mode === "owner_demo") {
-      const token = env.FORESTPROOF_INTERNAL_API_TOKEN;
-      const ownerOrigin = loopbackOwnerOrigin(env.FORESTPROOF_OWNER_GATEWAY_ORIGIN);
+      const apiToken = env.FORESTPROOF_INTERNAL_API_TOKEN;
+      const gatewayToken = env.FORESTPROOF_OWNER_GATEWAY_TOKEN;
+      const origin = loopbackOwnerOrigin(env.FORESTPROOF_OWNER_GATEWAY_ORIGIN);
+      const subject = env.FORESTPROOF_OWNER_SUBJECT;
       // Until an authenticated service network exists, never forward the
       // internal token to DNS names or non-loopback hosts.
-      if (!token || token.length < 43 || token.length > 128 || invalidTokenCharacter.test(token)
-          || !ownerOrigin || !["127.0.0.1", "[::1]"].includes(url.hostname)) return null;
-      return { base: configured.replace(/\/$/, ""), ownerDemoToken: token, ownerOrigin };
+      if (!validToken(apiToken) || !validToken(gatewayToken) || gatewayToken === apiToken
+          || !subject || subject.length > 63 || !/^[a-z]/.test(subject) || invalidSubjectCharacter.test(subject)
+          || !origin || !["127.0.0.1", "[::1]"].includes(url.hostname)) return null;
+      return { base: configured.replace(/\/$/, ""), owner: { apiToken, gatewayToken, origin, subject } };
     }
     return { base: configured.replace(/\/$/, "") };
   } catch {

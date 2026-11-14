@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .config import get_settings
 from .demo_data import DEMO_AREA, DEMO_ORGANIZATION_ID, DEMO_SOURCES
 from .models import ActionCreate, AssignmentCreate, CaseCreate, EvidenceCreate, FollowUpCreate, StatusTransition
-from .owner_access import InternalAccessNotConfigured, valid_internal_token
+from .owner_access import InternalAccessNotConfigured, valid_internal_token, valid_owner_subject
 from .providers.copernicus_stac import CatalogUnavailable, CopernicusCatalog
 from .providers.gfw import status as gfw_status
 from .source_provenance import demo_source_provenance
@@ -54,7 +54,8 @@ app.add_middleware(
 
 def organization_id(
     x_organization_id: Annotated[str | None, Header()] = None,
-    x_forestproof_internal_token: Annotated[str | None, Header()] = None,
+    x_forestproof_internal_token: Annotated[list[str] | None, Header()] = None,
+    x_forestproof_owner_subject: Annotated[list[str] | None, Header()] = None,
     x_forestproof_require_owner_demo: Annotated[str | None, Header()] = None,
 ) -> str:
     """Constrain P0 to the synthetic demo tenant; LIVE remains disabled.
@@ -70,12 +71,15 @@ def organization_id(
                             detail="Owner demo API mode is not active")
     if settings.mode == "owner_demo":
         try:
-            authorized = valid_internal_token(settings.internal_api_token, x_forestproof_internal_token)
+            token = x_forestproof_internal_token[0] if x_forestproof_internal_token and len(x_forestproof_internal_token) == 1 else None
+            subject = x_forestproof_owner_subject[0] if x_forestproof_owner_subject and len(x_forestproof_owner_subject) == 1 else None
+            authorized = valid_internal_token(settings.internal_api_token, token)
+            identified = valid_owner_subject(settings.owner_subject, subject)
         except InternalAccessNotConfigured:
             raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                                detail="Owner demo internal access is not configured") from None
-        if not authorized:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Internal service authentication required")
+                                detail="Owner demo access is not configured") from None
+        if not authorized or not identified:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Owner authentication required")
     elif settings.mode != "demo":
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
@@ -90,8 +94,12 @@ Org = Annotated[str, Depends(organization_id)]
 
 
 def recorded_actor(provided: str) -> str:
-    """The owner-demo gateway represents one owner, not caller-supplied actors."""
-    return "owner" if settings.mode == "owner_demo" else provided
+    """Use the subject required by the owner-demo authorization dependency."""
+    if settings.mode == "owner_demo":
+        # The authorization dependency has already validated the configured subject.
+        assert settings.owner_subject is not None
+        return settings.owner_subject
+    return provided
 
 
 def ensure_case_access(case_id: str, organization: str) -> None:
@@ -195,7 +203,7 @@ def ingest_live_gfw(_: Org) -> dict[str, Any]:
 @app.post("/api/v1/cases", status_code=status.HTTP_201_CREATED)
 def create_case(payload: CaseCreate, organization: Org) -> dict[str, Any]:
     return store.create_case(organization, payload.observation_id, payload.title, payload.owner_organization,
-                             payload.reviewer, actor="owner" if settings.mode == "owner_demo" else None)
+                             payload.reviewer, actor=settings.owner_subject if settings.mode == "owner_demo" else None)
 
 
 @app.get("/api/v1/cases")
