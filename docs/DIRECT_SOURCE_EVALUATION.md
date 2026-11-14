@@ -57,6 +57,10 @@ On November 14 the [bounded inspector](../tools/glad_l_research/README.md) read 
 
 These counts show that a recent regional publication can contain old local observations. This is one date-layer snapshot, so sustained monitoring cadence, alert coverage and direct-route rights for public redistribution remain open. Continue RADD qualification and use GLAD-L's repeated local recency and source mask as evidence before promoting it. A public product should show the upstream update time and last useful local observation separately, and surface gaps as unknown.
 
+### What changed on the next release
+
+The November 14 replacement, generation `1794683136644075`, was published at 19:05 UTC (22:05 in Kenya). The same 1.5 MiB bounded check ran at 20:13 UTC (23:13 in Kenya). The new object and ETag differed, but all 14,400 sampled values and their masks yielded the same window fingerprint. The last local cloud-free date was still November 3. The November 13 generation returned HTTP 404 after replacement, even when pinned by generation. An object ID and checksum help verify a retained copy. Recovery of an old result requires keeping permitted input evidence when it is first read. [Replacement tile generation](https://storage.googleapis.com/earthenginepartners-hansen/GLADalert/C2/current/obsDate_030E_10S_040E_00N.tif?generation=1794683136644075)
+
 ## Bounded cost model and next checks
 
 One GLAD-L status file was ~13.0 MiB at this check. As a simple planning calculation, downloading that same size once on each of 30 days would transfer ~390 MiB per month and retain ~390 MiB if every daily copy were kept, before the separately required date/quality layers, compression differences, retries, backups or cloud charges. This is traffic/storage arithmetic, **not a provider fee quotation**. `Accept-Ranges` does not prove the TIFF is cloud-optimized or that a particular small-area read is efficient. Confirm current network, provider terms and actual measured bytes before estimating expenses; no paid account or subscription was created.
