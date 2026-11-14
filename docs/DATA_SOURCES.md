@@ -8,7 +8,7 @@ No source below is currently represented as a validated production forest-alert 
 
 ## Current engineering choice (not an activation decision)
 
-Build toward direct **GFW RADD** first, keep **GLAD-L** as a comparison, and defer the mixed **GFW Integrated Alerts** product. RADD's documented Sentinel-1 radar method, nominal 10 m grid, weekly update cadence, and humid-tropical-forest coverage in Africa make it the most suitable first candidate for a cloudy mountain-forest pilot. Local coverage, terrain effects, forest-class fit, service terms, API fees/quotas, and the provider response shape remain unverified. The adapter must stay disabled until these checks pass. This choice does not state that Geta has RADD detections or that the API service is free.
+Keep **GFW RADD** as a radar candidate for explicitly covered locations and **GLAD-L** as an optical comparison. The provisional Geta rectangle has recent Sentinel-1 acquisition footprints. A bounded map check showed sparse RADD coverage colour, and the native eligibility raster still requires verified data access and a bounded native value check. Local processing, terrain effects, source terms, API fees, quotas and the response shape remain unverified. The mixed **GFW Integrated Alerts** product remains a separate candidate. [Local source checks](DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14)
 
 ## Candidate source manifest
 
