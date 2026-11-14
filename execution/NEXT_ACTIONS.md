@@ -1,5 +1,9 @@
 # Next Actions
 
+## First genuine research case follow-up — 2026-11-14
+
+Record the owner's decision on FP-RESEARCH-001 separately from the technical recommendation. Check the same location when a later quality-assessed acquisition is available. Keep the original bytes and case history immutable, then version and back up the updated review separately. The [research recovery](CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14) was demonstrated with the existing laptop and Contabo archive. Before relying on recovery after device loss, arrange an owner-controlled portable recovery key and test it on an independent machine. Live feed access and cadence, operating area, authenticated runtime and production storage still need verification.
+
 ## Private pilot acceptance — 2026-11-14
 
 The [owner case rehearsal](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal) passed with synthetic input and local restores. Use the same acceptance path for the next tranche of runtime work: one authenticated owner, one source-cleared observation linked to its original receipt, review and documented follow-up, a reproducible dossier, and a restore from an off-host backup of both the observation and case records. The built-in synthetic receipt is now resolved by the runtime API. Use one approved real record to qualify the equivalent private path once the source, geography and storage checks pass. Preserve its source date, receipt time and quality limits through review and export.
