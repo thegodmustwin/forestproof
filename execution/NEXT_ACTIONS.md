@@ -4,7 +4,7 @@
 
 The [owner case rehearsal](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal) passed with synthetic input and local restores. Use the same acceptance path for the next tranche of runtime work: one authenticated owner, one source-cleared observation linked to its original receipt, review and documented follow-up, a reproducible dossier, and a restore from an off-host backup of both the observation and case records. Implement the connection deliberately. The test-only fixture linkage is not a runtime import path.
 
-The [NASA quality file references](../docs/NASA_DIST_SAMPLE_20261112.md#matching-hls-quality-files) are matched by NASA catalog input identifiers. Run the revised inspector on the downloaded QA bands and repeat over additional acquisitions before assigning an operational cadence or coverage target.
+The [NASA quality check](../docs/NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3) is complete for November 3. The product assessed 5.8% of centres on that date and 1.9% of centres also passed ForestProof's conservative quality screen. Use consecutive acquisitions to estimate usable coverage and delivery lag if evaluating NASA for the pilot.
 
 ## Private pilot import handoff — 2026-11-14
 
@@ -17,9 +17,9 @@ The protected synthetic preview now serves pinned source `38881dc79f04de9d21997f
 The highest-priority real pilot work is person-level owner authentication, separate protected LIVE storage with tested off-host recovery, and one legally usable record-level feed with verified terms, cost/quota, provenance, geography, quality and freshness. Continue offline contract and workflow tests while these inputs are checked. Keep LIVE fail-closed. Before any future preview release, compare GitHub main with the deployed commit and repeat targeted staging, database restore and access/service checks. The deployed site's browser rendering is still unverified; inspect the actual authenticated desktop and mobile workflow when feasible without exposing credentials.
 
 
-## Next NASA quality check — 2026-11-13
+## Next NASA quality check — 2026-11-14
 
-The [two-tile check](../docs/NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) is complete. Both grids cover the same provisional rectangle. Only 722 of 12,432 centres per grid had a November 3 last-assessed date, all with scene-mask code 1. Next, compare matching HLS Fmask QA and valid-observation dates across multiple acquisitions. Record how much of the proposed area is usable and how long observations take to arrive before selecting a source. An operational area, terms, owner access, protected storage, and tested recovery are still required.
+Use a consecutive window of matched Landsat and Sentinel-2 acquisitions over the fixed provisional rectangle. Measure the fraction of locations assessed at least once, gaps between valid assessments, and publication lag. Compare the provider's last-assessed dates with the stricter ForestProof screen. Handle overlapping tiles as one observation of the area per acquisition and retain missing inputs and dates. Set an operational target only after geography and intended-use terms are verified. Continue RADD coverage and access qualification independently.
 
 ## Reproducible NASA research — 2026-11-13
 
