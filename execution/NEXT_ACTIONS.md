@@ -2,7 +2,7 @@
 
 ## Recurring source qualification for public launch — 2026-11-14
 
-Repeat the GLAD-L date-layer check across subsequent published generations and evaluate the intended pilot area's alert eligibility separately. Continue RADD coverage and access qualification because the local optical date result remains sparse. Build the public read view from separately published, approved data with last check, local observation age, gaps and attribution visible. Establish repeatable acquisition, usage rights, budget and a private review path before publishing real disturbance records. See [source measurements](../docs/DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).
+Recheck GLAD-L on the next distinct published generation and qualify its alert eligibility separately. RADD remains a candidate for places explicitly covered by its native baseline. A zoom-14 map check is sparse across the provisional rectangle, and raw radar footprints cannot establish RADD processing. Obtain an authorized native coverage clip and check the documented Boolean baseline against its values, then select an approved monitoring area with a source that can serve it. Build the public read view from separately published, approved data with upstream update time, useful local observation age, gaps and attribution visible. Establish repeatable acquisition, usage rights, budget and a private review path before publishing real disturbance records. [Source checks](../docs/DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14)
 
 
 ## First genuine research case follow-up — 2026-11-14
