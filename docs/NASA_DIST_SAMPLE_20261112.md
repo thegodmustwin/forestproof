@@ -93,3 +93,25 @@ T37MBV local SHA-256 fingerprints are listed below. Provider checksums remain un
 - `VEG-DIST-DATE` (3,350,609 bytes) `c92d99fd96e716c39a728bf065b65da08952ff52d0e6c6da709e8435f3a16515`
 - `VEG-LAST-DATE` (1,104,462 bytes) `8f6118cd56e83031a785540203fe2ec3be4d6dfff7258576ce008224e0a0c368`
 - `DATA-MASK` (276,573 bytes) `1a68e633d3387bb8e3ea830b3ee0cb1ccd10006aad175c3eebd09d88db29a538`
+
+## Matching HLS quality files
+
+On November 14, the NASA CMR metadata for both OPERA granules identified
+their exact HLS L30 inputs. The corresponding HLS granule records list
+these Earthdata downloads. Store them with their original filenames and
+pass one at a time to the inspector with `--fmask`.
+
+- [T36MZE Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T36MZE.2026307T074255.v2.0/HLS.L30.T36MZE.2026307T074255.v2.0.Fmask.tif) · CMR `G4404771464-LPCLOUD`
+- [T37MBV Fmask](https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/HLSL30.020/HLS.L30.T37MBV.2026307T074255.v2.0/HLS.L30.T37MBV.2026307T074255.v2.0.Fmask.tif) · CMR `G4404774012-LPCLOUD`
+
+The download paths were verified in public catalog metadata. Local QA
+counts remain pending. Repeat on multiple acquisition dates before drawing
+conclusions about typical observation coverage.
+
+## Ninety-day catalog screen
+
+A public NASA Common Metadata Repository check on November 14 covered August 16 through November 14 at 00:00 UTC and used the same provisional rectangle. It returned 71 DIST-ALERT-HLS granule entries across 36 UTC acquisition dates, with 38 entries for T36MZE and 33 for T37MBV. The neighboring tiles can share acquisitions. This is a catalog count and cannot be translated to 71 independent observations or 36 clear-sky days. The newest DIST entry was still November 3. Both November 3 tiles were inserted into the catalog November 7, about 4.4 days after acquisition.
+
+The same footprint and time query returned 30 HLS L30 granules and 41 HLS S30 granules. The newest Landsat input listed was November 3. The newest Sentinel-2 input listed was October 31. This check covered metadata only. It does not identify the cause of the gap or measure repeat usable pixel coverage. Use the matching quality files to compare quality within the rectangle and sample additional acquisition dates before recommending an operational cadence.
+
+[NASA DIST catalogue search](https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2746980408-LPCLOUD&bounding_box=36.60%2C-0.49%2C36.63%2C-0.46&temporal=2026-08-16T00%3A00%3A00Z%2C2026-11-14T00%3A00%3A00Z&page_size=1000) · [NASA HLS data access](https://hls.gsfc.nasa.gov/data-access-and-tools/)
