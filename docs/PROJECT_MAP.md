@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Private historical research case
+
+The November 3 NASA files support one private, reproducible research case, FP-RESEARCH-001. The existing `tools/nasa_dist_research/` grid validation and source diagnostics supplied the basis for the private case script. The dossier, native pixel selectors, original source files, and recovery materials are held outside Git. See [the research checkpoint](../execution/CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14).
+
 ## Private RADD import rehearsal
 
 `services/api/app/pilot_radd_inbox.py` imports explicitly supplied response bytes into a separate SQLite inbox, records source and receipt identity, reports freshness, exports an unverified record and supports a checked copy. See [the operator runbook](PRIVATE_RADD_INBOX.md). Opt-in `services/api/app/owner_receipt_rehearsal.py` creates a private built-in fixture inbox. The authenticated owner-demo API resolves that exact receipt in observation, case and dossier details. Regular DEMO is unaffected. Source-cleared ingestion and live case storage are pending.
