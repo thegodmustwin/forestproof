@@ -1,14 +1,16 @@
-name: NASA offline research checks
+name: Raster research checks
 
 on:
   pull_request:
     paths:
       - 'tools/nasa_dist_research/**'
+      - 'tools/glad_l_research/**'
       - '.github/workflows/nasa-research.yml'
   push:
     branches: [main]
     paths:
       - 'tools/nasa_dist_research/**'
+      - 'tools/glad_l_research/**'
       - '.github/workflows/nasa-research.yml'
 
 permissions:
@@ -27,3 +29,6 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest -v test_inspect_dist_layers
+      - name: Verify GLAD-L observation recency inspector
+        working-directory: tools/glad_l_research
+        run: python -m unittest -v

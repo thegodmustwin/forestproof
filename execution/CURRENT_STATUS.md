@@ -1,5 +1,10 @@
 # Current Status
 
+## Direct GLAD-L recency verified — 2026-11-14
+
+A generation-pinned UMD observation-date read found that 14.8% of centres in the provisional research rectangle had a cloud-free observation in the previous 14 days, and zero in the previous seven. The latest cloud-free day was November 3 despite a November 13 regional publication. This measured real observation metadata, with no alert raster or GNW account request. See [measured recency and source limits](../docs/DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).
+
+
 ## First genuine research case and restore — 2026-11-14
 
 FP-RESEARCH-001 documents an archived NASA OPERA DIST-ALERT-HLS V1 first vegetation anomaly in the provisional Geta research rectangle. The selected native pixel had November 3 first-detection and last-assessed dates, land mask code 1, and passed the conservative HLS quality screen. Seventeen of 19 qualifying primary-grid cells passed the same checks on the overlapping grid. Those grids describe a single Landsat 8 acquisition. The rectangle is a research extent. Ground conditions, forest classification, cause, area of change and legal applicability remain unknown. See the [NASA product specification](https://lpdaac.usgs.gov/documents/1766/OPERA_DIST_HLS_Product_Specification_V1.pdf) and [prior source analysis](../docs/NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3).
