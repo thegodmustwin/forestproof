@@ -35,6 +35,12 @@ The matching second tile is NASA CMR granule [G4404845759-LPCLOUD](https://cmr.e
 
 The owner downloaded all four files. The [completed comparison](NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) found that both tiles cover the entire provisional rectangle geometrically. Keep their native-grid counts separate to avoid counting the same ground twice.
 
+### Local and global catalog follow-up
+
+On 2026-11-14, a public CMR metadata comparison queried acquisition start times from November 4 at 00:00 UTC through November 14 at 08:00 UTC. OPERA DIST-ALERT-HLS V1, HLS L30 v2.0 and HLS S30 v2.0 each returned zero entries for the provisional rectangle and for a wider two-degree box (35.6, -1.5, 37.6, 0.5). With the spatial filter removed, CMR returned 19,906 DIST entries, 7,517 HLS L30 entries and 12,389 HLS S30 entries. The newest listed start time was November 5 for all three collections.
+
+The gap appears in both the upstream HLS metadata and the downstream DIST catalog in these local searches. This narrows the investigation beyond the smaller rectangle, while leaving the actual cause, usable observations and operational cadence unknown. It is insufficient evidence for selecting NASA as the sole launch feed. [NASA CMR query](https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2746980408-LPCLOUD&temporal=2026-11-04T00%3A00%3A00Z%2C2026-11-14T08%3A00%3A00Z&bounding_box=35.6%2C-1.5%2C37.6%2C0.5&page_size=1) · [NASA HLS access and latency guidance](https://hls.gsfc.nasa.gov/data-access-and-tools/)
+
 ## GLAD-L direct route
 
 The [UMD GLAD-L product page](https://glad.umd.edu/dataset/glad-forest-alerts) links to the [GLAD-maintained direct download interface](https://glad-forest-alert.appspot.com/views/download/download-view.html). Its application generates 10-degree tile names. The provisional box falls in `030E_10S_040E_00N`; this is a broad grid tile, not a validated forest boundary. The page describes alert status 0/2/3 as no loss/probable/confirmed and a separate day-of-year file; preserve actual product semantics. It also specifies a scientific citation and warns that observation cadence depends on usable cloud-free imagery.

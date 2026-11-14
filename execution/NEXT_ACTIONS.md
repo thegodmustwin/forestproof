@@ -2,7 +2,7 @@
 
 ## Private pilot acceptance — 2026-11-14
 
-The [owner case rehearsal](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal) passed with synthetic input and local restores. Use the same acceptance path for the next tranche of runtime work: one authenticated owner, one source-cleared observation linked to its original receipt, review and documented follow-up, a reproducible dossier, and a restore from an off-host backup of both the observation and case records. Implement the connection deliberately. The test-only fixture linkage is not a runtime import path.
+The [owner case rehearsal](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal) passed with synthetic input and local restores. Use the same acceptance path for the next tranche of runtime work: one authenticated owner, one source-cleared observation linked to its original receipt, review and documented follow-up, a reproducible dossier, and a restore from an off-host backup of both the observation and case records. The built-in synthetic receipt is now resolved by the runtime API. Use one approved real record to qualify the equivalent private path once the source, geography and storage checks pass. Preserve its source date, receipt time and quality limits through review and export.
 
 The [NASA quality check](../docs/NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3) is complete for November 3. The product assessed 5.8% of centres on that date and 1.9% of centres also passed ForestProof's conservative quality screen. Use consecutive acquisitions to estimate usable coverage and delivery lag if evaluating NASA for the pilot.
 

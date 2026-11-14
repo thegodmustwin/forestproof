@@ -202,13 +202,24 @@ def export_observation(path: Path, *, record_key: str, release: str) -> dict:
     """Return one private, source-linked review input for a future case."""
     with _connection(path) as (db, scope):
         row = db.execute(
-            "SELECT observation.*, receipt.received_at, length(receipt.payload) AS byte_count "
+            "SELECT observation.*, receipt.received_at, length(receipt.payload) AS byte_count, "
+            "CASE WHEN length(receipt.payload) BETWEEN 1 AND ? THEN receipt.payload END AS payload "
             "FROM observation JOIN receipt ON receipt.release = observation.release "
             "AND receipt.sha256 = observation.receipt_sha256 WHERE record_key = ? AND observation.release = ?",
-            (record_key, release),
+            (MAX_ENVELOPE_BYTES, record_key, release),
         ).fetchone()
         if row is None:
             raise InboxError("Observation and release were not found")
+        raw = row["payload"]
+        if not isinstance(raw, bytes) or hashlib.sha256(raw).hexdigest() != row["receipt_sha256"]:
+            raise InboxError("Original response failed the receipt integrity check")
+        cells = _parse_response(raw, release).cells
+        if not any(
+            cell.forestproof_id == record_key and cell.observed_on.isoformat() == row["observed_on"]
+            and _source_row_json(cell.raw_fields) == row["source_row"]
+            for cell in cells
+        ):
+            raise InboxError("Stored observation does not match the original response")
         return {
             "record_state": "UNVERIFIED_IMPORT",
             "scope_id": scope.scope_id,

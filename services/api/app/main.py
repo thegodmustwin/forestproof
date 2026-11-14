@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import sqlite3
 from contextlib import asynccontextmanager
 from datetime import datetime
 from typing import Annotated, Any
@@ -12,6 +13,7 @@ from .config import get_settings
 from .demo_data import DEMO_AREA, DEMO_ORGANIZATION_ID, DEMO_SOURCES
 from .models import ActionCreate, AssignmentCreate, CaseCreate, EvidenceCreate, FollowUpCreate, StatusTransition
 from .owner_access import InternalAccessNotConfigured, valid_internal_token, valid_owner_subject
+from .owner_receipt_rehearsal import resolve_rehearsal_receipt
 from .providers.copernicus_stac import CatalogUnavailable, CopernicusCatalog
 from .providers.gfw import status as gfw_status
 from .source_provenance import demo_source_provenance
@@ -116,6 +118,20 @@ def with_source_provenance(observation: dict[str, Any]) -> dict[str, Any]:
     return {**observation, "source_provenance": provenance}
 
 
+def with_observation_details(observation: dict[str, Any]) -> dict[str, Any]:
+    detail = with_source_provenance(observation)
+    inbox = settings.owner_rehearsal_inbox_path
+    if settings.mode == "owner_demo" and inbox is not None:
+        try:
+            receipt = resolve_rehearsal_receipt(inbox, observation)
+        except (OSError, ValueError, sqlite3.Error):
+            raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                                detail="Synthetic rehearsal receipt is unavailable") from None
+        if receipt is not None:
+            detail["rehearsal_receipt"] = receipt
+    return detail
+
+
 def as_iso(value: datetime | None) -> str | None:
     return value.isoformat().replace("+00:00", "Z") if value else None
 
@@ -176,7 +192,7 @@ def observations(organization: Org, source_id: str | None = None) -> dict[str, A
 
 @app.get("/api/v1/observations/{observation_id}")
 def observation(observation_id: str, organization: Org) -> dict[str, Any]:
-    return with_source_provenance(store.get_observation(organization, observation_id))
+    return with_observation_details(store.get_observation(organization, observation_id))
 
 
 @app.post("/api/v1/ingestion/demo", status_code=status.HTTP_201_CREATED)
@@ -202,6 +218,8 @@ def ingest_live_gfw(_: Org) -> dict[str, Any]:
 
 @app.post("/api/v1/cases", status_code=status.HTTP_201_CREATED)
 def create_case(payload: CaseCreate, organization: Org) -> dict[str, Any]:
+    if settings.mode == "owner_demo" and settings.owner_rehearsal_inbox_path is not None:
+        with_observation_details(store.get_observation(organization, payload.observation_id))
     return store.create_case(organization, payload.observation_id, payload.title, payload.owner_organization,
                              payload.reviewer, actor=settings.owner_subject if settings.mode == "owner_demo" else None)
 
@@ -215,7 +233,7 @@ def cases(organization: Org) -> dict[str, Any]:
 def case(case_id: str, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
     result = store.get_case(case_id)
-    result["observation"] = with_source_provenance(result["observation"])
+    result["observation"] = with_observation_details(result["observation"])
     return result
 
 
@@ -256,7 +274,7 @@ def attach_evidence(case_id: str, payload: EvidenceCreate, organization: Org) ->
 def dossier(case_id: str, organization: Org) -> dict[str, Any]:
     ensure_case_access(case_id, organization)
     result = store.dossier(case_id)
-    result["case"]["observation"] = with_source_provenance(result["case"]["observation"])
+    result["case"]["observation"] = with_observation_details(result["case"]["observation"])
     return result
 
 
