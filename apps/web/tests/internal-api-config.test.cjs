@@ -14,13 +14,16 @@ compiled._compile(js, filename);
 const { internalApiConfig } = compiled.exports;
 const token = "A".repeat(43); // synthetic, never used on a deployed service
 const ownerOrigin = "http://127.0.0.1:18080";
+const gatewayToken = "G".repeat(43);
+const subject = "pilot-owner-a";
+const edgeEnv = { FORESTPROOF_OWNER_GATEWAY_TOKEN: gatewayToken, FORESTPROOF_OWNER_SUBJECT: subject };
 
 test("owner demo forwards its configured secret only to an explicit loopback API", () => {
-  assert.deepEqual(internalApiConfig({ FORESTPROOF_API_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
+  assert.deepEqual(internalApiConfig({ ...edgeEnv, FORESTPROOF_API_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
     FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1/", FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin }),
-    { base: "http://127.0.0.1:8000/api/v1", ownerDemoToken: token, ownerOrigin });
-  assert.equal(internalApiConfig({ FORESTPROOF_API_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
-    FORESTPROOF_API_INTERNAL_BASE_URL: "http://[::1]:8000/api/v1", FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin }).ownerDemoToken, token);
+    { base: "http://127.0.0.1:8000/api/v1", owner: { apiToken: token, gatewayToken, origin: ownerOrigin, subject } });
+  assert.equal(internalApiConfig({ ...edgeEnv, FORESTPROOF_API_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
+    FORESTPROOF_API_INTERNAL_BASE_URL: "http://[::1]:8000/api/v1", FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin }).owner.apiToken, token);
 });
 
 test("owner demo fails closed for malformed or missing secrets and non-loopback upstreams", () => {
@@ -33,7 +36,7 @@ test("owner demo fails closed for malformed or missing secrets and non-loopback 
     { FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1", FORESTPROOF_INTERNAL_API_TOKEN: "short" },
     { FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1", FORESTPROOF_INTERNAL_API_TOKEN: `${token}\n` },
     { FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1" },
-  ]) assert.equal(internalApiConfig({ FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin, ...env, FORESTPROOF_API_MODE: "owner_demo" }), null);
+  ]) assert.equal(internalApiConfig({ ...edgeEnv, FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin, ...env, FORESTPROOF_API_MODE: "owner_demo" }), null);
 });
 
 test("owner demo requires an exact IPv4 loopback gateway origin", () => {
@@ -41,9 +44,20 @@ test("owner demo requires an exact IPv4 loopback gateway origin", () => {
     "https://127.0.0.1:18080", "http://127.0.0.1", "http://127.0.0.1:18080/",
     "http://127.0.0.1:18080/path", "http://127.0.0.1:18080?x=1",
     "http://user:pass@127.0.0.1:18080", "http://127.0.0.1:18080.evil.example"]) {
-    assert.equal(internalApiConfig({ FORESTPROOF_API_MODE: "owner_demo",
+    assert.equal(internalApiConfig({ ...edgeEnv, FORESTPROOF_API_MODE: "owner_demo",
       FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1",
       FORESTPROOF_INTERNAL_API_TOKEN: token, FORESTPROOF_OWNER_GATEWAY_ORIGIN: origin }), null);
+  }
+});
+
+test("owner demo requires a separate gateway secret and a stable owner identifier", () => {
+  const env = { ...edgeEnv, FORESTPROOF_API_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
+    FORESTPROOF_API_INTERNAL_BASE_URL: "http://127.0.0.1:8000/api/v1", FORESTPROOF_OWNER_GATEWAY_ORIGIN: ownerOrigin };
+  for (const gateway of [undefined, token, "short", gatewayToken + "\n"]) {
+    assert.equal(internalApiConfig({ ...env, FORESTPROOF_OWNER_GATEWAY_TOKEN: gateway }), null);
+  }
+  for (const owner of [undefined, "Owner Name", "x".repeat(64), subject + "\n"]) {
+    assert.equal(internalApiConfig({ ...env, FORESTPROOF_OWNER_SUBJECT: owner }), null);
   }
 });
 

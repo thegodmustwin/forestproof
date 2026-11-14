@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { internalApiConfig } from "@/lib/internal-api-config";
+import { internalApiConfig, ownerFromGateway } from "@/lib/internal-api-config";
 
 export const dynamic = "force-dynamic";
 
@@ -21,10 +21,15 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
     );
   }
 
-  // The gateway checks Origin too; enforce it again before the web service
-  // forwards its internal token. Missing Origin is denied in owner_demo.
-  if (config.ownerDemoToken && request.method === "POST" && request.headers.get("origin") !== config.ownerOrigin) {
-    return NextResponse.json({ detail: "Forbidden" }, { status: 403 });
+  let ownerSubject: string | null = null;
+  if (config.owner) {
+    ownerSubject = ownerFromGateway(request.headers, config.owner);
+    if (!ownerSubject) {
+      return NextResponse.json({ detail: "Owner authentication required" }, { status: 401 });
+    }
+    if (request.method === "POST" && request.headers.get("origin") !== config.owner.origin) {
+      return NextResponse.json({ detail: "Forbidden" }, { status: 403 });
+    }
   }
 
   const { path: segments } = await context.params;
@@ -37,8 +42,9 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
   const headers = new Headers({ Accept: request.headers.get("accept") ?? "application/json" });
   const contentType = request.headers.get("content-type");
   if (contentType) headers.set("Content-Type", contentType);
-  if (config.ownerDemoToken) {
-    headers.set("X-Forestproof-Internal-Token", config.ownerDemoToken);
+  if (config.owner && ownerSubject) {
+    headers.set("X-Forestproof-Internal-Token", config.owner.apiToken);
+    headers.set("X-Forestproof-Owner-Subject", ownerSubject);
     headers.set("X-Forestproof-Require-Owner-Demo", "1");
   }
 
@@ -52,6 +58,7 @@ async function proxy(request: NextRequest, context: RouteContext): Promise<NextR
       redirect: "error",
     });
     const responseHeaders = new Headers();
+    if (config.owner) responseHeaders.set("Cache-Control", "no-store");
     const responseContentType = upstream.headers.get("content-type");
     if (responseContentType) responseHeaders.set("Content-Type", responseContentType);
     const disposition = upstream.headers.get("content-disposition");

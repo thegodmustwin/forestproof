@@ -41,12 +41,12 @@ def test_only_explicit_true_enables_flag(monkeypatch, value, enabled):
 def test_api_and_store_enforce_synthetic_only_opt_in(tmp_path, monkeypatch, mode, enabled, expected):
     settings = Settings(
         mode, tmp_path / "demo.db", tmp_path / "evidence", "http://127.0.0.1",
-        internal_api_token=TOKEN, demo_evidence_uploads_enabled=enabled,
+        internal_api_token=TOKEN, demo_evidence_uploads_enabled=enabled, owner_subject="pilot-owner-a",
     )
     store = Store(settings)
     monkeypatch.setattr(main, "settings", settings)
     monkeypatch.setattr(main, "store", store)
-    headers = {"X-Forestproof-Internal-Token": TOKEN} if mode == "owner_demo" else {}
+    headers = {"X-Forestproof-Internal-Token": TOKEN, "X-Forestproof-Owner-Subject": "pilot-owner-a"} if mode == "owner_demo" else {}
     with TestClient(main.app) as client:
         observation = client.get("/api/v1/observations", headers=headers).json()["items"][0]
         created = client.post("/api/v1/cases", headers=headers, json={

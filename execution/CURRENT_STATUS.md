@@ -23,6 +23,10 @@ Contabo deployment is verified in the release entry above. See
 
 The isolated owner demo web proxy requires the exact configured loopback gateway origin for browser POST requests before it forwards its internal service token. GitHub CI passed its proxy, configuration and smoke checks. Person-level owner sign-in remains open. This change is for the separate owner demo candidate. The shared Contabo preview still serves the pinned release above. See [PR #22](https://github.com/thegodmustwin/forestproof/pull/22).
 
+## Synthetic owner identity candidate — 2026-11-14
+
+The isolated synthetic owner workflow now verifies one authenticated gateway subject across Caddy, Next.js and FastAPI, using two distinct server tokens. Its mutations record that subject in the audit trail. The [owner gateway runbook](../infrastructure/deployment/owner-pilot/README.md) covers secret setup, revocation and loopback isolation. The candidate remains undeployed and LIVE remains disabled.
+
 ## Direct source review — 2026-11-13
 
 The source evaluation now links the four-band NASA sample and records the product DOI, citation, differing reuse metadata and limits of interpreting vegetation disturbance. The GNW reference documents default key expiry and the domain-based rate tier. Price, numeric quota and project alert access remain unverified. See `docs/DIRECT_SOURCE_EVALUATION.md` and `docs/DATA_SOURCES.md`.

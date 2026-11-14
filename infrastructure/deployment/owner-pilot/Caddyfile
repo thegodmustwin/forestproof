@@ -24,7 +24,7 @@ http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
     route {
         respond @invalid_host "Invalid host" 403
         basic_auth {
-            owner {$FORESTPROOF_OWNER_PASSWORD_HASH}
+            {$FORESTPROOF_OWNER_SUBJECT} {$FORESTPROOF_OWNER_PASSWORD_HASH}
         }
         respond @unsafe "Forbidden" 403
         request_body {
@@ -32,6 +32,8 @@ http://:{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT} {
         }
         reverse_proxy 127.0.0.1:{$FORESTPROOF_OWNER_WEB_PORT:INVALID_REQUIRED_PORT} {
             header_up -Authorization
+            header_up X-Forestproof-Owner-Subject {http.auth.user.id}
+            header_up X-Forestproof-Owner-Gateway-Token {$FORESTPROOF_OWNER_GATEWAY_TOKEN}
         }
     }
 }

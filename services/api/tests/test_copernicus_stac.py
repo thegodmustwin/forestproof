@@ -180,18 +180,19 @@ def test_route_is_disabled_for_shared_demo_and_requires_owner_service_auth(tmp_p
         assert client.get("/api/v1/context/copernicus-scenes").status_code == 503
     assert calls == []
 
-    settings = replace(settings, mode="owner_demo", copernicus_catalog_enabled=False)
+    settings = replace(settings, mode="owner_demo", copernicus_catalog_enabled=False, owner_subject="pilot-owner-a")
+    owner_headers = {"X-Forestproof-Internal-Token": TOKEN, "X-Forestproof-Owner-Subject": "pilot-owner-a"}
     monkeypatch.setattr(main, "settings", settings)
     monkeypatch.setattr(main, "store", Store(settings))
     with TestClient(main.app) as client:
         assert client.get("/api/v1/context/copernicus-scenes").status_code == 401
-        assert client.get("/api/v1/context/copernicus-scenes", headers={"X-Forestproof-Internal-Token": TOKEN}).status_code == 503
+        assert client.get("/api/v1/context/copernicus-scenes", headers=owner_headers).status_code == 503
     assert calls == []
 
     settings = replace(settings, copernicus_catalog_enabled=True)
     monkeypatch.setattr(main, "settings", settings)
     with TestClient(main.app) as client:
-        response = client.get("/api/v1/context/copernicus-scenes", headers={"X-Forestproof-Internal-Token": TOKEN})
+        response = client.get("/api/v1/context/copernicus-scenes", headers=owner_headers)
         assert response.status_code == 200 and response.json() == {"scenes": []}
         assert response.headers["cache-control"] == "no-store"
     assert calls == [1]

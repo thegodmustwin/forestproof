@@ -28,13 +28,17 @@ const caddyPath = process.env.FORESTPROOF_SMOKE_CADDY;
 let gatewayPort = caddyPath ? await freePort() : null;
 while (gatewayPort !== null && (gatewayPort === webPort || gatewayPort === apiPort)) gatewayPort = await freePort();
 const token = randomBytes(32).toString("base64url");
+const gatewayToken = randomBytes(32).toString("base64url");
+const subject = "pilot-owner-smoke";
+const edgeHeaders = { "X-Forestproof-Owner-Gateway-Token": gatewayToken, "X-Forestproof-Owner-Subject": subject };
+const apiHeaders = { "X-Forestproof-Internal-Token": token, "X-Forestproof-Owner-Subject": subject };
 const apiBase = `http://127.0.0.1:${apiPort}`;
 const webBase = `http://127.0.0.1:${webPort}`;
 const apiDir = resolve(process.cwd(), "../../services/api");
 const python = process.env.FORESTPROOF_SMOKE_PYTHON || "python3";
 const realCatalog = process.env.FORESTPROOF_SMOKE_REAL_CATALOG === "1";
 const children = [];
-const syntheticSecrets = [token];
+const syntheticSecrets = [token, gatewayToken];
 let logs = "";
 
 function start(command, args, options) {
@@ -63,7 +67,7 @@ async function waitFor(url, child, expectedStatus = 200) {
 try {
   const api = start(python, ["-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", String(apiPort)], {
     cwd: apiDir,
-    env: { ...process.env, FORESTPROOF_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token,
+    env: { ...process.env, FORESTPROOF_MODE: "owner_demo", FORESTPROOF_INTERNAL_API_TOKEN: token, FORESTPROOF_OWNER_SUBJECT: subject,
       FORESTPROOF_SQLITE_PATH: join(temp, "demo.sqlite"), EVIDENCE_STORAGE_PATH: join(temp, "evidence"),
       FORESTPROOF_COPERNICUS_CATALOG_ENABLED: realCatalog ? "true" : "false",
       WEB_ORIGIN: gatewayPort === null ? webBase : `http://127.0.0.1:${gatewayPort}` },
@@ -75,12 +79,16 @@ try {
     cwd: process.cwd(),
     env: { ...process.env, NODE_ENV: "production", FORESTPROOF_API_MODE: "owner_demo",
       FORESTPROOF_INTERNAL_API_TOKEN: token, FORESTPROOF_API_INTERNAL_BASE_URL: `${apiBase}/api/v1`,
+      FORESTPROOF_OWNER_GATEWAY_TOKEN: gatewayToken, FORESTPROOF_OWNER_SUBJECT: subject,
       FORESTPROOF_OWNER_GATEWAY_ORIGIN: gatewayPort === null ? webBase : `http://127.0.0.1:${gatewayPort}` },
   });
   await waitFor(webBase, web);
 
   let entryBase = webBase;
-  let authHeaders = {};
+  let authHeaders = edgeHeaders;
+  assert.equal((await fetch(`${webBase}/api/forestproof/observations`, {
+    headers: { "X-Forestproof-Owner-Subject": subject },
+  })).status, 401);
   let gatewayPassword;
   if (caddyPath) {
     const password = randomBytes(24).toString("base64url");
@@ -88,7 +96,7 @@ try {
     const { stdout } = await promisify(execFile)(caddyPath, ["hash-password", "--plaintext", password]);
     const passwordHash = stdout.trim();
     assert.match(passwordHash, /^\$2[aby]\$/);
-    const credentials = `Basic ${Buffer.from(`owner:${password}`).toString("base64")}`;
+    const credentials = `Basic ${Buffer.from(`${subject}:${password}`).toString("base64")}`;
     syntheticSecrets.push(password, passwordHash, credentials);
     const template = await readFile(resolve(process.cwd(), "../../infrastructure/deployment/owner-pilot/Caddyfile"), "utf8");
     assert.ok(template.includes("{$FORESTPROOF_OWNER_GATEWAY_PORT:INVALID_REQUIRED_PORT}") && template.includes("{$FORESTPROOF_OWNER_WEB_PORT:INVALID_REQUIRED_PORT}"));
@@ -97,13 +105,15 @@ try {
     await writeFile(configPath, config, { mode: 0o600 });
     const gateway = start(caddyPath, ["run", "--config", configPath, "--adapter", "caddyfile"], {
       cwd: temp, env: { ...process.env, FORESTPROOF_OWNER_PASSWORD_HASH: passwordHash,
+        FORESTPROOF_OWNER_SUBJECT: subject, FORESTPROOF_OWNER_GATEWAY_TOKEN: gatewayToken,
         FORESTPROOF_OWNER_GATEWAY_PORT: String(gatewayPort), FORESTPROOF_OWNER_WEB_PORT: String(webPort) },
     });
     entryBase = `http://127.0.0.1:${gatewayPort}`;
     authHeaders = { Authorization: credentials };
     await waitFor(entryBase, gateway, 401);
     assert.equal((await fetch(`${entryBase}/api/forestproof/observations`)).status, 401);
-    assert.equal((await fetch(entryBase, { headers: { Authorization: `Basic ${Buffer.from("owner:incorrect").toString("base64")}` } })).status, 401);
+    assert.equal((await fetch(entryBase, { headers: { Authorization: `Basic ${Buffer.from(`${subject}:incorrect`).toString("base64")}` } })).status, 401);
+    assert.equal((await fetch(entryBase, { headers: { Authorization: `Basic ${Buffer.from(`different-owner:${password}`).toString("base64")}` } })).status, 401);
     const crossOrigin = await fetch(`${entryBase}/api/forestproof/cases`, {
       method: "POST", headers: { ...authHeaders, Origin: "https://untrusted.example", "Content-Type": "application/json" },
       body: JSON.stringify({ title: "Synthetic blocked test" }),
@@ -117,16 +127,18 @@ try {
     Origin: entryBase, "Access-Control-Request-Method": "GET",
   } });
   assert.equal(preflight.headers.get("Access-Control-Allow-Origin"), entryBase);
-  const direct = await fetch(`${apiBase}/api/v1/observations`, { headers: { "X-Forestproof-Internal-Token": token } });
+  assert.equal((await fetch(`${apiBase}/api/v1/observations`, { headers: { "X-Forestproof-Internal-Token": token } })).status, 401);
+  const direct = await fetch(`${apiBase}/api/v1/observations`, { headers: apiHeaders });
   assert.equal(direct.status, 200);
   const observed = await fetch(`${entryBase}/api/forestproof/observations`, {
-    headers: { ...authHeaders, "X-Forestproof-Internal-Token": "B".repeat(43), "X-Forestproof-Require-Owner-Demo": "0" },
+    headers: { ...authHeaders, "X-Forestproof-Internal-Token": "B".repeat(43), "X-Forestproof-Require-Owner-Demo": "0",
+      ...(caddyPath ? { "X-Forestproof-Owner-Subject": "forged-owner", "X-Forestproof-Owner-Gateway-Token": "C".repeat(43) } : {}) },
   });
   assert.equal(observed.status, 200);
   const observations = await observed.json();
   assert.equal(observations.mode, "OWNER_DEMO");
   assert.ok(observations.items.length > 0 && observations.items.every((item) => item.quality_flags.includes("DEMO_DATA")));
-  assert.ok(!JSON.stringify(observations).includes(token));
+  assert.ok(syntheticSecrets.every((secret) => !JSON.stringify(observations).includes(secret)));
 
   const created = await fetch(`${entryBase}/api/forestproof/cases`, {
     method: "POST", headers: { ...authHeaders, Origin: entryBase, "Content-Type": "application/json" },
@@ -138,7 +150,7 @@ try {
   const detail = await fetch(`${entryBase}/api/forestproof/cases/${encodeURIComponent(caseId)}`, { headers: authHeaders });
   assert.equal(detail.status, 200);
   const caseRecord = await detail.json();
-  assert.equal(caseRecord.events[0].actor, "owner");
+  assert.equal(caseRecord.events[0].actor, subject);
 
   const evidence = await fetch(`${entryBase}/api/forestproof/cases/${encodeURIComponent(caseId)}/evidence`, {
     method: "POST", headers: { ...authHeaders, Origin: entryBase, "Content-Type": "application/json" },
@@ -162,14 +174,16 @@ try {
     const browser = await chromium.launch({ executablePath: process.env.FORESTPROOF_CHROME_EXECUTABLE, headless: true,
       args: ["--no-sandbox", "--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
     try {
-      const context = await browser.newContext(gatewayPassword ? { httpCredentials: { username: "owner", password: gatewayPassword } } : {});
+      const context = await browser.newContext(gatewayPassword ? { httpCredentials: { username: subject, password: gatewayPassword } } : {});
       const page = await context.newPage();
       const pageErrors = [];
       page.on("pageerror", (error) => pageErrors.push(error.message));
       const tile = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=", "base64");
       await page.route("**/*", async (route) => {
         const url = route.request().url();
-        if (url.startsWith(`${entryBase}/`)) return route.continue();
+        if (url.startsWith(`${entryBase}/`)) {
+          return route.continue(gatewayPassword ? undefined : { headers: { ...route.request().headers(), ...edgeHeaders } });
+        }
         if (url.startsWith("https://tile.openstreetmap.org/")) return route.fulfill({ status: 200, contentType: "image/png", body: tile });
         return route.abort();
       });
