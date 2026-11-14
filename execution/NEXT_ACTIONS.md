@@ -1,5 +1,10 @@
 # Next Actions
 
+## Recurring source qualification for public launch — 2026-11-14
+
+Repeat the GLAD-L date-layer check across subsequent published generations and evaluate the intended pilot area's alert eligibility separately. Continue RADD coverage and access qualification because the local optical date result remains sparse. Build the public read view from separately published, approved data with last check, local observation age, gaps and attribution visible. Establish repeatable acquisition, usage rights, budget and a private review path before publishing real disturbance records. See [source measurements](../docs/DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).
+
+
 ## First genuine research case follow-up — 2026-11-14
 
 Record the owner's decision on FP-RESEARCH-001 separately from the technical recommendation. Check the same location when a later quality-assessed acquisition is available. Keep the original bytes and case history immutable, then version and back up the updated review separately. The [research recovery](CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14) was demonstrated with the existing laptop and Contabo archive. Before relying on recovery after device loss, arrange an owner-controlled portable recovery key and test it on an independent machine. Live feed access and cadence, operating area, authenticated runtime and production storage still need verification.

@@ -1,5 +1,10 @@
 # ForestProof — repository and system map
 
+## GLAD-L observation-date diagnostic
+
+`tools/glad_l_research/` uses budgeted read-only byte ranges for one generation of the producer's observation-date raster. It produces a bounded recency summary and plumbs no data into the app. See [the documented check](DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14).
+
+
 ## Private historical research case
 
 The November 3 NASA files support one private, reproducible research case, FP-RESEARCH-001. The existing `tools/nasa_dist_research/` grid validation and source diagnostics supplied the basis for the private case script. The dossier, native pixel selectors, original source files, and recovery materials are held outside Git. See [the research checkpoint](../execution/CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14).

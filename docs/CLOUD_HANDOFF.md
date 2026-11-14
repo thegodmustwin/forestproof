@@ -8,6 +8,9 @@
 
 ## Private pilot checkpoint (2026-11-14)
 
+The [GLAD-L date diagnostic](DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14) measured actual local cloud-free recency on a pinned public UMD tile. The regional November 13 update carries a latest local date of November 3, with only 14.8% of sampled centres seen within 14 days. Repeat over subsequent generations and verify the alert mask and terms. Keep the future public read surface independent of demo and private case storage.
+
+
 The private historical case FP-RESEARCH-001 used a genuine November 3 NASA observation and a bounded catalog follow-up. A restored encrypted Contabo copy reproduced the observation from all ten original GeoTIFFs. Owner review remains pending. Evidence, exact native cell locations, and Windows-protected recovery material are outside Git. See [the research checkpoint](../execution/CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14). This establishes offline research reproducibility. The owner-only live service still requires a qualified feed, area, runtime and production recovery.
 
 The code on main includes three pieces of the same path. The [private inbox](PRIVATE_RADD_INBOX.md) preserves response bytes, release, receipt time and record identity, and exports an explicitly unverified input. The [owner gateway candidate](../infrastructure/deployment/owner-pilot/README.md) binds audit records to one authenticated owner subject in the isolated synthetic setup. The [case rehearsal](PRIVATE_RADD_INBOX.md#owner-case-rehearsal) verified the synthetic review, action, follow-up, dossier and separate local restores of both SQLite files. The isolated owner-demo runtime now resolves a receipt for a known fixture from a separately initialized, explicitly configured inbox. The API verifies the original bytes before exposing its fingerprint and timestamps in observation, case and dossier details.
