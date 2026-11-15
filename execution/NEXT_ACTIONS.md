@@ -1,5 +1,9 @@
 # Next Actions
 
+## Advance the alert launch gates
+
+The [private alert preview](../tools/alert_publication/README.md) is ready for integration after source and owner review. The [paired GLAD-L archive comparison](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) verified bounded repeatable reads and historical records. Establish current usable coverage, authorized access and exact publication rights before choosing GLAD-L or RADD. Complete FP-RESEARCH-001 in the existing local owner review and test an independent recovery of the actual signed-in decision. The public visibility release is independent of these checkpoints.
+
 ## Open the genuine historical case review
 
 The [local owner review](../tools/owner_review/README.md) is ready to record an explicit disposition and follow-up for FP-RESEARCH-001. Finish the owner sign-in privately, then preserve and restore the real review ledger using a protected copy. Continue source qualification independently. WUR's Earth Engine collection exposes the native `forest_baseline` layer. Definitive pilot eligibility needs a bounded sample of an agreed area through a project authorized for the intended use. The catalogue lookup alone has not established eligibility or access costs. [WUR dataset and access guidance](https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert)

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Disturbance alerts | ForestProof</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f8f6ef;
+  --ink: #1d3028;
+  --quiet: #4d6054;
+  --rule: #c7cbbb;
+  --forest: #225d43;
+  --wash: #edeee3;
+  --amber: #79491c;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1rem/1.55 system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+
+h1, h2, h3, p { margin: 0; }
+a { color: var(--forest); text-underline-offset: .22em; }
+a:focus-visible { outline: 3px solid var(--forest); outline-offset: 4px; }
+
+.skip-link {
+  position: absolute;
+  top: .5rem;
+  left: 1rem;
+  z-index: 1;
+  padding: .65rem 1rem;
+  background: var(--paper);
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus { transform: none; }
+.frame { width: min(100% - 3rem, 62rem); margin-inline: auto; }
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .35rem 1rem;
+  min-height: 4.65rem;
+  padding-block: .65rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand { font: bold 1.45rem Georgia, serif; letter-spacing: -.05em; }
+.preview { color: var(--amber); font-size: .8rem; font-weight: 650; }
+.intro { padding-block: clamp(2.1rem, 6vw, 4.35rem) clamp(1.5rem, 4vw, 2.65rem); }
+.scope {
+  color: var(--quiet);
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 { font-family: Georgia, serif; font-weight: normal; }
+h1 {
+  margin-block: .42rem .8rem;
+  font-size: clamp(2.65rem, 7.4vw, 5.75rem);
+  letter-spacing: -.062em;
+  line-height: 1.02;
+}
+
+.definition, .status p { max-width: 64ch; color: var(--quiet); }
+.status {
+  padding: clamp(1rem, 3.5vw, 2rem);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--forest);
+  background: var(--wash);
+}
+
+.status h2 { font-size: clamp(1.65rem, 3vw, 2.5rem); line-height: 1.16; letter-spacing: -.035em; }
+.status p { margin-top: .45rem; }
+.dates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: .7rem 1.5rem;
+  margin-block: 1.4rem 2rem;
+}
+
+.dates > div { min-width: 0; padding-block: .65rem; border-bottom: 1px solid var(--rule); }
+.dates dt { color: var(--quiet); font-size: .84rem; }
+.dates dd { margin: .15rem 0 0; font-variant-numeric: tabular-nums; font-weight: 650; }
+
+.alerts {
+  margin-block: 1rem 0;
+  padding: 0;
+  list-style-type: none;
+  border-top: 1px solid var(--rule);
+}
+
+.alerts li {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(0, 3fr);
+  gap: .3rem 1rem;
+  align-items: baseline;
+  padding-block: .78rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.alerts time { font-variant-numeric: tabular-nums; font-weight: 650; }
+.alerts li p { color: var(--quiet); }
+footer {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-block: 1rem 2rem;
+  border-top: 1px solid var(--rule);
+  color: var(--quiet);
+  font-size: .85rem;
+}
+
+footer:empty { margin-top: 0; border: 0; }
+footer a { display: inline-block; padding-block: .35rem; }
+
+@media (max-width: 34rem) {
+  .frame { width: calc(100% - 2rem); }
+  .alerts li { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to disturbance alerts</a>
+<div class="frame">
+  <header class="masthead">
+    <p class="brand">ForestProof</p>
+    <p class="preview">Local publication preview</p>
+  </header>
+  <main id="main" tabindex="-1">
+    <header class="intro">
+      <p class="scope">$scope</p>
+      <h1>Disturbance alerts</h1>
+      <p class="definition">Satellite alerts flag possible disturbance. Ground conditions and cause require verification.</p>
+    </header>
+    <section class="status" aria-labelledby="status-heading">
+      <h2 id="status-heading">$status</h2>
+      <p>$detail</p>
+    </section>
+    $content
+  </main>
+  <footer>$attribution</footer>
+</div>
+</body>
+</html>
