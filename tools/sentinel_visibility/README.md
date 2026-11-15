@@ -26,8 +26,8 @@ python -m tools.sentinel_visibility.build_visibility_page --report /private/sent
 
 The builder verifies the fixed research extent, both grids, and the class totals before it replaces any page. The HTML contains the acquisition days, check time, denominators, visible and vegetation counts, the method, and Copernicus credit. The private report retains the precise bounds and source receipts. An omitted report generates an unavailable state. A check at least 36 hours old renders an overdue banner and keeps the last measured counts. The freshness banner is evaluated when the page is built. An operational release needs a periodic rebuild and a monitored refresh.
 
-Keep the test listener on loopback with only the generated HTML in its served directory. Geography and public exposure still need approval. The preview has no link to the case API or storage.
+Keep the test listener on loopback with only the generated HTML in its served directory. The preview is independent of the case API and storage.
 
 ## Recurring public visibility
 
-The owner approved aggregate publication under the label **Provisional Geta research area**. See the [Contabo release runbook](../../infrastructure/deployment/sentinel-visibility/README.md) for the separate timer, loopback web process, and HTTPS route. The service evaluates stale and failed-check status independently of the static preview.
+The owner approved aggregate publication under the label **Provisional Geta research area**. The [published page](https://vmi3711898.contaboserver.net/visibility) uses the timer, loopback web process and exact HTTPS route in the [Contabo release runbook](../../infrastructure/deployment/sentinel-visibility/README.md). The service evaluates stale and failed-check status independently of the static preview.

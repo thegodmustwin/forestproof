@@ -1,5 +1,14 @@
 # Current Status
 
+## Public Geta satellite visibility — 2026-11-15
+
+The owner approved the [public visibility page](https://vmi3711898.contaboserver.net/visibility) under the label **Provisional Geta research area**. The Contabo runtime uses source commit `9ca96cadb8f04cd19165b85c52db3a6d58dbd7a9`. A dedicated loopback listener renders the reported Sentinel-2 scene classification counts and Copernicus attribution. A first timer-triggered run finished at 13:00 EAT and revalidated all six source asset identities while retaining their original measurements for November 8, 10, and 13. The enabled timer runs at 03:15 and 15:15 EAT. Tests exercise unavailable state, failed refresh retention, and an overdue status even without later writes.
+
+The installed Caddy config was validated before a signal reload. The gateway process ID remained unchanged. Certificate-validated laptop checks returned anonymous 200 for GET and HEAD on the exact public path and 405 for POST. The preview home, case route, report path, and visibility path with a trailing slash required authentication. The authenticated tester home returned 200, SSH and xrdp were active, and RDP and the new listener remained loopback-only. The private origin state retains the source receipts and sits outside the tester application. See the [release runbook](../infrastructure/deployment/sentinel-visibility/README.md).
+
+This publication covers source visibility in the research rectangle. Disturbance monitoring and the real owner case workflow still need the approved operating area, qualified alert source, authenticated review and production recovery.
+
+
 ## Private Sentinel-2 visibility page — 2026-11-15
 
 The [visibility preview builder](../tools/sentinel_visibility/README.md#private-visibility-page) rendered the three dated Sentinel-2 grid pairs from a fresh, bounded provider inspection. It distinguishes zero, a very small nonzero share, overdue checks and unavailable reports. The page contains aggregate data and Copernicus attribution. It excludes coordinates, file receipts and case data. Chrome rendering at 1440, 390 and 320 pixels and the keyboard control for the sampling method were checked. The overdue state was exercised with an advanced test clock.
