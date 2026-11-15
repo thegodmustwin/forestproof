@@ -113,7 +113,8 @@ class ReviewHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("Referrer-Policy", "no-referrer")
+        # Retain Origin on the local form POST without sending a referrer off site.
+        self.send_header("Referrer-Policy", "same-origin")
         self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'")
         for name, value in headers:
             self.send_header(name, value)
