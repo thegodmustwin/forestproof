@@ -1,5 +1,10 @@
 # Next Actions
 
+## Open the genuine historical case review
+
+The [local owner review](../tools/owner_review/README.md) is ready to record an explicit disposition and follow-up for FP-RESEARCH-001. Finish the owner sign-in privately, then preserve and restore the real review ledger using a protected copy. Continue source qualification independently. WUR's Earth Engine collection exposes the native `forest_baseline` layer. Definitive pilot eligibility needs a bounded sample of an agreed area through a project authorized for the intended use. The catalogue lookup alone has not established eligibility or access costs. [WUR dataset and access guidance](https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert)
+
+
 ## After the public visibility release — 2026-11-15
 
 The approved [Geta visibility page](https://vmi3711898.contaboserver.net/visibility) and twice-daily checks are running on Contabo. Use the [release runbook](../infrastructure/deployment/sentinel-visibility/README.md) for status and rollback. The next pilot milestone is one genuine disturbance record in a geographically eligible area, with verified provider access and rights, a named owner review and follow-up, and a reproducible restore of the receipt and dossier. Continue native RADD eligibility and access checks. Keep the historical FP-RESEARCH-001 disposition independent of visibility publication.

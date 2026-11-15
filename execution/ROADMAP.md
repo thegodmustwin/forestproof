@@ -18,6 +18,8 @@ The [source-status publication preview](../tools/source_status/README.md) is a l
 
 ## P0 — smallest complete evidence loop
 
+The [local historical review](../tools/owner_review/README.md) demonstrated named review and receipt recovery for a private archive. A real owner disposition, off-device restore, and production alert ingestion remain separate pilot milestones.
+
 | Order | Milestone | Status | Completion evidence / remaining work |
 | --- | --- | --- | --- |
 | 1 | Repository and development environment | PARTIAL | The current Cloud task recovered after a readiness failure and can access the checkout and GitHub. Draft revision 10 publication and fresh-task restoration are not verified. The owner also has an OVH remote desktop; its CLI shell and GitHub authentication need follow-up. |
