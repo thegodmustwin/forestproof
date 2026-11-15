@@ -1,0 +1,10 @@
+[Unit]
+Description=Check ForestProof Sentinel-2 visibility twice daily
+
+[Timer]
+OnActiveSec=45s
+OnCalendar=*-*-* 00,12:15:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

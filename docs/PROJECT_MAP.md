@@ -6,6 +6,8 @@
 
 The [visibility preview builder](../tools/sentinel_visibility/README.md#private-visibility-page) projects a verified report into static HTML with a distinct zero, unavailable, and overdue experience. The page excludes the precise bounds and source receipt fields.
 
+[`visibility_service.py`](../tools/sentinel_visibility/visibility_service.py) refreshes and serves the authorized visibility report independently of the app. The [Contabo runbook](../infrastructure/deployment/sentinel-visibility/README.md) defines the timer and exact HTTPS route.
+
 ## Source-status publication preview
 The separate `tools/source_status/stage_source_status.py` command refreshes one observation source into its own atomic state file and serves a loopback-only read view. It does not route to the demo API or case storage. See [the staged workflow](../tools/source_status/README.md#isolated-staging).
 

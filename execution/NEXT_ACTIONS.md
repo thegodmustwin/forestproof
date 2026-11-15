@@ -1,8 +1,8 @@
 # Next Actions
 
-## Direct visibility research — 2026-11-15
+## After the public visibility release — 2026-11-15
 
-Review the [Sentinel-2 visibility preview](../tools/sentinel_visibility/README.md#private-visibility-page) and confirm a public reporting extent. Stage the publication route with a recurring source check and rebuild, and observe the stale state over a failed or skipped check before enabling public access. The preview already includes the Copernicus attribution and each overlapping grid's denominator. Keep the record-level disturbance pilot independent and continue native RADD eligibility and access checks.
+The approved [Geta visibility page](https://vmi3711898.contaboserver.net/visibility) and twice-daily checks are running on Contabo. Use the [release runbook](../infrastructure/deployment/sentinel-visibility/README.md) for status and rollback. The next pilot milestone is one genuine disturbance record in a geographically eligible area, with verified provider access and rights, a named owner review and follow-up, and a reproducible restore of the receipt and dossier. Continue native RADD eligibility and access checks. Keep the historical FP-RESEARCH-001 disposition independent of visibility publication.
 
 ## Owner pilot and publication gates — 2026-11-15
 

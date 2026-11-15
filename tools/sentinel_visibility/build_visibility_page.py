@@ -44,10 +44,14 @@ def scene(day: dict, *, latest: bool = False) -> str:
 </article>"""
 
 
-def render(snapshot: dict | None, *, now: datetime) -> str:
+def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed_at: datetime | None = None) -> str:
     template = Template(TEMPLATE.read_text(encoding="utf-8"))
+    masthead = "" if public else '<p class="flag">Private research preview</p>'
+    robots = "" if public else '<meta name="robots" content="noindex">'
+    chrome = {"masthead": masthead, "robots": robots}
     if snapshot is None:
         return template.substitute(
+            **chrome,
             content="""<section class="unavailable">
 <h2>Visibility report unavailable</h2>
 <p>Check back after ForestProof has verified a Sentinel-2 report for this area.</p>
@@ -59,9 +63,15 @@ def render(snapshot: dict | None, *, now: datetime) -> str:
     latest, *earlier = snapshot["acquisitions"]
     overdue = now - checked >= CHECK_MAX_AGE
     if overdue:
+        failure = " Latest check failed." if failed_at else ""
         status = (
             '<p class="status overdue"><strong>Source check overdue.</strong> '
-            f'Showing the most recent verified report from {time_label(checked)}.</p>'
+            f'Showing the most recent verified report from {time_label(checked)}.{failure}</p>'
+        )
+    elif failed_at:
+        status = (
+            '<p class="status overdue"><strong>Latest source check failed.</strong> '
+            f'Showing the report verified {time_label(checked)}.</p>'
         )
     else:
         status = f'<p class="status"><strong>Report verified</strong> {time_label(checked)}.</p>'
@@ -79,6 +89,7 @@ def render(snapshot: dict | None, *, now: datetime) -> str:
     years = sorted({day["date"].year for day in snapshot["acquisitions"]})
     attribution = " · ".join(f"Contains modified Copernicus Sentinel data [{year}]" for year in years)
     return template.substitute(
+        **chrome,
         content=status + scene(latest, latest=True) + history + method,
         attribution=attribution,
     )
