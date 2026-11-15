@@ -92,7 +92,7 @@ def day_label(day: date) -> str:
     return f'<time datetime="{day.isoformat()}">{day:%d %b %Y}</time>'
 
 
-def render(snapshot: dict | None) -> str:
+def render(snapshot: dict | None, *, status: str = "") -> str:
     layout = PAGE.read_text(encoding="utf-8")
     if snapshot is None:
         content = """<section class="unavailable" aria-labelledby="empty-title">
@@ -110,7 +110,7 @@ def render(snapshot: dict | None) -> str:
         f'<strong>{percentage:.1f}%</strong><small>{count:,} locations</small></li>'
         for days, count, percentage in snapshot["rows"]
     )
-    content = f"""<section class="reading" aria-labelledby="latest-label">
+    content = status + f"""<section class="reading" aria-labelledby="latest-label">
 <div class="headline">
 <h2 id="latest-label">Latest local cloud-free observation</h2>
 <p class="date">{title}</p>

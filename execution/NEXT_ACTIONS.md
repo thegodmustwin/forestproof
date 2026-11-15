@@ -1,4 +1,9 @@
 # Next Actions
+## Owner pilot and publication gates — 2026-11-15
+
+The [separate staging worker](../tools/source_status/README.md#isolated-staging) can verify a source refresh, detect an unchanged generation, and distinguish stale, failed and unavailable data. The threshold applies to the check age. The raster's local observation date remains independent. Verify publishable geography and rights for the exact aggregate layer before any public exposure, and set the recurring refresh interval during deployment.
+
+The November 15 source review found no new GLAD-L date generation and no later NASA DIST-HLS or HLS entries for the provisional rectangle. Copernicus Sentinel-2 L2A listed new footprints on November 8, 10 and 13. Coverage on the ground and a verified record-level disturbance feed remain open. Qualify the exact feed and area before enabling a scheduled alert import. Keep FP-RESEARCH-001's genuine historical observation, recovery record, and pending owner sign-off distinct from the live workflow.
 
 ## Source-status publication — 2026-11-14
 

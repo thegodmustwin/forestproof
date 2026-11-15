@@ -1,5 +1,11 @@
 # Current Status
 
+## Contabo private source-status stage — 2026-11-15
+
+An isolated loopback listener on Contabo served the GLAD-L observation-status page independently of the ForestProof API and case store. The first refresh inspected 1,572,864 upstream bytes for generation `1794683136644075`. A second refresh saw the same generation and preserved the observation snapshot. The 14,400 sampled centres included zero seen within seven days and 2,128 seen within 14 days. November 3 was the most recent local observation day. A forced refresh failure and an overdue check both kept the prior snapshot visible and changed its status. The listener rejected writes, unexpected hosts, case routes, and direct access to its state file. SSH and remote desktop services remained active. The stage used a time-limited loopback process. There is no public route, production refresh schedule, or publication approval. See the [stage runbook](../tools/source_status/README.md) and [source qualification checks](../docs/DIRECT_SOURCE_EVALUATION.md#source-qualification-checks--2026-11-15).
+
+The existing encrypted FP-RESEARCH-001 archive still matched the digest of the archive restored during the November 14 exercise. Owner disposition and an approved owner-pilot configuration remain pending.
+
 ## Source-status page — 2026-11-14
 
 The stand-alone [source-status renderer](../tools/source_status/README.md) validated and rendered the existing GLAD-L aggregate report locally. It exposes separate provider, check and observation dates and the sample denominator. Tests cover source and area binding, invalid report rejection before replacement, private-field exclusion, and the difference between missing and zero-observation data. No server release, data refresh schedule, or alert feed was enabled.

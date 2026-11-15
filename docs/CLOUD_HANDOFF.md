@@ -7,6 +7,7 @@
 **Original brief prepared:** 2026-11-06. Hosting updated 2026-11-10; verified releases above supersede older deployment claims. This is a continuation brief, not a provider authorization or a replacement for current user instructions. At preparation, private GitHub main was `48693afb13505df69e3b4863e9f3e1f68be792d2`; it may have advanced. Re-read the latest main and existing work before editing.
 
 ## Private pilot checkpoint (2026-11-14)
+See [source-status staging](../tools/source_status/README.md#isolated-staging) for the independent loopback refresh and read commands. This read path is for observation recency. The existing private case flow is still synthetic and the first genuine historical case is still in its private dossier. The live record source and publication terms remain open.
 
 The [standalone source-status preview](../tools/source_status/README.md) can render an aggregate GLAD-L report or an unavailable state with no application session. Public release rights, a scheduled refresh, staleness handling in production, and a verified alert source are still open.
 
