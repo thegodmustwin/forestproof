@@ -1,5 +1,10 @@
 # Current Status
 
+## Repeatable Sentinel-2 visibility inspection — 2026-11-15
+
+The [Sentinel-2 inspector](../tools/sentinel_visibility/README.md) uses public Earth Search scene metadata and ETag-checked SCL assets to report per-grid visibility in the provisional Geta rectangle. It keeps the two overlapping native grids separate and retains a SHA-256 receipt for each input. An absent or ambiguous scene pair fails explicitly. This path measures provider-classified visibility and uses no alert, GNW credential or case input. A public extent, refresh deployment and native disturbance eligibility remain open.
+
+
 ## Contabo private source-status stage — 2026-11-15
 
 An isolated loopback listener on Contabo served the GLAD-L observation-status page independently of the ForestProof API and case store. The first refresh inspected 1,572,864 upstream bytes for generation `1794683136644075`. A second refresh saw the same generation and preserved the observation snapshot. The 14,400 sampled centres included zero seen within seven days and 2,128 seen within 14 days. November 3 was the most recent local observation day. A forced refresh failure and an overdue check both kept the prior snapshot visible and changed its status. The listener rejected writes, unexpected hosts, case routes, and direct access to its state file. SSH and remote desktop services remained active. The stage used a time-limited loopback process. There is no public route, production refresh schedule, or publication approval. See the [stage runbook](../tools/source_status/README.md) and [source qualification checks](../docs/DIRECT_SOURCE_EVALUATION.md#source-qualification-checks--2026-11-15).

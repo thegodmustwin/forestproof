@@ -6,6 +6,7 @@ on:
       - 'tools/nasa_dist_research/**'
       - 'tools/glad_l_research/**'
       - 'tools/source_status/**'
+      - 'tools/sentinel_visibility/**'
       - '.github/workflows/nasa-research.yml'
   push:
     branches: [main]
@@ -13,6 +14,7 @@ on:
       - 'tools/nasa_dist_research/**'
       - 'tools/glad_l_research/**'
       - 'tools/source_status/**'
+      - 'tools/sentinel_visibility/**'
       - '.github/workflows/nasa-research.yml'
 
 permissions:
@@ -36,4 +38,7 @@ jobs:
         run: python -m unittest -v
       - name: Verify source-status publication preview
         working-directory: tools/source_status
+        run: python -m unittest -v
+      - name: Verify Sentinel-2 visibility inspection
+        working-directory: tools/sentinel_visibility
         run: python -m unittest -v
