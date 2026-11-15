@@ -4,7 +4,13 @@
 
 The [private owner review](../tools/owner_review/README.md) verifies the recovered FP-RESEARCH-001 bundle, including all 16 manifest entries and ten source rasters. It retains the original case, observation, dossier and manifest bytes in a separate local database. The loopback review records the provisioned owner's identity, decision, UTC time, receipt digest, note and follow-up day. The historical record remains immutable through the review.
 
-The HTTP tests exercised unauthorized downloads, owner sign-in, form validation, duplicate replay and an exact receipt and dossier restore. Chrome verified the authenticated form and showed the saved rehearsal review at local viewport sizes. A second local rehearsal used the real recovered receipt with a separately labelled rehearsal actor and reproduced the receipt and review after two checked copies. The actual case awaits the owner's private sign-in and explicit decision. Local restore has been tested. An independent off-device recovery remains pending.
+The HTTP tests exercised unauthorized downloads, owner sign-in, form validation, duplicate replay and an exact receipt and dossier restore. Chrome verified the authenticated form and showed the saved rehearsal review at local viewport sizes. A second local rehearsal used the real recovered receipt with a separately labelled rehearsal actor and reproduced the receipt and review after two checked copies. The actual case awaits the owner's private sign-in and explicit decision. Local restore preserved the genuine receipt and an isolated rehearsal review. A separate Windows-to-Contabo test encrypted an SQLite review copy containing only synthetic inputs with OpenSSL CMS, using AES-256-GCM and RSA-OAEP. An unrelated test key failed. The correct test key recovered the exact database hash, source receipt, review and follow-up in a fresh scratch directory. The genuine owner decision and its protected off-device recovery are still pending.
+
+### Full alert launch
+
+1. Qualify one alert source and one approved operational area. Verify native eligibility, usable cadence across successive releases, programmatic access and cost, and rights to retain and publish the intended fields.
+2. Complete a real, privately authenticated owner case. Record the named review and follow-up, then recover the original receipt and dossier from an independently protected copy. The laptop historical review and synthetic cross-device exercise verify components of this step.
+3. Verify the public alert read view. Expose only approved, reviewed fields with source attribution, separate dates, stale and unavailable states, duplicate-free refresh, and tests that keep private routes inaccessible. The current Geta visibility page remains a separately approved surface.
 
 
 ## Public Geta satellite visibility — 2026-11-15
