@@ -4,6 +4,8 @@
 
 [`tools/sentinel_visibility/`](../tools/sentinel_visibility/README.md) checks one to three Sentinel-2 Level-2A acquisitions against the provisional Geta rectangle. The private JSON report preserves two separate native grid counts and pins each SCL input by ETag and SHA-256. It sits outside alert ingestion, case storage and public routing.
 
+The [visibility preview builder](../tools/sentinel_visibility/README.md#private-visibility-page) projects a verified report into static HTML with a distinct zero, unavailable, and overdue experience. The page excludes the precise bounds and source receipt fields.
+
 ## Source-status publication preview
 The separate `tools/source_status/stage_source_status.py` command refreshes one observation source into its own atomic state file and serves a loopback-only read view. It does not route to the demo API or case storage. See [the staged workflow](../tools/source_status/README.md#isolated-staging).
 

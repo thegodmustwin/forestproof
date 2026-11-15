@@ -15,3 +15,15 @@ Supply one to three distinct UTC scene dates. The command checks that the Earth 
 Each grid is measured separately in its native projection, using pixel centres inside the rectangle. Codes 4, 5 and 6 are the provider's vegetation, nonvegetated and water classes. Their combined count is a visibility indicator. Cloud, shadow, unclassified and no-data centres remain in the denominator. The output distinguishes visible vegetation from all visible surface. A missing tile or ambiguous acquisition fails the run with a diagnostic. The two grids overlap and cannot be summed to produce an area percentage. Use this classification for visibility checks.
 
 Use the per-acquisition Copernicus attribution when reproducing aggregate results, and credit the delivery service and access date. This bounded research tool has no alert records, publishing endpoint, approved operational geography, or service guarantee. [Sentinel-2 classification documentation](https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-ClassificationMaskGeneration) · [Copernicus data terms](https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice) · [Public COG delivery](https://registry.opendata.aws/sentinel-2-l2a-cogs/)
+
+## Private visibility page
+
+From the repository root, render the JSON from the current inspector into a standalone HTML preview. Keep the input and output outside Git.
+
+```text
+python -m tools.sentinel_visibility.build_visibility_page --report /private/sentinel-report.json --output /private/visibility.html
+```
+
+The builder verifies the fixed research extent, both grids, and the class totals before it replaces any page. The HTML contains the acquisition days, check time, denominators, visible and vegetation counts, the method, and Copernicus credit. The private report retains the precise bounds and source receipts. An omitted report generates an unavailable state. A check at least 36 hours old renders an overdue banner and keeps the last measured counts. The freshness banner is evaluated when the page is built. An operational release needs a periodic rebuild and a monitored refresh.
+
+Keep the test listener on loopback with only the generated HTML in its served directory. Geography and public exposure still need approval. The preview has no link to the case API or storage.
