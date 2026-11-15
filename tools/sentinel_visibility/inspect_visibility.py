@@ -40,12 +40,12 @@ def request(opener, url, *, method="GET", headers=None):
     }), timeout=20)
 
 
-def scene_pair(opener, day):
+def catalog_items(opener, interval, limit):
     url = f"{CATALOG}?{urlencode({
         'collections': COLLECTION,
         'bbox': ','.join(map(str, BOUNDS)),
-        'datetime': f'{day}T00:00:00Z/{day + timedelta(days=1)}T00:00:00Z',
-        'limit': 20,
+        'datetime': interval,
+        'limit': limit,
     })}"
     with request(opener, url) as response:
         if response.status != 200:
@@ -63,7 +63,10 @@ def scene_pair(opener, day):
         complete = not any(link.get("rel") == "next" for link in result["links"])
     if not complete:
         raise ValueError("Catalog window cannot be inspected in one page")
+    return features
 
+
+def pair_for_day(features, day):
     tiles = {}
     for item in features:
         properties = item["properties"]
@@ -94,7 +97,30 @@ def scene_pair(opener, day):
     return [tiles[tile] for tile in TILES]
 
 
-def read_pinned_asset(opener, url):
+def scene_pair(opener, day):
+    interval = f"{day}T00:00:00Z/{day + timedelta(days=1)}T00:00:00Z"
+    return pair_for_day(catalog_items(opener, interval, 20), day)
+
+
+def recent_pairs(opener, now):
+    start = now - timedelta(days=30)
+    features = catalog_items(opener, f"{start.isoformat()}/{now.isoformat()}", 50)
+    days = set()
+    for item in features:
+        properties = item["properties"]
+        if properties.get("grid:code", "").removeprefix("MGRS-") not in TILES:
+            continue
+        acquired = datetime.fromisoformat(properties["datetime"])
+        if acquired.utcoffset() is None or not start <= acquired <= now:
+            raise ValueError("Unexpected catalog acquisition time")
+        days.add(acquired.astimezone(UTC).date())
+    if not days:
+        raise ValueError("No paired Sentinel-2 scene in the catalog window")
+    # A missing grid or competing datatake on a selected day leaves the previous snapshot in place.
+    return [(day, pair_for_day(features, day)) for day in sorted(days, reverse=True)[:3]]
+
+
+def asset_identity(opener, url):
     with request(opener, url, method="HEAD") as response:
         length = response.headers.get("Content-Length", "")
         etag = response.headers.get("ETag", "")
@@ -105,6 +131,12 @@ def read_pinned_asset(opener, url):
         size = int(length)
     if not 0 < size <= MAX_TILE_BYTES:
         raise ValueError("SCL asset is outside the transfer budget")
+    return {"etag": etag, "source_modified": modified, "bytes": size}
+
+
+def read_pinned_asset(opener, url, *, identity=None):
+    identity = asset_identity(opener, url) if identity is None else identity
+    etag, size = identity["etag"], identity["bytes"]
     with request(opener, url, headers={"Range": f"bytes=0-{size - 1}", "If-Match": etag}) as response:
         if (response.status != 206 or response.headers.get("ETag") != etag
                 or response.headers.get("Content-Range") != f"bytes 0-{size - 1}/{size}"
@@ -113,7 +145,7 @@ def read_pinned_asset(opener, url):
         data = response.read(size + 1)
     if len(data) != size:
         raise ValueError("SCL response was incomplete")
-    return data, {"etag": etag, "source_modified": modified, "bytes": size, "sha256": sha256(data).hexdigest()}
+    return data, {**identity, "sha256": sha256(data).hexdigest()}
 
 
 def classify(values):
@@ -156,14 +188,30 @@ def measure(data, epsg):
             return classify(values.ravel()[inside])
 
 
-def inspect(days, opener):
+def inspect_pairs(pairs, opener, *, previous=None, clock=lambda: datetime.now(UTC)):
+    retained = {
+        tile.get("source_url"): tile
+        for scene in previous["acquisitions"] for tile in scene["tiles"]
+    } if previous else {}
     acquisitions = []
-    for day in days:
-        tiles = scene_pair(opener, day)
+    for day, tiles in pairs:
         for tile in tiles:
-            data, receipt = read_pinned_asset(opener, tile["source_url"])
-            tile.update(receipt)
-            tile.update(measure(data, TILES[tile["tile"]]))
+            url = tile["source_url"]
+            identity = asset_identity(opener, url)
+            prior = retained.get(url, {})
+            previous_digest = prior.get("sha256")
+            if (all(prior.get(key) == value for key, value in identity.items())
+                    and isinstance(previous_digest, str) and re.fullmatch(r"[0-9a-f]{64}", previous_digest)):
+                for key in ("sha256", "sampled_centres", "surface_classified_visible",
+                            "vegetation_classified_visible", "scl_counts_0_to_11"):
+                    tile[key] = prior[key]
+                tile.update(identity)
+                tile["measured_at"] = prior.get("measured_at", previous["checked_at"])
+            else:
+                data, receipt = read_pinned_asset(opener, url, identity=identity)
+                tile.update(receipt)
+                tile.update(measure(data, TILES[tile["tile"]]))
+                tile["measured_at"] = clock().isoformat()
         acquisitions.append({
             "date": day.isoformat(),
             "attribution": f"Contains modified Copernicus Sentinel data [{day.year}]",
@@ -174,11 +222,20 @@ def inspect(days, opener):
         "schema": "forestproof.sentinel2_visibility.v1",
         "area": "Provisional Geta research rectangle",
         "bounds_wgs84": list(BOUNDS),
-        "checked_at": datetime.now(UTC).isoformat(),
+        "checked_at": clock().isoformat(),
         "native_resolution_metres": 20,
         "note": "Overlapping grids are reported separately. Scene visibility does not measure disturbance.",
         "acquisitions": acquisitions,
     }
+
+
+def inspect(days, opener):
+    return inspect_pairs(((day, scene_pair(opener, day)) for day in days), opener)
+
+
+def inspect_recent(previous, now):
+    opener = build_opener(NoRedirect())
+    return inspect_pairs(recent_pairs(opener, now), opener, previous=previous)
 
 
 def main():

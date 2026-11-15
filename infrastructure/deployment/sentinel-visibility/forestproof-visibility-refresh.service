@@ -1,0 +1,21 @@
+[Unit]
+Description=Check Sentinel-2 visibility source for ForestProof
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=forestproof-visibility
+Group=forestproof-visibility
+WorkingDirectory=/opt/forestproof-visibility/current
+StateDirectory=forestproof-visibility
+StateDirectoryMode=0700
+UMask=0077
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/flock --nonblock /var/lib/forestproof-visibility/refresh.lock /opt/forestproof-visibility/venv/bin/python -m tools.sentinel_visibility.visibility_service --state /var/lib/forestproof-visibility/source.json refresh
+TimeoutStartSec=180
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+MemoryMax=512M

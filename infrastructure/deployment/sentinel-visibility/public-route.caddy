@@ -1,0 +1,11 @@
+        @geta_visibility path /visibility
+        handle @geta_visibility {
+            route {
+                @geta_visibility_write not method GET HEAD
+                header @geta_visibility_write Allow "GET, HEAD"
+                respond @geta_visibility_write 405
+                reverse_proxy 127.0.0.1:18450 {
+                    header_up -Authorization
+                }
+            }
+        }
