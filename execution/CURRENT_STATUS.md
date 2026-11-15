@@ -34,6 +34,8 @@ The November 14 NASA CMR follow-up found no later cataloged DIST acquisition in 
 
 A separately encrypted archive was backed up on Contabo using a private host path, downloaded to a separate Windows directory and restored. Sixteen file hashes, including all ten downloaded GeoTIFFs, passed. Rerunning the analysis reproduced the observation from those files. The decryption key uses Windows CurrentUser protection. This recovery verified the Contabo-to-laptop route with the current Windows profile. Independent key recovery after loss of that profile and off-host recovery for a production case service remain unverified. The private evidence bundle lives outside Git. The hosted preview remains synthetic.
 
+The offline OPERA receipt rehearsal keeps synthetic manifest and layer bytes in a separate SQLite database. It checks identities and digests, verifies repeated imports, and regenerates a pending-review dossier from a checked copy. It does not open the genuine archive, authenticate an owner, or add a runtime route. See [the rehearsal and verification command](../docs/PROJECT_MAP.md#private-historical-research-case).
+
 ## Private owner workflow rehearsal — 2026-11-14
 
 The isolated owner-demo API now resolves the built-in synthetic observation's receipt when its private fixture inbox is explicitly configured. Observation, case and dossier details resolve the same receipt from the original bytes. The integration test uses the supported initializer and restores both SQLite files to separate local paths. The next release still requires verified source access and terms, a real-data adapter and storage, off-host recovery, and staging. See [the walkthrough](../docs/PRIVATE_RADD_INBOX.md#owner-case-rehearsal).
