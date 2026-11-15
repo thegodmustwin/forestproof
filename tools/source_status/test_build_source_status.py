@@ -32,7 +32,7 @@ class PublicationTest(unittest.TestCase):
     def test_report_displays_three_distinct_clocks_and_no_unapproved_fields(self):
         report = {**REPORT, "private_case": "must-never-render"}
         html = render(project(report, now=NOW))
-        for value in ("03 Nov 2026", "19:05 UTC", "20:13 UTC", "14.8%", "0.0%"):
+        for value in ("03 Nov 2026", "22:05 EAT", "23:13 EAT", "14.8%", "0.0%"):
             self.assertIn(value, html)
         for value in ("must-never-render", "36.60", "-0.49", "?generation=123"):
             self.assertNotIn(value, html)

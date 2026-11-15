@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 import re
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -84,7 +84,8 @@ def project(report: dict, *, now: datetime) -> dict:
 
 
 def time_label(moment: datetime) -> str:
-    return f'<time datetime="{moment.isoformat()}">{moment:%d %b %Y, %H:%M UTC}</time>'
+    local = moment.astimezone(timezone(timedelta(hours=3)))
+    return f'<time datetime="{local.isoformat()}">{local:%d %b %Y, %H:%M EAT}</time>'
 
 
 def day_label(day: date) -> str:
@@ -126,7 +127,7 @@ def render(snapshot: dict | None) -> str:
 <p>Share of {snapshot["total"]:,} sample locations with a cloud-free observation by {day_label(as_of)}.</p>
 <ul class="windows">{rows}</ul>
 <details id="method"><summary>Sampling method and limits</summary>
-<p>Each sample is the centre of a cell in the source raster. The windows include the reporting day. {snapshot["no_clear"]:,} locations had no cloud-free date this year and {snapshot["masked"]:,} were masked in the raster. Both count toward the total sample.</p>
+<p>Each sample is the centre of a cell in the source raster. A window of 7 days includes observations up to 7 calendar days before the report date. {snapshot["no_clear"]:,} locations had no cloud-free date this year and {snapshot["masked"]:,} were masked in the raster. Both count toward the total sample.</p>
 <p>Observation dates describe what the source could see. Alert eligibility and ground conditions remain unknown. The research area has a provisional extent.</p>
 </details>
 </section>"""
