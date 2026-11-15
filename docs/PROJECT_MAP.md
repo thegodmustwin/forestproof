@@ -22,6 +22,8 @@ The separate `tools/source_status/stage_source_status.py` command refreshes one 
 
 The November 3 NASA files support one private, reproducible research case, FP-RESEARCH-001. The existing `tools/nasa_dist_research/` grid validation and source diagnostics supplied the basis for the private case script. The dossier, native pixel selectors, original source files, and recovery materials are held outside Git. See [the research checkpoint](../execution/CURRENT_STATUS.md#first-genuine-research-case-and-restore--2026-11-14).
 
+The [local owner review](../tools/owner_review/README.md) admits the verified archive to a separate database and allows an authenticated owner to record disposition and follow-up. The review exports and backup preserve the historical receipt linkage.
+
 [The offline OPERA receipt rehearsal](../services/api/app/historical_opera_receipt.py) tests exact manifest and attachment retention with synthetic placeholders. It uses the shared checked SQLite copy helper and never reads the private archive through the application. From `services/api`, run `python -m pytest tests/test_historical_opera_receipt.py` to exercise import, byte-identical replay, conflict rejection and a restored dossier without the source files. The CLI has `init`, `ingest`, `dossier` and `copy` commands. The rehearsal accepts only the fictional `T00AAA` tile and short role-specific placeholder bytes. Raster interpretation remains in the NASA research tools.
 
 ## Private RADD import rehearsal

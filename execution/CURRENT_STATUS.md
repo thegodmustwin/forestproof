@@ -1,5 +1,12 @@
 # Current Status
 
+## Local historical owner review — 2026-11-15
+
+The [private owner review](../tools/owner_review/README.md) verifies the recovered FP-RESEARCH-001 bundle, including all 16 manifest entries and ten source rasters. It retains the original case, observation, dossier and manifest bytes in a separate local database. The loopback review records the provisioned owner's identity, decision, UTC time, receipt digest, note and follow-up day. The historical record remains immutable through the review.
+
+The HTTP tests exercised unauthorized downloads, owner sign-in, form validation, duplicate replay and an exact receipt and dossier restore. Chrome verified the authenticated form and showed the saved rehearsal review at local viewport sizes. A second local rehearsal used the real recovered receipt with a separately labelled rehearsal actor and reproduced the receipt and review after two checked copies. The actual case awaits the owner's private sign-in and explicit decision. Local restore has been tested. An independent off-device recovery remains pending.
+
+
 ## Public Geta satellite visibility — 2026-11-15
 
 The owner approved the [public visibility page](https://vmi3711898.contaboserver.net/visibility) under the label **Provisional Geta research area**. The Contabo runtime uses source commit `9ca96cadb8f04cd19165b85c52db3a6d58dbd7a9`. A dedicated loopback listener renders the reported Sentinel-2 scene classification counts and Copernicus attribution. A first timer-triggered run finished at 13:00 EAT and revalidated all six source asset identities while retaining their original measurements for November 8, 10, and 13. The enabled timer runs at 03:15 and 15:15 EAT. Tests exercise unavailable state, failed refresh retention, and an overdue status even without later writes.

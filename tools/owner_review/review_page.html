@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>$case_id · Owner review · ForestProof</title>
+<style>
+:root{color-scheme:light;--paper:#f8f6ef;--surface:#efefe5;--ink:#1d3028;--muted:#465a4e;--green:#225d43;--rule:#bdc5b5;--control:#758177}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.55 system-ui,sans-serif}
+h1,h2,h3,p,dl,dd{margin:0}
+h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.1;letter-spacing:-.04em}
+h1{font-size:clamp(2.7rem,6.55vw,4.7rem);margin:.45rem 0 .9rem}
+h2{font-size:clamp(1.7rem,3.2vw,2.5rem)}
+a{color:var(--green);font-weight:620;text-underline-offset:.22em;text-decoration-thickness:.08em}
+:is(a,input,textarea,button):focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.frame{width:min(100% - 3rem,67rem);margin-inline:auto}
+.skip{position:absolute;z-index:1;top:.25rem;left:.75rem;transform:translateY(-150%);padding:.6rem .85rem;background:var(--paper)}
+.skip:focus{transform:translateY(0)}
+.masthead{min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--rule)}
+.brand{font:bold 1.48rem Georgia,serif;letter-spacing:-.05em}
+.workspace{color:var(--muted);font-size:.82rem;text-align:right}
+.headline{display:grid;grid-template-columns:minmax(0,1fr) minmax(12rem,.43fr);gap:1.4rem 2rem;align-items:end;padding:clamp(2.2rem,5vw,3.75rem) 0 clamp(1.6rem,4vw,2.6rem);border-bottom:1px solid var(--rule)}
+.eyebrow{color:var(--muted);font-size:.75rem;line-height:1.35;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.case-id{font:650 .95rem/1.5 ui-monospace,Consolas,monospace;color:var(--green)}
+.assignment{display:grid;gap:.72rem;padding:0 0 .2rem 1rem;border-left:2px solid var(--rule)}
+dt{font-size:.79rem;color:var(--muted)}
+dd{font-weight:630;overflow-wrap:anywhere}
+.layout{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);align-items:start;gap:clamp(1.5rem,4vw,3.45rem);padding:clamp(1.7rem,4vw,2.65rem) 0}
+.evidence{min-width:0}
+.facts{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:.7rem 1.3rem;margin:1.25rem 0 1.05rem;padding:.85rem 0;border-block:1px solid var(--rule)}
+.evidence-summary{max-width:62ch;overflow-wrap:anywhere}
+.records{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin-top:1rem}
+.records a{display:inline-flex;align-items:center;min-height:2.75rem}
+.review{min-width:0;background:var(--surface);border:1px solid var(--rule);padding:clamp(1rem,3vw,1.6rem)}
+.review h2{font-size:clamp(1.65rem,3vw,2.05rem)}
+.feedback:empty{display:none}
+.feedback{margin:.9rem 0;color:var(--ink);font-size:.88rem;overflow-wrap:anywhere}
+.feedback [role=alert]{padding:.45rem .65rem;border-left:3px solid #815024;background:#f4e9d9}
+form{margin-top:1rem}
+fieldset{min-width:0;border:0;padding:0;margin:0}
+legend,.field>label{font-size:.9rem;font-weight:680}
+legend{margin-bottom:.37rem}
+.options{display:grid;gap:.4rem}
+.option{display:flex;gap:.64rem;align-items:center;min-height:2.7rem;padding:.5rem .64rem;background:var(--paper);border:1px solid var(--control);font-size:.91rem;font-weight:580;cursor:pointer}
+.option:has(:checked){border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.option input{flex:none;width:1rem;height:1rem;margin:0;accent-color:var(--green)}
+.field{margin-top:.89rem}
+.field>label{display:block;margin-bottom:.25rem}
+.hint{margin:.3rem 0 0;color:var(--muted);font-size:.78rem}
+input[type=date],textarea{display:block;width:100%;min-width:0;min-height:2.65rem;padding:.5rem .58rem;border:1px solid var(--control);background:var(--paper);color:var(--ink);border-radius:0;font:inherit}
+textarea{resize:vertical;min-height:5rem}
+button{margin-top:1rem;min-height:2.75rem;padding:.54rem .9rem;border:1px solid var(--green);border-radius:0;background:var(--green);color:#fff;font:670 .9rem/1.4 system-ui,sans-serif;cursor:pointer}
+button:hover{background:#194932}
+.history{padding:1.55rem 0 2.6rem;border-top:1px solid var(--rule);overflow-wrap:anywhere}
+.history>h2{margin-bottom:.8rem}
+.history :where(ul,ol){padding-inline-start:1.3rem}
+.history :where(li,article){padding:.65rem 0}
+.history :where(li + li, article + article){border-top:1px solid var(--rule)}
+.history :where(h3){font-size:1rem}
+.history :where(time){color:var(--muted)}
+.history :where(p){margin:.25rem 0}
+@media(max-width:43rem){
+.frame{width:calc(100% - 2rem)}
+.headline,.layout{grid-template-columns:minmax(0,1fr)}
+.assignment{grid-template-columns:repeat(2,minmax(0,1fr));padding:.65rem 0 0;border-left:0;border-top:1px solid var(--rule)}
+}
+@media(max-width:24rem){
+.facts{grid-template-columns:minmax(0,1fr)}
+.review button{width:100%}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to case review</a>
+<div class="frame">
+<header class="masthead">
+<span class="brand">ForestProof</span>
+<span class="workspace">Private owner review</span>
+</header>
+<main id="main" tabindex="-1">
+<header class="headline">
+<div>
+<p class="eyebrow">Historical evidence</p>
+<h1>Review the observation</h1>
+<p class="case-id">$case_id</p>
+</div>
+<dl class="assignment">
+<div><dt>Owner</dt><dd>$owner_name</dd></div>
+<div><dt>Review status</dt><dd>$status</dd></div>
+</dl>
+</header>
+<div class="layout">
+<section class="evidence" aria-labelledby="evidence-title">
+<h2 id="evidence-title">What the source observed</h2>
+<dl class="facts">
+<div><dt>Archived source</dt><dd>$source_name</dd></div>
+<div><dt>Observation date</dt><dd>$observation_date</dd></div>
+</dl>
+<p class="evidence-summary">$observation_summary</p>
+<nav class="records" aria-label="Case records">
+<a href="/receipt">Download original receipt</a>
+<a href="/dossier">Download case dossier</a>
+</nav>
+</section>
+<section class="review" aria-labelledby="review-title">
+<h2 id="review-title">Record your decision</h2>
+<div class="feedback" aria-live="polite">$feedback</div>
+<form action="/review" method="post">
+<input name="csrf" type="hidden" value="$csrf">
+<fieldset>
+<legend>Disposition</legend>
+<div class="options">
+<label class="option"><input name="disposition" type="radio" value="keep_open" required $keep_checked>Keep open for verification</label>
+<label class="option"><input name="disposition" type="radio" value="close_unconfirmed" $close_checked>Close as unconfirmed</label>
+</div>
+</fieldset>
+<div class="field">
+<label for="follow-up">Follow-up date</label>
+<input id="follow-up" name="follow_up" type="date" min="$minimum_date" value="$follow_up_value" aria-describedby="follow-up-hint">
+<p class="hint" id="follow-up-hint">Choose a date if you keep the case open.</p>
+</div>
+<div class="field">
+<label for="review-note">Review note</label>
+<textarea id="review-note" name="note" rows="3" maxlength="2000" required>$note_value</textarea>
+</div>
+<button type="submit">Record review</button>
+</form>
+</section>
+</div>
+<section class="history" aria-labelledby="history-title">
+<h2 id="history-title">Review history</h2>
+$review_history
+</section>
+</main>
+</div>
+</body>
+</html>
