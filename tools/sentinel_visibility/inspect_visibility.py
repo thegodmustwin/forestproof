@@ -54,11 +54,18 @@ def scene_pair(opener, day):
     if len(raw) > MAX_CATALOG_BYTES:
         raise ValueError("Catalog result exceeds the transfer limit")
     result = json.loads(raw)
-    if any(link.get("rel") == "next" for link in result["links"]):
+    features = result["features"]
+    # Earth Search also emits a next link when the response already has every match.
+    context = result.get("context")
+    if context is not None:
+        complete = context.get("matched") == context.get("returned") == len(features)
+    else:
+        complete = not any(link.get("rel") == "next" for link in result["links"])
+    if not complete:
         raise ValueError("Catalog window cannot be inspected in one page")
 
     tiles = {}
-    for item in result["features"]:
+    for item in features:
         properties = item["properties"]
         tile = properties.get("grid:code", "").removeprefix("MGRS-")
         acquired = datetime.fromisoformat(properties["datetime"]).astimezone(UTC)
@@ -140,7 +147,9 @@ def measure(data, epsg):
                 raise ValueError("SCL sample window is empty or oversized")
             values = raster.read(1, window=window)
             rows, cols = np.indices(values.shape)
-            x, y = raster.window_transform(window) * (cols.ravel() + 0.5, rows.ravel() + 0.5)
+            grid = raster.window_transform(window)
+            x = grid.c + grid.a * (cols.ravel() + 0.5)
+            y = grid.f + grid.e * (rows.ravel() + 0.5)
             lon, lat = map(np.asarray, transform(raster.crs, "EPSG:4326", x, y))
             west, south, east, north = BOUNDS
             inside = (west <= lon) & (lon < east) & (south <= lat) & (lat < north)

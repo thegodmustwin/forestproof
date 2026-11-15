@@ -1,3 +1,4 @@
+import json
 from datetime import date
 from io import BytesIO
 from unittest import TestCase
@@ -86,3 +87,26 @@ class TestVisibility(TestCase):
         provider = OfflineProvider(Response(200, {}, b'{"features":[],"links":[]}'))
         with self.assertRaisesRegex(ValueError, "does not have both catalog tile records"):
             scene_pair(provider, date(2026, 11, 10))
+
+    def test_catalog_next_link_with_complete_and_incomplete_results(self):
+        collection = "sentinel-2-l2a"
+        prefix = "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs"
+        day = date(2026, 11, 10)
+        items = []
+        for grid, key in (("36MZE", "36/M/ZE"), ("37MBV", "37/M/BV")):
+            item_id = f"S2A_{grid}_20261110_0_L2A"
+            items.append({
+                "id": item_id, "collection": collection,
+                "properties": {
+                    "grid:code": f"MGRS-{grid}", "datetime": "2026-11-10T08:00:15.831Z",
+                    "s2:datatake_id": "GS2A_20261110T075441_059463_N05.13",
+                },
+                "assets": {"scl": {"href": f"{prefix}/{key}/2026/11/{item_id}/SCL.tif"}},
+            })
+        result = {"features": items, "links": [{"rel": "next"}], "context": {"matched": 2, "returned": 2}}
+        provider = OfflineProvider(Response(200, {}, json.dumps(result).encode()))
+        self.assertEqual([item["tile"] for item in scene_pair(provider, day)], ["36MZE", "37MBV"])
+        result["context"]["matched"] = 3
+        provider = OfflineProvider(Response(200, {}, json.dumps(result).encode()))
+        with self.assertRaisesRegex(ValueError, "one page"):
+            scene_pair(provider, day)

@@ -4,6 +4,8 @@
 
 The [Sentinel-2 inspector](../tools/sentinel_visibility/README.md) uses public Earth Search scene metadata and ETag-checked SCL assets to report per-grid visibility in the provisional Geta rectangle. It keeps the two overlapping native grids separate and retains a SHA-256 receipt for each input. An absent or ambiguous scene pair fails explicitly. This path measures provider-classified visibility and uses no alert, GNW credential or case input. A public extent, refresh deployment and native disturbance eligibility remain open.
 
+A bounded run on Contabo reproduced the November 8 and 13 counts and measured November 10. That pass yielded 0 of 27,722 visible surface centres in T36MZE and 12 of 27,724 in T37MBV. Across all three dates, only the November 8 pass gave a substantial view of the rectangle. The Contabo run used the isolated Python environment and made no service changes. [Exact inputs and limits](../docs/DIRECT_SOURCE_EVALUATION.md#reproducible-sentinel-2-inspection--2026-11-15)
+
 
 ## Contabo private source-status stage — 2026-11-15
 
