@@ -3,6 +3,8 @@
 **Hosting update, 2026-11-10:** Contabo `vmi3711898` is now the target. The laptop reached it via a read-only strict-host-key SSH test. Cloud access, backup transfer and ForestProof deployment are unverified. Preserve other projects and keep RDP private over its existing SSH tunnel. Older OVH entries below are historical.
 
 ## Status legend
+The [Sentinel-2 visibility diagnostic](../tools/sentinel_visibility/README.md) ties each native-grid count to a reproducible source receipt. It provides a candidate input to the public observation-status page once the publication geography and recurring checks are approved. An alert source must still pass its own eligibility and access checks before owner-pilot use.
+
 The [source-status staging path](../tools/source_status/README.md#isolated-staging) now tracks separate check, report, and underlying observation dates. Public publication and recurring release work still depend on area and source rights. The owner case workflow still needs a qualified record-level feed.
 
 The [source-status publication preview](../tools/source_status/README.md) is a local static candidate. Production publication still requires a source and geography decision, rights review, recurring updates, and stale handling. The owner workflow, approved alert feed, and public release remain separate milestones.

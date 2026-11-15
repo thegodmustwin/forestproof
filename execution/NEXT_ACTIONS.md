@@ -1,4 +1,9 @@
 # Next Actions
+
+## Direct visibility research — 2026-11-15
+
+Use the [Sentinel-2 inspector](../tools/sentinel_visibility/README.md) to reproduce scene visibility from the exact provider inputs. For a public visibility page, choose a publishable extent, include the Copernicus attribution, and verify recurring refresh without treating gaps in the catalog as clear or cloudy conditions. Keep each overlapping grid's denominator explicit. Continue native RADD eligibility and access checks for the independent disturbance pilot.
+
 ## Owner pilot and publication gates — 2026-11-15
 
 The [separate staging worker](../tools/source_status/README.md#isolated-staging) can verify a source refresh, detect an unchanged generation, and distinguish stale, failed and unavailable data. The threshold applies to the check age. The raster's local observation date remains independent. Verify publishable geography and rights for the exact aggregate layer before any public exposure, and set the recurring refresh interval during deployment.
