@@ -21,7 +21,8 @@ from rasterio.coords import BoundingBox
 from rasterio.windows import Window, from_bounds
 
 
-BASE_URL = "https://storage.googleapis.com/earthenginepartners-hansen/GLADalert/C2/current"
+ARCHIVE_URL = "https://storage.googleapis.com/earthenginepartners-hansen/GLADalert/C2"
+BASE_URL = f"{ARCHIVE_URL}/current"
 TILE = "obsDate_030E_10S_040E_00N.tif"
 EXPECTED_EXTENT = BoundingBox(30, -10, 40, 0)
 BLOCK_SIZE = 256 * 1024
@@ -37,10 +38,21 @@ class NoRedirect(HTTPRedirectHandler):
 class ObservationDateTile:
     """Read a pinned object through budgeted byte ranges for offline inspection."""
 
-    def __init__(self, generation: str, *, opener=None):
+    def __init__(self, generation: str, *, opener=None, archive_day: date | None = None, band="observation"):
         if not re.fullmatch(r"[0-9]{1,20}", generation):
             raise ValueError("Expected an exact numeric provider object generation")
-        self.url = f"{BASE_URL}/{TILE}?{urlencode({'generation': generation})}"
+        filenames = {"observation": TILE}
+        base = BASE_URL
+        if archive_day is not None:
+            base = f"{ARCHIVE_URL}/{archive_day:%Y/%m_%d}"
+            filenames.update({
+                "status": f"alert{archive_day:%y}_030E_10S_040E_00N.tif",
+                "detection": f"alertDate{archive_day:%y}_030E_10S_040E_00N.tif",
+            })
+        if band not in filenames:
+            raise ValueError("A status or detection raster requires a dated archive")
+        self.filename = filenames[band]
+        self.url = f"{base}/{self.filename}?{urlencode({'generation': generation})}"
         self._generation = generation
         self._opener = opener or build_opener(NoRedirect())
         self._deadline = time.monotonic() + 90
@@ -72,7 +84,7 @@ class ObservationDateTile:
         )
 
     def open(self, path, mode="rb"):
-        if PurePath(path).name != TILE or mode not in {"r", "rb"}:
+        if PurePath(path).name != self.filename or mode not in {"r", "rb"}:
             raise FileNotFoundError(path)
         return TileHandle(self)
 

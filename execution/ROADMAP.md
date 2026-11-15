@@ -18,6 +18,8 @@ The [source-status publication preview](../tools/source_status/README.md) is a l
 
 ## P0 — smallest complete evidence loop
 
+The [private alert publication rehearsal](../tools/alert_publication/README.md) verifies projection and stale behaviour with controlled inputs. A public alert release still depends on source qualification, explicit record approval and a real owner-pilot restore.
+
 The [local historical review](../tools/owner_review/README.md) demonstrated named review and receipt recovery for a private archive. A real owner disposition, off-device restore, and production alert ingestion remain separate pilot milestones.
 
 | Order | Milestone | Status | Completion evidence / remaining work |

@@ -16,3 +16,16 @@ Use the observation-date asset's `x-goog-generation` from a HEAD request to the 
 The date bins count centres at most 7, 14, 30 and 60 calendar days old, inclusive. Documented zero means the source has no cloud-free observation for that centre in the current year. The tool reports raster-masked centres separately. The underlying bytes come from the producer's direct publication route. No provider credentials, alert raster requests, automatic polling or application routes are involved.
 
 Cite UMD GLAD and Hansen et al. (2016) for any use of the dataset. See [product guidance](https://glad.umd.edu/dataset/glad-forest-alerts), [download and layer definitions](https://glad-forest-alert.appspot.com/views/download/download-view.html) and [method reference](https://doi.org/10.1088/1748-9326/11/3/034008).
+
+## Paired alert archive inspection
+
+Inspect one explicitly dated archive in the provisional Geta research rectangle. Supply the generation of each file independently. This command uses the same pinned range reader and 8 MiB per-object ceiling as the observation-date diagnostic.
+
+```text
+python tools/glad_l_research/inspect_glad_alert_pair.py 2026-11-13 --status-generation 1794578188389979 --detection-generation 1794578211527205 --observation-generation 1794579516954440
+python tools/glad_l_research/inspect_glad_alert_pair.py 2026-11-14 --status-generation 1794681529413083 --detection-generation 1794681567386287 --observation-generation 1794682860805108
+```
+
+The report verifies the native transforms, uses the same 14,400 cell centres for all three files and keeps release, detection and clear-observation dates distinct. Status 2 is probable and status 3 is confirmed by the provider's algorithm. The producer's status, date and observation layers do not establish the complete native eligibility mask for this pilot. Counts describe cells, not a set of distinct incidents or an area estimate. [Layer definitions](https://glad-forest-alert.appspot.com/views/download/download-view.html)
+
+For a private review candidate, pass `--private-receipt` with a new file in an owner-protected directory outside Git. It selects the most recent cell with status 3 and records the source identifiers, native grid location and date fields. It assigns no field verification, owner decision or publication approval. The normal stdout report contains aggregate results only.

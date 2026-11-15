@@ -8,6 +8,7 @@ on:
       - 'tools/source_status/**'
       - 'tools/sentinel_visibility/**'
       - 'tools/owner_review/**'
+      - 'tools/alert_publication/**'
       - '.github/workflows/nasa-research.yml'
   push:
     branches: [main]
@@ -17,6 +18,7 @@ on:
       - 'tools/source_status/**'
       - 'tools/sentinel_visibility/**'
       - 'tools/owner_review/**'
+      - 'tools/alert_publication/**'
       - '.github/workflows/nasa-research.yml'
 
 permissions:
@@ -47,3 +49,6 @@ jobs:
       - name: Verify private owner review
         working-directory: .
         run: python -m unittest discover -s tools/owner_review -v
+      - name: Verify private alert-publication staging
+        working-directory: .
+        run: python -m unittest discover -s tools/alert_publication -v

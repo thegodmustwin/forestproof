@@ -1,5 +1,12 @@
 # Current Status
 
+## Alert launch qualification and staging — 2026-11-15
+
+The [paired GLAD-L archive checks](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) matched across two independent source releases. Each of 14,400-cell windows recorded 30 probable and 292 provider-confirmed cells. The latest first-detection day was September 24. Zero cells had a clear observation in the preceding seven days. One September 8 provider-confirmed observation was preserved as a private historical candidate, verified against the repeat window hashes and copied locally with the same SHA-256. It carries no owner or release approval. Recent usable coverage and direct-layer publication rights remain unresolved. RADD's documented coverage-raster route returned HTTP 403 without a key. The display-layer sample remains screening evidence.
+
+The [private alert page rehearsal](../tools/alert_publication/README.md) validates source, area, exact release and receipt approval, and separates source release, observation and check dates. Synthetic fixtures verified unavailable, failed and overdue states, private-field exclusion, repeated reads, read-only routing and rejection of stale approvals. The public Geta visibility route is separate. The real historical owner review still awaits named disposition before a test of its protected off-device backup.
+
+
 ## Local historical owner review — 2026-11-15
 
 The [private owner review](../tools/owner_review/README.md) verifies the recovered FP-RESEARCH-001 bundle, including all 16 manifest entries and ten source rasters. It retains the original case, observation, dossier and manifest bytes in a separate local database. The loopback review records the provisioned owner's identity, decision, UTC time, receipt digest, note and follow-up day. The historical record remains immutable through the review.

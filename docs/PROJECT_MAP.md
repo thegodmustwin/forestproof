@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Alert publication rehearsal
+
+The [loopback alert preview](../tools/alert_publication/README.md) projects only explicitly approved fields tied to an exact source release and receipt. The [GLAD-L paired archive inspection](../tools/glad_l_research/README.md#paired-alert-archive-inspection) checks provider status, detection and observation dates independently of the public view.
+
 ## Sentinel-2 scene visibility
 
 [`tools/sentinel_visibility/`](../tools/sentinel_visibility/README.md) checks one to three Sentinel-2 Level-2A acquisitions against the provisional Geta rectangle. The private JSON report preserves two separate native grid counts and pins each SCL input by ETag and SHA-256. It sits outside alert ingestion, case storage and public routing.
