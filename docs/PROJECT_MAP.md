@@ -1,6 +1,7 @@
 # ForestProof — repository and system map
 
 ## Source-status publication preview
+The separate `tools/source_status/stage_source_status.py` command refreshes one observation source into its own atomic state file and serves a loopback-only read view. It does not route to the demo API or case storage. See [the staged workflow](../tools/source_status/README.md#isolated-staging).
 
 `tools/source_status/` validates the fixed provisional GLAD-L report and generates a standalone read-only HTML page. The page displays the provider file update, ForestProof check, reporting day and local observation day as separate facts. See [local build and limits](../tools/source_status/README.md).
 
