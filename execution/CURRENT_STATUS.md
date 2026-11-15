@@ -1,5 +1,9 @@
 # Current Status
 
+## Source-status page — 2026-11-14
+
+The stand-alone [source-status renderer](../tools/source_status/README.md) validated and rendered the existing GLAD-L aggregate report locally. It exposes separate provider, check and observation dates and the sample denominator. Tests cover source and area binding, invalid report rejection before replacement, private-field exclusion, and the difference between missing and zero-observation data. No server release, data refresh schedule, or alert feed was enabled.
+
 ## Radar acquisition and RADD baseline check — 2026-11-14
 
 Nine Sentinel-1 radar acquisition footprints intersected the provisional rectangle over a month, most recently on November 11. RADD's published coverage tiles rendered 2.88% of sampled display pixels in the coverage colour at zoom 14. The native asset combines historical regional baselines, including the Africa input labelled `v20201208`. Native sampling and operational eligibility remain unverified. The same GLAD-L tile generation reproduced the November 3 latest local clear date. [Source checks](../docs/DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14)

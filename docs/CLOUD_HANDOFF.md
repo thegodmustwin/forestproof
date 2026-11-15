@@ -8,6 +8,8 @@
 
 ## Private pilot checkpoint (2026-11-14)
 
+The [standalone source-status preview](../tools/source_status/README.md) can render an aggregate GLAD-L report or an unavailable state with no application session. Public release rights, a scheduled refresh, staleness handling in production, and a verified alert source are still open.
+
 The [RADD source check](DIRECT_SOURCE_EVALUATION.md#radd-baseline-and-radar-acquisitions--2026-11-14) found recent raw radar acquisitions and a small coverage footprint in the published map. Native RADD eligibility and alert processing are unverified. GLAD-L reproduced the same local dates on its current generation, so wait for a distinct release before counting an additional cycle.
 
 The [GLAD-L date diagnostic](DIRECT_SOURCE_EVALUATION.md#measured-local-observation-recency--2026-11-14) measured actual local cloud-free recency on a pinned public UMD tile. The regional November 13 update carries a latest local date of November 3, with only 14.8% of sampled centres seen within 14 days. Repeat over subsequent generations and verify the alert mask and terms. Keep the future public read surface independent of demo and private case storage.
