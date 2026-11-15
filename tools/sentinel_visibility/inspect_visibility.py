@@ -173,6 +173,7 @@ def inspect(days, opener):
     return {
         "schema": "forestproof.sentinel2_visibility.v1",
         "area": "Provisional Geta research rectangle",
+        "bounds_wgs84": list(BOUNDS),
         "checked_at": datetime.now(UTC).isoformat(),
         "native_resolution_metres": 20,
         "note": "Overlapping grids are reported separately. Scene visibility does not measure disturbance.",

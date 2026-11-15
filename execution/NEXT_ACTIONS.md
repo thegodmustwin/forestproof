@@ -2,7 +2,7 @@
 
 ## Direct visibility research — 2026-11-15
 
-Use the [Sentinel-2 inspector](../tools/sentinel_visibility/README.md) to reproduce scene visibility from the exact provider inputs. For a public visibility page, choose a publishable extent, include the Copernicus attribution, and verify recurring refresh without treating gaps in the catalog as clear or cloudy conditions. Keep each overlapping grid's denominator explicit. Continue native RADD eligibility and access checks for the independent disturbance pilot.
+Review the [Sentinel-2 visibility preview](../tools/sentinel_visibility/README.md#private-visibility-page) and confirm a public reporting extent. Stage the publication route with a recurring source check and rebuild, and observe the stale state over a failed or skipped check before enabling public access. The preview already includes the Copernicus attribution and each overlapping grid's denominator. Keep the record-level disturbance pilot independent and continue native RADD eligibility and access checks.
 
 ## Owner pilot and publication gates — 2026-11-15
 

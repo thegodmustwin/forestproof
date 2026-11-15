@@ -1,5 +1,12 @@
 # Current Status
 
+## Private Sentinel-2 visibility page — 2026-11-15
+
+The [visibility preview builder](../tools/sentinel_visibility/README.md#private-visibility-page) rendered the three dated Sentinel-2 grid pairs from a fresh, bounded provider inspection. It distinguishes zero, a very small nonzero share, overdue checks and unavailable reports. The page contains aggregate data and Copernicus attribution. It excludes coordinates, file receipts and case data. Chrome rendering at 1440, 390 and 320 pixels and the keyboard control for the sampling method were checked. The overdue state was exercised with an advanced test clock.
+
+Contabo served the generated page on a temporary loopback listener. HTTP smoke checks matched the page bytes and denied the case path, the private report path and writes. The existing tester gate still returned HTTP 401 to anonymous access, and SSH and remote desktop remained active. Public exposure and recurring refresh and rebuild are awaiting the publication decision.
+
+
 ## Repeatable Sentinel-2 visibility inspection — 2026-11-15
 
 The [Sentinel-2 inspector](../tools/sentinel_visibility/README.md) uses public Earth Search scene metadata and ETag-checked SCL assets to report per-grid visibility in the provisional Geta rectangle. It keeps the two overlapping native grids separate and retains a SHA-256 receipt for each input. An absent or ambiguous scene pair fails explicitly. This path measures provider-classified visibility and uses no alert, GNW credential or case input. A public extent, refresh deployment and native disturbance eligibility remain open.
