@@ -5,6 +5,8 @@
 ## Status legend
 The owner-approved [Geta visibility page](https://vmi3711898.contaboserver.net/visibility) publishes verified native grid counts and source-check age independently of the case API. Its scheduled Contabo check and exact public route have been verified. The owner pilot still needs an approved operational area and an eligible alert source with verified access and rights.
 
+The [radar research checkpoint](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) establishes repeat usable inputs in the provisional Geta window and a reproducible external benchmark. Qualify the proposed detector with independent regional evidence and measure the CPU path before enabling a radar alert feed.
+
 The [source-status staging path](../tools/source_status/README.md#isolated-staging) now tracks separate check, report, and underlying observation dates. Public publication and recurring release work still depend on area and source rights. The owner case workflow still needs a qualified record-level feed.
 
 The [source-status publication preview](../tools/source_status/README.md) is a local static candidate. Production publication still requires a source and geography decision, rights review, recurring updates, and stale handling. The owner workflow, approved alert feed, and public release remain separate milestones.

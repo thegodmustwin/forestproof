@@ -1,5 +1,9 @@
 # Current Status
 
+## Historical radar backtest - 2026-11-16
+
+The [California backtest](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) scored the published JPL radar v0.1 prototype against field-validated federal fire reference maps. First flags matched 44.0% and 84.9% of assessed high-severity centres at Eaton and Palisades. The corresponding control-proxy flag rates were 4.8% and 13.1%. The strict interior filter left few positive centres, and agreement varied between the two fires. The aggregate scores reproduced on replay. A regional test of the detector, source refresh and operational publication remain open.
+
 ## Matched Geta radar coverage - 2026-11-16
 
 Four original OPERA RTC-S1 files matched NASA CMR sizes and checksums. The [repeat-pass inspection](../docs/DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16) found that all 12,432 sampled centres in the provisional Geta research rectangle pass both acquisition masks and have readable VV values on November 2 and 14. Five same-burst reference captures from the same season in 2025 are catalogued. The cause of the paired difference, detector accuracy and scheduled operation remain unverified. This is a research result for the provisional rectangle. It establishes no operating boundary or public alert.

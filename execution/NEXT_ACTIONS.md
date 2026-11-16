@@ -2,7 +2,7 @@
 
 ## Test the matched Geta radar series
 
-Use the [completed seasonal comparison](../docs/DIRECT_SOURCE_EVALUATION.md#seasonal-comparison-completed---2026-11-16) as a data-availability and reproducibility checkpoint. Pair an independently documented change event with a stable reference area for a bounded backtest. Check whether the method finds the event and how often it flags the stable area. Keep descriptions at observation level and record the method version, evidence and uncertainty. Measure resources in an isolated CPU test before attempting the full-tile detector on Contabo. An operational area, source cadence, classification evidence and a reproducible private-case workflow are required before publishing disturbance records.
+The [Geta seasonal comparison](../docs/DIRECT_SOURCE_EVALUATION.md#seasonal-comparison-completed---2026-11-16) verifies bounded input coverage. The [California backtest](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) gives a prototype comparison for two fires. Next choose a documented regional vegetation-change event and independently screened control before reviewing radar outcomes. Keep full and strict-interior denominators, record missing data, and compare the proposed detector version with independent labels before selecting a publication threshold. Measure the CPU and storage cost in isolation before a full-tile Contabo run. Source cadence, an approved pilot area and a recoverable private workflow remain publication gates.
 
 ## Advance the alert launch gates
 
