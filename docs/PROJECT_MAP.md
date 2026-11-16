@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Matched radar research
+
+[`tools/nasa_rtc_research/`](../tools/nasa_rtc_research/README.md) verifies the pinned OPERA RTC-S1 batch and compares paired VV and VH against same-season reference captures on the common quality mask. Its inputs and aggregate results remain outside the live application. [Repeat-pass evidence](DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16)
+
 ## Alert publication rehearsal
 
 The [loopback alert preview](../tools/alert_publication/README.md) projects only explicitly approved fields tied to an exact source release and receipt. The [GLAD-L paired archive inspection](../tools/glad_l_research/README.md#paired-alert-archive-inspection) checks provider status, detection and observation dates independently of the public view.
