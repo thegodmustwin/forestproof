@@ -2,6 +2,23 @@
 
 **Initial access check:** 2026-11-12 UTC. **Evidence and terms reviewed:** 2026-11-13. This is an experimental access assessment, not evidence of a functioning live feed, official Geta boundary, land-cover change, a legal finding, or production readiness. The provisional research box (36.60, -0.49, 36.63, -0.46) is not an authorized operational filter.
 
+## Geta repeat-pass radar research - 2026-11-16
+
+Two NASA OPERA RTC-S1 V1 Sentinel-1C captures from burst `T079-168620-IW3` have been compared over the existing provisional Geta research rectangle. The four original TIFFs were downloaded using the owner's Earthdata Login. Their byte sizes and MD5 digests matched the corresponding CMR asset metadata. These asset checks verify the downloaded bytes against the catalog. [2 November CMR record](https://cmr.earthdata.nasa.gov/search/granules.umm_json?concept_id=G4400241126-ASF) · [14 November CMR record](https://cmr.earthdata.nasa.gov/search/granules.umm_json?concept_id=G4412106340-ASF)
+
+| Acquisition date | Asset | Size in bytes | NASA CMR MD5 |
+| --- | --- | ---: | --- |
+| 2026-11-02 | VV | 6,537,332 | `3fd366567bea47985c9421bd2306199d` |
+| 2026-11-02 | Validity mask | 53,771 | `4e0db3463531371076c2fb87fba2670c` |
+| 2026-11-14 | VV | 6,524,761 | `cd1ca87bde55eff7ce5d0a1f32106e9b` |
+| 2026-11-14 | Validity mask | 53,712 | `c7d48d691f2350b1a1cce125fe4228e2` |
+
+The four sample windows share the same native 30 m grid in EPSG:32737. The check selected native pixel centres inside the half-open WGS84 research rectangle, with no resampling. Every one of **12,432** centres contained positive, finite, unmasked VV power and acquisition mask class 0 on both dates. Class 0 denotes a valid sample unaffected by layover or shadow. On those paired centres, the 10th, 50th and 90th percentiles of `10 log10(VV_later / VV_earlier)` were **-2.101, 0.742 and 3.737 dB**. This describes the observed difference in radar return. Its cause, the presence of disturbance, and classification accuracy remain unknown. [ASF validity mask specification](https://hyp3-docs.asf.alaska.edu/guides/opera_rtc_product_guide/#validity-mask)
+
+Five same-burst Sentinel-1C acquisitions were catalogued in the 2025 seasonal reference window, on September 25 (`G3767782876-ASF`), October 7 (`G3795951143-ASF`), October 19 (`G3821921079-ASF`), October 31 (`G3838774075-ASF`) and November 12 (`G3864038319-ASF`). Their two polarization bands and masks total **65,534,889 bytes** in catalog metadata. The same burst had zero matches in the corresponding 2024 and 2023 windows from the bounded search; other bursts and windows were outside that check. The five reference captures have not undergone raster inspection. [2025 reference search](https://cmr.earthdata.nasa.gov/search/granules.umm_json?collection_concept_id=C2777436413-ASF&bounding_box=36.60%2C-0.49%2C36.63%2C-0.46&temporal=2025-09-15T00%3A00%3A00Z%2C2025-11-14T23%3A59%3A59Z&page_size=100)
+
+Use a checksum-verified batch for the next bounded comparison. Compare VV and VH against same-season reference captures, inspect every acquisition-specific mask and test normal variation against independent reference evidence before classifying disturbance. The standard OPERA detector operates on a full MGRS tile for one track and date, with reference selection, ancillary masks and a separate temporal confirmation step. CPU compute and storage requirements on Contabo remain unmeasured. [OPERA DIST-S1 workflow](https://github.com/opera-adt/dist-s1) · [Reference selection](https://github.com/opera-adt/dist-s1-enumerator#parameters-for-enumeration-of-rtc-s1-inputs)
+
 ## Summary
 
 - NASA OPERA DIST-HLS V1 catalog metadata and a public browse PNG were accessible without login. The owner used Earthdata Login to download four science bands for each of two granules from the November 3 Landsat 8 acquisition. The [two-tile comparison](NASA_DIST_SAMPLE_20261112.md#two-tile-comparison) verified band alignment and complete geometric overlap within the provisional rectangle. Both grids had a November 3 last-assessed date for 722 of 12,432 sampled centres (5.8%). Of those, 237 centres per grid also passed the conservative ForestProof quality screen (1.9% of the rectangle's sampled centres). Both grids describe one acquisition. See the [matching Fmask results](NASA_DIST_SAMPLE_20261112.md#nasa-quality-results-for-november-3). Operational suitability remains unverified.

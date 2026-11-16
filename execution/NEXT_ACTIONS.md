@@ -1,5 +1,9 @@
 # Next Actions
 
+## Test the matched Geta radar series
+
+Use the [verified repeat-pass inputs](../docs/DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16) to plan one Earthdata-authenticated batch for the paired VH layers and 2025 seasonal reference inputs. Verify checksums, per-capture masks and grid alignment before comparing polarizations against a baseline. Use independent reference evidence to distinguish normal variability from candidate disturbance. Measure resources in an isolated CPU test before attempting the full-tile detector on Contabo. An operational area, source cadence, classification evidence and a reproducible private-case workflow are required before publishing disturbance records.
+
 ## Advance the alert launch gates
 
 The [private alert preview](../tools/alert_publication/README.md) is ready for integration after source and owner review. The [paired GLAD-L archive comparison](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) verified bounded repeatable reads and historical records. Establish current usable coverage, authorized access and exact publication rights before choosing GLAD-L or RADD. Complete FP-RESEARCH-001 in the existing local owner review and test an independent recovery of the actual signed-in decision. The public visibility release is independent of these checkpoints.

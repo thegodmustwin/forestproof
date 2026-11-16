@@ -1,5 +1,9 @@
 # Current Status
 
+## Matched Geta radar coverage - 2026-11-16
+
+Four original OPERA RTC-S1 files matched NASA CMR sizes and checksums. The [repeat-pass inspection](../docs/DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16) found that all 12,432 sampled centres in the provisional Geta research rectangle pass both acquisition masks and have readable VV values on November 2 and 14. Five same-burst reference captures from the same season in 2025 are catalogued. Reference-file quality, cause of the paired difference, detector accuracy and scheduled operation remain unverified. This is a research result for the provisional rectangle. It establishes no operating boundary or public alert.
+
 ## Alert launch qualification and staging — 2026-11-15
 
 The [paired GLAD-L archive checks](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) matched across two independent source releases. Each of 14,400-cell windows recorded 30 probable and 292 provider-confirmed cells. The latest first-detection day was September 24. Zero cells had a clear observation in the preceding seven days. One September 8 provider-confirmed observation was preserved as a private historical candidate, verified against the repeat window hashes and copied locally with the same SHA-256. It carries no owner or release approval. Recent usable coverage and direct-layer publication rights remain unresolved. RADD's documented coverage-raster route returned HTTP 403 without a key. The display-layer sample remains screening evidence.
