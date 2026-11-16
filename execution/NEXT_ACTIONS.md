@@ -2,7 +2,7 @@
 
 ## Test the matched Geta radar series
 
-Use the [verified repeat-pass inputs](../docs/DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16) to plan one Earthdata-authenticated batch for the paired VH layers and 2025 seasonal reference inputs. Verify checksums, per-capture masks and grid alignment before comparing polarizations against a baseline. Use independent reference evidence to distinguish normal variability from candidate disturbance. Measure resources in an isolated CPU test before attempting the full-tile detector on Contabo. An operational area, source cadence, classification evidence and a reproducible private-case workflow are required before publishing disturbance records.
+Use the [completed seasonal comparison](../docs/DIRECT_SOURCE_EVALUATION.md#seasonal-comparison-completed---2026-11-16) as a data-availability and reproducibility checkpoint. Pair an independently documented change event with a stable reference area for a bounded backtest. Check whether the method finds the event and how often it flags the stable area. Keep descriptions at observation level and record the method version, evidence and uncertainty. Measure resources in an isolated CPU test before attempting the full-tile detector on Contabo. An operational area, source cadence, classification evidence and a reproducible private-case workflow are required before publishing disturbance records.
 
 ## Advance the alert launch gates
 
