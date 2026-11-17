@@ -1,5 +1,9 @@
 # Current Status
 
+## Mount Kenya radar backtest - 2026-11-17
+
+The [local Mount Kenya backtest](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) used independently mapped 2019 fire extent and Sentinel-2-screened matched controls. At the fixed 3 dB two-band threshold, the candidate flagged 11,336 of 144,677 matched mapped-burn cells (7.8%) and 4,260 of 144,677 matched control cells (2.9%). The aggregate reproduced from retained inputs. Most mapped burn cells went unflagged at all three tested thresholds. The backtest leaves smaller canopy disturbance, seasonal false flags, and an operational publication threshold unresolved.
+
 ## Historical radar backtest - 2026-11-16
 
 The [California backtest](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) scored the published JPL radar v0.1 prototype against field-validated federal fire reference maps. First flags matched 44.0% and 84.9% of assessed high-severity centres at Eaton and Palisades. The corresponding control-proxy flag rates were 4.8% and 13.1%. The strict interior filter left few positive centres, and agreement varied between the two fires. The aggregate scores reproduced on replay. A regional test of the detector, source refresh and operational publication remain open.

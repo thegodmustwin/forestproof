@@ -4,6 +4,8 @@
 
 [`tools/nasa_rtc_research/`](../tools/nasa_rtc_research/README.md) verifies the pinned OPERA RTC-S1 batch and compares paired VV and VH against same-season reference captures on the common quality mask. Its inputs and aggregate results remain outside the live application. [Repeat-pass evidence](DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16)
 
+The [Mount Kenya scorer](../tools/nasa_rtc_research/README.md#mount-kenya-fire-backtest) reads bounded Digital Earth Africa radar and Sentinel-2 optical windows, scores fixed thresholds against an independent Copernicus reference, and writes an aggregate research report outside the repository.
+
 The [historical fire backtest](../tools/nasa_rtc_research/README.md#historical-fire-backtest) scores the published JPL prototype against independent BAER severity maps, preserving missing data and separate sample counts for each matched class.
 
 ## Alert publication rehearsal

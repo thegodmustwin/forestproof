@@ -31,3 +31,14 @@ python -m unittest discover -s tools/nasa_rtc_research -p 'test_backtest_fire_re
 ```
 
 The output separates each reference class, missing radar and first flags for four neighbourhood sizes. It uses the delivered acquisition outcome from the pinned JPL prototype. [Interpretation and results](../../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16)
+
+## Mount Kenya fire backtest
+
+Use Python 3.12 and an existing empty directory outside Git. Set `FORESTPROOF_KENYA_RESEARCH_DIR` to that directory and save the [Copernicus EMSR345 vector archive](https://cems-mapping-website.s3.eu-west-1.amazonaws.com/static/activations/EMSR345/EMSR345_01MOUNTKENYA_01DELINEATION_MONIT01_v1_vector.zip) there under its original filename. The scorer verifies the pinned SHA-256 before reading the archive. It uses anonymous bounded reads of Digital Earth Africa and Sentinel-2 rasters and reuses the local windows on replay.
+
+```text
+python -m pip install -r tools/nasa_dist_research/requirements.txt pyshp==2.3.1
+python tools/nasa_rtc_research/kenya_backtest/score.py
+```
+
+The scorer writes `mount-kenya-report.json` in the research directory. Run it again against the retained windows to compare the aggregate hash. Use individual missing-pixel counts alongside the paired denominators. [Method and results](../../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17)

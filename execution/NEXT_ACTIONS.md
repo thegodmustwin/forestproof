@@ -1,8 +1,8 @@
 # Next Actions
 
-## Test the matched Geta radar series
+## Extend the Kenyan radar validation
 
-The [Geta seasonal comparison](../docs/DIRECT_SOURCE_EVALUATION.md#seasonal-comparison-completed---2026-11-16) verifies bounded input coverage. The [California backtest](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) gives a prototype comparison for two fires. Next choose a documented regional vegetation-change event and independently screened control before reviewing radar outcomes. Keep full and strict-interior denominators, record missing data, and compare the proposed detector version with independent labels before selecting a publication threshold. Measure the CPU and storage cost in isolation before a full-tile Contabo run. Source cadence, an approved pilot area and a recoverable private workflow remain publication gates.
+The [Mount Kenya backtest](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) verified a reproducible local comparison and showed limited recall for the simple dual-band rule. Keep the first fire outcome in the record and use a separate documented canopy disturbance to evaluate any revised method. Sample multiple stable periods and vegetation types before considering a public threshold. Measure CPU and storage on a bounded window before any full-tile Contabo experiment. Source cadence, an approved pilot area and a recoverable private workflow remain publication gates.
 
 ## Advance the alert launch gates
 
