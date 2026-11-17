@@ -1,4 +1,4 @@
-        @geta_visibility path /visibility
+        @geta_visibility path /visibility /welcome
         handle @geta_visibility {
             route {
                 @geta_visibility_write not method GET HEAD

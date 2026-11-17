@@ -4,6 +4,10 @@
 
 The [loopback alert preview](../tools/alert_publication/README.md) projects only explicitly approved fields tied to an exact source release and receipt. The [GLAD-L paired archive inspection](../tools/glad_l_research/README.md#paired-alert-archive-inspection) checks provider status, detection and observation dates independently of the public view.
 
+## Public ForestProof entry
+
+The [homepage renderer](../tools/sentinel_visibility/build_home_page.py) introduces Geta from the same validated read-only snapshot as the visibility report and links to `/visibility`. Both pages use the [Contabo visibility service](../infrastructure/deployment/sentinel-visibility/README.md).
+
 ## Sentinel-2 scene visibility
 
 [`tools/sentinel_visibility/`](../tools/sentinel_visibility/README.md) checks one to three Sentinel-2 Level-2A acquisitions against the provisional Geta rectangle. The private JSON report preserves two separate native grid counts and pins each SCL input by ETag and SHA-256. It sits outside alert ingestion, case storage and public routing.

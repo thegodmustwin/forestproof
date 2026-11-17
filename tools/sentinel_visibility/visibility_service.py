@@ -9,12 +9,13 @@ from http.client import HTTPException
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from tools.sentinel_visibility.build_home_page import render_home
 from tools.sentinel_visibility.build_visibility_page import render
 from tools.sentinel_visibility.project_visibility import project
 from tools.source_status.build_source_status import read_report, write_page
 
 
-PUBLIC_PATH = "/visibility"
+PUBLIC_PATHS = {"/visibility", "/welcome"}
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
 
 
@@ -65,12 +66,14 @@ def refresh(path, *, clock=lambda: datetime.now(UTC), inspect=fetch):
     return failed
 
 
-def response_for(path, *, now):
+def response_for(path, *, now, route="/visibility"):
     try:
         state, snapshot = read_state(path, now)
     except ERRORS:
         state, snapshot = None, None
     failed_at = datetime.fromisoformat(state["attempted_at"]) if state and state["failed"] else None
+    if route == "/welcome":
+        return 200, render_home(snapshot, now=now, failed_at=failed_at).encode("utf-8")
     body = render(snapshot, now=now, public=True, failed_at=failed_at)
     return (200 if snapshot else 503), body.encode("utf-8")
 
@@ -89,11 +92,12 @@ def serve(path, port, hostname):
             if self.headers.get("Host") not in allowed_hosts:
                 self.send_error(400)
                 return
-            if self.path.partition("?")[0] != PUBLIC_PATH:
+            route = self.path.partition('?')[0]
+            if route not in PUBLIC_PATHS:
                 self.send_error(404)
                 return
             try:
-                status, body = response_for(path, now=datetime.now(UTC))
+                status, body = response_for(path, now=datetime.now(UTC), route=route)
             except ERRORS:
                 self.send_error(503)
                 return

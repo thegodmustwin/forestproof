@@ -2,6 +2,8 @@
 
 **Hosting update, 2026-11-10:** Contabo `vmi3711898` is now the target. The laptop reached it via a read-only strict-host-key SSH test. Cloud access, backup transfer and ForestProof deployment are unverified. Preserve other projects and keep RDP private over its existing SSH tunnel. Older OVH entries below are historical.
 
+The public homepage and Geta walkthrough give visitors a self-serve path into the visibility report. A custom domain can point to the same Contabo service after DNS, HTTPS and access boundaries are verified.
+
 ## Status legend
 The owner-approved [Geta visibility page](https://vmi3711898.contaboserver.net/visibility) publishes verified native grid counts and source-check age independently of the case API. Its scheduled Contabo check and exact public route have been verified. The owner pilot still needs an approved operational area and an eligible alert source with verified access and rights.
 

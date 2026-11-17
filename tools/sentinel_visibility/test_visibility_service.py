@@ -13,6 +13,22 @@ NOW = datetime(2026, 11, 15, 9, tzinfo=UTC)
 
 
 class TestVisibilityService(TestCase):
+    def test_welcome_links_to_report_when_source_is_unavailable(self):
+        with TemporaryDirectory() as tmp:
+            state = Path(tmp) / "source.json"
+            status, page = response_for(state, now=NOW, route="/welcome")
+            self.assertEqual(status, 200)
+            self.assertIn(b"Report unavailable", page)
+            self.assertIn(b'href="/visibility"', page)
+            self.assertNotIn(b"Latest sampled pass", page)
+            candidate = report()
+            candidate["checked_at"] = NOW.isoformat()
+            self.assertFalse(refresh(state, clock=lambda: NOW, inspect=lambda *_: candidate))
+            later = NOW + timedelta(hours=36)
+            _, page = response_for(state, now=later, route="/welcome")
+            self.assertIn(b"Latest sampled pass", page)
+            self.assertIn(b"Source check overdue.", page)
+
     def test_refresh_retains_report_during_failure_and_expiry(self):
         def check(prior, started):
             self.assertIsNone(prior)

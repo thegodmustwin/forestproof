@@ -1,5 +1,10 @@
 # Next Actions
 
+## After the public homepage
+
+Share the public homepage under the temporary Contabo hostname. When the owner registers a domain, prepare its DNS and Caddy mapping and verify HTTPS and public/private routing before sharing the new URL. Continue alert qualification in its own milestone.
+
+
 ## Advance the alert launch gates
 
 The [private alert preview](../tools/alert_publication/README.md) is ready for integration after source and owner review. The [paired GLAD-L archive comparison](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) verified bounded repeatable reads and historical records. Establish current usable coverage, authorized access and exact publication rights before choosing GLAD-L or RADD. Complete FP-RESEARCH-001 in the existing local owner review and test an independent recovery of the actual signed-in decision. The public visibility release is independent of these checkpoints.

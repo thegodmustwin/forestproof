@@ -1,4 +1,4 @@
-"""Render a private observation preview from a reviewed Sentinel-2 report."""
+"""Render the visibility page from a reviewed Sentinel-2 report."""
 
 from __future__ import annotations
 
@@ -13,6 +13,15 @@ from tools.source_status.build_source_status import day_label, read_report, time
 
 TEMPLATE = Path(__file__).with_name("visibility.html")
 CHECK_MAX_AGE = timedelta(hours=36)
+READING_GUIDE = """
+<section class="reading-guide" aria-labelledby="reading-guide-title">
+<h2 id="reading-guide-title">How to read this report</h2>
+<div>
+<p><strong>Start with the percentages.</strong> Each shows the share of a grid inside the research area that the satellite could assess on that pass. Near zero means most of that grid was unassessed. The vegetation count comes from the visible cells in that row.</p>
+<p><strong>Compare the same grid code across dates.</strong> The two grids overlap, so read their counts separately. Pass dates tell you when the satellite took the images. The report verification time tells you when ForestProof last verified the source.</p>
+</div>
+</section>
+"""
 
 
 def grid_row(tile: dict) -> str:
@@ -34,8 +43,10 @@ def grid_row(tile: dict) -> str:
 
 
 def scene(day: dict, *, latest: bool = False) -> str:
-    heading = f"<h2>{day_label(day['date'])}</h2>" if latest else f"<h3>{day_label(day['date'])}</h3>"
-    caption = '<p class="eyebrow">Latest sampled pass</p>' if latest else ""
+    date = day["date"]
+    pass_time = f'<time datetime="{date.isoformat()}">{day_label(date)}</time>'
+    heading = f"<h2>{pass_time}</h2>" if latest else f"<h3>{pass_time}</h3>"
+    caption = '<p class="eyebrow">Latest pass in this report</p>' if latest else ""
     rows = "\n".join(grid_row(tile) for tile in day["tiles"])
     return f"""
 <article class="pass{' latest' if latest else ''}">
@@ -48,7 +59,12 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
     template = Template(TEMPLATE.read_text(encoding="utf-8"))
     masthead = "" if public else '<p class="flag">Private research preview</p>'
     robots = "" if public else '<meta name="robots" content="noindex">'
-    chrome = {"masthead": masthead, "robots": robots}
+    brand = (
+        '<a class="brand" href="/welcome">ForestProof</a>'
+        if public
+        else '<div class="brand">ForestProof</div>'
+    )
+    chrome = {"brand": brand, "masthead": masthead, "robots": robots}
     if snapshot is None:
         return template.substitute(
             **chrome,
@@ -90,7 +106,7 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
     attribution = " · ".join(f"Contains modified Copernicus Sentinel data [{year}]" for year in years)
     return template.substitute(
         **chrome,
-        content=status + scene(latest, latest=True) + history + method,
+        content=READING_GUIDE + status + scene(latest, latest=True) + history + method,
         attribution=attribution,
     )
 
