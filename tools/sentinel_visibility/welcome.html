@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explore satellite visibility over the provisional Geta research area and learn how ForestProof supports evidence review and follow-up.">
+<title>ForestProof | Explore satellite visibility in Geta</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f7f5ec;
+  --ink: #17372d;
+  --muted: #3f554a;
+  --green: #20553f;
+  --line: #b8c4ac;
+  --wash: #e8edde;
+  --track: #c7d3c2;
+  --focus: #8c4b05;
+  --serif: Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, sans-serif; }
+a { color: inherit; text-underline-offset: .22em; }
+a:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+.skip { position: absolute; left: 1rem; top: -6rem; z-index: 1; background: var(--paper); padding: .65rem; }
+.skip:focus { top: 1rem; }
+.content-width { width: min(71rem, calc(100% - 3.5rem)); margin-inline: auto; }
+.masthead { display: flex; align-items: center; justify-content: space-between; column-gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+.brand { font: 700 1.55rem/1 var(--serif); letter-spacing: -.04em; }
+.masthead a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9rem; font-weight: 650; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); align-items: center; gap: clamp(2rem, 7vw, 6.5rem); padding: clamp(3rem, 8vw, 7rem) 0; }
+.kicker { text-transform: uppercase; font-size: .75rem; font-weight: 700; letter-spacing: .105em; }
+h1 { margin: .85rem 0 1.25rem; font-size: clamp(2.75rem, 6.1vw, 5.8rem); line-height: .99; letter-spacing: -.061em; max-width: 11ch; }
+.intro { max-width: 47ch; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.18rem); }
+.primary { display: inline-flex; align-items: center; gap: 1.1rem; min-height: 3.15rem; margin-top: 1.65rem; padding: .7rem 1.15rem; color: #fff; background: var(--green); font-weight: 700; text-decoration: none; }
+.primary:hover { background: #163c2e; }
+.field-note { padding: clamp(1.15rem, 3vw, 2rem); background: var(--wash); border: 1px solid var(--line); border-top: 4px solid var(--green); }
+.field-note h2 { margin: .3rem 0 .8rem; font-size: clamp(1.65rem, 3.1vw, 2.65rem); line-height: 1.12; letter-spacing: -.045em; }
+.field-note .context { font-size: .91rem; color: var(--muted); }
+.quick-read { list-style: none; padding: 0; margin: 1.15rem 0 1rem; }
+.quick-read li { display: grid; grid-template-columns: 4rem minmax(0, 1fr) minmax(3.5rem, auto); gap: .65rem; align-items: center; padding: .65rem 0; border-top: 1px solid var(--line); }
+.grid-label { font: 600 .83rem/1.25 ui-monospace, monospace; }
+.track { height: .36rem; background: var(--track); }
+.track span { display: block; height: 100%; background: var(--green); }
+.quick-read strong { text-align: right; font-variant-numeric: tabular-nums; }
+.workflow { padding: 2.5rem 0 3rem; border-top: 1px solid var(--line); }
+.workflow h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); letter-spacing: -.045em; line-height: 1.1; }
+.workflow > p { margin-top: .7rem; color: var(--muted); }
+.workflow ol { padding: 0; margin: 1.4rem 0 0; list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.25rem 2rem; }
+.workflow li { padding-top: .8rem; border-top: 1px solid var(--line); }
+.workflow h3 { font-size: 1.32rem; margin-bottom: .35rem; }
+.workflow li p { color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 1rem 0 1.8rem; color: var(--muted); font-size: .86rem; }
+@media (max-width: 46rem) {
+  .content-width { width: calc(100% - 2.5rem); }
+  .masthead { padding: .65rem 0; }
+  .hero, .workflow ol { grid-template-columns: 1fr; }
+  .hero { padding-block: 2.4rem; gap: 1.75rem; }
+  .workflow { padding-block: 2rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead content-width">
+  <span class="brand">ForestProof</span>
+  <nav aria-label="Page navigation"><a href="#workflow">How it works</a> · <a href="https://github.com/thegodmustwin/forestproof/blob/main/docs/PUBLIC_GUIDE.md">Product tour</a></nav>
+</header>
+<main class="content-width" id="main">
+  <section class="hero" aria-labelledby="intro-title">
+    <div>
+      <p class="kicker">Geta, Kenya</p>
+      <h1 id="intro-title">What could the satellite see?</h1>
+      <p class="intro">Explore real Sentinel-2 observations from the provisional Geta research area. Compare clear views and gaps across passes, then see how an observation could become a case someone follows up.</p>
+      <a class="primary" href="/visibility">Explore Geta <span aria-hidden="true">→</span></a>
+    </div>
+    <aside class="field-note" aria-label="Geta visibility snapshot">
+      $snapshot
+    </aside>
+  </section>
+
+  <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+    <h2 id="workflow-title">From observation to follow-up</h2>
+    <p>Example · A reviewer notices a possible change in a clear image.</p>
+    <ol role="list">
+      <li><h3>Check the evidence</h3><p>Save the source and observation date. Record which areas were clear and which were hidden by cloud or shadow.</p></li>
+      <li><h3>Record a decision</h3><p>A reviewer compares the images and records what they can establish, what remains uncertain, and who will follow up.</p></li>
+      <li><h3>Set a follow-up</h3><p>Schedule another observation or a field check. Link the result to the original evidence so someone else can retrace the decision.</p></li>
+    </ol>
+  </section>
+</main>
+<footer class="content-width">ForestProof · Provisional Geta research area $attribution · <a href="https://github.com/thegodmustwin/forestproof">Source on GitHub</a> · <a href="/project.txt">Text project guide</a></footer>
+</body>
+</html>

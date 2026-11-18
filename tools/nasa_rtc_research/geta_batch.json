@@ -1,0 +1,220 @@
+{
+  "bounds_wgs84": [
+    36.6,
+    -0.49,
+    36.63,
+    -0.46
+  ],
+  "assets": [
+    {
+      "day": "2025-09-25",
+      "role": "reference",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G3767782876-ASF",
+      "size_bytes": 6566139,
+      "md5": "e18381e13eb9552440c7ffca023e1f93",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2025-09-25",
+      "role": "reference",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G3767782876-ASF",
+      "size_bytes": 6562036,
+      "md5": "fc6f085c2282192bdf33e23cfe4d93e2",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2025-09-25",
+      "role": "reference",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G3767782876-ASF",
+      "size_bytes": 53823,
+      "md5": "55afb26f08c658143d96abdefa128f05",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20250925T031118Z_20250926T072436Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2025-10-07",
+      "role": "reference",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G3795951143-ASF",
+      "size_bytes": 6519266,
+      "md5": "287290fd1d19d97a596c3427134012aa",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2025-10-07",
+      "role": "reference",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G3795951143-ASF",
+      "size_bytes": 6489353,
+      "md5": "112f345d28374a6228a773a9933dbf95",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2025-10-07",
+      "role": "reference",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G3795951143-ASF",
+      "size_bytes": 53757,
+      "md5": "32690d818c80137d1eb4b0aa41bc3817",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251007T031118Z_20251007T072125Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2025-10-19",
+      "role": "reference",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G3821921079-ASF",
+      "size_bytes": 6554613,
+      "md5": "50c7c3af41e313d901ec2b29b6311fff",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2025-10-19",
+      "role": "reference",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G3821921079-ASF",
+      "size_bytes": 6546450,
+      "md5": "ed149e40a4c7658b3b84dd5d267a7b6a",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2025-10-19",
+      "role": "reference",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G3821921079-ASF",
+      "size_bytes": 53719,
+      "md5": "f8b15a8d02e445dd5d744c26fd7b6e32",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251019T031118Z_20251019T121946Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2025-10-31",
+      "role": "reference",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G3838774075-ASF",
+      "size_bytes": 6493439,
+      "md5": "a14cbb8da416c6ad1e2981de48af7e74",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2025-10-31",
+      "role": "reference",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G3838774075-ASF",
+      "size_bytes": 6451167,
+      "md5": "8265586acfef65641a22db0cff71be5e",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2025-10-31",
+      "role": "reference",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G3838774075-ASF",
+      "size_bytes": 53778,
+      "md5": "8afd756228899b2a0f493be8d6af7ea5",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251031T031118Z_20251031T144654Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2025-11-12",
+      "role": "reference",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G3864038319-ASF",
+      "size_bytes": 6544840,
+      "md5": "6679c3fc555ea19528174ed39185e565",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2025-11-12",
+      "role": "reference",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G3864038319-ASF",
+      "size_bytes": 6538835,
+      "md5": "deb105fdf9fbd52953fed347b472a8c1",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2025-11-12",
+      "role": "reference",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G3864038319-ASF",
+      "size_bytes": 53674,
+      "md5": "247431183c81f6d667a9a99942eef260",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20251112T031117Z_20251115T205535Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2026-11-02",
+      "role": "target",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G4400241126-ASF",
+      "size_bytes": 6537332,
+      "md5": "3fd366567bea47985c9421bd2306199d",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2026-11-02",
+      "role": "target",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G4400241126-ASF",
+      "size_bytes": 6532063,
+      "md5": "e2d28c9a0d8b729bf906260c1a050f5e",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2026-11-02",
+      "role": "target",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G4400241126-ASF",
+      "size_bytes": 53771,
+      "md5": "4e0db3463531371076c2fb87fba2670c",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261102T031120Z_20261104T003125Z_S1C_30_v1.0_mask.tif"
+    },
+    {
+      "day": "2026-11-14",
+      "role": "target",
+      "band": "VV",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_VV.tif",
+      "concept_id": "G4412106340-ASF",
+      "size_bytes": 6524761,
+      "md5": "cd1ca87bde55eff7ce5d0a1f32106e9b",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_VV.tif"
+    },
+    {
+      "day": "2026-11-14",
+      "role": "target",
+      "band": "VH",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_VH.tif",
+      "concept_id": "G4412106340-ASF",
+      "size_bytes": 6507813,
+      "md5": "1b11fadc891bfeaa29ddf1af078fbca3",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_VH.tif"
+    },
+    {
+      "day": "2026-11-14",
+      "role": "target",
+      "band": "mask",
+      "filename": "OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_mask.tif",
+      "concept_id": "G4412106340-ASF",
+      "size_bytes": 53712,
+      "md5": "c7d48d691f2350b1a1cce125fe4228e2",
+      "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L2_RTC-S1/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0/OPERA_L2_RTC-S1_T079-168620-IW3_20261114T031119Z_20261115T000556Z_S1C_30_v1.0_mask.tif"
+    }
+  ]
+}

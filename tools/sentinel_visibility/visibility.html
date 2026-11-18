@@ -16,14 +16,20 @@ a{color:var(--green);text-underline-offset:.21em}
 .skip:focus{transform:translateY(0)}
 .frame{width:min(100% - 3rem,65rem);margin-inline:auto}
 .masthead{min-height:4.65rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--rule)}
-.brand{font:bold 1.45rem Georgia,serif;letter-spacing:-.05em}
+.brand{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--ink);font:bold 1.45rem Georgia,serif;letter-spacing:-.05em;text-decoration:none}
+.brand[href]:hover{text-decoration:underline}
 .flag{font-size:.8rem;font-weight:650;color:var(--amber)}
 .intro{padding:clamp(2rem,5vw,3.65rem) 0 1.55rem}
 .eyebrow{font-size:.75rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase;color:var(--quiet)}
 h1,h2,h3,p{margin:0}
 h1{font:normal clamp(2.8rem,7vw,5.75rem)/.99 Georgia,serif;letter-spacing:-.065em;margin:.42rem 0 .75rem}
 h2,h3{font-family:Georgia,serif;font-weight:normal;line-height:1.17;letter-spacing:-.036em}
-.intro>p:last-child{max-width:55ch;color:var(--quiet)}
+.intro>p:last-child{max-width:58ch;color:var(--quiet)}
+.reading-guide{display:grid;grid-template-columns:minmax(10rem,1fr) minmax(0,2.3fr);gap:clamp(.65rem,3vw,2.2rem);padding:1.15rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:1.5rem}
+.reading-guide h2{font-size:clamp(1.35rem,3vw,1.8rem)}
+.reading-guide p{font-size:.96rem;color:var(--quiet);max-width:64ch}
+.reading-guide p+p{margin-top:.55rem}
+.reading-guide strong{color:var(--ink)}
 .status{font-size:.88rem;color:var(--quiet);margin-bottom:.75rem}
 .status strong{color:var(--ink)}
 .status.overdue strong{color:var(--amber)}
@@ -52,7 +58,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:bas
 footer a{display:inline-block;padding:.45rem 0}
 @media(max-width:42rem){
 .frame{width:calc(100% - 2rem)}
-.pass{grid-template-columns:minmax(0,1fr);gap:.7rem}
+.reading-guide,.pass{grid-template-columns:minmax(0,1fr);gap:.7rem}
 .grid-row{grid-template-columns:3.8rem minmax(.5rem,1fr) 10rem;gap:.15rem .5rem}
 .reading{min-width:0;gap:.32rem}
 .vegetation{grid-column:1/-1}
@@ -66,12 +72,12 @@ footer a{display:inline-block;padding:.45rem 0}
 <body>
 <a class="skip" href="#main">Skip to visibility report</a>
 <div class="frame">
-<header class="masthead"><div class="brand">ForestProof</div>$masthead</header>
+<header class="masthead">$brand$masthead</header>
 <main id="main" tabindex="-1">
 <header class="intro">
 <p class="eyebrow">Provisional Geta research area</p>
 <h1>Satellite visibility</h1>
-<p>Compare what Sentinel-2 could see across the two overlapping grids.</p>
+<p>See how much of this area the Sentinel-2 satellite could assess on each of the dates below.</p>
 </header>
 $content
 </main>

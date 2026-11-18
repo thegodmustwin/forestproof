@@ -8,14 +8,44 @@ from datetime import UTC, datetime, timedelta
 from http.client import HTTPException
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from xml.sax.saxutils import escape
 
+from tools.sentinel_visibility.build_home_page import render_home
 from tools.sentinel_visibility.build_visibility_page import render
 from tools.sentinel_visibility.project_visibility import project
 from tools.source_status.build_source_status import read_report, write_page
 
 
-PUBLIC_PATH = "/visibility"
+PUBLIC_PATHS = {"/visibility", "/welcome", "/project.txt", "/robots.txt", "/sitemap.xml"}
+DOCUMENT_PATHS = {"/project.txt", "/robots.txt", "/sitemap.xml"}
+GUIDE = Path(__file__).resolve().parents[2] / "docs" / "PUBLIC_GUIDE.md"
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
+
+
+def public_document(route, hostname):
+    """Serve the published guide and discovery files independently of report state."""
+    if route == "/project.txt":
+        try:
+            body = GUIDE.read_text(encoding="utf-8").encode("utf-8")
+            return 200, body, "text/plain; charset=utf-8"
+        except (OSError, UnicodeError):
+            return 503, b"ForestProof project guide unavailable. Please try again later.\n", "text/plain; charset=utf-8"
+    if route == "/robots.txt":
+        allowed = "\n".join(f"Allow: {path}$" for path in sorted(PUBLIC_PATHS))
+        body = f"User-agent: *\nDisallow: /\n{allowed}\nSitemap: https://{hostname}/sitemap.xml\n"
+        return 200, body.encode("utf-8"), "text/plain; charset=utf-8"
+    if route != "/sitemap.xml":
+        raise ValueError("Unknown public document route")
+    urls = "".join(
+        f"<url><loc>https://{escape(hostname)}{path}</loc></url>"
+        for path in ("/welcome", "/visibility", "/project.txt")
+    )
+    body = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        f"{urls}</urlset>\n"
+    )
+    return 200, body.encode("utf-8"), "application/xml; charset=utf-8"
 
 
 def read_state(path, now):
@@ -65,12 +95,14 @@ def refresh(path, *, clock=lambda: datetime.now(UTC), inspect=fetch):
     return failed
 
 
-def response_for(path, *, now):
+def response_for(path, *, now, route="/visibility"):
     try:
         state, snapshot = read_state(path, now)
     except ERRORS:
         state, snapshot = None, None
     failed_at = datetime.fromisoformat(state["attempted_at"]) if state and state["failed"] else None
+    if route == "/welcome":
+        return 200, render_home(snapshot, now=now, failed_at=failed_at).encode("utf-8")
     body = render(snapshot, now=now, public=True, failed_at=failed_at)
     return (200 if snapshot else 503), body.encode("utf-8")
 
@@ -89,16 +121,21 @@ def serve(path, port, hostname):
             if self.headers.get("Host") not in allowed_hosts:
                 self.send_error(400)
                 return
-            if self.path.partition("?")[0] != PUBLIC_PATH:
+            route = self.path.partition('?')[0]
+            if route not in PUBLIC_PATHS:
                 self.send_error(404)
                 return
             try:
-                status, body = response_for(path, now=datetime.now(UTC))
+                if route in DOCUMENT_PATHS:
+                    status, body, content_type = public_document(route, hostname)
+                else:
+                    status, body = response_for(path, now=datetime.now(UTC), route=route)
+                    content_type = "text/html; charset=utf-8"
             except ERRORS:
                 self.send_error(503)
                 return
             self.send_response(status)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")

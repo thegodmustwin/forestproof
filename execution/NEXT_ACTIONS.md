@@ -1,5 +1,17 @@
 # Next Actions
 
+## Use the public project guide
+
+Share the homepage, repository root and docs/PUBLIC_GUIDE.md as the starting point for visitors and AI readers. Preserve dated claims and verify the running release separately from GitHub main. The remaining record-level alert milestone requires qualified area/source access, owner identity and independent real-case recovery.
+
+## After the public homepage
+
+Share the public homepage under the temporary Contabo hostname. When the owner registers a domain, prepare its DNS and Caddy mapping and verify HTTPS and public/private routing before sharing the new URL. Continue alert qualification in its own milestone.
+
+## Extend the Kenyan radar validation
+
+The [Mount Kenya backtest](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) verified a reproducible local comparison and showed limited recall for the simple dual-band rule. Keep the first fire outcome in the record and use a separate documented canopy disturbance to evaluate any revised method. Sample multiple stable periods and vegetation types before considering a public threshold. Measure CPU and storage on a bounded window before any full-tile Contabo experiment. Source cadence, an approved pilot area and a recoverable private workflow remain publication gates.
+
 ## Advance the alert launch gates
 
 The [private alert preview](../tools/alert_publication/README.md) is ready for integration after source and owner review. The [paired GLAD-L archive comparison](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) verified bounded repeatable reads and historical records. Establish current usable coverage, authorized access and exact publication rights before choosing GLAD-L or RADD. Complete FP-RESEARCH-001 in the existing local owner review and test an independent recovery of the actual signed-in decision. The public visibility release is independent of these checkpoints.

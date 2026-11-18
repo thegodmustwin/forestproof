@@ -1,5 +1,33 @@
 # Current Status
 
+## Public repository and reader access — 18 November 2026
+
+The owner authorized public GitHub access and a coherent self-serve tour. README.md now links the real public pages, implementation map and [product guide](../docs/PUBLIC_GUIDE.md). The site mirrors the guide at `/project.txt` and provides explicit public crawler routes. Repository visibility is public and was verified by anonymous GitHub and raw-file retrieval on 18 November. Contabo serves public-page release `692fee285e62edf9430f09c60188167ce196904d`. All five exact public routes passed certificate-validated GET and HEAD with HTTP 200 and POST with HTTP 405. The text and discovery routes passed MIME and content checks. Preview, case, API and report paths returned HTTP 401 to anonymous requests. The previous code release and gateway configuration were retained for rollback.
+
+Local verification passed 18 visibility tests, 3 radar reference tests and 6 source-status tests. A pattern scan covered 792 historical blobs across all remote branches and PR heads. Generic credential assignments were confirmed as isolated test fixtures. All 44 issue/PR bodies and seven sampled Actions logs scanned without matching provider credentials or private keys. Three other sampled logs were unavailable, so this check does not establish exhaustive log coverage.
+
+OpenAI's web tool successfully retrieved the public repository and raw guide. The same tool still returned a generic access error for the temporary Contabo hostname, despite successful anonymous HTTPS checks from ordinary clients. Share the public raw GitHub guide with AI readers when that hostname cannot be fetched.
+
+## Public homepage and Geta walkthrough — 2026-11-17
+
+The `/welcome` entry introduces the provisional Geta research area, shows the latest sampled pass from the validated report, and links to `/visibility`. The report explains grid overlap, what a usable cell means, and how to compare the same grid across dates. The [Contabo runbook](../infrastructure/deployment/sentinel-visibility/README.md) records the public read-only routes and service separation. An illustrative evidence review on the homepage describes the workflow.
+
+The [public homepage](https://vmi3711898.contaboserver.net/welcome) and [Geta report](https://vmi3711898.contaboserver.net/visibility) are served on Contabo from release `3422a0d9ca485b04fa1b6c7dbcb376e18e946773`. Certificate-validated anonymous GET and HEAD returned 200 on both exact paths, while POST returned 405. The preview root, case, API and report routes returned 401 without authentication. The prior release pointer and gateway configuration were retained for rollback. The existing visibility timer and web service remained active.
+
+## Mount Kenya radar backtest - 2026-11-17
+
+The [local Mount Kenya backtest](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) used independently mapped 2019 fire extent and Sentinel-2-screened matched controls. At the fixed 3 dB two-band threshold, the candidate flagged 11,336 of 144,677 matched mapped-burn cells (7.8%) and 4,260 of 144,677 matched control cells (2.9%). The aggregate reproduced from retained inputs. Most mapped burn cells went unflagged at all three tested thresholds. The backtest leaves smaller canopy disturbance, seasonal false flags, and an operational publication threshold unresolved.
+
+## Historical radar backtest - 2026-11-16
+
+The [California backtest](../docs/DIRECT_SOURCE_EVALUATION.md#california-radar-prototype-backtest---2026-11-16) scored the published JPL radar v0.1 prototype against field-validated federal fire reference maps. First flags matched 44.0% and 84.9% of assessed high-severity centres at Eaton and Palisades. The corresponding control-proxy flag rates were 4.8% and 13.1%. The strict interior filter left few positive centres, and agreement varied between the two fires. The aggregate scores reproduced on replay. A regional test of the detector, source refresh and operational publication remain open.
+
+## Matched Geta radar coverage - 2026-11-16
+
+Four original OPERA RTC-S1 files matched NASA CMR sizes and checksums. The [repeat-pass inspection](../docs/DIRECT_SOURCE_EVALUATION.md#geta-repeat-pass-radar-research---2026-11-16) found that all 12,432 sampled centres in the provisional Geta research rectangle pass both acquisition masks and have readable VV values on November 2 and 14. Five same-burst reference captures from the same season in 2025 are catalogued. The cause of the paired difference, detector accuracy and scheduled operation remain unverified. This is a research result for the provisional rectangle. It establishes no operating boundary or public alert.
+
+The owner completed the one-session Earthdata research batch. All 21 files matched NASA catalog sizes and checksums. All 12,432 sampled centres had positive finite VV and VH and passed all seven acquisition masks on the common native grid. Two runs reproduced the aggregate report exactly. Independent detection validation, operational refresh and publication approval remain open. [Seasonal result](../docs/DIRECT_SOURCE_EVALUATION.md#seasonal-comparison-completed---2026-11-16) · [Batch and analysis](../tools/nasa_rtc_research/README.md)
+
 ## Alert launch qualification and staging — 2026-11-15
 
 The [paired GLAD-L archive checks](../docs/DIRECT_SOURCE_EVALUATION.md#paired-glad-l-archive-checks--2026-11-15) matched across two independent source releases. Each of 14,400-cell windows recorded 30 probable and 292 provider-confirmed cells. The latest first-detection day was September 24. Zero cells had a clear observation in the preceding seven days. One September 8 provider-confirmed observation was preserved as a private historical candidate, verified against the repeat window hashes and copied locally with the same SHA-256. It carries no owner or release approval. Recent usable coverage and direct-layer publication rights remain unresolved. RADD's documented coverage-raster route returned HTTP 403 without a key. The display-layer sample remains screening evidence.
@@ -22,7 +50,7 @@ The HTTP tests exercised unauthorized downloads, owner sign-in, form validation,
 
 ## Public Geta satellite visibility — 2026-11-15
 
-The owner approved the [public visibility page](https://vmi3711898.contaboserver.net/visibility) under the label **Provisional Geta research area**. The Contabo runtime uses source commit `9ca96cadb8f04cd19165b85c52db3a6d58dbd7a9`. A dedicated loopback listener renders the reported Sentinel-2 scene classification counts and Copernicus attribution. A first timer-triggered run finished at 13:00 EAT and revalidated all six source asset identities while retaining their original measurements for November 8, 10, and 13. The enabled timer runs at 03:15 and 15:15 EAT. Tests exercise unavailable state, failed refresh retention, and an overdue status even without later writes.
+The owner approved the [public visibility page](https://vmi3711898.contaboserver.net/visibility) under the label **Provisional Geta research area**. The November 15 release used source commit `9ca96cadb8f04cd19165b85c52db3a6d58dbd7a9`. A dedicated loopback listener renders the reported Sentinel-2 scene classification counts and Copernicus attribution. A first timer-triggered run finished at 13:00 EAT and revalidated all six source asset identities while retaining their original measurements for November 8, 10, and 13. The enabled timer runs at 03:15 and 15:15 EAT. Tests exercise unavailable state, failed refresh retention, and an overdue status even without later writes.
 
 The installed Caddy config was validated before a signal reload. The gateway process ID remained unchanged. Certificate-validated laptop checks returned anonymous 200 for GET and HEAD on the exact public path and 405 for POST. The preview home, case route, report path, and visibility path with a trailing slash required authentication. The authenticated tester home returned 200, SSH and xrdp were active, and RDP and the new listener remained loopback-only. The private origin state retains the source receipts and sits outside the tester application. See the [release runbook](../infrastructure/deployment/sentinel-visibility/README.md).
 
