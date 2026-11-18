@@ -1,5 +1,9 @@
 # Current Status
 
+## Public repository and reader access — 18 November 2026
+
+The owner authorized public GitHub access and a coherent self-serve tour. README.md now links the real public pages, implementation map and [product guide](../docs/PUBLIC_GUIDE.md). The site mirrors the guide at `/project.txt` and provides explicit public crawler routes. Publication and exact release verification are recorded below when complete.
+
 ## Public homepage and Geta walkthrough — 2026-11-17
 
 The `/welcome` entry introduces the provisional Geta research area, shows the latest sampled pass from the validated report, and links to `/visibility`. The report explains grid overlap, what a usable cell means, and how to compare the same grid across dates. The [Contabo runbook](../infrastructure/deployment/sentinel-visibility/README.md) records the public read-only routes and service separation. An illustrative evidence review on the homepage describes the workflow.

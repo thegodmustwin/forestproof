@@ -1,5 +1,9 @@
 # ForestProof Roadmap
 
+## Public understanding milestone
+
+Publish one coherent main-branch entry containing the deployed homepage, Geta report, plain-language product tour and regional research. Verify anonymous repository and raw-file reads independently of ordinary browser access to Contabo.
+
 **Hosting update, 2026-11-10:** Contabo `vmi3711898` is now the target. The laptop reached it via a read-only strict-host-key SSH test. Cloud access, backup transfer and ForestProof deployment are unverified. Preserve other projects and keep RDP private over its existing SSH tunnel. Older OVH entries below are historical.
 
 The public homepage and Geta walkthrough give visitors a self-serve path into the visibility report. A custom domain can point to the same Contabo service after DNS, HTTPS and access boundaries are verified.

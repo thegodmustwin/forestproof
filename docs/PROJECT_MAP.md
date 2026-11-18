@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Public product tour and machine-readable guide
+
+[PUBLIC_GUIDE.md](PUBLIC_GUIDE.md) explains the product from first visit through case follow-up, current data, research and hosting. The read-only site exposes that same document at `/project.txt`, with public discovery endpoints `/robots.txt` and `/sitemap.xml`.
+
 ## Alert publication rehearsal
 
 The [loopback alert preview](../tools/alert_publication/README.md) projects only explicitly approved fields tied to an exact source release and receipt. The [GLAD-L paired archive inspection](../tools/glad_l_research/README.md#paired-alert-archive-inspection) checks provider status, detection and observation dates independently of the public view.

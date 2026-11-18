@@ -1,5 +1,9 @@
 # Next Actions
 
+## Use the public project guide
+
+Share the homepage, repository root and docs/PUBLIC_GUIDE.md as the starting point for visitors and AI readers. Preserve dated claims and verify the running release separately from GitHub main. The remaining record-level alert milestone requires qualified area/source access, owner identity and independent real-case recovery.
+
 ## After the public homepage
 
 Share the public homepage under the temporary Contabo hostname. When the owner registers a domain, prepare its DNS and Caddy mapping and verify HTTPS and public/private routing before sharing the new URL. Continue alert qualification in its own milestone.

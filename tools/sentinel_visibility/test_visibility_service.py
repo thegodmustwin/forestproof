@@ -7,9 +7,49 @@ from unittest.mock import patch
 from inspect_visibility import inspect_pairs, recent_pairs
 from test_build_visibility_page import report
 from tools.sentinel_visibility.visibility_service import read_state, refresh, response_for
+from tools.sentinel_visibility.visibility_service import PUBLIC_PATHS, public_document
 
 
 NOW = datetime(2026, 11, 15, 9, tzinfo=UTC)
+
+
+class TestPublicDocuments(TestCase):
+    def test_public_guide_excludes_adjacent_private_state(self):
+        with TemporaryDirectory() as tmp:
+            guide = Path(tmp) / "PUBLIC_GUIDE.md"
+            guide.write_text("# ForestProof\nPublished project guide.\n", encoding="utf-8")
+            (Path(tmp) / "source.json").write_text("private-source-receipt", encoding="utf-8")
+            with patch("tools.sentinel_visibility.visibility_service.GUIDE", guide):
+                status, body, content_type = public_document("/project.txt", "forestproof.example")
+            self.assertEqual((status, content_type), (200, "text/plain; charset=utf-8"))
+            self.assertEqual(body, b"# ForestProof\nPublished project guide.\n")
+            self.assertNotIn(b"private-source-receipt", body)
+
+    def test_missing_guide_returns_sanitized_unavailable(self):
+        with TemporaryDirectory() as tmp:
+            missing = Path(tmp) / "private-path" / "PUBLIC_GUIDE.md"
+            with patch("tools.sentinel_visibility.visibility_service.GUIDE", missing):
+                status, body, content_type = public_document("/project.txt", "forestproof.example")
+            self.assertEqual(status, 503)
+            self.assertEqual(content_type, "text/plain; charset=utf-8")
+            self.assertIn(b"unavailable", body)
+            self.assertNotIn(b"private-path", body)
+
+    def test_discovery_files_only_list_exact_public_routes(self):
+        from xml.etree.ElementTree import fromstring
+
+        _, robots, content_type = public_document("/robots.txt", "forestproof.example")
+        self.assertEqual(content_type, "text/plain; charset=utf-8")
+        rules = robots.decode("utf-8").splitlines()
+        self.assertIn("Disallow: /", rules)
+        self.assertEqual({line[7:-1] for line in rules if line.startswith("Allow: ")}, PUBLIC_PATHS)
+        _, sitemap, content_type = public_document("/sitemap.xml", "forestproof.example")
+        self.assertEqual(content_type, "application/xml; charset=utf-8")
+        namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        urls = {item.text for item in fromstring(sitemap).findall("s:url/s:loc", namespace)}
+        self.assertEqual(urls, {f"https://forestproof.example{path}" for path in ("/welcome", "/visibility", "/project.txt")})
+        with self.assertRaises(ValueError):
+            public_document("/source.json", "forestproof.example")
 
 
 class TestVisibilityService(TestCase):
