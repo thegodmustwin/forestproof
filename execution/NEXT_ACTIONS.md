@@ -8,6 +8,9 @@ Share the homepage, repository root and docs/PUBLIC_GUIDE.md as the starting poi
 
 Share the public homepage under the temporary Contabo hostname. When the owner registers a domain, prepare its DNS and Caddy mapping and verify HTTPS and public/private routing before sharing the new URL. Continue alert qualification in its own milestone.
 
+## Extend the Kenyan radar validation
+
+The [Mount Kenya backtest](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) verified a reproducible local comparison and showed limited recall for the simple dual-band rule. Keep the first fire outcome in the record and use a separate documented canopy disturbance to evaluate any revised method. Sample multiple stable periods and vegetation types before considering a public threshold. Measure CPU and storage on a bounded window before any full-tile Contabo experiment. Source cadence, an approved pilot area and a recoverable private workflow remain publication gates.
 
 ## Advance the alert launch gates
 

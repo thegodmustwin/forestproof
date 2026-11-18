@@ -11,6 +11,8 @@ The public homepage and Geta walkthrough give visitors a self-serve path into th
 ## Status legend
 The owner-approved [Geta visibility page](https://vmi3711898.contaboserver.net/visibility) publishes verified native grid counts and source-check age independently of the case API. Its scheduled Contabo check and exact public route have been verified. The owner pilot still needs an approved operational area and an eligible alert source with verified access and rights.
 
+The [radar research checkpoints](../docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17) cover repeat usable inputs in the provisional Geta window, a reproducible external benchmark and an independent local fire comparison. The tested dual-band rule missed most mapped Mount Kenya burn at every tested threshold. Evaluate revisions against separately documented canopy change and stable periods, then measure CPU and storage in isolation before enabling a radar alert feed.
+
 The [source-status staging path](../tools/source_status/README.md#isolated-staging) now tracks separate check, report, and underlying observation dates. Public publication and recurring release work still depend on area and source rights. The owner case workflow still needs a qualified record-level feed.
 
 The [source-status publication preview](../tools/source_status/README.md) is a local static candidate. Production publication still requires a source and geography decision, rights review, recurring updates, and stale handling. The owner workflow, approved alert feed, and public release remain separate milestones.
