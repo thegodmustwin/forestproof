@@ -2,7 +2,7 @@
 
 ## Public product guide — 18 November 2026
 
-Read [the public guide](docs/PUBLIC_GUIDE.md) for the visitor journey and current hosted capabilities. The source repository and historical context are being prepared for public read access at the owner’s request. Runtime credentials and private research evidence remain in protected storage.
+Read [the public guide](docs/PUBLIC_GUIDE.md) for the visitor journey and current hosted capabilities. The source repository and historical context have public read access at the owner’s request. Runtime credentials and private research evidence remain in protected storage.
 
 New contributors and AI platforms: begin with [AGENTS.md](AGENTS.md),
 [PROJECT_CONTEXT.md](docs/PROJECT_CONTEXT.md), and

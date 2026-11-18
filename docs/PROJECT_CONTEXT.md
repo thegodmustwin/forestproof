@@ -5,7 +5,7 @@
 Begin with [the public product guide](PUBLIC_GUIDE.md) for a plain-language tour, current public URLs, real data versus synthetic workflow, and a dated research summary. The sections below preserve the original project context. Refer to the newest dated verification in execution/CURRENT_STATUS.md for deployment state.
 
 **Snapshot:** 2026-10-26
-**Repository:** private GitHub repository thegodmustwin/forestproof, default branch main  
+**Repository:** public GitHub repository thegodmustwin/forestproof, default branch main
 **Purpose:** let a new person or coding agent understand the idea, its origin, what exists, what is only planned, and what must not be claimed.
 
 ## One-sentence definition
