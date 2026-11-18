@@ -1,6 +1,6 @@
 # Contabo Geta visibility release
 
-The approved public pages are `/welcome` and `/visibility` on the ForestProof HTTPS hostname. The homepage introduces the provisional Geta research area, links to the aggregate visibility report, and describes an illustrative evidence review. The report publishes two overlapping native Sentinel-2 grid counts with Copernicus attribution. The private source receipts stay in the service state directory. Alert and case routes require the existing tester gateway.
+The approved public pages are `/welcome` and `/visibility` on the ForestProof HTTPS hostname. `/project.txt` serves the public product guide, and `/robots.txt` and `/sitemap.xml` expose the public routes. Include `docs/PUBLIC_GUIDE.md` in every release archive. The homepage introduces the provisional Geta research area, links to the aggregate visibility report, and describes an illustrative evidence review. The report publishes two overlapping native Sentinel-2 grid counts with Copernicus attribution. The private source receipts stay in the service state directory. Alert and case routes require the existing tester gateway.
 
 ## Runtime
 
