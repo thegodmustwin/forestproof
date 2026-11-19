@@ -1,8 +1,8 @@
 # Next Actions
 
-## Complete the Living Atlas release
+## After the Living Atlas release
 
-Verify desktop and mobile pass selection, the no-JavaScript report archive, missing/failed/overdue source states, map persistence, terrain activation and return to 2D, and saved-case lineage. Run existing synthetic end-to-end checks and deployment access tests before recording the exact public and private release. Continue source qualification and real-review recovery under the existing launch milestones.
+The public homepage/pass explorer and protected review workspace are deployed. Desktop/mobile pass selection, no-JavaScript reading, real terrain activation/return, map persistence, source-failure fallback and saved-case lineage were checked. The current release record contains the exact pins and safety checks. Share the public experience for feedback, then continue source qualification and real owner/recovery work under the existing launch milestones. Further UI polish does not replace those requirements.
 
 ## Use the public project guide
 
