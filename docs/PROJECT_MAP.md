@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Independent product review
+
+[REVIEW_PACKET.md](REVIEW_PACKET.md) brings together the deployed public routes, captured desktop/mobile views in `docs/review/`, a capture manifest with URLs/viewports/hashes, exact-version context and implementation links, and evaluation questions. The captures contain anonymous public pages and a completed fictional walkthrough only. Protected case records and private evidence remain outside this packet.
+
 ## Connected public workbench — 20 November 2026
 
 `tools/sentinel_visibility/build_visibility_page.py`, `visibility.html` and `assets/visibility.js` build the dark public observation workbench. Native grid/date buttons select exact aggregate counts and an image only when its public manifest grid/date matches. Explicit missing/load-failure states preserve counts; private/no-script archives remain readable. `tour.html` and `assets/tour.js` contain the matching fictional evidence workbench, step validation, memory-only choices, unsigned JSON download and print/PDF presentation. All assets use the existing sixteen public routes; no new provider access, storage or identity service is introduced.
