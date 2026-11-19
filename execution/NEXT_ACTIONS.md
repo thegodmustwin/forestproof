@@ -1,5 +1,10 @@
 # Next Actions
 
+## After the connected workbench — 20 November 2026
+
+Try the public explorer's grid/date selection, read the matching image and coverage together, then complete the fictional walkthrough and download its labelled example dossier. Collect feedback on comprehension and the review task. For the operational pilot, continue the existing source/area qualification, person-level owner identity and independent genuine-case recovery gates. Exporting a fictional example does not establish signed real evidence.
+
+
 ## After the first-visit clarification — 20 November 2026
 
 Use the homepage's real observation example and numbered See → Understand → Review path for first-time feedback. Keep its historical examples separate from refreshed coverage and its fictional review separate from private saved cases. The next functional launch milestone remains qualified source/area access, person-level owner review and independent recovery; this interface change does not activate a forest-alert feed.

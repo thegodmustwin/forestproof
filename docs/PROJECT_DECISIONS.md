@@ -1,5 +1,10 @@
 # ForestProof — decision and context ledger
 
+## Dark public workbench and concept integrity — 20 November 2026
+
+The owner supplied an immersive dark mint observation/dossier concept after requesting a clearer product journey. Use its depth and hierarchy to support real observation imagery, evidence interpretation and connected human review. Do not turn illustrative anomaly polygons, canopy patches, coverage percentages, radar thresholds or topography into claimed measurements. Geta is the provisional Kenyan research area and public visibility is an optical Sentinel-2 diagnostic. A public practice export must remain explicitly fictional and unsigned; actual verification signatures require a real identity and integrity model.
+
+
 ## Public product understanding - 19 November 2026
 
 The owner rejected sending visitors to GitHub for the product tour, research and explanations. Those are now on-site experiences. Main navigation and primary actions must remain on the product; external links are optional citations and developer material. Meaningful visuals must explain actual observations, measured comparisons or a clearly labelled fictional workflow. The static image comparison preserves exact dates and provenance; it must not masquerade as selected-pass live imagery.

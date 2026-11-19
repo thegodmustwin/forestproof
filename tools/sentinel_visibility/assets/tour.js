@@ -34,6 +34,13 @@
 
   function updateReceipt() {
     const completed = [state.opened, Boolean(state.review), state.response, Boolean(state.followup), Boolean(state.followup)];
+    const recorded = completed.slice(0, 4).filter(Boolean).length;
+    text("[data-tour-progress-count]", recorded + " of 4");
+    const progress = document.querySelector("[data-tour-progress-fill]");
+    if (progress) progress.style.width = recorded / 4 * 100 + "%";
+    document.querySelectorAll("[data-tour-download], [data-tour-print]").forEach(button => {
+      button.disabled = !complete();
+    });
     links.forEach((link, index) => link.classList.toggle("is-complete", completed[index]));
     text("[data-tour-case-state]", state.followup ? "Open for verification" : state.response ? "Demo response recorded" : state.review ? "Under example review" : state.opened ? "Demo case opened" : "DEMO observation");
     text('[data-tour-summary="review"]', state.review ? reviewText[state.review] : "No interactive review recorded");
@@ -70,7 +77,7 @@
     });
     updateReceipt();
     if (changeHash && location.hash !== "#" + names[state.step]) history.pushState(null, "", "#" + names[state.step]);
-    if (focus) panels[state.step].querySelector("h2")?.focus({ preventScroll: true });
+    if (focus) panels[state.step].querySelector("h2")?.focus();
   }
 
   function validation(name, message) {
@@ -80,6 +87,56 @@
   function choice(name) {
     return document.querySelector('input[name="' + name + '"]:checked')?.value ?? null;
   }
+
+  function complete() {
+    return state.opened && Object.hasOwn(reviewText, state.review) && state.response && Object.hasOwn(followupText, state.followup);
+  }
+
+  function dossier() {
+    if (!complete()) return null;
+    return {
+      schema_version: "forestproof.fictional_walkthrough.v1",
+      classification: "FICTIONAL_DEMO",
+      unsigned: true,
+      generated_at: new Date().toISOString(),
+      case_id: "SIM-CASE-01",
+      source: { record_id: "SIM-OBS-01", synthetic: true, observation_time: "Example Day 1, 09:15", representation: "Illustrative possible vegetation signal; no measured values or real location" },
+      reviewer_role: "Example reviewer (fictional)",
+      review: { choice: state.review, description: reviewText[state.review] },
+      response: { description: responseText[state.review], checkpoint: "Example Day 8" },
+      follow_up: { choice: state.followup, description: followupText[state.followup] },
+      case_state: "Open for verification (fictional)",
+      conclusion: "Cause, field conditions, authorization and environmental impact remain unestablished.",
+      limits: ["Fictional browser-only teaching example. Not a real source receipt or field record.", "No identity verification or digital signature. No legal or environmental finding.", "The generated timestamp is the download creation time, not an observation time."]
+    };
+  }
+
+  document.querySelector("[data-tour-download]")?.addEventListener("click", () => {
+    const record = dossier();
+    if (!record) {
+      text("[data-tour-export-status]", "Complete the example review, response and follow-up before exporting.");
+      return;
+    }
+    const file = new Blob([JSON.stringify(record, null, 2) + "\n"], { type: "application/json" });
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "ForestProof-FICTIONAL-DEMO-SIM-CASE-01.json";
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    text("[data-tour-export-status]", "Fictional, unsigned dossier prepared for download to your device. No data was sent.");
+  });
+
+  document.querySelector("[data-tour-print]")?.addEventListener("click", () => {
+    if (!complete()) {
+      text("[data-tour-export-status]", "Complete the example review, response and follow-up before printing.");
+      return;
+    }
+    text("[data-tour-export-status]", "Print preview contains the fictional dossier. Choose Save as PDF in your browser to keep a copy.");
+    window.print();
+  });
 
   links.forEach((link, index) => link.addEventListener("click", event => {
     event.preventDefault();
@@ -111,6 +168,7 @@
     if (changed) {
       state.response = false;
       state.followup = null;
+      text("[data-tour-export-status]", "");
       document.querySelectorAll('input[name="demo-followup"]').forEach(input => { input.checked = false; });
     }
     validation("review", "");
@@ -150,6 +208,7 @@
     Object.assign(state, { step: 0, opened: false, review: null, response: false, followup: null });
     document.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
     document.querySelectorAll("[data-tour-validation]").forEach(element => { element.textContent = ""; });
+    text("[data-tour-export-status]", "");
     show(0, { focus: true });
     notify("Tour reset. Nothing was saved or sent.");
   });

@@ -43,7 +43,7 @@
     const params = new URL(window.location.href).searchParams;
     const grid = params.get("grid"), date = params.get("date");
     selectedGrid = gridButtons.some((button) => button.dataset.selectGrid === grid) ? grid : gridButtons[0].dataset.selectGrid;
-    selectedDate = observations.some((pass) => pass.date === date) ? date : observations[0].date;
+    selectedDate = observations.some((pass) => pass.date === date) ? date : bestPass().date;
   }
   function writeLocation() {
     const url = new URL(window.location.href);
@@ -52,12 +52,60 @@
     window.history.replaceState(null, "", url.pathname + url.search + url.hash);
   }
 
+  // Only exact manifest-matched image crops may accompany the selected aggregate.
+  const contextImages = {
+    "T36MZE:2026-11-08": {
+      src: "/assets/geta-context-2026-11-08.png",
+      alt: "Actual 8 November 2026 Sentinel-2 image: green land, dark shadows and bright clouds in the provisional research window.",
+      heading: "Land between clouds. An incomplete view.",
+      caption: "The image shows the research window. The coverage chart counts surface-classified 20 m centres across the same window in this grid. White areas in the image are not a forest-loss classification.",
+    },
+    "T36MZE:2026-11-13": {
+      src: "/assets/geta-context-2026-11-13.png",
+      alt: "Actual 13 November 2026 Sentinel-2 image: almost entirely white, with almost no usable ground view.",
+      heading: "A newer pass with almost no usable ground view.",
+      caption: "The white is present in the source image. Almost all sampled centres were unassessed on this pass. We need a usable observation before assessing change.",
+    },
+  };
+  const sceneImage = explorer.querySelector("[data-scene-image]");
+  let matchingScene = null;
+  let sceneFailed = false;
+  function sceneStatus() {
+    const available = Boolean(matchingScene) && !sceneFailed;
+    explorer.querySelector("[data-scene-available]").hidden = !available;
+    explorer.querySelector("[data-scene-empty]").hidden = available;
+    text("[data-scene-heading]", available ? matchingScene.heading : "The counts and the source image are separate.");
+    text("[data-scene-caption]", available ? matchingScene.caption : "A missing image crop does not mean zero visibility. Use the verified counts and their observation date on the right.");
+    text("[data-scene-missing]", sceneFailed
+      ? "The matching source image could not load. Coverage counts are still available; reload to try the image again."
+      : "No published image crop matches " + selectedGrid + " on " + selectedDate + ". The coverage counts remain available.");
+  }
+  sceneImage.addEventListener("error", () => { sceneFailed = true; sceneStatus(); });
+  sceneImage.addEventListener("load", () => { sceneFailed = false; sceneStatus(); });
+  function updateScene(pass) {
+    matchingScene = contextImages[selectedGrid + ":" + selectedDate] || null;
+    if (matchingScene) {
+      sceneImage.alt = matchingScene.alt;
+      if (sceneImage.getAttribute("src") !== matchingScene.src) {
+        sceneFailed = false;
+        sceneImage.src = matchingScene.src;
+      }
+      text("[data-scene-date]", pass.label + " · " + selectedGrid);
+    } else {
+      sceneFailed = false;
+      sceneImage.removeAttribute("src");
+      sceneImage.alt = "";
+    }
+    sceneStatus();
+  }
+
   function update(announce) {
     const pass = observations.find((item) => item.date === selectedDate);
     const tile = gridIn(pass);
     if (!tile) return;
     const percent = tile.visible / tile.sampled * 100;
     const share = label(tile.visible, tile.sampled);
+    updateScene(pass);
     gridButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.selectGrid === selectedGrid)));
     dateButtons.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.selectDate === selectedDate));

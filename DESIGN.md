@@ -26,6 +26,10 @@ The pass explorer lets visitors choose a grid and observation date, compare visi
 
 Private pages prioritize saved records, case ownership, review state, source quality and next action. The evidence lineage follows a selected case and its recorded attachments, actions and follow-ups.
 
+## Public workbench depth
+
+The observation explorer and fictional case walkthrough share dark layered surfaces, mint action, cyan source information and amber uncertainty. Depth belongs to evidence layers, image framing and a connected dossier. Image pixels retain their source identity; fabricated terrain, measured-looking traces or alert polygons must not decorate a real observation. The centre image, timeline and interpretation should communicate one task. The fictional dossier may be downloaded or printed after its steps are complete, with its teaching status and absence of signature visible.
+
 ## Spatial implementation
 
 The homepage uses two locally served, unchanged native-pixel Sentinel-2 true-colour visualization crops from the same research window on 8 and 13 November 2026. A straight observation panel opens with the clearer 8 November image. Native date choices pair each crop with its verified classification share, denominator, plain-language meaning and an observation link. The controls work without JavaScript. A numbered See → Understand → Review path gives first-time visitors a concrete route into the product. Their static dates, source identities and hashes are retained; the visual is context, not a change-classification map. The initial public view requires no WebGL engine. The earlier historical NASA composite remains an archived asset.

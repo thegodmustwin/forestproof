@@ -1,5 +1,16 @@
 # Current Status
 
+## Connected public workbench — 20 November 2026
+
+The new public candidate translates the owner's dark mint visual reference into an observation workbench and a matching evidence walkthrough. The explorer has a date/grid timeline, a real source-image plane, exact aggregate coverage and an interpretation panel. Only T36MZE on 8 and 13 November has a published matching crop. Other selections show image context unavailable while retaining their counts. Image-load errors preserve the evidence panel. With no date link specified, the explorer opens the clearest sampled pass for the selected grid. No-script readers retain the full archive.
+
+The fictional walkthrough has a numbered step rail, source schematic, progress receipt and connected dossier. Completion enables an unsigned, explicitly fictional JSON export and browser print/save-PDF view. Choices remain in memory; downloads are local, with no backend writes or new provider access.
+
+Local explorer browser checks passed at 1440, 390 and 320 px for all four fixture grid/date pairs, exact image binding, missing-image and blocked-image states, keyboard selection, query/reload behavior, no-script archive, no overflow, no page errors and zero external requests. Walkthrough checks at the same widths passed validation, both review paths, downstream resets, history, full completion, parsed JSON export, print layout and no-script reading. The six renderer tests passed. Release/production verification is pending for this candidate.
+
+The supplied assessment's Sweden, 87.2% coverage and −3.4 dB references are incorrect for this product. Geta is in Kenya and the public report uses Sentinel-2 optical classifications; the screenshot's radar overlays are a concept, not measured ForestProof evidence. This interface release does not activate an operational alert feed or production owner identity.
+
+
 ## Clear first-visit observation — 20 November 2026
 
 The owner requested a straight, more understandable dark homepage. The dated image wipe is replaced by a native two-date observation explainer: actual image, verified visible share and denominator, interpretation and a direct link to the selected grid/date. The 8 November partial view opens first; 13 November explicitly explains the almost-white source image and near-zero usable view. A numbered See → Understand → Review path teaches the public product. These are historical examples, not fresh alert detections; the existing dynamic source-check snapshot remains separate.

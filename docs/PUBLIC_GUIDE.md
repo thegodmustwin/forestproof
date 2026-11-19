@@ -1,10 +1,14 @@
 # ForestProof public product guide
 
-Updated 19 November 2026, Africa/Nairobi.
+Updated 20 November 2026, Africa/Nairobi.
 
 ## Living Atlas product experience
 
 The homepage starts with “Can we see the ground?” Choose 8 or 13 November 2026 to see an actual Sentinel-2 image, its sampled visible share and a plain-language explanation. The clearer 8 November view opens first. These historical examples preserve their dates and remain independent of the report refresh. Native date choices also work with JavaScript disabled. Choose Explore satellite coverage to enter the pass explorer, or use the three numbered steps to see an observation, understand its limits and try a fictional review. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
+
+The public explorer presents an observation timeline, exact grid/date image context and a coverage interpretation together in a dark workbench. It starts with the clearest sampled pass unless a date is linked. The published images cover only T36MZE on 8 and 13 November; other choices state that image context is unavailable without replacing their counts. A failed image does not remove the coverage evidence.
+
+The public fictional walkthrough uses a matching evidence workbench and a visible progress receipt. Complete the example review, response and follow-up to download an unsigned JSON dossier or print/save a PDF. These files are labelled fictional, contain the chosen teaching path and stay on the visitor's device. Reloading clears the in-page choices.
 
 The protected application uses the same Living Atlas design system. Its operations desk filters saved cases, the case workspace organizes source evidence and review actions, and the outcomes view traces a selected case's recorded relationships. The operational map preserves its instance while observations change and offers optional terrain with attribution and a return to 2D. The existing synthetic labels and source qualification requirements apply throughout.
 

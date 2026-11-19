@@ -40,3 +40,9 @@ The same independent read-only service serves the public homepage, richer pass e
 `build_product_pages.py` accepts only the published guide/research page names and inlines `assets/product-pages.css`. The tour uses a same-origin script and memory-only demonstration choices. Without JavaScript its full teaching narrative remains visible. The explorer keeps a full native archive without scripting and exposes shareable selected grid/date queries when enhanced.
 
 The homepage context crops are pinned historical Sentinel-2 visualizations, independent of the scheduled SCL report. `assets/geta-context.json` records their identities, crop windows and output hashes. `prepare_context_images.py` is a manual maintainer tool using the existing raster environment; serving pages never invokes it. Static image dates must remain visible as the live aggregate source check advances. The private review API and storage are not used by any public teaching page.
+
+## Connected observation and practice workbenches — 20 November 2026
+
+The explorer opens the clearest sampled pass by default, retaining explicit date/grid URL selections. Its source-image plane uses only exact T36MZE matches for 8 and 13 November; other dates/grids get an explicit unavailable-image state. Failed image loads retain counts and a reload suggestion. The ring describes aggregate counts, never spatial alert locations. No-script and private reports retain the complete dated archive.
+
+The fictional tour's completion gate enables a browser-generated JSON download and print/save-PDF layout. The JSON uses `forestproof.fictional_walkthrough.v1`, `classification: FICTIONAL_DEMO` and `unsigned: true`. It includes synthetic source identity, selected review/response/follow-up, example role and limitations. No local/browser storage or server mutation is added. Printed dossiers retain their fictional label and unresolved outcome.
