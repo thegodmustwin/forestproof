@@ -56,6 +56,7 @@ export function AberdareMap({ selectedId, observations = demoObservations, onSel
 
     let map: maplibregl.Map;
     try {
+      maplibregl.setWorkerUrl("/vendor/maplibre-gl-worker.mjs");
       map = new maplibregl.Map({
         container: container.current,
         center: monitoredArea.center,
@@ -72,6 +73,12 @@ export function AberdareMap({ selectedId, observations = demoObservations, onSel
       return;
     }
 
+    map.on("style.load", () => {
+      if (destroyed || basemapFailed) return;
+      setHasMap(true);
+      setMapMessage("Loading base map imagery…");
+      map.resize();
+    });
     map.on("load", () => {
       if (destroyed || basemapFailed) return;
       const enableGfwContext = process.env.NEXT_PUBLIC_ENABLE_GFW_GLAD_S2_CONTEXT === "true";
@@ -207,6 +214,7 @@ export function AberdareMap({ selectedId, observations = demoObservations, onSel
           <button className="button secondary" type="button" aria-pressed={terrain !== "off"} onClick={toggleTerrain}>
             {terrain === "loading" ? "Cancel terrain loading" : terrain === "on" ? "Return to 2D" : "Explore 3D terrain"}
           </button>
+          {mapMessage && <p role="status">{mapMessage}</p>}
           {terrainMessage && <p role="status">{terrainMessage}</p>}
         </div>
       ) : (
