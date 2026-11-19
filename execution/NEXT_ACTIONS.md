@@ -1,5 +1,10 @@
 # Next Actions
 
+## After the first-visit clarification — 20 November 2026
+
+Use the homepage's real observation example and numbered See → Understand → Review path for first-time feedback. Keep its historical examples separate from refreshed coverage and its fictional review separate from private saved cases. The next functional launch milestone remains qualified source/area access, person-level owner review and independent recovery; this interface change does not activate a forest-alert feed.
+
+
 ## After the Living Atlas release
 
 The public homepage/pass explorer and protected review workspace are deployed. Desktop/mobile pass selection, no-JavaScript reading, real terrain activation/return, map persistence, source-failure fallback and saved-case lineage were checked. The current release record contains the exact pins and safety checks. Share the public experience for feedback, then continue source qualification and real owner/recovery work under the existing launch milestones. Further UI polish does not replace those requirements.

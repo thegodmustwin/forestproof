@@ -1,5 +1,12 @@
 # Current Status
 
+## Clear first-visit observation — 20 November 2026
+
+The owner requested a straight, more understandable dark homepage. The dated image wipe is replaced by a native two-date observation explainer: actual image, verified visible share and denominator, interpretation and a direct link to the selected grid/date. The 8 November partial view opens first; 13 November explicitly explains the almost-white source image and near-zero usable view. A numbered See → Understand → Review path teaches the public product. These are historical examples, not fresh alert detections; the existing dynamic source-check snapshot remains separate.
+
+Local browser checks passed at 1440, 390 and 320 px for the date choices, keyboard/touch use, image decoding, observation deep links, guide and walkthrough navigation, reduced-motion setting, no overflow and zero external requests. Both native date choices worked with JavaScript disabled. The existing six renderer tests passed. Public service source `c46e31e4048a14d6a426b85de0f5d0ea12c4c4da` is deployed on Contabo. Full application CI and raster CI passed on that exact source. The complete public-service test suite passed before switching. All sixteen public routes passed GET/HEAD 200 and POST 405, with expected MIME types; anonymous private/unknown routes remained 401. Production browser checks repeated the same desktop/phone/narrow-phone interactions successfully, including the selected-date explorer link, guide and tour, both no-JavaScript date choices, no overflow, no page errors and zero external requests. Actual desktop and mobile screenshots were inspected. The gateway configuration, private app, stored source report and refresh schedule were preserved. The public service and timer, SSH, loopback-only RDP, MariaDB and PHP-FPM remained active. The previous public source `fd83f0883b76a111231eac3b375017a1ed7a2983` is retained for rollback.
+
+
 ## Self-contained public experience - 19 November 2026
 
 The revised public build brings the product tour, research comparison and plain-language guide onto the site. The homepage compares real source visualization crops from 8 and 13 November 2026; their scene identities, source ETags, same native window and output hashes are retained in a public manifest. The Geta instrument adds proportional pass comparisons, a coverage ring, a clearest-pass action and shareable selections. The anonymous fictional case records choices only in browser memory. It makes no backend writes and does not expose private review records.

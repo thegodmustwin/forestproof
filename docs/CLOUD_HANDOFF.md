@@ -1,5 +1,10 @@
 # ForestProof — Cloud continuation handoff
 
+## Clear public entry — 20 November 2026
+
+Current public service source is `c46e31e4048a14d6a426b85de0f5d0ea12c4c4da`. The owner rejected the tilted image wipe. The straight dark homepage now teaches two historical passes with native date choices, exact coverage shares, interpretations and explorer deep links. The clearer 8 November image opens first; three numbered See → Understand → Review actions introduce the product. JavaScript is not needed for the homepage choices. Production browser checks passed at 1440, 390 and 320 px. Read CURRENT_STATUS for full CI, service, route and protection verification. The previous source below is historical; the protected app and feed qualification are unchanged.
+
+
 ## Public product continuation - 19 November 2026
 
 Public release `fd83f0883b76a111231eac3b375017a1ed7a2983` makes the main visitor journey self-contained at `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. GitHub is an optional developer reference. The homepage has two real dated Sentinel-2 image crops and pointer/touch/keyboard comparison. The explorer has comparative pass bars, a coverage ring and clearest-pass action. The anonymous practice case is explicitly fictional and memory-only. Research and explanations stay on-site. Read the newest CURRENT_STATUS entry for production browser, CI, exact-route and private-boundary checks. The private app and real-feed qualification are separate.
