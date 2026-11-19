@@ -1,5 +1,9 @@
 # ForestProof — Cloud continuation handoff
 
+## Public product continuation - 19 November 2026
+
+Public release `fd83f0883b76a111231eac3b375017a1ed7a2983` makes the main visitor journey self-contained at `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. GitHub is an optional developer reference. The homepage has two real dated Sentinel-2 image crops and pointer/touch/keyboard comparison. The explorer has comparative pass bars, a coverage ring and clearest-pass action. The anonymous practice case is explicitly fictional and memory-only. Research and explanations stay on-site. Read the newest CURRENT_STATUS entry for production browser, CI, exact-route and private-boundary checks. The private app and real-feed qualification are separate.
+
 ## Living Atlas continuation — 19 November 2026
 
 The public homepage and Geta pass explorer are deployed and were checked in desktop and mobile browsers. The protected command center, investigation desk, evidence workspace and saved-case lineage have also been rendered against the existing Contabo demo API. PR #46 contains the design release. PR #47 fixes the actual map worker path, startup readiness and fallback layout. Read the newest [release verification](../execution/CURRENT_STATUS.md#living-atlas-release--19-november-2026) for exact running pins and final checks before deploying anything else. This supersedes older preview and rendering status below.
