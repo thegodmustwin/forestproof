@@ -2,7 +2,7 @@
 
 ## Self-contained public product
 
-The main visitor journey stays on ForestProof: `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. The homepage compares two dated real Sentinel-2 context crops. The explorer visualizes real aggregate coverage. The anonymous walkthrough is a clearly fictional browser-only teaching case; it is separate from the protected saved-case app. The guide and research explanations are rendered by `tools/sentinel_visibility/build_product_pages.py`, with optional upstream citations. GitHub is a secondary developer reference. Image provenance lives in `tools/sentinel_visibility/assets/geta-context.json`.
+The main visitor journey stays on ForestProof: `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. The homepage explains two dated real Sentinel-2 context crops with native date selection, verified visibility shares, plain-language interpretations and deep links into the selected observation. Three numbered actions introduce coverage, interpretation and the fictional review. The explorer visualizes real aggregate coverage. The anonymous walkthrough is a clearly fictional browser-only teaching case; it is separate from the protected saved-case app. The guide and research explanations are rendered by `tools/sentinel_visibility/build_product_pages.py`, with optional upstream citations. GitHub is a secondary developer reference. Image provenance lives in `tools/sentinel_visibility/assets/geta-context.json`.
 
 
 ## Living Atlas experience — 19 November 2026
