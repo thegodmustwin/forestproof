@@ -3,94 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Explore satellite visibility over the provisional Geta research area and learn how ForestProof supports evidence review and follow-up.">
-<title>ForestProof | Explore satellite visibility in Geta</title>
+<meta name="theme-color" content="#071717">
+<meta name="description" content="Explore satellite observations from Geta, Kenya, and the evidence that connects a signal to a human decision.">
+<title>ForestProof | See the planet. Protect what matters.</title>
+<link rel="stylesheet" href="/assets/atlas.css">
+<link rel="preload" href="/assets/earth-east.jpg" as="image">
 <style>
-:root {
-  color-scheme: light;
-  --paper: #f7f5ec;
-  --ink: #17372d;
-  --muted: #3f554a;
-  --green: #20553f;
-  --line: #b8c4ac;
-  --wash: #e8edde;
-  --track: #c7d3c2;
-  --focus: #8c4b05;
-  --serif: Georgia, "Times New Roman", serif;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, sans-serif; }
-a { color: inherit; text-underline-offset: .22em; }
-a:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; }
-h1, h2, h3, p { margin: 0; }
-h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
-.skip { position: absolute; left: 1rem; top: -6rem; z-index: 1; background: var(--paper); padding: .65rem; }
-.skip:focus { top: 1rem; }
-.content-width { width: min(71rem, calc(100% - 3.5rem)); margin-inline: auto; }
-.masthead { display: flex; align-items: center; justify-content: space-between; column-gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
-.brand { font: 700 1.55rem/1 var(--serif); letter-spacing: -.04em; }
-.masthead a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9rem; font-weight: 650; }
-.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .85fr); align-items: center; gap: clamp(2rem, 7vw, 6.5rem); padding: clamp(3rem, 8vw, 7rem) 0; }
-.kicker { text-transform: uppercase; font-size: .75rem; font-weight: 700; letter-spacing: .105em; }
-h1 { margin: .85rem 0 1.25rem; font-size: clamp(2.75rem, 6.1vw, 5.8rem); line-height: .99; letter-spacing: -.061em; max-width: 11ch; }
-.intro { max-width: 47ch; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.18rem); }
-.primary { display: inline-flex; align-items: center; gap: 1.1rem; min-height: 3.15rem; margin-top: 1.65rem; padding: .7rem 1.15rem; color: #fff; background: var(--green); font-weight: 700; text-decoration: none; }
-.primary:hover { background: #163c2e; }
-.field-note { padding: clamp(1.15rem, 3vw, 2rem); background: var(--wash); border: 1px solid var(--line); border-top: 4px solid var(--green); }
-.field-note h2 { margin: .3rem 0 .8rem; font-size: clamp(1.65rem, 3.1vw, 2.65rem); line-height: 1.12; letter-spacing: -.045em; }
-.field-note .context { font-size: .91rem; color: var(--muted); }
-.quick-read { list-style: none; padding: 0; margin: 1.15rem 0 1rem; }
-.quick-read li { display: grid; grid-template-columns: 4rem minmax(0, 1fr) minmax(3.5rem, auto); gap: .65rem; align-items: center; padding: .65rem 0; border-top: 1px solid var(--line); }
-.grid-label { font: 600 .83rem/1.25 ui-monospace, monospace; }
-.track { height: .36rem; background: var(--track); }
-.track span { display: block; height: 100%; background: var(--green); }
-.quick-read strong { text-align: right; font-variant-numeric: tabular-nums; }
-.workflow { padding: 2.5rem 0 3rem; border-top: 1px solid var(--line); }
-.workflow h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); letter-spacing: -.045em; line-height: 1.1; }
-.workflow > p { margin-top: .7rem; color: var(--muted); }
-.workflow ol { padding: 0; margin: 1.4rem 0 0; list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.25rem 2rem; }
-.workflow li { padding-top: .8rem; border-top: 1px solid var(--line); }
-.workflow h3 { font-size: 1.32rem; margin-bottom: .35rem; }
-.workflow li p { color: var(--muted); }
-footer { border-top: 1px solid var(--line); padding: 1rem 0 1.8rem; color: var(--muted); font-size: .86rem; }
-@media (max-width: 46rem) {
-  .content-width { width: calc(100% - 2.5rem); }
-  .masthead { padding: .65rem 0; }
-  .hero, .workflow ol { grid-template-columns: 1fr; }
-  .hero { padding-block: 2.4rem; gap: 1.75rem; }
-  .workflow { padding-block: 2rem; }
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--atlas-orbit);color:var(--atlas-white);font:1rem/1.65 var(--atlas-sans)}
+a{color:inherit;text-underline-offset:.25em}h1,h2,h3,p{margin:0}h1,h2,h3{font-family:var(--atlas-serif);font-weight:400}
+.skip{position:absolute;top:-5rem;left:1rem;background:var(--atlas-paper);color:var(--atlas-ink);padding:.6rem;z-index:9}.skip:focus{top:1rem}
+.wrap{width:min(78rem,calc(100% - 4rem));margin-inline:auto}.masthead{min-height:5.7rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;border-bottom:1px solid var(--atlas-dark-line)}
+.brand{font:600 1.6rem/1 var(--atlas-serif);letter-spacing:-.055em;text-decoration:none;display:flex;align-items:center;gap:.7rem}.brand-mark{display:block;width:1.4rem;aspect-ratio:1;border:1px solid var(--atlas-mint);border-radius:50%;position:relative}.brand-mark::after{content:"";position:absolute;inset:.28rem;border:1px solid var(--atlas-mint);border-radius:50%}
+nav{display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap}nav a{font-size:.875rem;text-decoration:none;min-height:2.75rem;display:flex;align-items:center}nav a:hover{color:var(--atlas-mint)}
+.orbital{position:relative;isolation:isolate;overflow:hidden}.orbital::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 74% 50%,#17424455,transparent 53%);z-index:-1}
+.hero{position:relative;min-height:43rem;display:flex;align-items:center;padding:4rem 0 5rem}.hero-copy{position:relative;z-index:2;width:52%;pointer-events:none}.hero-copy a{pointer-events:auto}
+.eyebrow{font:500 .75rem/1.5 var(--atlas-mono);letter-spacing:.13em;text-transform:uppercase;color:var(--atlas-mint)}
+h1{font-size:clamp(3.5rem,7.1vw,7.2rem);line-height:1.015;letter-spacing:-.052em;margin:1.3rem 0 1.6rem}h1 em{display:block;color:var(--atlas-mint);font-weight:400}
+.lede{max-width:39ch;color:#c2d1c9;font-size:1.1rem;line-height:1.65}.hero-actions{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap;margin-top:2rem}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:3.2rem;padding:.65rem 1.3rem;font-size:.95rem;font-weight:650;text-decoration:none;border:1px solid transparent;border-radius:.2rem;background:var(--atlas-mint);color:var(--atlas-orbit)}.button:hover{background:#c9f2dc}.text-link{font-size:.9rem;min-height:2.75rem;display:inline-flex;align-items:center}
+.earth-figure{position:absolute;z-index:0;width:min(64vw,51rem);right:-9rem;top:50%;transform:translateY(-50%);margin:0;aspect-ratio:1}
+.planet{position:absolute;inset:6%;border-radius:50%;overflow:hidden;background:#071717;box-shadow:0 0 1.4rem #53d0cf36,0 0 4rem #2aa8a72b}
+.planet img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen}
+.planet::after{position:absolute;inset:0;content:"";border-radius:50%;box-shadow:inset -3rem -1rem 4rem #010c14bb,inset .3rem 0 .7rem #83effb77;background:linear-gradient(100deg,transparent 60%,#03151277)}
+.orbit-line{position:absolute;inset:-1%;border:1px solid #7fccc03b;border-radius:50%;transform:rotate(-23deg) scaleY(.53);pointer-events:none}
+.earth-figure figcaption{position:absolute;right:4rem;bottom:0;max-width:22rem;font:400 .75rem/1.6 var(--atlas-mono);color:var(--atlas-grey);text-align:right}
+.scope-strip{border-top:1px solid var(--atlas-dark-line);border-bottom:1px solid var(--atlas-dark-line);display:flex;justify-content:space-between;align-items:center;gap:1.2rem;padding:1.2rem 0;color:var(--atlas-grey);font-size:.875rem}.scope-strip strong{color:var(--atlas-white);font-weight:500}.scope-strip span{display:block}
+.programme{padding:5rem 0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:5rem;align-items:start}
+.section-title{font-size:clamp(2.5rem,4vw,4rem);line-height:1.08;letter-spacing:-.045em;margin:.9rem 0 1.2rem}.programme-intro p:last-of-type{color:#bdcdc4;max-width:43ch}.programme-intro .text-link{margin-top:1rem}
+.observation-brief{background:var(--atlas-forest);border:1px solid var(--atlas-dark-line);border-radius:var(--atlas-radius);padding:1.6rem 1.8rem}.observation-brief h3{font-size:2rem;letter-spacing:-.035em;margin:.4rem 0 .8rem}.brief-intro{font-size:.875rem;color:var(--atlas-grey)}
+.quick-read{list-style:none;padding:0;margin:1.2rem 0}.quick-read li{display:grid;grid-template-columns:5rem minmax(0,1fr) 4.2rem;gap:.8rem;align-items:center;border-top:1px solid var(--atlas-dark-line);padding:.9rem 0}.quick-read .grid-label{font:400 .8rem var(--atlas-mono);color:#c3d7cb}.track{height:.35rem;background:#2c423b}.track span{display:block;height:100%;background:var(--atlas-cyan)}.quick-read strong{text-align:right;font:500 1.15rem var(--atlas-mono)}
+.brief-caption{font-size:.8rem;color:var(--atlas-grey)}.brief-caption strong{color:var(--atlas-amber)}.brief-footer{margin-top:1.2rem}.brief-footer a{color:var(--atlas-mint);font-size:.9rem}
+.evidence-section{background:var(--atlas-paper);color:var(--atlas-ink);padding:4.7rem 0 5rem}.evidence-section .eyebrow{color:var(--atlas-observation-ink)}.evidence-section .section-title{max-width:20ch}
+.evidence-header{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:end}.evidence-header>p{color:var(--atlas-muted-ink);max-width:45ch}
+.pathway{padding:0;margin:2.6rem 0 0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem}.pathway li{border-top:1px solid var(--atlas-line);padding-top:1rem}.pathway h3{font-size:1.5rem;letter-spacing:-.025em;margin-bottom:.5rem}.pathway p{color:var(--atlas-muted-ink);font-size:.95rem}
+.example-note{margin-top:2rem;color:var(--atlas-muted-ink);font-size:.875rem}.example-note a{font-weight:600}
+.research{padding:4.5rem 0;display:grid;grid-template-columns:1fr 1fr;gap:5rem}.research p{color:#bdcdc4;max-width:44ch}.research h2{font-size:2.3rem;line-height:1.12;letter-spacing:-.035em;margin:.7rem 0 1rem}
+.research-reading{border-left:1px solid var(--atlas-dark-line);padding-left:2rem}.research-reading h3{font:500 .875rem var(--atlas-mono);color:var(--atlas-grey);margin-bottom:1.4rem}.comparison{display:flex;gap:2.5rem;flex-wrap:wrap}.comparison strong{font:400 3.4rem/1 var(--atlas-serif);color:var(--atlas-mint)}.comparison span{display:block;margin-top:.6rem;color:var(--atlas-grey);font-size:.875rem}.research-reading>p{font-size:.875rem;margin-top:1.4rem}
+footer{border-top:1px solid var(--atlas-dark-line);padding:1.5rem 0 2rem;color:var(--atlas-grey);font-size:.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.footer-links{display:flex;gap:1.4rem;flex-wrap:wrap}
+@media(min-width:1500px){.earth-figure{right:-5rem}}
+@media(max-width:900px){.hero{min-height:39rem}.hero-copy{width:59%}.earth-figure{right:-14rem;width:55rem;opacity:.75}.programme{gap:2rem}.research{gap:2rem}}
+@media(max-width:640px){.wrap{width:calc(100% - 2.5rem)}.masthead{min-height:5rem;gap:.8rem}.brand{font-size:1.4rem}nav{gap:.8rem}nav a{font-size:.8rem}nav a:first-child{display:none}.hero{display:block;padding:2.7rem 0 1rem;min-height:0}.hero-copy{width:100%}h1{font-size:3.55rem;line-height:1.02;margin-top:1rem}.lede{font-size:1rem;max-width:33ch}.earth-figure{position:relative;inset:auto;transform:none;width:calc(100% + 3rem);margin:-.5rem -1.5rem 0;opacity:1}.earth-figure figcaption{right:2rem;bottom:.1rem;max-width:18rem;font-size:.65rem}.planet{inset:9%}.hero-actions{gap:1.1rem;margin-top:1.5rem}.scope-strip{align-items:flex-start;font-size:.8rem;gap:1.5rem}.programme,.research,.evidence-header{grid-template-columns:1fr;gap:2rem}.programme{padding:3rem 0}.section-title{font-size:2.75rem}.observation-brief{padding:1.3rem}.evidence-section{padding:3rem 0}.pathway{grid-template-columns:1fr;gap:1.5rem;margin-top:2rem}.research{padding:3rem 0}.research-reading{padding-left:0;border-left:0;border-top:1px solid var(--atlas-dark-line);padding-top:1.5rem}.research h2{font-size:2rem}footer{font-size:.75rem}.comparison strong{font-size:3rem}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="masthead content-width">
-  <span class="brand">ForestProof</span>
-  <nav aria-label="Page navigation"><a href="#workflow">How it works</a> · <a href="https://github.com/thegodmustwin/forestproof/blob/main/docs/PUBLIC_GUIDE.md">Product tour</a></nav>
+<header class="masthead wrap">
+  <a class="brand" href="/welcome" aria-label="ForestProof homepage"><span class="brand-mark" aria-hidden="true"></span>ForestProof</a>
+  <nav aria-label="Main navigation"><a href="/visibility">Observations</a><a href="/project.txt">Project guide</a><a href="https://github.com/thegodmustwin/forestproof">GitHub</a></nav>
 </header>
-<main class="content-width" id="main">
-  <section class="hero" aria-labelledby="intro-title">
-    <div>
-      <p class="kicker">Geta, Kenya</p>
-      <h1 id="intro-title">What could the satellite see?</h1>
-      <p class="intro">Explore real Sentinel-2 observations from the provisional Geta research area. Compare clear views and gaps across passes, then see how an observation could become a case someone follows up.</p>
-      <a class="primary" href="/visibility">Explore Geta <span aria-hidden="true">→</span></a>
+<main id="main">
+<div class="orbital">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">A living atlas · Kenya</p>
+      <h1 id="hero-title">See the planet.<em>Protect what matters.</em></h1>
+      <p class="lede">Explore what satellites can see. Follow the evidence from an environmental observation to a human decision.</p>
+      <div class="hero-actions"><a class="button" href="/visibility">Explore Geta</a><a class="text-link" href="#evidence">How ForestProof works</a></div>
     </div>
-    <aside class="field-note" aria-label="Geta visibility snapshot">
-      $snapshot
-    </aside>
+    <figure class="earth-figure">
+      <div class="orbit-line" aria-hidden="true"></div>
+      <div class="planet"><img src="/assets/earth-east.jpg" width="2048" height="2048" alt="NASA Blue Marble view of Africa, Europe and Asia" fetchpriority="high"></div>
+      <figcaption>Earth imagery · NASA Blue Marble, 2002<br>Historical composite for geographic orientation</figcaption>
+    </figure>
   </section>
-
-  <section class="workflow" id="workflow" aria-labelledby="workflow-title">
-    <h2 id="workflow-title">From observation to follow-up</h2>
-    <p>Example · A reviewer notices a possible change in a clear image.</p>
-    <ol role="list">
-      <li><h3>Check the evidence</h3><p>Save the source and observation date. Record which areas were clear and which were hidden by cloud or shadow.</p></li>
-      <li><h3>Record a decision</h3><p>A reviewer compares the images and records what they can establish, what remains uncertain, and who will follow up.</p></li>
-      <li><h3>Set a follow-up</h3><p>Schedule another observation or a field check. Link the result to the original evidence so someone else can retrace the decision.</p></li>
-    </ol>
-  </section>
+</div>
+<div class="wrap scope-strip"><div><strong>Geta research programme</strong><span>Provisional research area · Kenya</span></div><div>Real satellite coverage<br>Human review of evidence</div></div>
+<section class="programme wrap" aria-labelledby="programme-title">
+  <div class="programme-intro"><p class="eyebrow">Start with the observation</p><h2 class="section-title" id="programme-title">A clearer view.<br>An honest starting point.</h2><p>Before asking what changed, ask what was visible. Compare Sentinel-2 passes over the Geta research area and see where cloud, shadow and missing data limit the view.</p><a class="text-link" href="/visibility">Open the pass explorer</a></div>
+  <section class="observation-brief" aria-label="Latest verified Geta visibility">$snapshot</section>
+</section>
+<section class="evidence-section" id="evidence" aria-labelledby="evidence-title">
+  <div class="wrap">
+    <div class="evidence-header"><div><p class="eyebrow">Observe. Review. Respond.</p><h2 class="section-title" id="evidence-title">Every observation deserves a traceable next step.</h2></div><p>ForestProof connects source evidence, a responsible reviewer and a dated follow-up. Another person can retrace what was learned and what needs checking.</p></div>
+    <ol class="pathway" role="list"><li><h3>Understand the signal</h3><p>Read the source, observation date and usable coverage. Record what the evidence can establish and where the view is limited.</p></li><li><h3>Own the investigation</h3><p>A reviewer opens a case, preserves the evidence, and records a decision and an authorized response.</p></li><li><h3>Return to the evidence</h3><p>Schedule the next check. Document what happened and connect the follow-up to the original observation.</p></li></ol>
+    <p class="example-note">The protected case application demonstrates this workflow with labelled synthetic records. <a href="https://github.com/thegodmustwin/forestproof/blob/main/docs/PUBLIC_GUIDE.md">Take the product tour</a></p>
+  </div>
+</section>
+<section class="research wrap" aria-labelledby="research-title">
+  <div><p class="eyebrow">Open, reproducible research</p><h2 id="research-title">The strength to show the limits.</h2><p>A historical Mount Kenya fire gave us a local test of one radar rule. We publish the method and the result, including the changes it missed. Better evidence guides the next experiment.</p><a class="text-link" href="https://github.com/thegodmustwin/forestproof/blob/main/docs/DIRECT_SOURCE_EVALUATION.md#mount-kenya-fire-backtest---2026-11-17">Read the Kenyan backtest</a></div>
+  <div class="research-reading"><h3>2019 Mount Kenya fire · 3 dB two-band rule</h3><div class="comparison"><div><strong>7.8%</strong><span>Matched burn cells flagged</span></div><div><strong>2.9%</strong><span>Matched control cells flagged</span></div></div><p>144,677 matched pairs. One historical event. Current public forest-loss alerts still need a qualified source and method.</p></div>
+</section>
 </main>
-<footer class="content-width">ForestProof · Provisional Geta research area $attribution · <a href="https://github.com/thegodmustwin/forestproof">Source on GitHub</a> · <a href="/project.txt">Text project guide</a></footer>
+<footer class="wrap"><span>ForestProof · Living Atlas $attribution</span><span class="footer-links"><a href="/project.txt">Text project guide</a><a href="https://github.com/thegodmustwin/forestproof">Source and research</a><a href="https://science.nasa.gov/earth/earth-observatory/the-blue-marble-true-color-global-imagery-at-1km-resolution/">Earth image credit</a></span></footer>
 </body>
 </html>

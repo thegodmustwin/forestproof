@@ -1,5 +1,9 @@
 # Next Actions
 
+## Complete the Living Atlas release
+
+Verify desktop and mobile pass selection, the no-JavaScript report archive, missing/failed/overdue source states, map persistence, terrain activation and return to 2D, and saved-case lineage. Run existing synthetic end-to-end checks and deployment access tests before recording the exact public and private release. Continue source qualification and real-review recovery under the existing launch milestones.
+
 ## Use the public project guide
 
 Share the homepage, repository root and docs/PUBLIC_GUIDE.md as the starting point for visitors and AI readers. Preserve dated claims and verify the running release separately from GitHub main. The remaining record-level alert milestone requires qualified area/source access, owner identity and independent real-case recovery.

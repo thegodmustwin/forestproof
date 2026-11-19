@@ -1,5 +1,9 @@
 # ForestProof — decision and context ledger
 
+## Living Atlas design evolution — 19 November 2026
+
+The owner requested the orbital observatory, understandable pass explorer, persistent map, evidence laboratory and record-backed lineage described in the new design assessment. Reuse the existing Next.js/MapLibre/API stack and the existing Contabo host. A locally served, credited NASA historical composite provides the Earth view. Optional terrain uses the documented anonymous Mapzen terrain route. Preserve the current source qualifications, data labels, private review and recovery requirements.
+
 This is the compact record of durable owner choices and important unresolved facts. Keep it current; do not use it to imply an implementation is complete.
 
 ## Confirmed owner choices

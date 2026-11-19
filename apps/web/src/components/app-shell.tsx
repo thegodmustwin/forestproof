@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
   { href: "/", label: "Command center", icon: "overview" },
-  { href: "/monitor/aberdare", label: "Aberdare monitor", icon: "monitor" },
-  { href: "/operations", label: "Case operations", icon: "cases" },
+  { href: "/monitor/aberdare", label: "Landscape explorer", icon: "monitor" },
+  { href: "/operations", label: "Investigation desk", icon: "cases" },
   { href: "/outcomes", label: "Outcome graph", icon: "outcomes" },
   { href: "/legal", label: "Legal context", icon: "legal" },
   { href: "/sources", label: "Data sources", icon: "sources" },
@@ -25,16 +25,17 @@ function NavigationIcon({ name }: { name: string }) {
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const currentPage = navigation.find((item) => item.href === "/" ? pathname === "/" : pathname.startsWith(item.href));
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content">Skip to content</a>
       <aside className="sidebar" aria-label="Primary navigation">
         <Link href="/" className="brand" aria-label="ForestProof command center">
           <span className="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none"><path d="M18 5 8 18h6L6 29h24l-8-11h6L18 5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" /><path d="M18 22v10" stroke="currentColor" strokeWidth="1.7" /></svg></span>
-          <span className="brand-wordmark">FORESTPROOF<span className="brand-sub">EVIDENCE TO ACTION</span></span>
+          <span className="brand-wordmark">FORESTPROOF<span className="brand-sub">LIVING ATLAS</span></span>
         </Link>
         <nav className="nav">
-          <p className="nav-label">Workspace</p>
+          <p className="nav-label">Research workspace</p>
           {navigation.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
             return (
@@ -50,9 +51,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <strong>DEMO ENVIRONMENT</strong>
           Synthetic, clearly labelled records only. Human review remains required for every substantive finding.
         </div>
-        <div className="sidebar-signature" aria-hidden="true">Observe. Review. Respond.</div>
+        <div className="sidebar-signature">Observe. Review. Respond.</div>
       </aside>
-      <main id="main-content" tabIndex={-1}>{children}</main>
+      <main id="main-content" tabIndex={-1}>
+        <div className="workspace-bar"><span>Kenya <span aria-hidden="true">/</span> {currentPage?.label ?? "Evidence laboratory"}</span><a href="https://vmi3711898.contaboserver.net/welcome">Public observatory <span aria-hidden="true">↗</span></a></div>
+        {children}
+      </main>
     </div>
   );
 }

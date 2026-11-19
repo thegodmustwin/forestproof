@@ -1,5 +1,9 @@
 # ForestProof Roadmap
 
+## Living Atlas product experience
+
+The current design milestone connects the public observatory to readable source coverage and the protected evidence workflow. It includes canonical tokens, a NASA-based orbital entry, dated pass exploration, map lifecycle repair, on-demand terrain and selected-case lineage. Source qualification and production owner/recovery work continue as launch requirements.
+
 ## Public understanding milestone
 
 Publish one coherent main-branch entry containing the deployed homepage, Geta report, plain-language product tour and regional research. Verify anonymous repository and raw-file reads independently of ordinary browser access to Contabo.

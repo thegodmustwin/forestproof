@@ -68,6 +68,17 @@ class TestPublication(TestCase):
         self.assertIn("Visibility report unavailable", unavailable)
         self.assertNotIn("0 of", unavailable)
 
+    def test_private_file_remains_self_contained(self):
+        snapshot = project(report(), now=CHECK)
+        private_page = render(snapshot, now=CHECK)
+        self.assertNotIn('href="/assets/', private_page)
+        self.assertNotIn('src="/assets/', private_page)
+        self.assertNotIn("data-visibility-explorer", private_page)
+        self.assertIn("12 of 27,724 visible", private_page)
+        public_page = render(snapshot, now=CHECK, public=True)
+        self.assertIn('src="/assets/visibility.js"', public_page)
+        self.assertIn("data-visibility-explorer", public_page)
+
     def test_overdue_report_keeps_same_scene_and_check_dates(self):
         snapshot = project(report(), now=CHECK)
         now = CHECK + CHECK_MAX_AGE
