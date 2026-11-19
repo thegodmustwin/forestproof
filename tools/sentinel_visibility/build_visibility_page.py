@@ -70,35 +70,53 @@ def explorer(acquisitions: list) -> str:
     pass_buttons = "\n".join(
         f'<button class="pass-choice" type="button" data-select-date="{day["date"].isoformat()}" '
         f'aria-pressed="{"true" if day["date"] == latest["date"] else "false"}">'
-        f'<span class="pass-date">{day_label(day["date"])}</span>'
+        f'<span class="pass-date">{day_label(day["date"])}<span class="selected-mark" aria-hidden="true">Selected</span></span>'
+        '<span class="pass-bar" aria-hidden="true"><span data-pass-fill></span></span>'
         f'<span class="pass-share" data-pass-share>{percent_label(day["tiles"][0]["visible"], day["tiles"][0]["sampled"])} visible</span>'
         '</button>'
         for day in reversed(acquisitions)
     )
     return f"""
 <section class="explorer" data-visibility-explorer hidden aria-label="Explore satellite passes">
-  <div class="controls">
-    <div><span class="control-title" id="grid-control-label">Image grid</span>
-      <div class="grid-choices" role="group" aria-labelledby="grid-control-label">{grid_buttons}</div>
-    </div>
-    <div><span class="control-title" id="pass-control-label">Satellite pass</span>
-      <div class="pass-choices" role="group" aria-labelledby="pass-control-label">{pass_buttons}</div>
-    </div>
+  <div class="explorer-heading">
+    <div><p class="eyebrow">A view through time</p><h2>What could the satellite see?</h2></div>
+    <p>Choose a pass. Compare usable surface coverage with the places that remained unassessed.</p>
   </div>
+  <div class="controls">
+    <div><span class="control-title" id="grid-control-label">Keep one image grid selected</span>
+      <div class="grid-choices" role="group" aria-labelledby="grid-control-label">{grid_buttons}</div>
+      <p class="control-help">These grids overlap the same research area. Their counts are separate, so compare one grid across dates.</p>
+    </div>
+    <div class="best-pass"><p class="control-title">Find a more usable view</p><p data-best-summary></p><button class="best-choice" type="button" data-select-best>Show clearest sampled pass</button></div>
+  </div>
+  <div class="explorer-instrument">
+  <section class="pass-comparison" aria-labelledby="comparison-title">
+    <div class="comparison-heading"><h2 id="comparison-title">Compare sampled passes</h2><p>Usable share of each grid's sampled centres</p></div>
+    <div class="comparison-scale" aria-hidden="true"><span>0% visible</span><span>100%</span></div>
+    <div class="pass-choices" role="group" aria-label="Choose a satellite pass">{pass_buttons}</div>
+    <p class="comparison-note">Every bar uses the full 0–100% scale. An almost empty bar means that most ground conditions could not be assessed.</p>
+  </section>
   <div class="observation-panel">
     <div class="observation-main">
-      <p class="eyebrow">Surface visibility · <span data-selected-grid></span></p>
+      <p class="eyebrow">Selected pass · <span data-selected-grid></span></p>
       <h2>Usable surface view</h2>
-      <p class="metric" data-visible-percent></p>
+      <div class="coverage-ring">
+        <svg viewBox="0 0 200 200" role="img" aria-labelledby="coverage-ring-title">
+          <title id="coverage-ring-title" data-coverage-title>Usable and unassessed surface coverage</title>
+          <circle class="ring-base" cx="100" cy="100" r="78" pathLength="100" />
+          <circle class="ring-visible" cx="100" cy="100" r="78" pathLength="100" stroke-dasharray="0 100" data-coverage-arc />
+        </svg>
+        <div class="ring-centre"><p class="metric" data-visible-percent></p><span>visible</span></div>
+      </div>
       <p class="metric-caption" data-visible-caption></p>
       <div class="coverage-graphic">
         <div class="coverage-track" aria-hidden="true"><span data-coverage-fill></span></div>
-        <p class="coverage-caption">Aggregate share of sampled centres</p>
         <div class="coverage-key"><span class="key-item"><span class="key-swatch" aria-hidden="true"></span>Visible</span><span class="key-item"><span class="key-swatch unassessed" aria-hidden="true"></span>Unassessed</span></div>
+        <p class="coverage-caption">Share of sampled centres. This is an aggregate chart, not a map of individual locations.</p>
       </div>
     </div>
     <div class="observation-context">
-      <p class="eyebrow">Observation date</p>
+      <p class="eyebrow">Satellite observation date</p>
       <p class="observation-date"><time data-selected-date></time></p>
       <dl class="cell-breakdown">
         <div><dt>Visible centres</dt><dd data-visible-count></dd></div>
@@ -106,9 +124,12 @@ def explorer(acquisitions: list) -> str:
         <div><dt>Sampled centres</dt><dd data-sampled-count></dd></div>
       </dl>
       <p class="vegetation-note"><strong data-vegetation-count></strong> visible centres classified as vegetation.</p>
-      <p class="interpretation" data-interpretation></p>
+      <div class="interpretation-box"><h3>What this means</h3><p class="interpretation" data-interpretation></p></div>
+      <p class="change-limit">A usable view does not establish vegetation loss. Understanding change takes another observation, a qualified method and human review.</p>
     </div>
   </div>
+  </div>
+  <div class="continue-workflow"><div><p class="eyebrow">From a signal to a decision</p><h3>What happens after an observation?</h3><p>Try a clearly labelled fictional case and see how evidence, review and follow-up fit together.</p></div><a class="continue-link" href="/tour">Try the case walkthrough</a></div>
   <p class="sr-only" role="status" aria-live="polite" data-selection-announcement></p>
 </section>"""
 
@@ -117,8 +138,8 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
     template = Template(TEMPLATE.read_text(encoding="utf-8"))
     masthead = (
         '<nav class="public-nav" aria-label="Page navigation">'
-        '<a href="/welcome">Observatory</a><a href="/visibility" aria-current="page">Visibility</a>'
-        '<a href="https://github.com/thegodmustwin/forestproof">Research</a></nav>'
+        '<a href="/welcome">Home</a><a href="/visibility" aria-current="page">Explore Geta</a>'
+        '<a href="/tour">Product tour</a><a href="/research">Research</a><a href="/guide">Guide</a></nav>'
         if public else '<p class="flag">Private research preview</p>'
     )
     robots = "" if public else '<meta name="robots" content="noindex">'
@@ -135,6 +156,11 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
             if public else f'<style>{ATLAS_STYLES.read_text(encoding="utf-8")}</style>'
         ),
         "explorer_script": '<script src="/assets/visibility.js" defer></script>' if public else "",
+        "footer_links": (
+            '<span class="footer-links"><a href="/guide#coverage">Understand the coverage</a>'
+            '<a href="/research">Research and methods</a><a href="/tour">Product tour</a></span>'
+            if public else '<a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-ClassificationMaskGeneration">Copernicus classification method</a>'
+        ),
     }
     if snapshot is None:
         return template.substitute(
@@ -175,6 +201,7 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
 <summary>Sampling method and limits</summary>
 <p>Each row counts native 20 m pixel centres inside the research rectangle. A centre counts as visible when the provider classifies the surface as vegetation, nonvegetated, or water. Cloud, shadow, unclassified, and no-data centres remain in the denominator.</p>
 <p>The two grids overlap and each uses its own denominator. The page covers the listed passes only. Visibility does not measure disturbance or confirm field conditions.</p>
+<p>Inspect the optional <a href="https://sentiwiki.copernicus.eu/web/s2-processing#S2Processing-ClassificationMaskGeneration">upstream Copernicus classification documentation</a>.</p>
 </details>"""
     years = sorted({day["date"].year for day in acquisitions})
     attribution = " · ".join(f"Contains modified Copernicus Sentinel data [{year}]" for year in years)

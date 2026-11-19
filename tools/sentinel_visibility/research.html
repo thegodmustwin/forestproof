@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071717">
+<meta name="description" content="Explore ForestProof's Kenyan radar backtest, compare thresholds, understand its limitations and see why observation providers are still being qualified.">
+<title>Question the method | ForestProof research</title>
+<link rel="stylesheet" href="/assets/atlas.css">
+<style>$styles</style>
+</head>
+<body>
+<a class="fp-skip" href="#main">Skip to content</a>
+<div class="fp-masthead"><header class="fp-header fp-wrap"><a class="fp-brand" href="/welcome">ForestProof</a><nav class="fp-nav" aria-label="Main navigation"><a href="/visibility">Explore Geta</a><a href="/tour">Product tour</a><a href="/research" aria-current="page">Research</a><a href="/guide">Guide</a></nav></header></div>
+<main id="main">
+<section class="fp-research-hero" aria-labelledby="research-title">
+  <div class="fp-wrap">
+    <div class="fp-research-opening">
+      <div><p class="fp-kicker">Research notebook · Kenya</p><h1 id="research-title">What did the detector actually find?</h1><p class="fp-lede">A documented fire gives us something concrete to test. We compared a simple radar rule with independently mapped burn areas and nearby matched controls.</p></div>
+      <aside class="fp-study-scope" aria-label="Study scope"><span class="fp-badge dark">Historical backtest</span><dl><div><dt>Reference event</dt><dd>2019 Mount Kenya fire</dd></div><div><dt>Matched comparison</dt><dd>144,677 pairs</dd></div><div><dt>Candidate method</dt><dd>Two-band radar-change rule</dd></div><div><dt>Research result recorded</dt><dd>17 November 2026</dd></div></dl><p>This experiment evaluates a candidate method. It does not generate current public alerts.</p></aside>
+    </div>
+    <figure class="fp-method-strip" aria-label="Study method: three pre-fire radar observations form a baseline, one post-fire observation is compared with it, and both radar bands must cross the selected threshold.">
+      <div class="fp-method-stage"><svg viewBox="0 0 180 64" fill="none" aria-hidden="true"><path d="M9 45h162M9 48V9" stroke="#466655"/><path d="m12 30 12-6 12 12 12-18 12 6 12-8 12 15 12-5 12 7 12-16 12 9 12-4 12 7 12-6" stroke="#a5e4c6" stroke-width="2"/><path d="m12 38 12-5 12 9 12-17 12 8 12-9 12 16 12-6 12 4 12-11 12 6 12-3 12 7 12-5" stroke="#43bec1" stroke-width="2"/><path d="M30 51v7m53-7v7m54-7v7" stroke="#a5e4c6"/></svg><strong>Build the reference</strong><p>28 Jan · 9 Feb · 21 Feb 2019</p></div>
+      <span class="fp-connector" aria-hidden="true"></span>
+      <div class="fp-method-stage"><svg viewBox="0 0 180 64" fill="none" aria-hidden="true"><path d="M9 45h162M9 48V9" stroke="#466655"/><path d="m12 30 12-6 12 12 12-18 12 6 12-8 12 15 12-5 12 7 12-16 12 9 12-4 12 7 12-6" stroke="#a5e4c6" stroke-width="2" stroke-dasharray="3 4"/><path d="m12 30 12-6 12 12 12-18 12 6 12-8 12 15 12 19 12-4 12-5 12 4 12-2 12 7 12-6" stroke="#e6b56e" stroke-width="2"/><path d="M96 14v42" stroke="#e6b56e" stroke-dasharray="3 4"/></svg><strong>Compare the later return</strong><p>17 March 2019 target</p></div>
+      <span class="fp-connector" aria-hidden="true"></span>
+      <div class="fp-method-stage"><svg viewBox="0 0 180 64" fill="none" aria-hidden="true"><rect x="12" y="13" width="58" height="39" rx="3" stroke="#a5e4c6"/><rect x="110" y="13" width="58" height="39" rx="3" stroke="#a5e4c6"/><path d="M70 32h40m-20-8v16" stroke="#a5e4c6"/><path d="m25 33 8 8 20-19m70 11 8 8 20-19" stroke="#43bec1" stroke-width="2"/></svg><strong>Require both radar bands</strong><p>VV and VH cross the fixed rule</p></div>
+    </figure>
+    <p style="margin-top:1.3rem;color:#a9c3b3;font-size:.85rem">Method illustration. The drawn traces explain the comparison; they are not measured radar time series.</p>
+  </div>
+</section>
+
+<section class="fp-section fp-wrap" aria-labelledby="threshold-title">
+  <fieldset class="fp-threshold">
+    <legend id="threshold-title">Change the rule. See the trade-off.</legend>
+    <p>Choose the minimum change required in <strong>both</strong> radar bands. A lower threshold flags more cells in the mapped burn and in the matched control. Each group contains 144,677 assessed centres.</p>
+    <input class="fp-rule-input" type="radio" name="research-rule" id="rule-2" value="2"><label class="fp-rule-choice" for="rule-2">More sensitive <span>2 dB</span></label>
+    <input class="fp-rule-input" type="radio" name="research-rule" id="rule-3" value="3" checked><label class="fp-rule-choice" for="rule-3">Reference rule <span>3 dB</span></label>
+    <input class="fp-rule-input" type="radio" name="research-rule" id="rule-4" value="4"><label class="fp-rule-choice" for="rule-4">More selective <span>4 dB</span></label>
+    <div class="fp-rule-panels">
+      <section class="fp-rule-panel" data-rule="2" aria-label="Two decibel threshold results">
+        <div class="fp-result-chart"><h3>2 dB in both bands</h3><div class="fp-chart-row"><header><span>Mapped burn cells flagged</span><strong>21.2%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill" style="width:21.2%"></span></div><small>30,729 of 144,677 centres</small></div><div class="fp-chart-row"><header><span>Matched controls flagged</span><strong>11.2%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill control" style="width:11.2%"></span></div><small>16,167 of 144,677 centres</small></div><div class="fp-chart-scale" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
+        <div class="fp-result-interpretation"><p class="fp-kicker">What went unflagged</p><strong>78.8%</strong><h3>of matched mapped-burn centres</h3><p>This setting found more of the reference event. It also reacted more often in the screened controls.</p></div>
+      </section>
+      <section class="fp-rule-panel" data-rule="3" aria-label="Three decibel threshold results">
+        <div class="fp-result-chart"><h3>3 dB in both bands</h3><div class="fp-chart-row"><header><span>Mapped burn cells flagged</span><strong>7.8%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill" style="width:7.8%"></span></div><small>11,336 of 144,677 centres</small></div><div class="fp-chart-row"><header><span>Matched controls flagged</span><strong>2.9%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill control" style="width:2.9%"></span></div><small>4,260 of 144,677 centres</small></div><div class="fp-chart-scale" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
+        <div class="fp-result-interpretation"><p class="fp-kicker">What went unflagged</p><strong>92.2%</strong><h3>of matched mapped-burn centres</h3><p>Most of the reference event went unflagged. The result is useful evidence for improving the method, rather than a basis for choosing a public alert threshold.</p></div>
+      </section>
+      <section class="fp-rule-panel" data-rule="4" aria-label="Four decibel threshold results">
+        <div class="fp-result-chart"><h3>4 dB in both bands</h3><div class="fp-chart-row"><header><span>Mapped burn cells flagged</span><strong>2.7%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill" style="width:2.7%"></span></div><small>3,923 of 144,677 centres</small></div><div class="fp-chart-row"><header><span>Matched controls flagged</span><strong>0.7%</strong></header><div class="fp-bar-track" aria-hidden="true"><span class="fp-bar-fill control" style="width:.7%"></span></div><small>1,005 of 144,677 centres</small></div><div class="fp-chart-scale" aria-hidden="true"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div></div>
+        <div class="fp-result-interpretation"><p class="fp-kicker">What went unflagged</p><strong>97.3%</strong><h3>of matched mapped-burn centres</h3><p>This setting reacted less often in controls and missed still more of the reference event. Selectivity alone does not make a useful detector.</p></div>
+      </section>
+    </div>
+  </fieldset>
+  <p class="fp-important-limit"><strong>Read both groups together.</strong> The controls were an optically screened proxy. Their flag rate does not establish an operational false-alert rate. Neighbouring cells share data and are spatially correlated. Percentages are rounded.</p>
+</section>
+
+<section class="fp-section fp-wrap" id="method" aria-labelledby="method-title">
+  <div class="fp-study-method"><div><p class="fp-kicker">Inside the experiment</p><h2 id="method-title">Make the comparison reproducible.</h2></div><ol>
+    <li><h3>Start with independent reference evidence</h3><p>Copernicus Emergency Management Service mapped the 2019 Mount Kenya fire using photo-interpreted fire polygons. The study excluded unanalysed areas and used the mapped burn interior. This reference is independent of the radar rule being tested.</p></li>
+    <li><h3>Hold the viewing geometry steady</h3><p>Digital Earth Africa Sentinel-1A observations from the same ascending relative orbit supplied three pre-fire dates and a post-fire target. Each assessed centre needed valid provider masks and positive, finite VV and VH power on all four dates.</p></li>
+    <li><h3>Build a matched control</h3><p>Nearby vegetation controls were screened with Sentinel-2 imagery and excluded the mapped burn neighbourhood. Matching used pre-fire radar power, incidence angle and optical burn ratio. The final comparison retained 144,677 valid pairs.</p></li>
+    <li><h3>Apply the rule without changing the labels</h3><p>For each band, compare the target with the per-cell median of the three pre-fire values. A flag requires the absolute change to meet the selected dB threshold in both bands. The 2, 3 and 4 dB settings remain research comparisons.</p></li>
+    <li><h3>Replay from retained inputs</h3><p>The aggregate reproduced byte for byte from the retained inputs. Reproducibility establishes the calculation's repeatability. Establishing a method that performs reliably across environments requires further independent events and stable periods.</p></li>
+  </ol></div>
+  <details class="fp-reference-details"><summary>Inspect the study denominators</summary><p>The mapped burn footprint contained 345,356 sampled centres: 344,321 were assessable and 1,035 were unavailable. The strict burn interior contained 313,202 centres, of which 312,353 were assessable. Matching selected 144,743 pairs before scoring; 66 pairs lacked valid target radar for a member. The comparison above uses the remaining 144,677 matched pairs. It does not use the entire burn footprint as its denominator.</p></details>
+</section>
+
+<section class="fp-section fp-wrap" aria-labelledby="limits-title">
+  <div class="fp-section-heading"><div><p class="fp-kicker">What we still need to learn</p><h2 id="limits-title">One fire leaves important questions open.</h2></div><p>The study documents a real test and a clear limit. A public alert method needs evidence beyond this result.</p></div>
+  <ul class="fp-three-limits"><li><h3>Smaller changes</h3><p>A broad fire in mixed vegetation differs from a small canopy disturbance. Performance on that smaller event remains unmeasured.</p></li><li><h3>Seasonal variation</h3><p>One target pass and screened controls do not establish behavior across multiple stable periods, seasons and vegetation types.</p></li><li><h3>A different detector</h3><p>This transparent two-band rule differs from the archived California prototype and the full OPERA temporal detector. Results must stay attached to the method actually tested.</p></li></ul>
+</section>
+
+<section class="fp-section fp-wrap" id="sources" aria-labelledby="sources-title">
+  <div class="fp-section-heading"><div><p class="fp-kicker">The source strategy</p><h2 id="sources-title">Use the strongest upstream evidence.</h2></div><p>ForestProof is being built around source-grounded review and follow-up. Candidate feeds are evaluated against useful local observations, access cost, publication rights and reproducibility.</p></div>
+  <div class="fp-source-rows">
+    <section class="fp-source-row"><div><h3>Sentinel-2 visibility</h3><p>Optical scene-quality information</p><span class="fp-badge">Public aggregate report</span></div><div><span class="fp-label">What it contributes</span><p>The public explorer measures how much of the sampled research area a pass could assess, and how visible centres were classified.</p></div><div><span class="fp-label">What remains separate</span><p>Coverage is not a disturbance finding. Cloud, shadow and missing data leave conditions unassessed.</p></div></section>
+    <section class="fp-source-row"><div><h3>RADD</h3><p>A radar forest-alert candidate</p><span class="fp-badge review">Qualification open</span></div><div><span class="fp-label">Why evaluate it</span><p>Radar is useful where clouds limit optical views. The source supplies a specialized forest-disturbance product.</p></div><div><span class="fp-label">What needs verification</span><p>Native forest-baseline eligibility in the proposed area, useful repeated records, automated access terms, cost and publication rights.</p></div></section>
+    <section class="fp-source-row"><div><h3>NASA OPERA</h3><p>Optical disturbance and radar research inputs</p><span class="fp-badge review">Bounded research</span></div><div><span class="fp-label">What the work established</span><p>Downloaded science layers supported quality checks and aligned radar comparisons. A private historical observation has a separate owner-review record.</p></div><div><span class="fp-label">What needs verification</span><p>Useful local acquisition cadence, source-specific quality and intended-use terms. A catalog footprint alone cannot establish usable pixels.</p></div></section>
+    <section class="fp-source-row"><div><h3>GLAD-L</h3><p>An optical alert alternative</p><span class="fp-badge review">Archive research</span></div><div><span class="fp-label">What the work established</span><p>Bounded reads from two dated archives reproduced the same local historical values.</p></div><div><span class="fp-label">What needs verification</span><p>Current usable coverage, native eligibility, delivery-route access costs and exact layer publication rights.</p></div></section>
+  </div>
+  <p class="fp-note"><strong>A source can be useful before it is operational.</strong> Access to data, useful local observations, a qualified detector and permission to publish are separate checks. The public coverage explorer is active; a qualified current forest-loss alert feed remains unfinished.</p>
+  <details class="fp-reference-details"><summary>Original scientific references and implementation sources</summary><p>These optional links leave ForestProof. The method, denominators, findings and limitations are explained on this page.</p><ul>
+    <li><a href="https://mapping.emergency.copernicus.eu/activations/EMSR345/">Copernicus Emergency Management Service · EMSR345 Mount Kenya mapping</a></li>
+    <li><a href="https://earthobservatory.nasa.gov/images/144615/fire-on-mount-kenya">NASA Earth Observatory · the 2019 Mount Kenya fire</a></li>
+    <li><a href="https://docs.digitalearthafrica.org/en/latest/data_specs/Sentinel-1_specs.html">Digital Earth Africa · Sentinel-1 specifications</a></li>
+    <li><a href="https://doi.org/10.5067/SNWG/OPERA_L3_DIST-ALERT-HLS_V1.001">NASA OPERA DIST-ALERT-HLS V1 · source product</a></li>
+    <li><a href="https://glad.umd.edu/dataset/glad-forest-alerts">University of Maryland · GLAD forest alerts</a></li>
+    <li><a href="https://www.wur.nl/en/research/products-services/radd-forest-disturbance-alert">Wageningen University &amp; Research · RADD</a></li>
+    <li><a href="https://github.com/thegodmustwin/forestproof/blob/main/docs/DIRECT_SOURCE_EVALUATION.md">ForestProof source repository · full dated research record and reproduction links</a></li>
+  </ul><p>Reference burn mapping: © 2019 European Union, Copernicus Emergency Management Service. Optical inputs contain modified Copernicus Sentinel data. The charts above display ForestProof's documented aggregate research results.</p></details>
+</section>
+<section class="fp-wrap fp-next" aria-labelledby="research-next"><div><h2 id="research-next">Bring the questions back to a place.</h2><p>Explore the Geta observation dates and examine the coverage before interpreting what a satellite signal might mean.</p></div><a class="fp-button" href="/visibility">Explore Geta</a></section>
+</main>
+<footer class="fp-footer fp-wrap"><span>ForestProof · Research explained on the product</span><nav class="fp-footer-links" aria-label="More about ForestProof"><a href="/tour">Product tour</a><a href="/guide">Guide</a><a href="/welcome">Home</a></nav></footer>
+</body>
+</html>

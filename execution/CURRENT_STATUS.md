@@ -1,5 +1,12 @@
 # Current Status
 
+## Self-contained public experience - 19 November 2026
+
+The revised public build brings the product tour, research comparison and plain-language guide onto the site. The homepage compares real source visualization crops from 8 and 13 November 2026; their scene identities, source ETags, same native window and output hashes are retained in a public manifest. The Geta instrument adds proportional pass comparisons, a coverage ring, a clearest-pass action and shareable selections. The anonymous fictional case records choices only in browser memory. It makes no backend writes and does not expose private review records.
+
+Integrated local browser checks passed at 1440 and 390 px: image slider keyboard control, all fixture grid/date counts and ring values, the complete fictional review/response/follow-up journey, research choices, internal navigation and no-script reading across all five pages. The main journey made zero external requests and had no overflow or page errors. Deployment verification will be added after rollout.
+
+
 ## Living Atlas release — 19 November 2026
 
 Final protected web pin: `37934a5d41d7f086ae11b31ade2a35b557f1b30d`. This includes the mobile toolbar spacing above wrapped attribution. Its full GitHub workflow passed. The final 390 px browser check passed terrain activation/return, zero page errors, no horizontal overflow and a measured 12 px gap between toolbar and attribution. The web-only deployment again verified all eight protected page/API reads as authenticated 200 and anonymous 401, preserved the API/data identities and every other running container, and retained a consistent private SQLite rollback copy. The public service remains pinned to `f28b0e370c0003b33b1422dc7c505f2bd9197689`.

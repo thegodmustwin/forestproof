@@ -1,5 +1,10 @@
 # ForestProof — decision and context ledger
 
+## Public product understanding - 19 November 2026
+
+The owner rejected sending visitors to GitHub for the product tour, research and explanations. Those are now on-site experiences. Main navigation and primary actions must remain on the product; external links are optional citations and developer material. Meaningful visuals must explain actual observations, measured comparisons or a clearly labelled fictional workflow. The static image comparison preserves exact dates and provenance; it must not masquerade as selected-pass live imagery.
+
+
 ## Living Atlas design evolution — 19 November 2026
 
 The owner requested the orbital observatory, understandable pass explorer, persistent map, evidence laboratory and record-backed lineage described in the new design assessment. Reuse the existing Next.js/MapLibre/API stack and the existing Contabo host. A locally served, credited NASA historical composite provides the Earth view. Optional terrain uses the documented anonymous Mapzen terrain route. Preserve the current source qualifications, data labels, private review and recovery requirements.

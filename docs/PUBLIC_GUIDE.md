@@ -4,7 +4,7 @@ Updated 19 November 2026, Africa/Nairobi.
 
 ## Living Atlas product experience
 
-The orbital homepage introduces the Geta research programme using a credited NASA Blue Marble historical composite. Choose Explore Geta to enter the pass explorer. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
+The homepage introduces Geta through a draggable comparison of actual Sentinel-2 source visualization crops from 8 and 13 November 2026. These static research images preserve their original dates and are independent of the report refresh. Choose Explore Geta to enter the pass explorer. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
 
 The protected application uses the same Living Atlas design system. Its operations desk filters saved cases, the case workspace organizes source evidence and review actions, and the outcomes view traces a selected case's recorded relationships. The operational map preserves its instance while observations change and offers optional terrain with attribution and a return to 2D. The existing synthetic labels and source qualification requirements apply throughout.
 
@@ -14,10 +14,13 @@ ForestProof helps a conservation team turn an environmental observation into evi
 
 - Public homepage — https://vmi3711898.contaboserver.net/welcome
 - Satellite visibility report — https://vmi3711898.contaboserver.net/visibility
+- Interactive fictional case walkthrough — https://vmi3711898.contaboserver.net/tour
+- Research and method comparisons — https://vmi3711898.contaboserver.net/research
+- On-site product guide — https://vmi3711898.contaboserver.net/guide
 - Plain-text version of this guide — https://vmi3711898.contaboserver.net/project.txt
 - Source and documentation — https://github.com/thegodmustwin/forestproof
 
-These resources have different jobs. The homepage introduces the project. The visibility report contains real satellite-derived aggregate counts. The source repository explains the implementation, experiments, origin, and remaining launch work.
+These resources have different jobs. The homepage introduces the project. The visibility report contains real satellite-derived aggregate counts. The on-site tour, research and guide explain the product without leaving ForestProof. The source repository is an optional reference for implementation, inception context and development.
 
 ## What anyone can use today
 

@@ -1,5 +1,10 @@
 # ForestProof — repository and system map
 
+## Self-contained public product
+
+The main visitor journey stays on ForestProof: `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. The homepage compares two dated real Sentinel-2 context crops. The explorer visualizes real aggregate coverage. The anonymous walkthrough is a clearly fictional browser-only teaching case; it is separate from the protected saved-case app. The guide and research explanations are rendered by `tools/sentinel_visibility/build_product_pages.py`, with optional upstream citations. GitHub is a secondary developer reference. Image provenance lives in `tools/sentinel_visibility/assets/geta-context.json`.
+
+
 ## Living Atlas experience — 19 November 2026
 
 The canonical [Living Atlas tokens](../packages/ui/living-atlas.css) connect the public orbital homepage, dated pass explorer and protected evidence workflow. [DESIGN.md](../DESIGN.md) defines the material, color, motion and source semantics. Public asset routes are explicitly allowed by the visibility service. The saved-case outcome view derives its lineage from the existing case loader and recorded actions and follow-ups.

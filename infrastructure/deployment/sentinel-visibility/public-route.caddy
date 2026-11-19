@@ -1,4 +1,4 @@
-        @geta_visibility path /visibility /welcome /project.txt /robots.txt /sitemap.xml /assets/atlas.css /assets/earth-east.jpg /assets/visibility.js
+        @geta_visibility path /visibility /welcome /tour /research /guide /project.txt /robots.txt /sitemap.xml /assets/atlas.css /assets/earth-east.jpg /assets/visibility.js /assets/tour.js /assets/home.js /assets/geta-context-2026-11-08.png /assets/geta-context-2026-11-13.png /assets/geta-context.json
         handle @geta_visibility {
             route {
                 @geta_visibility_write not method GET HEAD
