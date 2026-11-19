@@ -1,5 +1,9 @@
 # Current Status
 
+## Public independent review packet — 20 November 2026
+
+`docs/REVIEW_PACKET.md` gives an AI or human reviewer the complete public route list, exact-version project context/source links, original goals, limitations and assessment questions. Twelve fresh anonymous production screenshots cover all five public pages at desktop and phone sizes, including initial and completed fictional walkthrough states. `docs/review/capture.json` records the capture time, URLs, selected states, viewports, deployed/repository source pins and file hashes. Captures exclude protected pages, credentials and private records. The public app remains on `5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`; this packet changes repository documentation only.
+
 ## Connected public workbench — 20 November 2026
 
 The public release translates the owner's dark mint visual reference into an observation workbench and a matching evidence walkthrough. The explorer has a date/grid timeline, a real source-image plane, exact aggregate coverage and an interpretation panel. Only T36MZE on 8 and 13 November has a published matching crop. Other selections show image context unavailable while retaining their counts. Image-load errors preserve the evidence panel. With no date link specified, the explorer opens the clearest sampled pass for the selected grid. No-script readers retain the full archive.

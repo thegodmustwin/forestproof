@@ -12,9 +12,11 @@ The public report uses real Sentinel-2 aggregate visibility counts for the **Pro
 
 The case application is a working protected synthetic demo. It supports observation review, cases, recorded actions, follow-up and dossier export. Historical research includes a genuine archived observation and independently mapped fire backtests. A current forest-alert feed, production owner identity and independently verified recovery of the real review remain qualification work.
 
-**Current public guide updated 18 November 2026.** See [dated release and verification evidence](execution/CURRENT_STATUS.md). The existing production host is Contabo. Earlier OVH and Railway notes describe historical decisions.
+**Current public guide updated 20 November 2026.** See [dated release and verification evidence](execution/CURRENT_STATUS.md). The existing production host is Contabo. Earlier OVH and Railway notes describe historical decisions.
 
 ## For a new user or ChatGPT reader
+
+For an independent assessment, open the [public review packet](docs/REVIEW_PACKET.md). It includes all public product links, actual desktop/phone screenshots, exact-version context and source links, current limitations and a review brief.
 
 Start with [PUBLIC_GUIDE.md](docs/PUBLIC_GUIDE.md). It explains what each page does, gives a five-minute report walkthrough, tours a fictional case, summarizes the research, and maps the implementation.
 

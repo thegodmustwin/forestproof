@@ -1,0 +1,129 @@
+{
+  "schema": "forestproof.public_review_capture.v1",
+  "captured_at": "2026-11-19T22:34:57.041Z",
+  "deployed_public_source": "5dc1817503de3eb000e7a4c28f1dbd4e057b4a54",
+  "reviewed_repository_source": "7230414e123b8847d5a4f69aa96dc5da0381df27",
+  "audience": "Anonymous public pages only; fictional walkthrough choices",
+  "screenshots": [
+    {
+      "file": "desktop-home.png",
+      "url": "https://vmi3711898.contaboserver.net/welcome",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f9cf74189aa77dad679617158b9a2445d2b9d7aa8bce0cb361cd678cb6c4970"
+    },
+    {
+      "file": "desktop-explorer.png",
+      "url": "https://vmi3711898.contaboserver.net/visibility",
+      "state": "Clearest selected pass; T36MZE, 8 November 2026",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "6e4389fb4d4fc49905bdd7e292467b7843c251673cb8b7aa56c05a0112ba52ba"
+    },
+    {
+      "file": "desktop-research.png",
+      "url": "https://vmi3711898.contaboserver.net/research",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "936c43ee19f7156730b655a3c14ca99621e8c57ec817965bad84da244428d001"
+    },
+    {
+      "file": "desktop-guide.png",
+      "url": "https://vmi3711898.contaboserver.net/guide",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f4c1c326d8ee971a60cbe23528858a6ee32786892d992160969ef16ce95973dd"
+    },
+    {
+      "file": "desktop-tour-signal.png",
+      "url": "https://vmi3711898.contaboserver.net/tour",
+      "state": "Fictional initial signal",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "06bfcba064ae288739160fcdca374d2bdaffd07681c9fdd4bdd4a5f754b0c338"
+    },
+    {
+      "file": "desktop-tour-dossier.png",
+      "url": "https://vmi3711898.contaboserver.net/tour#dossier",
+      "state": "Completed fictional quality-review path with unresolved follow-up; local choices only",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "45109aefaf63577ebd04df0d7f9dc17a0d43223754a3b583f5a052f44c148211"
+    },
+    {
+      "file": "mobile-home.png",
+      "url": "https://vmi3711898.contaboserver.net/welcome",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a4932e2b88c912d56a40b0d6d4e8dc34edd5b071b7ccfca46de753c79f436f8d"
+    },
+    {
+      "file": "mobile-explorer.png",
+      "url": "https://vmi3711898.contaboserver.net/visibility",
+      "state": "Clearest selected pass; T36MZE, 8 November 2026",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "be9d5fdbbc569f904bdfe968e11a899f90cd2ac56797179adacfdc2be839b221"
+    },
+    {
+      "file": "mobile-research.png",
+      "url": "https://vmi3711898.contaboserver.net/research",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ea54c5a6b8281e12a0b268c10d3fb595beb45ef063ab9875e043e9ea8ad63138"
+    },
+    {
+      "file": "mobile-guide.png",
+      "url": "https://vmi3711898.contaboserver.net/guide",
+      "state": "Initial public page",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d30f40117bee543a38779d8aea3142a0a7cb6563f5f6b057685475ecbc740418"
+    },
+    {
+      "file": "mobile-tour-signal.png",
+      "url": "https://vmi3711898.contaboserver.net/tour",
+      "state": "Fictional initial signal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c01b650895eb8aa8920ebdec43c32837cf9eb4fe050188c91600a5c8a214865d"
+    },
+    {
+      "file": "mobile-tour-dossier.png",
+      "url": "https://vmi3711898.contaboserver.net/tour#dossier",
+      "state": "Completed fictional quality-review path with unresolved follow-up; local choices only",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4b9e64072eba51e82cb1278715894b8422de13345b1462b42842fdf8ef1a9483"
+    }
+  ]
+}
