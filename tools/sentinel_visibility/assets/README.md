@@ -28,3 +28,5 @@ The two `geta-context-2026-11-08.png` and `geta-context-2026-11-13.png` files ar
 `geta-context.json` records the exact STAC scene, acquisition timestamp, original TCI URL, source ETag, projected window, output dimensions and SHA-256. `prepare_context_images.py` is the manual bounded preparation script. Regeneration is not part of serving or refresh. The original visualizations were read through anonymous range access from Earth Search / Element 84 public COGs.
 
 Contains modified Copernicus Sentinel data [2026]. Accessed 19 November 2026 from the [AWS Sentinel-2 COG archive](https://registry.opendata.aws/sentinel-2-l2a-cogs/). The public guide explains the image dates and interpretation inside the product.
+
+The public observation explorer may show these same crops only for the exact manifest-matched grid and date. It displays image context unavailable for any other selection. Source images are independent of any forest-change classification. The archived Earth composite is no longer used as the current homepage's main visual.

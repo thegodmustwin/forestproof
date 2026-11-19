@@ -1,4 +1,7 @@
 # ForestProof — Cloud continuation handoff
+## Connected public workbench — 20 November 2026
+
+The current public service runs exact source `5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`. The dark explorer connects date/grid selection, an exact matching historical crop and coverage interpretation. Unlinked dates open the clearest sampled pass; missing image context keeps counts visible. The fictional tour uses the same evidence-workbench identity and adds completion-gated unsigned JSON export plus print/save-PDF. Production checks passed at 1440, 390 and 320 px. See the newest CURRENT_STATUS for route, workflow and service verification. This supersedes older public pins below. The private app and source/identity/recovery launch requirements remain separate.
 
 ## Clear public entry — 20 November 2026
 

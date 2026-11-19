@@ -82,23 +82,37 @@ def explorer(acquisitions: list) -> str:
     <div><p class="eyebrow">A view through time</p><h2>What could the satellite see?</h2></div>
     <p>Choose a pass. Compare usable surface coverage with the places that remained unassessed.</p>
   </div>
-  <div class="controls">
-    <div><span class="control-title" id="grid-control-label">Keep one image grid selected</span>
-      <div class="grid-choices" role="group" aria-labelledby="grid-control-label">{grid_buttons}</div>
-      <p class="control-help">These grids overlap the same research area. Their counts are separate, so compare one grid across dates.</p>
-    </div>
-    <div class="best-pass"><p class="control-title">Find a more usable view</p><p data-best-summary></p><button class="best-choice" type="button" data-select-best>Show clearest sampled pass</button></div>
-  </div>
   <div class="explorer-instrument">
   <section class="pass-comparison" aria-labelledby="comparison-title">
-    <div class="comparison-heading"><h2 id="comparison-title">Compare sampled passes</h2><p>Usable share of each grid's sampled centres</p></div>
+    <div class="grid-controls"><p class="eyebrow">01 · Choose a view</p><span class="control-title" id="grid-control-label">Image grid</span>
+      <div class="grid-choices" role="group" aria-labelledby="grid-control-label">{grid_buttons}</div>
+      <p class="control-help">The grids overlap. Keep one selected to compare the same sample across dates.</p>
+    </div>
+    <div class="best-pass"><p class="control-title">Start with a clearer view</p><p data-best-summary></p><button class="best-choice" type="button" data-select-best>Show clearest sampled pass</button></div>
+    <div class="comparison-heading"><h3 id="comparison-title">Observation timeline</h3><p>Each bar shows the usable share.</p></div>
     <div class="comparison-scale" aria-hidden="true"><span>0% visible</span><span>100%</span></div>
     <div class="pass-choices" role="group" aria-label="Choose a satellite pass">{pass_buttons}</div>
-    <p class="comparison-note">Every bar uses the full 0–100% scale. An almost empty bar means that most ground conditions could not be assessed.</p>
+    <a class="scene-jump" href="#scene-title">See the selected view ↓</a>
+    <p class="comparison-note">Every bar uses a 0–100% scale. Empty areas of the bar mean unassessed ground.</p>
+  </section>
+  <section class="scene-panel" aria-labelledby="scene-title">
+    <header class="scene-header"><strong id="scene-title">02 · Inspect the source view</strong><span>OPTICAL · SENTINEL-2</span></header>
+    <div class="scene-view">
+      <div data-scene-available hidden>
+        <div class="scene-image-frame"><img data-scene-image width="335" height="333" alt=""></div>
+        <div class="image-meta"><span data-scene-date></span><span>10 m · True colour</span></div>
+      </div>
+      <div class="scene-empty" data-scene-empty>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 15V6h9m18 0h9v9M6 33v9h9m18 0h9v-9M9 34l9-10 7 7 7-13 7 16"/><circle cx="16" cy="15" r="3"/></svg>
+        <h3>Image context unavailable</h3><p data-scene-missing>No published image crop matches this selected grid and date. The coverage counts remain available.</p>
+      </div>
+    </div>
+    <div class="scene-note"><strong data-scene-heading>Read the source and its limits</strong><p data-scene-caption>The coverage summary is separate from the image context.</p><a href="/guide#satellite-imagery">Understand the imagery and sources →</a></div>
+    <p class="scene-data-note">Historical image context. To assess change, compare repeat observations and record a human review.</p>
   </section>
   <div class="observation-panel">
     <div class="observation-main">
-      <p class="eyebrow">Selected pass · <span data-selected-grid></span></p>
+      <p class="eyebrow">03 · Read the evidence</p><p class="eyebrow">Selected grid · <span data-selected-grid></span></p>
       <h2>Usable surface view</h2>
       <div class="coverage-ring">
         <svg viewBox="0 0 200 200" role="img" aria-labelledby="coverage-ring-title">
@@ -129,7 +143,7 @@ def explorer(acquisitions: list) -> str:
     </div>
   </div>
   </div>
-  <div class="continue-workflow"><div><p class="eyebrow">From a signal to a decision</p><h3>What happens after an observation?</h3><p>Try a clearly labelled fictional case and see how evidence, review and follow-up fit together.</p></div><a class="continue-link" href="/tour">Try the case walkthrough</a></div>
+  <div class="continue-workflow"><div><p class="eyebrow">From a signal to a decision</p><h3>Now try the human part.</h3><p>Practise reviewing a fictional signal, choosing a response and recording what to check next. Your selected real observation is not imported into the practice case.</p></div><a class="continue-link" href="/tour">Try the case walkthrough</a></div>
   <p class="sr-only" role="status" aria-live="polite" data-selection-announcement></p>
 </section>"""
 

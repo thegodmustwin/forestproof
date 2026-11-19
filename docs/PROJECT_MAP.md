@@ -1,5 +1,10 @@
 # ForestProof — repository and system map
 
+## Connected public workbench — 20 November 2026
+
+`tools/sentinel_visibility/build_visibility_page.py`, `visibility.html` and `assets/visibility.js` build the dark public observation workbench. Native grid/date buttons select exact aggregate counts and an image only when its public manifest grid/date matches. Explicit missing/load-failure states preserve counts; private/no-script archives remain readable. `tour.html` and `assets/tour.js` contain the matching fictional evidence workbench, step validation, memory-only choices, unsigned JSON download and print/PDF presentation. All assets use the existing sixteen public routes; no new provider access, storage or identity service is introduced.
+
+
 ## Self-contained public product
 
 The main visitor journey stays on ForestProof: `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. The homepage explains two dated real Sentinel-2 context crops with native date selection, verified visibility shares, plain-language interpretations and deep links into the selected observation. Three numbered actions introduce coverage, interpretation and the fictional review. The explorer visualizes real aggregate coverage. The anonymous walkthrough is a clearly fictional browser-only teaching case; it is separate from the protected saved-case app. The guide and research explanations are rendered by `tools/sentinel_visibility/build_product_pages.py`, with optional upstream citations. GitHub is a secondary developer reference. Image provenance lives in `tools/sentinel_visibility/assets/geta-context.json`.
