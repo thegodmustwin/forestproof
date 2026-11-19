@@ -6,6 +6,7 @@
   const line = document.querySelector("[data-split-line]");
   if (!panel || !input || !earlier || !line) return;
   panel.classList.add("enhanced");
+  panel.querySelectorAll("img").forEach(image => { image.draggable = false; });
   document.querySelector("[data-compare-control]").hidden = false;
   function update() {
     const value = Math.min(100, Math.max(0, Number(input.value)));
@@ -22,6 +23,7 @@
   }
   panel.addEventListener("pointerdown", event => {
     if (!event.isPrimary || event.button !== 0) return;
+    if (event.pointerType === "mouse") event.preventDefault();
     dragging = true;
     panel.setPointerCapture(event.pointerId);
     revealAt(event);
