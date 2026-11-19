@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Living Atlas experience — 19 November 2026
+
+The canonical [Living Atlas tokens](../packages/ui/living-atlas.css) connect the public orbital homepage, dated pass explorer and protected evidence workflow. [DESIGN.md](../DESIGN.md) defines the material, color, motion and source semantics. Public asset routes are explicitly allowed by the visibility service. The saved-case outcome view derives its lineage from the existing case loader and recorded actions and follow-ups.
+
 ## Public product tour and machine-readable guide
 
 [PUBLIC_GUIDE.md](PUBLIC_GUIDE.md) explains the product from first visit through case follow-up, current data, research and hosting. The read-only site exposes that same document at `/project.txt`, with public discovery endpoints `/robots.txt` and `/sitemap.xml`.

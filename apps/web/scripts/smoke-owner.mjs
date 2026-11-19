@@ -190,6 +190,7 @@ try {
       await page.goto(`${entryBase}/monitor/aberdare`, { waitUntil: "domcontentloaded" });
       await page.getByText("API connected.", { exact: false }).waitFor();
       assert.equal(await page.getByText("Source record", { exact: true }).count(), 1);
+      await page.locator(".detail-panel details").evaluateAll((elements) => elements.forEach((element) => { element.open = true; }));
       assert.match(await page.locator(".fact").filter({ hasText: "Coverage completeness" }).innerText(), /Unknown/);
       if (process.env.FORESTPROOF_SCREENSHOT_DIR) {
         const captureDir = resolve(process.env.FORESTPROOF_SCREENSHOT_DIR);
@@ -219,7 +220,7 @@ try {
         for (const [name, viewport] of [["desktop", { width: 1440, height: 1100 }], ["mobile", { width: 390, height: 844 }]]) {
           await page.setViewportSize(viewport);
           await page.goto(entryBase, { waitUntil: "networkidle" });
-          await page.getByText("Synthetic owner smoke", { exact: true }).waitFor();
+          await page.locator(".case-queue-card").getByText("Synthetic owner smoke", { exact: true }).waitFor();
           await page.screenshot({ path: join(captureDir, `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
           const overflow = await page.evaluate(() => ({ width: window.innerWidth, scrollWidth: document.documentElement.scrollWidth, offenders: [...document.querySelectorAll("body *")].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right > window.innerWidth + 1 && getComputedStyle(el).position !== "absolute"; }).slice(0, 8).map(el => el.className) }));
           assert.ok(overflow.scrollWidth <= overflow.width + 1, `Page overflows the viewport: ${JSON.stringify(overflow)}`);
@@ -267,8 +268,21 @@ try {
       await close.click();
       await page.getByText("Saved: Follow-up → Closed.").waitFor();
       await page.reload({ waitUntil: "domcontentloaded" });
-      await page.getByText("Synthetic request for a review.").waitFor();
-      await page.getByText("Synthetic follow-up remains unresolved.").waitFor();
+      await page.locator(".timeline").getByText("Synthetic request for a review.", { exact: true }).waitFor();
+      await page.locator(".timeline").getByText("Synthetic follow-up remains unresolved.", { exact: true }).waitFor();
+      await page.goto(`${entryBase}/outcomes`, { waitUntil: "domcontentloaded" });
+      await page.getByLabel("Choose a saved case").selectOption(caseId);
+      const lineage = page.locator(".atlas-lineage");
+      await lineage.getByText("Synthetic request for a review.", { exact: true }).waitFor();
+      await lineage.getByText("Synthetic follow-up remains unresolved.", { exact: true }).waitFor();
+      if (process.env.FORESTPROOF_SCREENSHOT_DIR) {
+        for (const [name, viewport] of [["outcomes-desktop", { width: 1440, height: 1100 }], ["outcomes-mobile", { width: 390, height: 844 }]]) {
+          await page.setViewportSize(viewport);
+          await page.screenshot({ path: join(resolve(process.env.FORESTPROOF_SCREENSHOT_DIR), `forestproof-${name}.png`), fullPage: true, animations: "disabled" });
+          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1), false, `Outcome lineage overflows ${name}`);
+        }
+      }
+      await page.goto(`${entryBase}/cases/${caseId}`, { waitUntil: "domcontentloaded" });
       await page.getByRole("link", { name: observations.items[0].id, exact: true }).click();
       await page.locator(".detail-panel").getByText(observations.items[0].id, { exact: true }).waitFor();
       await page.goto(`${entryBase}/monitor/aberdare?observation=${encodeURIComponent(observations.items[1].id)}`, { waitUntil: "domcontentloaded" });
@@ -279,7 +293,7 @@ try {
       assert.equal(await page.getByRole("button", { name: "Create review case" }).count(), 0);
       await page.goto(`${entryBase}/operations`, { waitUntil: "domcontentloaded" });
       await page.getByText(caseId, { exact: false }).waitFor();
-      assert.equal(await page.getByText("Closed", { exact: true }).count(), 1);
+      assert.equal(await page.locator("tbody tr").filter({ hasText: caseId }).getByText("Closed", { exact: true }).count(), 1);
       await page.goto(`${entryBase}/`, { waitUntil: "domcontentloaded" });
       await page.getByText("No open demo cases yet.").waitFor();
       await page.goto(`${entryBase}/sources`, { waitUntil: "domcontentloaded" });

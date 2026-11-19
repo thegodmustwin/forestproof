@@ -16,7 +16,8 @@ services:
     networks: [preview]
   web:
     build:
-      context: ./apps/web
+      context: .
+      dockerfile: apps/web/Dockerfile
     environment:
       FORESTPROOF_API_INTERNAL_BASE_URL: http://api:8000/api/v1
       NEXT_PUBLIC_ENABLE_GFW_GLAD_S2_CONTEXT: "false"

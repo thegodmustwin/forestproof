@@ -1,5 +1,9 @@
 # Current Status
 
+## Living Atlas candidate — 19 November 2026
+
+The candidate updates the public orbital entry and grid/pass explorer, shares tokens with the React app, preserves the map instance across selection changes, and traces saved-case relationships. Visibility values still come from the reviewed report. Source checking and case authorization retain their existing contracts. Rendered verification, CI and deployment evidence will be appended after checks complete.
+
 ## Public repository and reader access — 18 November 2026
 
 The owner authorized public GitHub access and a coherent self-serve tour. README.md now links the real public pages, implementation map and [product guide](../docs/PUBLIC_GUIDE.md). The site mirrors the guide at `/project.txt` and provides explicit public crawler routes. Repository visibility is public and was verified by anonymous GitHub and raw-file retrieval on 18 November. Contabo serves public-page release `692fee285e62edf9430f09c60188167ce196904d`. All five exact public routes passed certificate-validated GET and HEAD with HTTP 200 and POST with HTTP 405. The text and discovery routes passed MIME and content checks. Preview, case, API and report paths returned HTTP 401 to anonymous requests. The previous code release and gateway configuration were retained for rollback.

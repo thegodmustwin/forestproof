@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from hashlib import sha256
 import json
 from datetime import UTC, datetime, timedelta
 from http.client import HTTPException
@@ -16,7 +17,12 @@ from tools.sentinel_visibility.project_visibility import project
 from tools.source_status.build_source_status import read_report, write_page
 
 
-PUBLIC_PATHS = {"/visibility", "/welcome", "/project.txt", "/robots.txt", "/sitemap.xml"}
+ASSET_PATHS = {
+    "/assets/atlas.css": (Path(__file__).resolve().parents[2] / "packages" / "ui" / "living-atlas.css", "text/css; charset=utf-8"),
+    "/assets/earth-east.jpg": (Path(__file__).with_name("assets") / "earth-east.jpg", "image/jpeg"),
+    "/assets/visibility.js": (Path(__file__).with_name("assets") / "visibility.js", "text/javascript; charset=utf-8"),
+}
+PUBLIC_PATHS = {"/visibility", "/welcome", "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
 DOCUMENT_PATHS = {"/project.txt", "/robots.txt", "/sitemap.xml"}
 GUIDE = Path(__file__).resolve().parents[2] / "docs" / "PUBLIC_GUIDE.md"
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
@@ -126,7 +132,10 @@ def serve(path, port, hostname):
                 self.send_error(404)
                 return
             try:
-                if route in DOCUMENT_PATHS:
+                if route in ASSET_PATHS:
+                    asset, content_type = ASSET_PATHS[route]
+                    status, body = 200, asset.read_bytes()
+                elif route in DOCUMENT_PATHS:
                     status, body, content_type = public_document(route, hostname)
                 else:
                     status, body = response_for(path, now=datetime.now(UTC), route=route)
@@ -134,12 +143,22 @@ def serve(path, port, hostname):
             except ERRORS:
                 self.send_error(503)
                 return
+            asset_etag = f'"{sha256(body).hexdigest()}"' if route in ASSET_PATHS else None
+            cache_control = "public, max-age=0, must-revalidate" if asset_etag else "no-store"
+            if asset_etag and self.headers.get("If-None-Match") == asset_etag:
+                self.send_response(304)
+                self.send_header("ETag", asset_etag)
+                self.send_header("Cache-Control", cache_control)
+                self.end_headers()
+                return
             self.send_response(status)
             self.send_header("Content-Type", content_type)
             self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-store")
+            self.send_header("Cache-Control", cache_control)
+            if asset_etag:
+                self.send_header("ETag", asset_etag)
             self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
+            self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
             self.end_headers()
             if self.command == "GET":
                 self.wfile.write(body)

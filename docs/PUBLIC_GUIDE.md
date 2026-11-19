@@ -1,6 +1,12 @@
 # ForestProof public product guide
 
-Updated 18 November 2026, Africa/Nairobi.
+Updated 19 November 2026, Africa/Nairobi.
+
+## Living Atlas product experience
+
+The orbital homepage introduces the Geta research programme using a credited NASA Blue Marble historical composite. Choose Explore Geta to enter the pass explorer. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
+
+The protected application uses the same Living Atlas design system. Its operations desk filters saved cases, the case workspace organizes source evidence and review actions, and the outcomes view traces a selected case's recorded relationships. The operational map preserves its instance while observations change and offers optional terrain with attribution and a return to 2D. The existing synthetic labels and source qualification requirements apply throughout.
 
 ## Start here
 

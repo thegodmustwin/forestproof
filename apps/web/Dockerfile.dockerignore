@@ -1,0 +1,15 @@
+**
+!apps/
+!apps/web/
+!apps/web/**
+!packages/
+!packages/ui/
+!packages/ui/**
+apps/web/node_modules/
+apps/web/.next/
+apps/web/.env
+apps/web/.env.*
+apps/web/npm-debug.log*
+apps/web/playwright-report/
+apps/web/test-results/
+apps/web/*.tsbuildinfo

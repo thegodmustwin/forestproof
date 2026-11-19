@@ -1,0 +1,37 @@
+/* ForestProof Living Atlas. Shared by the public observatory and case application. */
+:root {
+  --atlas-orbit: #071717;
+  --atlas-forest: #102523;
+  --atlas-emerald: #245b50;
+  --atlas-cyan: #43bec1;
+  --atlas-mint: #a5e4c6;
+  --atlas-amber: #e6b56e;
+  --atlas-coral: #df7064;
+  --atlas-paper: #f5f3ea;
+  --atlas-grey: #a3b6ae;
+  --atlas-ink: #17372f;
+  --atlas-muted-ink: #486056;
+  --atlas-observation-ink: #11636a;
+  --atlas-review-ink: #805111;
+  --atlas-line: #c2ccbf;
+  --atlas-dark-line: #2b4640;
+  --atlas-white: #f4faf5;
+  --atlas-serif: "Iowan Old Style", "Baskerville", Georgia, serif;
+  --atlas-sans: Inter, Geist, ui-sans-serif, system-ui, sans-serif;
+  --atlas-mono: "IBM Plex Mono", "Cascadia Code", ui-monospace, monospace;
+  --atlas-radius: .45rem;
+  --atlas-focus: #43bec1;
+  --atlas-measure: 72rem;
+}
+:focus-visible {
+  outline: 3px solid var(--atlas-focus);
+  outline-offset: 5px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

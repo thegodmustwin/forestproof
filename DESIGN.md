@@ -1,20 +1,45 @@
 # ForestProof design direction
 
-## Product and task
-ForestProof helps a responsible person review a sourced observation, retain evidence, assign and record a response, then document follow-up. The working app is synthetic. Prioritize the actual next review action and source confidence over decorative telemetry.
+## Living Atlas — adopted 19 November 2026
 
-## Visual direction: field atlas and evidence ledger
-Use warm paper, forest ink, sharp rules, an expressive serif heading and compact legible operational text. Original contour linework is abstract decoration, never geographic evidence. A strong opening and quieter working surfaces should create a clear reading order; maintain the case queue's real data and failure states.
+ForestProof connects planetary observation, geographic context and the evidence behind a human decision. The public observatory introduces a place and its real observation coverage. The working application helps a reviewer understand a source, own a case, record a response and return to its evidence.
 
-- Roles: forest for identity/action, amber for demo/review caution, muted ink for secondary information. Never use color alone.
-- Layout: deliberate hierarchy instead of uniform metric cards; prioritize the saved case queue and useful context.
-- Typography: Georgia for editorial display; system sans for controls, monospace for identifiers/dates where useful. Avoid new hosted-font dependencies.
-- Interaction: visible focus, real SVG icons, skip link, touch-sized primary actions, responsive navigation, restrained reveal/hover motion and reduced-motion support.
-- Truth: DEMO visible, missing data remains unavailable, outcomes unmeasured, no invented source health, live status, legal conclusion or impact.
-- Preserve existing deep links, API state, workflow labels and test selectors.
+The owner selected Living Atlas from a supplied design assessment. This replaces the earlier field-journal direction while preserving the source, uncertainty and workflow contracts.
 
-## Reusable workflow
-The original skills in .agents/skills/ cover art direction, UX behavior and rendered review. Copies are installed in the owner's local Codex user skill directory. They improve task guidance; they do not change the model, Codex's own application UI or every remote environment automatically. New Cloud work should use this repository's skill copies and context. See docs/UI_SKILLS.md for usage and sources.
+## Shared visual system
+
+Canonical tokens live in packages/ui/living-atlas.css. The public Python service and React application use the same palette and type roles.
+
+- Orbital black and deep forest support the public Earth view and application navigation.
+- Cyan identifies sensor observations. Mint and emerald establish identity and primary action.
+- Amber indicates uncertainty or review. Coral is reserved for explicit errors.
+- Ivory is the reading surface for source evidence, reports and case history.
+- Georgia and system serif fallbacks provide editorial display. System sans supports controls and text. System monospace carries technical identifiers and measurements.
+
+Use at least 16 px body text, 14 px important controls and labels, and 12 px secondary metadata. Maintain visible focus, adequate contrast, touch-sized targets, readable narrow layouts and reduced-motion behavior. Native controls should perform real actions.
+
+## Scale and reading order
+
+The visitor journey moves from Earth orientation to the Geta research programme, then a specific acquisition and its evidence. Clear next actions connect the levels. Historical Earth imagery identifies geographic context. Actual observation dates and coverage appear with the source report.
+
+The pass explorer lets visitors choose a grid and observation date, compare visible and unassessed cells, and interpret the vegetation count within the visible subset. Its aggregate bar describes a share. Source quality masks have their own geographic interpretation and publication requirements.
+
+Private pages prioritize saved records, case ownership, review state, source quality and next action. The evidence lineage follows a selected case and its recorded attachments, actions and follow-ups.
+
+## Spatial implementation
+
+The homepage uses a locally served NASA Blue Marble historical composite with CSS atmosphere and perspective. The file is approximately 524 KiB. The initial public view requires no WebGL engine.
+
+The operational map uses the existing MapLibre renderer. Create its instance once and update records, markers and selection independently. Functional 2D controls and an accessible observation list provide a fallback. Optional terrain is loaded on request with its source attribution, failure feedback and a direct return to 2D.
+
+## Evidence semantics
+
+Keep real source-derived aggregates, synthetic case fixtures and historical research visibly identified. Preserve source-check time independently of each acquisition date. Missing data has an explicit unavailable state. Failed refreshes preserve the last verified report and mark its age.
+
+Earth artwork, terrain context and graph layout are visual representations. Recorded source evidence determines the scientific claim. Human review determines the documented action and remaining uncertainty.
 
 ## Verification
-The design branch captures desktop (1440px) and narrow mobile (390px) views of a synthetic case queue during the owner-demo browser smoke. Inspect the resulting images; screenshots and automated tests alone are not an accessibility certification. Never capture private evidence or real credentials.
+
+Inspect the rendered public flow at desktop and mobile widths. Exercise grid and date selection, keyboard and touch, no-script fallback and reduced motion. Check source failures and unavailable reports.
+
+For the working application, verify map lifecycle stability, saved-case selection, evidence lineage and the existing complete synthetic case flow. Preserve authentication and protected storage through deployment. Record exact tests, rendered views, release commits and verification limits in execution/CURRENT_STATUS.md.
