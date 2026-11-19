@@ -1,5 +1,11 @@
 # FORESTPROOF Project Brain
 
+## Living Atlas — 19 November 2026
+
+Contabo serves the public Living Atlas homepage and dated Geta pass explorer. The protected demo uses the same design language for its command center, case desk, evidence review and saved-case lineage. Desktop/mobile public rendering and the actual saved synthetic case have been inspected. Read [the current release verification](execution/CURRENT_STATUS.md#living-atlas-release--19-november-2026) for exact source pins and map checks. That entry supersedes older deployment and rendering claims below.
+
+The public coverage counts remain distinct from the protected synthetic case workflow. An operational record-level alert feed, actual owner identity and independently recoverable live storage remain separate launch requirements. The original Windows checkout and private research evidence are preserved.
+
 ## Public product guide — 18 November 2026
 
 Read [the public guide](docs/PUBLIC_GUIDE.md) for the visitor journey and current hosted capabilities. The source repository and historical context have public read access at the owner’s request. Runtime credentials and private research evidence remain in protected storage.

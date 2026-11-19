@@ -1,5 +1,11 @@
 # ForestProof — verified readiness and launch strategy
 
+## Public experience update — 19 November 2026
+
+The Living Atlas homepage and real aggregate Geta coverage explorer are public on Contabo. The protected demo has the redesigned review workspace and record-backed case lineage. Desktop/mobile rendering, date/grid selections, no-script reading and public/private access boundaries were verified. See [the current release record](../execution/CURRENT_STATUS.md#living-atlas-release--19-november-2026) for exact source pins and map checks. These facts supersede the older interface and rendering status below.
+
+The next launch milestone remains one source-qualified genuine record through actual owner review, documented follow-up and independently tested recovery. The UI release does not qualify the detector, a live record feed, publication rights or production owner authentication. Keep those source, identity and storage requirements explicit while sharing the public research experience.
+
 **Verified preview update (2026-11-13):** Contabo `vmi3711898` now serves the protected synthetic preview from pinned source `38881dc79f04de9d21997fe85dea8712ef78e91d`. The API/web release kept the existing demo SQLite volume and gateway. TLS, anonymous denial, authenticated DEMO health and source labels, gateway/API upload denial, and a private local database snapshot plus separate restore were checked; existing SSH, RDP, MariaDB and PHP-FPM stayed active. The deployed browser was not visually inspected. This does not complete the owner-only live pilot: person-level identity, separate live storage, off-host recovery and a verified, authorized feed remain open. See [the release evidence](../execution/CURRENT_STATUS.md). The older dated assessment below is historical where it describes Contabo as undeployed.
 
 **Earlier hosting update, 2026-11-10:** The current target is Contabo `vmi3711898`; the old OVH host and `content-engine-vps` alias are historical. Read-only SSH from the laptop reached Contabo with strict host-key checking; Cloud access, safe host inventory, backup transfer and a ForestProof deployment on Contabo remain unverified. Keep RDP private via its existing SSH tunnel and preserve other services. Do not treat the old OVH preview as a Contabo deployment.

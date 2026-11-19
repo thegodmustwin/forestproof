@@ -148,7 +148,7 @@ h3 { margin: 0; font-size: 15px; }
 
 .outcome-graph { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; align-items: center; padding: 25px 0 14px; }
 .outcome-node { text-align: center; position: relative; }
-.outcome-node:not(:last-child)::after { content: "→"; position: absolute; right: -7px; top: 17px; color: #769076; font-size: 20px; }
+.outcome-node:not(:last-child)::after { content: "â†’"; position: absolute; right: -7px; top: 17px; color: #769076; font-size: 20px; }
 .outcome-node-icon { width: 52px; height: 52px; display: grid; place-items: center; margin: 0 auto 8px; border-radius: 50%; background: #edf3e9; border: 1px solid #b8cdb3; color: #24563a; font-size: 19px; }
 .outcome-node:last-child .outcome-node-icon { background: #dcebcf; border-color: #96b67b; }
 .outcome-node-label { font-size: 11px; font-weight: 800; }
@@ -443,6 +443,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .queue-summary dd { text-align: left; font-size: 26px; }
   .atlas-lineage { padding: 20px; }
   .map-card, .map-card .maplibre-container, .atlas-map-fallback { min-height: 500px; }
+  .atlas-map-toolbar { bottom: 64px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

@@ -1,5 +1,13 @@
 # ForestProof — Cloud continuation handoff
 
+## Living Atlas continuation — 19 November 2026
+
+The public homepage and Geta pass explorer are deployed and were checked in desktop and mobile browsers. The protected command center, investigation desk, evidence workspace and saved-case lineage have also been rendered against the existing Contabo demo API. PR #46 contains the design release. PR #47 fixes the actual map worker path, startup readiness and fallback layout. Read the newest [release verification](../execution/CURRENT_STATUS.md#living-atlas-release--19-november-2026) for exact running pins and final checks before deploying anything else. This supersedes older preview and rendering status below.
+
+The app's worker and licence are generated from the locked MapLibre dependency by npm run dev or npm run build. Root-context Docker builds include both the shared CSS tokens and generated public worker. The public report remains a separate read-only service. A protected web release must preserve its existing API container, demo volume, gateway and other host projects.
+
+Public visibility measurements are real aggregate satellite-derived coverage. The protected case app remains explicitly synthetic with shared tester access. The genuine historical research case and owner decision remain in their separate private workflow. A qualified record-level feed, person-level owner runtime and independent live-case recovery remain launch work. No provider key or paid feed was activated by the design release.
+
 ## Public reading and context — 18 November 2026
 
 Start with [the public project guide](PUBLIC_GUIDE.md) and README.md. Homepage and radar research are being integrated into the default branch for coherent public access. The live Contabo hostname serves the public homepage and aggregate Geta report. Inspect the newest release record for deployed source and verified public/private routes.
