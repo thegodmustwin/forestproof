@@ -1,5 +1,9 @@
 # Deployment
 
+## Living Atlas hosting — 19 November 2026
+
+The existing Contabo host serves the public homepage and aggregate pass explorer through the dedicated loopback visibility service. The protected Next.js web container has the Living Atlas interface and continues using the existing demo API and volume. See [current release verification](../execution/CURRENT_STATUS.md#living-atlas-release--19-november-2026) for exact running pins and checks, and the [visibility runbook](../infrastructure/deployment/sentinel-visibility/README.md) for service operation and root-context web builds. Those records supersede the older dated deployment descriptions below. The synthetic preview retains shared tester access; genuine alerts and production owner access remain unfinished.
+
 ## Current status and owner preference
 
 **Public Sentinel-2 visibility (2026-11-15):** [`/visibility`](https://vmi3711898.contaboserver.net/visibility) serves the owner-approved aggregate view of the provisional Geta research area. The dedicated loopback origin and twice-daily check are separate from the password-protected Contabo tester app. The verified release and rollback procedure are recorded in the [visibility runbook](../infrastructure/deployment/sentinel-visibility/README.md) and [current status](../execution/CURRENT_STATUS.md#public-geta-satellite-visibility--2026-11-15).

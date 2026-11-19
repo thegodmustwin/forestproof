@@ -1,6 +1,6 @@
 # Contabo Geta visibility release
 
-The approved public pages are `/welcome` and `/visibility` on the ForestProof HTTPS hostname. `/project.txt` serves the public product guide, and `/robots.txt` and `/sitemap.xml` expose the public routes. Include `docs/PUBLIC_GUIDE.md` in every release archive. The homepage introduces the provisional Geta research area, links to the aggregate visibility report, and describes an illustrative evidence review. The report publishes two overlapping native Sentinel-2 grid counts with Copernicus attribution. The private source receipts stay in the service state directory. Alert and case routes require the existing tester gateway.
+The approved public pages are `/welcome` and `/visibility` on the ForestProof HTTPS hostname. `/project.txt` serves the public product guide, and `/robots.txt` and `/sitemap.xml` expose the public routes. The Living Atlas release also allows exactly `/assets/atlas.css`, `/assets/earth-east.jpg` and `/assets/visibility.js`. Other asset paths stay behind the tester gateway. Include `docs/PUBLIC_GUIDE.md`, `packages/ui/living-atlas.css`, the visibility tools and `tools/source_status` in every public release archive. The homepage introduces the provisional Geta research area and links to the dated pass explorer. The report publishes two overlapping native Sentinel-2 grid counts with Copernicus attribution. The private source receipts stay in the service state directory. Alert and case routes require the existing tester gateway.
 
 ## Runtime
 
@@ -10,7 +10,9 @@ The timer checks twice per day at 03:15 and 15:15 EAT, plus an initial activatio
 
 ## Operate the site
 
-Visitors enter through HTTPS on the Contabo hostname. Caddy sends exact `/welcome` and `/visibility` reads to the Python listener on `127.0.0.1:18450`. Its separate authenticated route serves the private preview. The public process reads validated JSON from `/var/lib/forestproof-visibility/source.json` and generates HTML. The refresh timer runs independently. The successful source-check date and satellite acquisition dates describe different events.
+Visitors enter through HTTPS on the Contabo hostname. Caddy sends the eight exact public paths above to the Python listener on `127.0.0.1:18450`. Its separate authenticated route serves the private preview. The public process reads validated JSON from `/var/lib/forestproof-visibility/source.json` and generates HTML. The refresh timer runs independently. The successful source-check date and satellite acquisition dates describe different events. The explorer uses a small same-origin script, native buttons and accessible selection states. Without JavaScript, the full dated archive remains open. The Earth is a credited historical NASA composite used for geographic orientation.
+
+The visibility server whitelists the three assets and sends content hashes as ETags. Browsers revalidate assets across releases. Its content policy permits the same-origin script and images. No provider credential or source receipt is delivered to the browser.
 
 Run these read-only commands in your existing Contabo SSH session. Check both browser pages as an anonymous visitor after a release.
 
@@ -22,6 +24,10 @@ readlink -f /opt/forestproof-visibility/current
 ```
 
 GitHub holds source and changes. Contabo serves the installed release. Deploy reviewed commits into a new release directory, validate both loopback pages, and retain the old release and gateway config. Switch `current` and restart only the visibility web service. Change the Caddy matcher when public paths change. Keep code, source-report state, and proxy configuration backups separate so a code rollback preserves recent source data.
+
+The separate protected Next.js app uses the root-context `apps/web/Dockerfile` so it can compile the same canonical CSS tokens. Its web container listens on `127.0.0.1:13000`. A web-only release must preserve the existing API container, named demo data volume and gateway. Read the newest release entry in `execution/CURRENT_STATUS.md` before composing a deployment. Retain the original Compose files and apply a reviewed web-image override with `up -d --no-deps --no-build web`. Never substitute a new database or recreate the API as part of a design-only release.
+
+`npm run dev` and `npm run build` prepare `/vendor/maplibre-gl-worker.mjs` and its licence from the installed locked MapLibre dependency. The generated files stay out of Git and are copied into the runtime image. The map explicitly selects this same-origin worker before construction. MapLibre's default worker URL assumes an adjacent module; application bundling relocates that module. See the [provider's worker configuration](https://maplibre.org/maplibre-gl-js/docs/API/functions/setWorkerUrl/). Keep the worker behind the same tester gateway as the app and verify its JavaScript MIME type after deployment. Controls and markers become available on style readiness, while a separate status describes basemap loading. Source failures expose the observation list.
 
 A custom domain points at Contabo through DNS and needs matching Caddy and application host configuration. Verify the certificate and anonymous route boundaries on that hostname before sharing it.
 

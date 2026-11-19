@@ -1,8 +1,12 @@
 # Current Status
 
-## Living Atlas candidate — 19 November 2026
+## Living Atlas release — 19 November 2026
 
-The candidate updates the public orbital entry and grid/pass explorer, shares tokens with the React app, preserves the map instance across selection changes, and traces saved-case relationships. Visibility values still come from the reviewed report. Source checking and case authorization retain their existing contracts. Rendered verification, CI and deployment evidence will be appended after checks complete.
+PR #46 merged the Living Atlas orbital entry, dated grid/pass explorer, shared tokens, persistent map and saved-case lineage. Contabo's public service now runs exact source `f28b0e370c0003b33b1422dc7c505f2bd9197689`. The public homepage and report were visually inspected at 1440 and 390 px. All six production grid/date combinations matched their rendered source counts. Keyboard/touch selection, the no-JavaScript archive and asset ETag revalidation passed. All eight exact public routes returned GET/HEAD 200 and POST 405. Anonymous private routes returned 401.
+
+The protected web image also runs source `f28b0e3`, preserving the existing API container and named demo data volume. Its existing saved synthetic case loaded in the command center, operations desk, evidence workspace and outcome lineage. The API and volume identities, SQLite rollback-copy integrity, SSH, loopback RDP, visibility timer, MariaDB and PHP-FPM were independently checked. This same-host rollback copy does not establish off-host production recovery.
+
+The full GitHub workflow passed on `f28b0e3`, including Node 20/24 builds, API checks and the synthetic browser review/action/follow-up/closure workflow. All 26 web unit tests passed locally. The production browser exposed a map startup issue: library CSS could displace the loading fallback, and the bundled MapLibre worker URL could point at a missing adjacent module. A follow-up serves the locked worker from the app, exposes controls on style readiness, and preserves explicit loading and failure states. Final map/terrain verification and its exact deployed pin will be recorded below.
 
 ## Public repository and reader access — 18 November 2026
 

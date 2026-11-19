@@ -85,7 +85,8 @@ h3 { margin: 0; font-size: 15px; }
 
 .map-layout { display: grid; grid-template-columns: minmax(0, 1fr) 355px; gap: 18px; align-items: start; }
 .map-card { min-height: 630px; overflow: hidden; position: relative; }
-.maplibre-container { position: absolute; inset: 0; min-height: 630px; }
+.map-card .maplibre-container { position: absolute; inset: 0; min-height: 630px; }
+.map-card .maplibre-container[aria-hidden="true"] { visibility: hidden; pointer-events: none; }
 .map-header-overlay { position: absolute; z-index: 4; top: 13px; left: 13px; display: flex; align-items: center; gap: 9px; padding: 7px 9px; background: rgba(255,254,249,.92); border: 1px solid #d0d9cd; font-size: 10px; color: #526257; }
 .fp-map-marker { width: 30px; height: 30px; border: 3px solid #fff; border-radius: 50% 50% 50% 0; background: var(--amber); color: white; font-weight: 800; box-shadow: 0 5px 13px rgba(45,60,40,.33); transform: rotate(-45deg); }
 .fp-map-marker.selected { background: var(--danger); transform: rotate(-45deg) scale(1.2); }
@@ -147,7 +148,7 @@ h3 { margin: 0; font-size: 15px; }
 
 .outcome-graph { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; align-items: center; padding: 25px 0 14px; }
 .outcome-node { text-align: center; position: relative; }
-.outcome-node:not(:last-child)::after { content: "→"; position: absolute; right: -7px; top: 17px; color: #769076; font-size: 20px; }
+.outcome-node:not(:last-child)::after { content: "â†’"; position: absolute; right: -7px; top: 17px; color: #769076; font-size: 20px; }
 .outcome-node-icon { width: 52px; height: 52px; display: grid; place-items: center; margin: 0 auto 8px; border-radius: 50%; background: #edf3e9; border: 1px solid #b8cdb3; color: #24563a; font-size: 19px; }
 .outcome-node:last-child .outcome-node-icon { background: #dcebcf; border-color: #96b67b; }
 .outcome-node-label { font-size: 11px; font-weight: 800; }
@@ -167,7 +168,7 @@ h3 { margin: 0; font-size: 15px; }
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
   .dashboard-grid, .map-layout, .two-column { grid-template-columns: 1fr; }
   .map-card, .map-canvas { min-height: 470px; }
-  .maplibre-container { min-height: 470px; }
+  .map-card .maplibre-container { min-height: 470px; }
 }
 @media (max-width: 640px) {
   .sidebar { display: block; }
@@ -441,7 +442,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .queue-summary dt { margin-bottom: 8px; }
   .queue-summary dd { text-align: left; font-size: 26px; }
   .atlas-lineage { padding: 20px; }
-  .map-card, .maplibre-container, .atlas-map-fallback { min-height: 500px; }
+  .map-card, .map-card .maplibre-container, .atlas-map-fallback { min-height: 500px; }
+  .atlas-map-toolbar { bottom: 64px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

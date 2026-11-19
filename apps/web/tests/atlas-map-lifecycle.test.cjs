@@ -11,6 +11,7 @@ function createHarness() {
   const cleanups = [];
   const effects = [];
   const maps = [];
+  const workerUrls = [];
   let cursor = 0;
   const react = {
     useRef(initial) {
@@ -61,13 +62,17 @@ function createHarness() {
   loaded.require = (name) => {
     if (name === "react") return react;
     if (name === "react/jsx-runtime") return { jsx, jsxs: jsx };
-    if (name === "maplibre-gl") return { Map: MapMock, Marker: MarkerMock, NavigationControl: class {} };
+    if (name === "maplibre-gl") return {
+      Map: MapMock, Marker: MarkerMock, NavigationControl: class {},
+      setWorkerUrl: (url) => workerUrls.push(url),
+    };
     if (name === "@/lib/demo") return { monitoredArea: { center: [36.74, -0.38] }, observations: [] };
     return require(name);
   };
   loaded._compile(output, filename);
   return {
     maps,
+    workerUrls,
     render(props) {
       cursor = 0;
       const tree = loaded.exports.AberdareMap(props);
@@ -78,7 +83,14 @@ function createHarness() {
   };
 }
 
-test("changing observations, selected ID and callback preserves the map and updates existing markers", () => {
+function visibleText(node) {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(visibleText).join(" ");
+  return visibleText(node.props?.children);
+}
+
+test("style readiness enables markers before imagery finishes and later selection updates preserve the map", () => {
   const previousDocument = global.document;
   global.document = {
     createElement() {
@@ -95,13 +107,21 @@ test("changing observations, selected ID and callback preserves the map and upda
     let picked = null;
     harness.render({ selectedId: "", observations: records, onSelect: () => { throw new Error("stale callback"); } });
     assert.equal(harness.maps.length, 1);
+    assert.deepEqual(harness.workerUrls, ["/vendor/maplibre-gl-worker.mjs"]);
     const map = harness.maps[0];
-    map.handlers.load();
-    harness.render({ selectedId: "", observations: records, onSelect: () => { throw new Error("stale callback"); } });
+    map.handlers["style.load"]();
+    let tree = harness.render({ selectedId: "", observations: records, onSelect: () => { throw new Error("stale callback"); } });
+    assert.match(visibleText(tree), /Loading base map imagery/);
+    assert.match(visibleText(tree), /Explore 3D terrain/);
     const marker = map.markers[0];
+    assert.ok(marker, "Markers should be available while base imagery is loading");
+    map.handlers.load();
+    tree = harness.render({ selectedId: "", observations: records, onSelect: () => {} });
+    assert.doesNotMatch(visibleText(tree), /Loading base map imagery/);
     const revised = [{ ...records[0], title: "Revised", coordinates: [36.8, -0.3] }];
     harness.render({ selectedId: "DEMO-A", observations: revised, onSelect: (record) => { picked = record; } });
     assert.equal(harness.maps.length, 1);
+    assert.equal(harness.workerUrls.length, 1);
     assert.equal(map.markers.length, 1);
     assert.equal(marker.element.attributes["aria-pressed"], "true");
     assert.deepEqual(marker.position, [36.8, -0.3]);
