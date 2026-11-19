@@ -1,0 +1,70 @@
+{
+  "title": "Sentinel-2 true-colour research context",
+  "prepared_at": "2026-11-19T17:05:08.738675+00:00",
+  "research_bounds_wgs84": [
+    36.6,
+    -0.49,
+    36.63,
+    -0.46
+  ],
+  "meaning": "Static historical context windows around the provisional research rectangle. Not an official forest boundary, cloud-free mosaic, change classification or current alert. No colour enhancement or generated content.",
+  "attribution": "Contains modified Copernicus Sentinel data [2026]. Earth Search / Element 84 cloud-optimized visualization assets.",
+  "items": [
+    {
+      "date": "2026-11-08",
+      "acquired_at": "2026-11-08T08:00:08.648000Z",
+      "scene": "S2C_36MZE_20261108_0_L2A",
+      "grid": "T36MZE",
+      "source_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/M/ZE/2026/11/S2C_36MZE_20261108_0_L2A/TCI.tif",
+      "source_etag": "\"256243f932e2bdf054ef34ce66c7fa60-23\"",
+      "native_resolution_metres": 10,
+      "source_window": [
+        10086,
+        5094,
+        335,
+        333
+      ],
+      "window_transform": [
+        10.0,
+        0.0,
+        900840.0,
+        0.0,
+        -10.0,
+        9949060.0
+      ],
+      "png": "geta-context-2026-11-08.png",
+      "width": 335,
+      "height": 333,
+      "sha256": "9c9667c007a6d17247fd64a4407902530961aa5a92887daecd75e881d8ed1c50",
+      "bytes": 127953
+    },
+    {
+      "date": "2026-11-13",
+      "acquired_at": "2026-11-13T08:00:12.692000Z",
+      "scene": "S2B_36MZE_20261113_0_L2A",
+      "grid": "T36MZE",
+      "source_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/M/ZE/2026/11/S2B_36MZE_20261113_0_L2A/TCI.tif",
+      "source_etag": "\"955eb4f838a9b7e41ef397c585b83480-5\"",
+      "native_resolution_metres": 10,
+      "source_window": [
+        10086,
+        5094,
+        335,
+        333
+      ],
+      "window_transform": [
+        10.0,
+        0.0,
+        900840.0,
+        0.0,
+        -10.0,
+        9949060.0
+      ],
+      "png": "geta-context-2026-11-13.png",
+      "width": 335,
+      "height": 333,
+      "sha256": "880b5a0575f6f3fbd59b76f7be7d4444ad6c67b55b8db394ee68e6a9fff6a6da",
+      "bytes": 1044
+    }
+  ]
+}

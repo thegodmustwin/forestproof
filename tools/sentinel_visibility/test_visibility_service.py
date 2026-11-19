@@ -14,6 +14,19 @@ NOW = datetime(2026, 11, 15, 9, tzinfo=UTC)
 
 
 class TestPublicDocuments(TestCase):
+    def test_public_explanations_do_not_depend_on_private_report_state(self):
+        with TemporaryDirectory() as tmp:
+            missing = Path(tmp) / "private-source-receipt.json"
+            for route, title in (("/guide", b"<title>"), ("/research", b"<title>"), ("/tour", b"<title>")):
+                status, body = response_for(missing, now=NOW, route=route)
+                self.assertEqual(status, 200)
+                self.assertIn(title, body)
+                self.assertNotIn(b"private-source-receipt", body)
+                self.assertNotIn(b"$styles", body)
+            with self.assertRaises(ValueError):
+                from tools.sentinel_visibility.build_product_pages import render_product_page
+                render_product_page("../../source.json")
+
     def test_public_guide_excludes_adjacent_private_state(self):
         with TemporaryDirectory() as tmp:
             guide = Path(tmp) / "PUBLIC_GUIDE.md"
@@ -47,7 +60,7 @@ class TestPublicDocuments(TestCase):
         self.assertEqual(content_type, "application/xml; charset=utf-8")
         namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         urls = {item.text for item in fromstring(sitemap).findall("s:url/s:loc", namespace)}
-        self.assertEqual(urls, {f"https://forestproof.example{path}" for path in ("/welcome", "/visibility", "/project.txt")})
+        self.assertEqual(urls, {f"https://forestproof.example{path}" for path in ("/welcome", "/visibility", "/tour", "/research", "/guide", "/project.txt")})
         with self.assertRaises(ValueError):
             public_document("/source.json", "forestproof.example")
 

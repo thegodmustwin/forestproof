@@ -12,6 +12,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from tools.sentinel_visibility.build_home_page import render_home
+from tools.sentinel_visibility.build_product_pages import render_product_page
 from tools.sentinel_visibility.build_visibility_page import render
 from tools.sentinel_visibility.project_visibility import project
 from tools.source_status.build_source_status import read_report, write_page
@@ -21,8 +22,14 @@ ASSET_PATHS = {
     "/assets/atlas.css": (Path(__file__).resolve().parents[2] / "packages" / "ui" / "living-atlas.css", "text/css; charset=utf-8"),
     "/assets/earth-east.jpg": (Path(__file__).with_name("assets") / "earth-east.jpg", "image/jpeg"),
     "/assets/visibility.js": (Path(__file__).with_name("assets") / "visibility.js", "text/javascript; charset=utf-8"),
+    "/assets/tour.js": (Path(__file__).with_name("assets") / "tour.js", "text/javascript; charset=utf-8"),
+    "/assets/home.js": (Path(__file__).with_name("assets") / "home.js", "text/javascript; charset=utf-8"),
+    "/assets/geta-context-2026-11-08.png": (Path(__file__).with_name("assets") / "geta-context-2026-11-08.png", "image/png"),
+    "/assets/geta-context-2026-11-13.png": (Path(__file__).with_name("assets") / "geta-context-2026-11-13.png", "image/png"),
+    "/assets/geta-context.json": (Path(__file__).with_name("assets") / "geta-context.json", "application/json; charset=utf-8"),
 }
-PUBLIC_PATHS = {"/visibility", "/welcome", "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
+PRODUCT_PAGES = {"/guide": "guide", "/research": "research"}
+PUBLIC_PATHS = {"/visibility", "/welcome", "/tour", *PRODUCT_PAGES, "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
 DOCUMENT_PATHS = {"/project.txt", "/robots.txt", "/sitemap.xml"}
 GUIDE = Path(__file__).resolve().parents[2] / "docs" / "PUBLIC_GUIDE.md"
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
@@ -44,7 +51,7 @@ def public_document(route, hostname):
         raise ValueError("Unknown public document route")
     urls = "".join(
         f"<url><loc>https://{escape(hostname)}{path}</loc></url>"
-        for path in ("/welcome", "/visibility", "/project.txt")
+        for path in ("/welcome", "/visibility", "/tour", "/research", "/guide", "/project.txt")
     )
     body = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -102,6 +109,10 @@ def refresh(path, *, clock=lambda: datetime.now(UTC), inspect=fetch):
 
 
 def response_for(path, *, now, route="/visibility"):
+    if route in PRODUCT_PAGES:
+        return 200, render_product_page(PRODUCT_PAGES[route]).encode("utf-8")
+    if route == "/tour":
+        return 200, Path(__file__).with_name("tour.html").read_bytes()
     try:
         state, snapshot = read_state(path, now)
     except ERRORS:

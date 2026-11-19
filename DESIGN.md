@@ -20,7 +20,7 @@ Use at least 16 px body text, 14 px important controls and labels, and 12 px sec
 
 ## Scale and reading order
 
-The visitor journey moves from Earth orientation to the Geta research programme, then a specific acquisition and its evidence. Clear next actions connect the levels. Historical Earth imagery identifies geographic context. Actual observation dates and coverage appear with the source report.
+The visitor journey begins with an understandable Geta observation, then connects real coverage, an interactive fictional practice case, research and explanations. All main destinations stay on-site. External references are optional source citations or developer material. Actual observation dates and coverage remain visible with the source report.
 
 The pass explorer lets visitors choose a grid and observation date, compare visible and unassessed cells, and interpret the vegetation count within the visible subset. Its aggregate bar describes a share. Source quality masks have their own geographic interpretation and publication requirements.
 
@@ -28,7 +28,7 @@ Private pages prioritize saved records, case ownership, review state, source qua
 
 ## Spatial implementation
 
-The homepage uses a locally served NASA Blue Marble historical composite with CSS atmosphere and perspective. The file is approximately 524 KiB. The initial public view requires no WebGL engine.
+The homepage uses two locally served, unchanged native-pixel Sentinel-2 true-colour visualization crops from the same research window on 8 and 13 November 2026. A pointer/touch/keyboard comparison reveals the viewing difference. Their static dates, source identities and hashes are retained; the visual is context, not a change-classification map. The initial public view requires no WebGL engine. The earlier historical NASA composite remains an archived asset.
 
 The operational map uses the existing MapLibre renderer. Create its instance once and update records, markers and selection independently. Functional 2D controls and an accessible observation list provide a fallback. Optional terrain is loaded on request with its source attribution, failure feedback and a direct return to 2D.
 
