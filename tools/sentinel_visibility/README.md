@@ -31,3 +31,12 @@ Keep the test listener on loopback with only the generated HTML in its served di
 ## Recurring public visibility
 
 The owner approved aggregate publication under the label **Provisional Geta research area**. The [published page](https://vmi3711898.contaboserver.net/visibility) uses the timer, loopback web process and exact HTTPS route in the [Contabo release runbook](../../infrastructure/deployment/sentinel-visibility/README.md). The service evaluates stale and failed-check status independently of the static preview.
+
+
+## Self-contained public product
+
+The same independent read-only service serves the public homepage, richer pass explorer, fictional practice case, research and plain-language guide at `/welcome`, `/visibility`, `/tour`, `/research` and `/guide`. Main navigation stays inside ForestProof. External sources are optional citations or developer references.
+
+`build_product_pages.py` accepts only the published guide/research page names and inlines `assets/product-pages.css`. The tour uses a same-origin script and memory-only demonstration choices. Without JavaScript its full teaching narrative remains visible. The explorer keeps a full native archive without scripting and exposes shareable selected grid/date queries when enhanced.
+
+The homepage context crops are pinned historical Sentinel-2 visualizations, independent of the scheduled SCL report. `assets/geta-context.json` records their identities, crop windows and output hashes. `prepare_context_images.py` is a manual maintainer tool using the existing raster environment; serving pages never invokes it. Static image dates must remain visible as the live aggregate source check advances. The private review API and storage are not used by any public teaching page.

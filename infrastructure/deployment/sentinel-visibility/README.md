@@ -1,6 +1,8 @@
 # Contabo Geta visibility release
 
-The approved public pages are `/welcome` and `/visibility` on the ForestProof HTTPS hostname. `/project.txt` serves the public product guide, and `/robots.txt` and `/sitemap.xml` expose the public routes. The Living Atlas release also allows exactly `/assets/atlas.css`, `/assets/earth-east.jpg` and `/assets/visibility.js`. Other asset paths stay behind the tester gateway. Include `docs/PUBLIC_GUIDE.md`, `packages/ui/living-atlas.css`, the visibility tools and `tools/source_status` in every public release archive. The homepage introduces the provisional Geta research area and links to the dated pass explorer. The report publishes two overlapping native Sentinel-2 grid counts with Copernicus attribution. The private source receipts stay in the service state directory. Alert and case routes require the existing tester gateway.
+The public product consists of `/welcome`, `/visibility`, `/tour`, `/research` and `/guide` on the ForestProof HTTPS hostname. Primary navigation and actions stay on-site. `/project.txt` remains a machine-readable overview; `/robots.txt` and `/sitemap.xml` describe discovery. The exact public asset allowlist is `/assets/atlas.css`, `/assets/earth-east.jpg`, `/assets/visibility.js`, `/assets/tour.js`, `/assets/home.js`, the two `/assets/geta-context-2026-11-08.png` and `/assets/geta-context-2026-11-13.png` crops, and `/assets/geta-context.json`. Other asset paths stay behind the tester gateway. Include `docs/PUBLIC_GUIDE.md`, `packages/ui/living-atlas.css`, the visibility tools and `tools/source_status` in every public release archive.
+
+The imagery comparison is static historical research context with explicit acquisition dates and source provenance. The public case walkthrough is fictional, anonymous and browser-only, with no backend writes or persistence. It is separate from the protected case application. The guide and research pages render local published templates with inline shared reading styles. Private visibility receipts stay in the service state directory; case and API paths retain the existing tester gateway.
 
 ## Runtime
 
@@ -10,11 +12,11 @@ The timer checks twice per day at 03:15 and 15:15 EAT, plus an initial activatio
 
 ## Operate the site
 
-Visitors enter through HTTPS on the Contabo hostname. Caddy sends the eight exact public paths above to the Python listener on `127.0.0.1:18450`. Its separate authenticated route serves the private preview. The public process reads validated JSON from `/var/lib/forestproof-visibility/source.json` and generates HTML. The refresh timer runs independently. The successful source-check date and satellite acquisition dates describe different events. The explorer uses a small same-origin script, native buttons and accessible selection states. Without JavaScript, the full dated archive remains open. The Earth is a credited historical NASA composite used for geographic orientation.
+Visitors enter through HTTPS on the Contabo hostname. Caddy sends the sixteen exact public paths above to the Python listener on `127.0.0.1:18450`. Its separate authenticated route serves the private preview. The public process reads validated JSON from `/var/lib/forestproof-visibility/source.json` and generates HTML. The refresh timer runs independently. The successful source-check date and satellite acquisition dates describe different events. The explorer uses a small same-origin script, native buttons and accessible selection states. Without JavaScript, the full dated archive remains open. The homepage compares two real dated source visualization crops. The earlier NASA composite remains an archived asset.
 
-The visibility server whitelists the three assets and sends content hashes as ETags. Browsers revalidate assets across releases. Its content policy permits the same-origin script and images. No provider credential or source receipt is delivered to the browser.
+The visibility server whitelists the eight public assets and sends content hashes as ETags. Browsers revalidate assets across releases. Its content policy permits the same-origin script and images. No provider credential or private visibility receipt is delivered to the browser. The public historical-image manifest contains deliberately published source identities and hashes.
 
-Run these read-only commands in your existing Contabo SSH session. Check both browser pages as an anonymous visitor after a release.
+Run these read-only commands in your existing Contabo SSH session. Check all five product pages as an anonymous visitor after a release.
 
 ```sh
 systemctl status forestproof-visibility.service --no-pager
@@ -23,7 +25,7 @@ journalctl -u forestproof-visibility-refresh.service -n 12 --no-pager
 readlink -f /opt/forestproof-visibility/current
 ```
 
-GitHub holds source and changes. Contabo serves the installed release. Deploy reviewed commits into a new release directory, validate both loopback pages, and retain the old release and gateway config. Switch `current` and restart only the visibility web service. Change the Caddy matcher when public paths change. Keep code, source-report state, and proxy configuration backups separate so a code rollback preserves recent source data.
+GitHub holds source and changes. Contabo serves the installed release. Deploy reviewed commits into a new release directory, validate the five loopback product pages, and retain the old release and gateway config. Switch `current` and restart only the visibility web service. Change the Caddy matcher when public paths change. Keep code, source-report state, and proxy configuration backups separate so a code rollback preserves recent source data.
 
 The separate protected Next.js app uses the root-context `apps/web/Dockerfile` so it can compile the same canonical CSS tokens. Its web container listens on `127.0.0.1:13000`. A web-only release must preserve the existing API container, named demo data volume and gateway. Read the newest release entry in `execution/CURRENT_STATUS.md` before composing a deployment. Retain the original Compose files and apply a reviewed web-image override with `up -d --no-deps --no-build web`. Never substitute a new database or recreate the API as part of a design-only release.
 
