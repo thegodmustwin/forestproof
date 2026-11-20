@@ -1,5 +1,9 @@
 # Current Status
 
+## Public geographic release validation — 20 November 2026
+
+Public source `c5f98faac85084d133dfd1d291f381bbd68df9ee` is installed on Contabo. Complete application CI and raster CI passed on that source. All 32 exact public paths passed certificate-validated GET/HEAD 200 and POST 405 with expected MIME types; 24 private/unknown paths remained 401. The source-report hash, protected app and existing services were preserved. Clean-runner browser checks passed at 1440, 390 and 320 px, including optional terrain, exact selection, no-script and no-WebGL reading. Production browser validation identified a fallback pointer-interception and caption-overlap bug. The candidate hides the failed canvas and consolidates the caption, with a regression that actually drags the real relief map. Final production interaction verification is pending.
+
 ## Living Atlas geographic candidate — 20 November 2026
 
 The candidate introduces a planetary homepage and a new `/atlas/geta` route with actual research geometry, georeferenced historical source images, date/grid selection, bounded local relief and optional 1× terrain. The protected app, source state, existing data and deployment remain unchanged while release checks run. Original z10 terrain PNGs total 242,624 bytes; the derived 512×512 relief is 304,201 bytes, with approximately 153 m displayed sampling. Contributor headers identify SRTM/GMTED2010. Natural Earth supplies generalized country orientation. Source URLs, times, ETags, hashes, processing and attribution are retained. No account, key or recurring subscription was added.

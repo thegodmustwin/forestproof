@@ -5,10 +5,12 @@ Turn an environmental observation into evidence, a human-owned case, a recorded 
 ## Explore the product
 
 - [Open the public homepage](https://vmi3711898.contaboserver.net/welcome)
+- [Enter the geographic Geta Living Atlas](https://vmi3711898.contaboserver.net/atlas/geta)
 - [Explore satellite visibility over Geta](https://vmi3711898.contaboserver.net/visibility)
+- [Follow a fictional investigation and inspect its evidence links](https://vmi3711898.contaboserver.net/tour)
 - [Take the product tour and read the full project guide](docs/PUBLIC_GUIDE.md)
 
-The public report uses real Sentinel-2 aggregate visibility counts for the **Provisional Geta research area**. It shows what the satellite could assess on the listed passes, its observation dates, and ForestProof's last successful source check.
+The public atlas connects the **Provisional Geta research area in Kenya** to real Sentinel-2 aggregate visibility counts, exact matching historical image crops when available and bounded elevation context. Select a date and grid, open the observation laboratory, then try a clearly fictional review. Observation dates, usable coverage and ForestProof's last successful source check remain separate. The atlas offers optional 3D and a readable local relief fallback without a paid map subscription.
 
 The case application is a working protected synthetic demo. It supports observation review, cases, recorded actions, follow-up and dossier export. Historical research includes a genuine archived observation and independently mapped fire backtests. A current forest-alert feed, production owner identity and independently verified recovery of the real review remain qualification work.
 

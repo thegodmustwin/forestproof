@@ -117,9 +117,9 @@
   }
   function fallback(note){
     root.classList.remove("atlas-ready");host.dataset.ready="false";document.querySelector("[data-atlas-controls]").hidden=true;
-    mapReady=false;terrainActive=false;message(note);if(map){try{map.remove();}catch(_){}map=null;}host.replaceChildren();
+    mapReady=false;terrainActive=false;message(note);if(map){try{map.remove();}catch(_){}map=null;}host.replaceChildren();host.hidden=true;
     if(!fallbackReady)drawFallback();
-    if(fallbackReady){document.querySelector("[data-atlas-controls]").hidden=false;terrainButton.disabled=true;terrainButton.textContent="2D context";imageButton.hidden=true;text("[data-map-view-label]","2D local relief · Drag or use arrow keys to pan");text("[data-atlas-fallback]","Historical regional elevation · Approx. 153 m source spacing. Colours show height, not vegetation. The outline locates the provisional research rectangle.");}
+    if(fallbackReady){document.querySelector("[data-atlas-controls]").hidden=false;terrainButton.disabled=true;terrainButton.textContent="2D context";imageButton.hidden=true;document.querySelector("[data-atlas-fallback]").hidden=true;text("[data-map-view-label]","2D local relief · Approx. 153 m source spacing. Colours show height, not vegetation. Drag or use arrow keys to pan.");}
   }
   document.querySelectorAll("[data-map-zoom]").forEach(button=>button.addEventListener("click",()=>{if(mapReady)button.dataset.mapZoom==="in"?map.zoomIn({duration:reduced?0:250}):map.zoomOut({duration:reduced?0:250});else zoomFallback(button.dataset.mapZoom==="in"?.75:1.3);}));
   document.querySelector("[data-map-reset]").addEventListener("click",()=>{if(mapReady)resetView();else if(fallbackReady){fallbackView={...fallbackHome};paintFallback();}});

@@ -75,6 +75,13 @@ try{
  await bp.locator('[data-map-reset]').click();assert.deepEqual(await box(),originalBox);
  await reference.focus();await bp.keyboard.press('ArrowRight');assert.ok((await box())[0]>originalBox[0]);
  await bp.locator('[data-map-reset]').click();
+ assert.equal(await bp.locator('[data-atlas-map]').isVisible(),false,'Failed canvas must not intercept relief-map pointers');
+ assert.equal(await bp.locator('[data-atlas-fallback]').isVisible(),false,'Use one readable geographic caption');
+ await reference.evaluate(el=>{const r=el.getBoundingClientRect();window.scrollTo(0,window.scrollY+r.top+r.height/2-window.innerHeight/2);});
+ const bounds=await reference.boundingBox();
+ await bp.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await bp.mouse.down();
+ await bp.mouse.move(bounds.x+bounds.width/2+35,bounds.y+bounds.height/2,{steps:4});await bp.mouse.up();
+ assert.ok((await box())[0]<originalBox[0],'Pointer drag must pan the relief map');await bp.locator('[data-map-reset]').click();
  await fit(bp);await bp.screenshot({path:path.join(output,'mobile-no-webgl.png'),fullPage:true});await blocked.close();
  console.log('Public geographic smoke passed; no-script and WebGL-failure reading retained.');
 }finally{await browser?.close();if(server)server.kill('SIGTERM');}
