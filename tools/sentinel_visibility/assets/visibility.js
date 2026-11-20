@@ -105,6 +105,7 @@
     if (!tile) return;
     const percent = tile.visible / tile.sampled * 100;
     const share = label(tile.visible, tile.sampled);
+    explorer.querySelector("[data-return-atlas]").href = "/atlas/geta?grid=" + encodeURIComponent(selectedGrid) + "&date=" + encodeURIComponent(selectedDate);
     updateScene(pass);
     gridButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.selectGrid === selectedGrid)));
     dateButtons.forEach((button) => {
