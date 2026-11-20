@@ -42,6 +42,7 @@ try{
    await page.locator('[data-atlas-grid-choice="T37MBV"]').click();assert.match(await page.locator('[data-atlas-image-state]').innerText(),/No published image/);
    await page.reload({waitUntil:'networkidle'});await ready(page);assert.equal(await page.locator('[data-atlas-grid-choice="T37MBV"]').getAttribute('aria-pressed'),'true');
    const atlasTransfer=await page.evaluate(()=>performance.getEntriesByType('resource').reduce((n,e)=>n+e.encodedBodySize,0));assert.ok(atlasTransfer<5_000_000,'Atlas resource budget exceeded: '+atlasTransfer);
+   if(width<600)await page.locator('.atlas-mobile-sheet > summary').click();
    await page.locator('[data-atlas-laboratory]').first().click();await page.waitForURL('**/visibility?*');
    await page.waitForLoadState('networkidle');assert.equal(await page.locator('[data-visible-count]').innerText(),'3');await fit(page);
    assert.deepEqual(errors,[]);assert.deepEqual(outside,[]);
