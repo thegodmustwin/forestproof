@@ -1,5 +1,10 @@
 # ForestProof — decision and context ledger
 
+## Planet to landscape to evidence — 20 November 2026
+
+The owner supplied a detailed Living Atlas 2 transformation directive and authorized replacing misaligned visual elements. Deliver a connected planetary entrance and real Geta atlas first; preserve the existing observation report, source semantics and protected workflows. MapLibre stays within the existing stack. Use bounded self-hosted terrain with inspected source rights instead of introducing a paid map service. Keep clear performance budgets and a functional 2D/no-WebGL experience. The historical research extent may be displayed as a provisional research rectangle; it must not become an official forest boundary or a claim of live alert eligibility.
+
+
 ## Dark public workbench and concept integrity — 20 November 2026
 
 The owner supplied an immersive dark mint observation/dossier concept after requesting a clearer product journey. Use its depth and hierarchy to support real observation imagery, evidence interpretation and connected human review. Do not turn illustrative anomaly polygons, canopy patches, coverage percentages, radar thresholds or topography into claimed measurements. Geta is the provisional Kenyan research area and public visibility is an optical Sentinel-2 diagnostic. A public practice export must remain explicitly fictional and unsigned; actual verification signatures require a real identity and integrity model.

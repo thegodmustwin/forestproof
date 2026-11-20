@@ -1,5 +1,12 @@
 # ForestProof design direction
 
+## Living Atlas 2 geographic continuity — 20 November 2026
+
+The owner explicitly authorized replacing any interface that does not serve the supplied planetary-observatory and scientific-evidence direction. The first spatial release connects planet → Kenya → provisional Geta landscape → selected observation → fictional investigation. The historical NASA Earth artwork gives planetary orientation; a separate Natural Earth country locator identifies Kenya and the research location accurately. The public atlas uses real bounded elevation and georeferenced source imagery, with a functional 2D relief fallback when WebGL is unavailable. The laboratory retains precise 2D evidence reading. Case lineage resolves actual recorded fictional steps rather than decorative connections.
+
+Canonical palette is orbital black `#071511`, deep forest `#102B23`, terrain slate `#203B34`, mint `#8CE4BD`, cyan `#65D5E5`, ivory `#F2F0E5` and amber `#E8B86A`. Geographic data, historical imagery and synthetic records retain separate dates, sources and meanings. The full supplied brief is preserved in docs/origin/LIVING_ATLAS_2_ASSESSMENT_20261120.txt as historical design input; current user direction and verified implementation remain authoritative.
+
+
 ## Living Atlas — adopted 19 November 2026
 
 ForestProof connects planetary observation, geographic context and the evidence behind a human decision. The public observatory introduces a place and its real observation coverage. The working application helps a reviewer understand a source, own a case, record a response and return to its evidence.

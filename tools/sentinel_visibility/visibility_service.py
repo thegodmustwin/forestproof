@@ -12,6 +12,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from tools.sentinel_visibility.build_home_page import render_home
+from tools.sentinel_visibility.build_atlas_page import render_atlas
 from tools.sentinel_visibility.build_product_pages import render_product_page
 from tools.sentinel_visibility.build_visibility_page import render
 from tools.sentinel_visibility.project_visibility import project
@@ -28,8 +29,26 @@ ASSET_PATHS = {
     "/assets/geta-context-2026-11-13.png": (Path(__file__).with_name("assets") / "geta-context-2026-11-13.png", "image/png"),
     "/assets/geta-context.json": (Path(__file__).with_name("assets") / "geta-context.json", "application/json; charset=utf-8"),
 }
+for _name, _mime in {
+    "atlas.js": "text/javascript; charset=utf-8",
+    "geta-geography.json": "application/json; charset=utf-8",
+    "geography-provenance.json": "application/json; charset=utf-8",
+    "geta-relief.png": "image/png",
+    "atlas-runtime.json": "application/json; charset=utf-8",
+    "world-context.geojson": "application/geo+json; charset=utf-8",
+    "maplibre-gl.mjs": "text/javascript; charset=utf-8",
+    "maplibre-gl-shared.mjs": "text/javascript; charset=utf-8",
+    "maplibre-gl-worker.mjs": "text/javascript; charset=utf-8",
+    "maplibre-gl.css": "text/css; charset=utf-8",
+    "maplibre-LICENSE.txt": "text/plain; charset=utf-8",
+}.items():
+    ASSET_PATHS[f"/assets/{_name}"] = (Path(__file__).with_name("assets") / _name, _mime)
+for _x in (615, 616):
+    for _y in (512, 513):
+        _name = f"terrain/10/{_x}/{_y}.png"
+        ASSET_PATHS[f"/assets/{_name}"] = (Path(__file__).with_name("assets") / _name, "image/png")
 PRODUCT_PAGES = {"/guide": "guide", "/research": "research"}
-PUBLIC_PATHS = {"/visibility", "/welcome", "/tour", *PRODUCT_PAGES, "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
+PUBLIC_PATHS = {"/atlas/geta", "/visibility", "/welcome", "/tour", *PRODUCT_PAGES, "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
 DOCUMENT_PATHS = {"/project.txt", "/robots.txt", "/sitemap.xml"}
 GUIDE = Path(__file__).resolve().parents[2] / "docs" / "PUBLIC_GUIDE.md"
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
@@ -51,7 +70,7 @@ def public_document(route, hostname):
         raise ValueError("Unknown public document route")
     urls = "".join(
         f"<url><loc>https://{escape(hostname)}{path}</loc></url>"
-        for path in ("/welcome", "/visibility", "/tour", "/research", "/guide", "/project.txt")
+        for path in ("/welcome", "/atlas/geta", "/visibility", "/tour", "/research", "/guide", "/project.txt")
     )
     body = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -120,6 +139,8 @@ def response_for(path, *, now, route="/visibility"):
     failed_at = datetime.fromisoformat(state["attempted_at"]) if state and state["failed"] else None
     if route == "/welcome":
         return 200, render_home(snapshot, now=now, failed_at=failed_at).encode("utf-8")
+    if route == "/atlas/geta":
+        return 200, render_atlas(snapshot, now=now, failed_at=failed_at).encode("utf-8")
     body = render(snapshot, now=now, public=True, failed_at=failed_at)
     return (200 if snapshot else 503), body.encode("utf-8")
 
@@ -169,7 +190,10 @@ def serve(path, port, hostname):
             if asset_etag:
                 self.send_header("ETag", asset_etag)
             self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'")
+            policy = "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+            if route == "/atlas/geta":
+                policy = "default-src 'none'; style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+            self.send_header("Content-Security-Policy", policy)
             self.end_headers()
             if self.command == "GET":
                 self.wfile.write(body)

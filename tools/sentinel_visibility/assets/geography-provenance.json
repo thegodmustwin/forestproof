@@ -1,0 +1,183 @@
+{
+  "schema": "forestproof.geography_provenance.v1",
+  "prepared_at": "2026-11-20T01:01:24.480399+00:00",
+  "research_geometry_source": "tools/sentinel_visibility/project_visibility.py BOUNDS; mirrored exactly",
+  "image_georeferencing": {
+    "source_manifest": "/assets/geta-context.json",
+    "source_crs": "EPSG:32736",
+    "transform": [
+      10,
+      0,
+      900840,
+      0,
+      -10,
+      9949060
+    ],
+    "width": 335,
+    "height": 333,
+    "coordinate_order": "top-left, top-right, bottom-right, bottom-left; WGS84 longitude/latitude",
+    "image_corners": [
+      [
+        36.59997648337564,
+        -0.4599545546055744
+      ],
+      [
+        36.630022742412734,
+        -0.4599392138093405
+      ],
+      [
+        36.630038449857146,
+        -0.4900058944411236
+      ],
+      [
+        36.59999206149504,
+        -0.4900222381258563
+      ]
+    ],
+    "method": "rasterio.warp.transform of outer pixel corners in existing approved source window; no reprojection/resampling of PNG pixels",
+    "limitation": "Four-corner image placement is a local visualization of the source UTM window; not a new analytical raster."
+  },
+  "terrain": {
+    "dataset": "Mapzen Terrain Tiles AWS Open Data",
+    "source_data": "SRTM and GMTED2010 as identified in tile x-amz-meta-x-imagery-sources headers",
+    "attribution": "Mapzen Terrain Tiles \u00b7 SRTM and GMTED2010 data courtesy of the U.S. Geological Survey",
+    "terms_urls": [
+      "https://registry.opendata.aws/terrain-tiles/",
+      "https://github.com/tilezen/joerd/blob/master/docs/attribution.md",
+      "https://github.com/tilezen/joerd/blob/master/docs/data-sources.md"
+    ],
+    "licence_notes": "The AWS registry allows anonymous access and points to Tilezen attribution. Tilezen identifies SRTM/GMTED2010 as USGS public-domain sources and supplies required/requested attribution. Unchanged encoded tiles and a derived relief visualization are retained with source credit. No Copernicus DEM service or paid map subscription is used.",
+    "z": 10,
+    "tile_ranges": {
+      "x": [
+        615,
+        616
+      ],
+      "y": [
+        512,
+        513
+      ]
+    },
+    "bounds": [
+      36.2109375,
+      -0.7031073524364868,
+      36.9140625,
+      0.0
+    ],
+    "relief": {
+      "file": "geta-relief.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 304201,
+      "sha256": "6fe50456c038d3ef49c948495c445d418d5e56d32b9313ebdaae8878ebe68464",
+      "url": "/assets/geta-relief.png",
+      "coordinates": [
+        [
+          36.2109375,
+          0.0
+        ],
+        [
+          36.9140625,
+          0.0
+        ],
+        [
+          36.9140625,
+          -0.7031073524364868
+        ],
+        [
+          36.2109375,
+          -0.7031073524364868
+        ]
+      ],
+      "meaning": "Elevation-coloured shaded relief derived from cached terrain. Colours represent terrain height, not vegetation or land cover.",
+      "processing": "2\u00d72 original 256 px Terrarium z10 tile mosaic; decode metres=(R*256+G+B/256)-32768; finite-difference illumination and a fixed elevation colour ramp; no invented heights.",
+      "ground_sample_spacing_metres_at_centre": 152.87117890389663
+    }
+  },
+  "country_context": {
+    "dataset": "Natural Earth 1:110m admin-0 countries",
+    "selected_country": "Kenya / KEN",
+    "terms_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "licence": "Public domain; generalized orientation, not authoritative forest/cadastral boundaries.",
+    "attribution": "Made with Natural Earth",
+    "source": {
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson",
+      "retrieved_at": "2026-11-20T01:01:23.651183+00:00",
+      "bytes": 838726,
+      "sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "etag": "\"e2d9d73e03bb65f28bbc4b83cc136b667337ec9e6316d7e58d6334916b70dacb\"",
+      "last_modified": null,
+      "contributing_sources": null
+    }
+  },
+  "sources": [
+    {
+      "source_url": "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/10/615/512.png",
+      "retrieved_at": "2026-11-20T01:00:54.671304+00:00",
+      "bytes": 55584,
+      "sha256": "bcf3f6ae3694f52b5bb8ec48639a2bbfb87a13ab44d2309cebfbd597036e80dd",
+      "etag": "\"746fdc504e27fed8ba740aec584450be\"",
+      "last_modified": "Fri, 17 Nov 2017 04:30:26 GMT",
+      "contributing_sources": "srtm/S01E036.tif, srtm/N00E036.tif, gmted/10S030E_20101117_gmted_mea075.tif",
+      "local_asset": "/assets/terrain/10/615/512.png",
+      "elevation_range_metres": [
+        1881.0,
+        3406.0
+      ]
+    },
+    {
+      "source_url": "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/10/615/513.png",
+      "retrieved_at": "2026-11-20T01:01:05.038680+00:00",
+      "bytes": 57485,
+      "sha256": "24b9ba455f240139523a78eef15cda5891ea73973c1838b169481d6c870e017a",
+      "etag": "\"d214ac7cc646df109a83e3e752e237bf\"",
+      "last_modified": "Fri, 17 Nov 2017 04:30:49 GMT",
+      "contributing_sources": "srtm/S01E036.tif, gmted/10S030E_20101117_gmted_mea075.tif",
+      "local_asset": "/assets/terrain/10/615/513.png",
+      "elevation_range_metres": [
+        1624.0,
+        3338.0
+      ]
+    },
+    {
+      "source_url": "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/10/616/512.png",
+      "retrieved_at": "2026-11-20T01:01:08.815120+00:00",
+      "bytes": 59627,
+      "sha256": "d3776a5d0cffaf4b0e97ca0b1d9bfab9335700d70ca8459570815e1ac3da5e3f",
+      "etag": "\"b4471add7e628be77dcad5d2618bddcb\"",
+      "last_modified": "Fri, 17 Nov 2017 06:52:31 GMT",
+      "contributing_sources": "srtm/S01E036.tif",
+      "local_asset": "/assets/terrain/10/616/512.png",
+      "elevation_range_metres": [
+        1775.0,
+        3988.0
+      ]
+    },
+    {
+      "source_url": "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/10/616/513.png",
+      "retrieved_at": "2026-11-20T01:01:13.080817+00:00",
+      "bytes": 69928,
+      "sha256": "ffb0c11ae5f36fa34fd2491114695b9e6a28dea3ecadc3063d3558d4835e6e26",
+      "etag": "\"75d9ebf858469f4dd70717c536e0f84b\"",
+      "last_modified": "Fri, 17 Nov 2017 06:53:38 GMT",
+      "contributing_sources": "srtm/S01E036.tif",
+      "local_asset": "/assets/terrain/10/616/513.png",
+      "elevation_range_metres": [
+        1806.0,
+        3876.0
+      ]
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson",
+      "retrieved_at": "2026-11-20T01:01:23.651183+00:00",
+      "bytes": 838726,
+      "sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+      "etag": "\"e2d9d73e03bb65f28bbc4b83cc136b667337ec9e6316d7e58d6334916b70dacb\"",
+      "last_modified": null,
+      "contributing_sources": null
+    }
+  ],
+  "downloaded_bytes": 1081350,
+  "new_recurring_subscription_cost": 0,
+  "budget_max_download_bytes": 8388608
+}

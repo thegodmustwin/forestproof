@@ -1,5 +1,12 @@
 # Next Actions
 
+## Verify the geographic release — 20 November 2026
+
+Complete the clean-runner geographic browser checks and inspect actual desktop/mobile captures. Verify no-script and WebGL/terrain/image failure paths, exact date/grid values, payload budgets, the private boundary and existing workflows before switching the public release. Then obtain first-user feedback on the planet → place → observation → evidence journey. Continue operational source qualification, owner identity and independent genuine-case recovery separately.
+
+The next design phases are deeper compatible-image comparison/magnification and source inspection in the observation laboratory, followed by the research/guide capability register and protected workspace refinements. Their implementation is not implied by the first geographic release.
+
+
 ## After the connected workbench — 20 November 2026
 
 Try the public explorer's grid/date selection, read the matching image and coverage together, then complete the fictional walkthrough and download its labelled example dossier. Collect feedback on comprehension and the review task. For the operational pilot, continue the existing source/area qualification, person-level owner identity and independent genuine-case recovery gates. Exporting a fictional example does not establish signed real evidence.

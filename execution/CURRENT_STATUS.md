@@ -1,5 +1,12 @@
 # Current Status
 
+## Living Atlas geographic candidate — 20 November 2026
+
+The candidate introduces a planetary homepage and a new `/atlas/geta` route with actual research geometry, georeferenced historical source images, date/grid selection, bounded local relief and optional 1× terrain. The protected app, source state, existing data and deployment remain unchanged while release checks run. Original z10 terrain PNGs total 242,624 bytes; the derived 512×512 relief is 304,201 bytes, with approximately 153 m displayed sampling. Contributor headers identify SRTM/GMTED2010. Natural Earth supplies generalized country orientation. Source URLs, times, ETags, hashes, processing and attribution are retained. No account, key or recurring subscription was added.
+
+Three geographic-publication tests and six existing renderer tests passed locally. The fictional lineage's desktop/390/320 browser checks passed node/edge identities, inspectors, both review branches, downstream invalidation, export, print, no-script and no-storage behavior. The laptop's headless MapLibre test lost its graphics context. The atlas preserves a real 2D relief map with exact research geometry and pointer/keyboard pan, zoom and reset in that state. Successful WebGL/terrain, full application CI, public route expansion and production verification remain pending for this candidate. It is not deployed yet.
+
+
 ## Public independent review packet — 20 November 2026
 
 `docs/REVIEW_PACKET.md` gives an AI or human reviewer the complete public route list, exact-version project context/source links, original goals, limitations and assessment questions. Twelve fresh anonymous production screenshots cover all five public pages at desktop and phone sizes, including initial and completed fictional walkthrough states. `docs/review/capture.json` records the capture time, URLs, selected states, viewports, deployed/repository source pins and file hashes. Captures exclude protected pages, credentials and private records. The public app remains on `5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`; this packet changes repository documentation only.

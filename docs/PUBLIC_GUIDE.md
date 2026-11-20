@@ -2,6 +2,10 @@
 
 Updated 20 November 2026, Africa/Nairobi.
 
+## Geographic product evolution
+
+The next geographic release is being verified: a planetary entrance leads into `/atlas/geta`, where the same provisional Kenyan research rectangle, selected date/grid, real source image when available and coverage meaning remain connected. Terrain is historical elevation context, derived from bounded Mapzen/USGS tiles; it does not show measured canopy or forest loss. The route and controls are a candidate until the newest CURRENT_STATUS entry records deployment. The existing public routes below remain the verified reading surface.
+
 ## Living Atlas product experience
 
 The homepage starts with “Can we see the ground?” Choose 8 or 13 November 2026 to see an actual Sentinel-2 image, its sampled visible share and a plain-language explanation. The clearer 8 November view opens first. These historical examples preserve their dates and remain independent of the report refresh. Native date choices also work with JavaScript disabled. Choose Explore satellite coverage to enter the pass explorer, or use the three numbered steps to see an observation, understand its limits and try a fictional review. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
