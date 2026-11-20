@@ -1,0 +1,2 @@
+# Retain exact upstream runtime bytes across Windows and Linux checkouts.
+tools/sentinel_visibility/assets/maplibre-* -text

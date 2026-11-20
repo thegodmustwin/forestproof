@@ -24,6 +24,8 @@ jobs:
           python-version: "3.12"
       - run: npm ci
         working-directory: apps/web
+      - name: Verify published geography and runtime integrity
+        run: python -m unittest discover -s tools/sentinel_visibility -p test_atlas_publication.py
       - name: Verify planetary entry atlas and source selection
         run: node apps/web/scripts/smoke-public-atlas.mjs
         env:
