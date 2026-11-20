@@ -30,16 +30,22 @@ try{
    assert.ok(transfer<1_500_000,'Landing resource budget exceeded: '+transfer);
    await page.locator('.hero-actions a[href="/atlas/geta"]').click();await page.waitForURL('**/atlas/geta');
    await ready(page);await fit(page);
-   assert.equal(await page.locator('[data-atlas-visible]').innerText(),'6,424');
-   assert.equal(await page.locator('[data-atlas-vegetation]').innerText(),'6,346');
+   assert.equal((await page.locator('[data-atlas-visible]').textContent()).trim(),'6,424');
+   assert.equal((await page.locator('[data-atlas-vegetation]').textContent()).trim(),'6,346');
+   if(width<600){
+    assert.equal(await page.locator('.atlas-mobile-sheet').getAttribute('open'),null,'Mobile evidence sheet should start closed');
+    assert.equal(await page.locator('[data-atlas-date-compact]').isVisible(),true,'Compact date must remain visible');
+    assert.equal(await page.locator('[data-atlas-date-compact]').isEnabled(),true,'Compact date must remain usable');
+    assert.equal(await page.locator('[data-atlas-date-compact]').inputValue(),'2026-11-08');
+   }
    await page.screenshot({path:path.join(output,name+'-atlas-2d.png'),fullPage:true});
    await page.locator('[data-map-terrain]').click();assert.equal(await page.locator('[data-map-terrain]').getAttribute('aria-pressed'),'true');
    await page.waitForTimeout(800);await ready(page);await page.screenshot({path:path.join(output,name+'-atlas-3d.png'),fullPage:true});
    await page.locator('[data-map-terrain]').click();assert.equal(await page.locator('[data-map-terrain]').getAttribute('aria-pressed'),'false');
    const input=width<600?'[data-atlas-date-compact]':'[data-atlas-date]';
-   await page.locator(input).selectOption('2026-11-13');assert.equal(await page.locator('[data-atlas-visible]').innerText(),'3');
+   await page.locator(input).selectOption('2026-11-13');assert.equal((await page.locator('[data-atlas-visible]').textContent()).trim(),'3');
    if(width<600)await page.locator('.atlas-mobile-sheet > summary').click();
-   await page.locator('[data-atlas-grid-choice="T37MBV"]').click();assert.match(await page.locator('[data-atlas-image-state]').innerText(),/No published image/);
+   await page.locator('[data-atlas-grid-choice="T37MBV"]').click();assert.match((await page.locator('[data-atlas-image-state]').textContent()).trim(),/No published image/);
    await page.reload({waitUntil:'networkidle'});await ready(page);assert.equal(await page.locator('[data-atlas-grid-choice="T37MBV"]').getAttribute('aria-pressed'),'true');
    const atlasTransfer=await page.evaluate(()=>performance.getEntriesByType('resource').reduce((n,e)=>n+e.encodedBodySize,0));assert.ok(atlasTransfer<5_000_000,'Atlas resource budget exceeded: '+atlasTransfer);
    if(width<600)await page.locator('.atlas-mobile-sheet > summary').click();
@@ -55,7 +61,13 @@ try{
  const blocked=await browser.newContext({viewport:{width:390,height:844}}),bp=await blocked.newPage();
  await bp.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type.includes('webgl')?null:original.call(this,type,...args)};});
  await bp.goto(base+'/atlas/geta',{waitUntil:'networkidle'});await bp.waitForFunction(()=>document.querySelector('[data-map-message]').textContent.includes('unavailable'));
- assert.equal(await bp.locator('[data-atlas-visible]').innerText(),'6,424');
+ assert.equal((await bp.locator('[data-atlas-visible]').textContent()).trim(),'6,424');
+ assert.equal(await bp.locator('.atlas-mobile-sheet').getAttribute('open'),null);
+ assert.equal(await bp.locator('[data-atlas-date-compact]').isVisible(),true);
+ assert.equal(await bp.locator('[data-atlas-date-compact]').isEnabled(),true);
+ await bp.locator('[data-atlas-date-compact]').selectOption('2026-11-13');
+ assert.equal((await bp.locator('[data-atlas-visible]').textContent()).trim(),'3');
+ await bp.locator('[data-atlas-date-compact]').selectOption('2026-11-08');
  const reference=bp.locator('.atlas-reference');
  assert.equal(await bp.locator('.atlas-reference image[href="/assets/geta-relief.png"]').count(),1);
  const box=()=>reference.getAttribute('viewBox').then(v=>v.split(/\s+/).map(Number));

@@ -4,15 +4,15 @@ Updated 20 November 2026, Africa/Nairobi.
 
 ## Geographic product evolution
 
-The next geographic release is being verified: a planetary entrance leads into `/atlas/geta`, where the same provisional Kenyan research rectangle, selected date/grid, real source image when available and coverage meaning remain connected. Terrain is historical elevation context, derived from bounded Mapzen/USGS tiles; it does not show measured canopy or forest loss. The route and controls are a candidate until the newest CURRENT_STATUS entry records deployment. The existing public routes below remain the verified reading surface.
+The geographic experience connects a planetary entrance to `/atlas/geta`. The atlas retains the same provisional Kenyan research rectangle, selected date/grid, matching real source image when available and coverage interpretation. Terrain is historical elevation context derived from bounded Mapzen/USGS tiles; it does not show measured canopy or forest loss. Optional 3D uses actual elevation at 1× scale. A readable relief map with pan and zoom remains available when browser graphics are unavailable. Read the newest CURRENT_STATUS entry for the exact installed release and verification.
 
 ## Living Atlas product experience
 
-The homepage starts with “Can we see the ground?” Choose 8 or 13 November 2026 to see an actual Sentinel-2 image, its sampled visible share and a plain-language explanation. The clearer 8 November view opens first. These historical examples preserve their dates and remain independent of the report refresh. Native date choices also work with JavaScript disabled. Choose Explore satellite coverage to enter the pass explorer, or use the three numbered steps to see an observation, understand its limits and try a fictional review. Select an image grid and a satellite pass to see usable coverage, visible and unassessed cell counts, and the vegetation classification within visible cells. The full observation archive is available with JavaScript disabled.
+The homepage starts with “Every landscape has a story. Follow the evidence.” A dated historical Earth composite and a generalized Kenya locator introduce the geographic context. Choose **Explore Geta** to enter the atlas, select a pass and grid, then open the matching observation laboratory. The research rectangle and source-image footprint remain distinct. The lower homepage compares 8 and 13 November 2026 using actual Sentinel-2 crops, sampled visible shares and plain-language explanations. These examples preserve their dates and remain independent of report refresh. Native date choices and the full dated observation archive remain readable with JavaScript disabled.
 
 The public explorer presents an observation timeline, exact grid/date image context and a coverage interpretation together in a dark workbench. It starts with the clearest sampled pass unless a date is linked. The published images cover only T36MZE on 8 and 13 November; other choices state that image context is unavailable without replacing their counts. A failed image does not remove the coverage evidence.
 
-The public fictional walkthrough uses a matching evidence workbench and a visible progress receipt. Complete the example review, response and follow-up to download an unsigned JSON dossier or print/save a PDF. These files are labelled fictional, contain the chosen teaching path and stay on the visitor's device. Reloading clears the in-page choices.
+The public fictional walkthrough uses a matching evidence workbench, a visible progress receipt and seven inspectable linked records. Relationships appear as the visitor records each step. Browser-action timestamps remain distinct from the fictional source chronology. Complete the example review, response and follow-up to download an unsigned JSON dossier or print/save a PDF. These files are labelled fictional, contain the chosen teaching path and linked records, and stay on the visitor's device. Reloading clears the in-page choices.
 
 The protected application uses the same Living Atlas design system. Its operations desk filters saved cases, the case workspace organizes source evidence and review actions, and the outcomes view traces a selected case's recorded relationships. The operational map preserves its instance while observations change and offers optional terrain with attribution and a return to 2D. The existing synthetic labels and source qualification requirements apply throughout.
 
@@ -21,6 +21,7 @@ The protected application uses the same Living Atlas design system. Its operatio
 ForestProof helps a conservation team turn an environmental observation into evidence, a human-owned case, a recorded response, and a dated follow-up. A visitor should be able to retrace what was observed, who reviewed it, what was done, and what remains uncertain.
 
 - Public homepage — https://vmi3711898.contaboserver.net/welcome
+- Geographic Geta atlas — https://vmi3711898.contaboserver.net/atlas/geta
 - Satellite visibility report — https://vmi3711898.contaboserver.net/visibility
 - Interactive fictional case walkthrough — https://vmi3711898.contaboserver.net/tour
 - Research and method comparisons — https://vmi3711898.contaboserver.net/research
