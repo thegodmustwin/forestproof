@@ -1,0 +1,45 @@
+{
+  "base": "https://vmi3711898.contaboserver.net",
+  "checkedAt": "2026-11-20T09:34:59.193Z",
+  "results": [
+    {
+      "viewport": 1440,
+      "initialMode": "webgl",
+      "terrain": "3D toggle passed",
+      "actualGridDatePairs": 6,
+      "selectionAndCounts": "passed",
+      "urlLaboratoryRoundTrip": "passed",
+      "externalRequests": 0,
+      "pageErrors": 0,
+      "writes": 0,
+      "overflow": false
+    },
+    {
+      "viewport": 390,
+      "initialMode": "webgl",
+      "terrain": "3D toggle passed",
+      "actualGridDatePairs": 6,
+      "selectionAndCounts": "passed",
+      "urlLaboratoryRoundTrip": "passed",
+      "externalRequests": 0,
+      "pageErrors": 0,
+      "writes": 0,
+      "overflow": false
+    },
+    {
+      "viewport": 320,
+      "initialMode": "webgl",
+      "terrain": "3D toggle passed",
+      "actualGridDatePairs": 6,
+      "selectionAndCounts": "passed",
+      "urlLaboratoryRoundTrip": "passed",
+      "externalRequests": 0,
+      "pageErrors": 0,
+      "writes": 0,
+      "overflow": false
+    }
+  ],
+  "noJavaScript": "complete dated archive readable",
+  "blockedWebGL": "real relief, pan/zoom/reset, date selection and evidence retained",
+  "source": "3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035"
+}

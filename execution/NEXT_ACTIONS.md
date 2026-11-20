@@ -1,10 +1,12 @@
 # Next Actions
 
-## Verify the geographic release — 20 November 2026
+## After the geographic release — 20 November 2026
 
-Complete the clean-runner geographic browser checks and inspect actual desktop/mobile captures. Verify no-script and WebGL/terrain/image failure paths, exact date/grid values, payload budgets, the private boundary and existing workflows before switching the public release. Then obtain first-user feedback on the planet → place → observation → evidence journey. Continue operational source qualification, owner identity and independent genuine-case recovery separately.
+The public planet → place → selected observation journey is installed on Contabo. Use the newest CURRENT_STATUS entry for exact source and verification. Obtain first-user feedback on finding Geta, choosing a date, distinguishing coverage from change and tracing a fictional decision into its dossier.
 
-The next design phases are deeper compatible-image comparison/magnification and source inspection in the observation laboratory, followed by the research/guide capability register and protected workspace refinements. Their implementation is not implied by the first geographic release.
+The next design phase is deeper comparison and magnification of compatible, correctly dated source imagery in the observation laboratory. The guide already includes a capability register; keep it accurate as work proceeds. Refine the protected workspace only against real review tasks. The larger Living Atlas brief remains a staged direction, not a claim that every phase is implemented.
+
+The operational launch milestone remains one qualified area/feed with useful repeat observations and confirmed access/reuse costs, person-level owner identity, isolated live storage and independent recovery of the genuine review and source receipt. The public atlas, historical optical coverage and fictional exports do not satisfy those gates.
 
 
 ## After the connected workbench — 20 November 2026
