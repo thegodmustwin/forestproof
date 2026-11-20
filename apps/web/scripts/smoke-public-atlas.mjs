@@ -38,6 +38,7 @@ try{
    await page.locator('[data-map-terrain]').click();assert.equal(await page.locator('[data-map-terrain]').getAttribute('aria-pressed'),'false');
    const input=width<600?'[data-atlas-date-compact]':'[data-atlas-date]';
    await page.locator(input).selectOption('2026-11-13');assert.equal(await page.locator('[data-atlas-visible]').innerText(),'3');
+   if(width<600)await page.locator('.atlas-mobile-sheet > summary').click();
    await page.locator('[data-atlas-grid-choice="T37MBV"]').click();assert.match(await page.locator('[data-atlas-image-state]').innerText(),/No published image/);
    await page.reload({waitUntil:'networkidle'});await ready(page);assert.equal(await page.locator('[data-atlas-grid-choice="T37MBV"]').getAttribute('aria-pressed'),'true');
    const atlasTransfer=await page.evaluate(()=>performance.getEntriesByType('resource').reduce((n,e)=>n+e.encodedBodySize,0));assert.ok(atlasTransfer<5_000_000,'Atlas resource budget exceeded: '+atlasTransfer);
@@ -53,6 +54,14 @@ try{
  const blocked=await browser.newContext({viewport:{width:390,height:844}}),bp=await blocked.newPage();
  await bp.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){return type.includes('webgl')?null:original.call(this,type,...args)};});
  await bp.goto(base+'/atlas/geta',{waitUntil:'networkidle'});await bp.waitForFunction(()=>document.querySelector('[data-map-message]').textContent.includes('unavailable'));
- assert.equal(await bp.locator('[data-atlas-visible]').innerText(),'6,424');await fit(bp);await bp.screenshot({path:path.join(output,'mobile-no-webgl.png'),fullPage:true});await blocked.close();
+ assert.equal(await bp.locator('[data-atlas-visible]').innerText(),'6,424');
+ const reference=bp.locator('.atlas-reference');
+ assert.equal(await bp.locator('.atlas-reference image[href="/assets/geta-relief.png"]').count(),1);
+ const box=()=>reference.getAttribute('viewBox').then(v=>v.split(/\s+/).map(Number));
+ const originalBox=await box();await bp.locator('[data-map-zoom="in"]').click();assert.ok((await box())[2]<originalBox[2]);
+ await bp.locator('[data-map-reset]').click();assert.deepEqual(await box(),originalBox);
+ await reference.focus();await bp.keyboard.press('ArrowRight');assert.ok((await box())[0]>originalBox[0]);
+ await bp.locator('[data-map-reset]').click();
+ await fit(bp);await bp.screenshot({path:path.join(output,'mobile-no-webgl.png'),fullPage:true});await blocked.close();
  console.log('Public geographic smoke passed; no-script and WebGL-failure reading retained.');
 }finally{await browser?.close();if(server)server.kill('SIGTERM');}

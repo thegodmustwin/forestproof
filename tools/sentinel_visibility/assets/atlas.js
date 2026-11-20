@@ -25,6 +25,10 @@
   const terrainButton = document.querySelector("[data-map-terrain]");
   const imageButton = document.querySelector("[data-map-image]");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const narrowViewport=window.matchMedia("(max-width:760px)");
+  const evidenceSheet=document.querySelector(".atlas-mobile-sheet");
+  if(evidenceSheet && narrowViewport.matches)evidenceSheet.open=false;
+  narrowViewport.addEventListener("change",event=>{if(evidenceSheet&&!event.matches)evidenceSheet.open=true;});
   const images = {
     "T36MZE:2026-11-08": {url:"/assets/geta-context-2026-11-08.png",scene:"S2C_36MZE_20261108_0_L2A"},
     "T36MZE:2026-11-13": {url:"/assets/geta-context-2026-11-13.png",scene:"S2B_36MZE_20261113_0_L2A"},
