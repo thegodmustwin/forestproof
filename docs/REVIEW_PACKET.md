@@ -2,7 +2,7 @@
 
 Prepared 20 November 2026, Africa/Nairobi. This packet connects the deployed public product, captured desktop/mobile views, original goals and implementation. Use it to assess what ForestProof delivers today and what remains before an operational alert launch.
 
-The public experience runs on Contabo. The captured public source is **`5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`**. The corresponding reviewed repository snapshot, including the release record, is **`7230414e123b8847d5a4f69aa96dc5da0381df27`**. Code and research documentation can be inspected publicly. Protected case records and private evidence require separate access.
+The public experience runs on Contabo, currently from **`3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`**. Start with the planetary homepage and [Geta Living Atlas](https://vmi3711898.contaboserver.net/atlas/geta), then open a selected observation and the fictional investigation. Read the newest [release record](../execution/CURRENT_STATUS.md) and [cloud handoff](CLOUD_HANDOFF.md) for verification. Code and research documentation are public. Protected cases and private evidence require separate access. The twelve older captures below document source `5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`; they are historical, not captures of the new geographic interface.
 
 ## The intended product
 
@@ -12,18 +12,33 @@ The owner wants an understandable public product useful to enthusiasts, tinkerer
 
 ## Open the public product
 
-1. [Homepage](https://vmi3711898.contaboserver.net/welcome): the product introduction, two dated source images, coverage explanations and a three-step first-visit path.
-2. [Geta Observation Explorer](https://vmi3711898.contaboserver.net/visibility): selected date/grid, matching historical image when available, aggregate counts and their meaning. Without a date link it starts with the clearest sampled pass.
-3. [Interactive Case Walkthrough](https://vmi3711898.contaboserver.net/tour): a fictional signal, review choice, response, follow-up and dossier. Completion enables an unsigned fictional JSON download and browser print/save-PDF presentation.
-4. [Research](https://vmi3711898.contaboserver.net/research): historical radar-method results, selectable thresholds, measured limitations and source-qualification status.
-5. [Product Guide](https://vmi3711898.contaboserver.net/guide): reading examples, glossary, workflow, sources and current capabilities.
-6. [Plain-text project guide](https://vmi3711898.contaboserver.net/project.txt): an accessible overview of implementation, research and hosting.
+1. [Homepage](https://vmi3711898.contaboserver.net/welcome): planetary entrance, real dated examples and a clear route into the landscape.
+2. [Geographic atlas](https://vmi3711898.contaboserver.net/atlas/geta): actual research geometry, optional historical terrain, exact image footprint and selected observation links.
+3. [Geta Observation Explorer](https://vmi3711898.contaboserver.net/visibility): selected date/grid, matching historical image when available, aggregate counts and their meaning. Without a date link it starts with the clearest sampled pass.
+4. [Interactive Case Walkthrough](https://vmi3711898.contaboserver.net/tour): a fictional signal, review choice, response, follow-up and dossier. Completion enables an unsigned fictional JSON download and browser print/save-PDF presentation.
+5. [Research](https://vmi3711898.contaboserver.net/research): historical radar-method results, selectable thresholds, measured limitations and source-qualification status.
+6. [Product Guide](https://vmi3711898.contaboserver.net/guide): reading examples, glossary, workflow, sources and current capabilities.
+7. [Plain-text project guide](https://vmi3711898.contaboserver.net/project.txt): an accessible overview of implementation, research and hosting.
 
 The temporary hostname may be inaccessible to some AI retrieval tools even when an ordinary browser can load it. If it fails, use the captured views and exact-version source links below. State the access failure. Reading HTML or screenshots does not establish that an interaction was executed.
 
-## Actual public screenshots
+## Current geographic release captures
 
-These are captures of the deployed pages, not concept images or protected application screens. The desktop viewport is 1440 × 1000 and the phone viewport is 390 × 844. [Capture metadata](review/capture.json) records the UTC capture timestamp, exact URL, viewport, selected state, deployed source and SHA-256 of each file. Screenshots show a point in time; source-check timestamps and future deployments can change.
+These four anonymous production captures show exact source `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`, with [URLs, UTC times, viewports and file hashes](review/geographic/capture.json). They contain public historical imagery and coverage only. The atlas views show actual historical elevation at 1× scale; they do not depict verified forest loss.
+
+![Current public planetary homepage](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/docs/review/geographic/desktop-home.png)
+
+[Open the current phone homepage](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/docs/review/geographic/mobile-home.png).
+
+![Current public geographic Geta atlas](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/docs/review/geographic/desktop-atlas.png)
+
+[Open the current phone atlas](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/docs/review/geographic/mobile-atlas.png). [Production interaction results](review/geographic/browser-checks.json) complement the images. Source inspection, rendered inspection and executed interactions are distinct evidence.
+
+<details><summary>Earlier public product captures for comparison</summary>
+
+## Historical public screenshots — preceding geographic release
+
+These are actual captures of the preceding `5dc1817` release, not concept images or protected application screens. They remain as a historical comparison. The desktop viewport is 1440 × 1000 and the phone viewport is 390 × 844. [Capture metadata](review/capture.json) records the UTC capture timestamp, exact URL, viewport, selected state, deployed source and SHA-256 of each file. Screenshots show a point in time; source-check timestamps and future deployments can change.
 
 ### Homepage
 
@@ -63,20 +78,22 @@ The captured practice path chooses a source-quality review and an unresolved fol
 
 [Open the phone guide capture](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/docs/review/mobile-guide.png).
 
+</details>
+
 ## Read the context and implementation
 
 These exact-version links avoid accidentally reviewing cached earlier documentation. Read newer dated status entries before older historical records.
 
-- [Public product guide](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/PUBLIC_GUIDE.md): what exists, how it works and its limits.
-- [Project context](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/PROJECT_CONTEXT.md): origin, intended users and strategic thesis.
-- [Project map](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/PROJECT_MAP.md): implementation, research and domain-document map.
-- [Current status](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/execution/CURRENT_STATUS.md): dated deployment pins and recorded test evidence.
-- [Next actions](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/execution/NEXT_ACTIONS.md) and [launch strategy](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/LAUNCH_STRATEGY.md).
-- [Project decisions](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/PROJECT_DECISIONS.md), [project brain](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/PROJECT_BRAIN.md) and [design direction](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/DESIGN.md).
-- [Original concept brief](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/origin/FORESTPROOF_ORIGIN_BRIEF.txt) and [master build directive](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/origin/MASTER_BUILD_DIRECTIVE.txt): historical intentions; aspirational claims require independent evidence.
-- [Provider-independence research](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/GNW_INDEPENDENCE_RESEARCH.md), [direct-source evaluation](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/DIRECT_SOURCE_EVALUATION.md) and [commercial strategy](https://raw.githubusercontent.com/thegodmustwin/forestproof/7230414e123b8847d5a4f69aa96dc5da0381df27/docs/COMMERCIAL_STRATEGY.md): source access, coverage, costs, method validation and differentiation hypotheses.
+- [Public product guide](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/PUBLIC_GUIDE.md): what exists, how it works and its limits.
+- [Project context](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/PROJECT_CONTEXT.md): origin, intended users and strategic thesis.
+- [Project map](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/PROJECT_MAP.md): implementation, research and domain-document map.
+- [Current status](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/execution/CURRENT_STATUS.md): dated deployment pins and recorded test evidence.
+- [Next actions](https://raw.githubusercontent.com/thegodmustwin/forestproof/main/execution/NEXT_ACTIONS.md) and [launch strategy](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/LAUNCH_STRATEGY.md).
+- [Project decisions](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/PROJECT_DECISIONS.md), [project brain](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/PROJECT_BRAIN.md) and [design direction](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/DESIGN.md).
+- [Original concept brief](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/origin/FORESTPROOF_ORIGIN_BRIEF.txt) and [master build directive](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/origin/MASTER_BUILD_DIRECTIVE.txt): historical intentions; aspirational claims require independent evidence.
+- [Provider-independence research](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/GNW_INDEPENDENCE_RESEARCH.md), [direct-source evaluation](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/DIRECT_SOURCE_EVALUATION.md) and [commercial strategy](https://raw.githubusercontent.com/thegodmustwin/forestproof/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/docs/COMMERCIAL_STRATEGY.md): source access, coverage, costs, method validation and differentiation hypotheses.
 
-The [public repository](https://github.com/thegodmustwin/forestproof) exposes tracked code and documentation. In the reviewed snapshot, use [the public product implementation](https://github.com/thegodmustwin/forestproof/tree/7230414e123b8847d5a4f69aa96dc5da0381df27/tools/sentinel_visibility), [web application](https://github.com/thegodmustwin/forestproof/tree/7230414e123b8847d5a4f69aa96dc5da0381df27/apps/web), [API service](https://github.com/thegodmustwin/forestproof/tree/7230414e123b8847d5a4f69aa96dc5da0381df27/services/api) and the project map to inspect specific claims. A source-code review of the protected application is different from using its deployed interface.
+The [public repository](https://github.com/thegodmustwin/forestproof) exposes tracked code and documentation. In the reviewed snapshot, use [the public product implementation](https://github.com/thegodmustwin/forestproof/tree/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/tools/sentinel_visibility), [web application](https://github.com/thegodmustwin/forestproof/tree/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/apps/web), [API service](https://github.com/thegodmustwin/forestproof/tree/3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035/services/api) and the project map to inspect specific claims. A source-code review of the protected application is different from using its deployed interface.
 
 ## Facts that must stay accurate
 

@@ -1,0 +1,63 @@
+{
+  "source": "3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035",
+  "base": "https://vmi3711898.contaboserver.net",
+  "classification": "Anonymous production pages; no private evidence or credentials",
+  "images": [
+    {
+      "file": "desktop-home.png",
+      "url": "https://vmi3711898.contaboserver.net/welcome",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "planetary homepage; public historical source imagery",
+      "sha256": "0005e021bc0e7d0f46991b75a189bd42124be8a38a084ce89442e06b22fe5582",
+      "bytes": 1192850,
+      "capturedAt": "2026-11-20T09:30:12.663Z"
+    },
+    {
+      "file": "desktop-atlas.png",
+      "url": "https://vmi3711898.contaboserver.net/atlas/geta",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": {
+        "mode": "3D historical elevation context at 1x scale",
+        "grid": "T36MZE",
+        "date": "2026-11-08"
+      },
+      "sha256": "0f6fe5762d42cd223b31a895be7154d5d4da90039a82f757ee68a615c0ad1405",
+      "bytes": 776500,
+      "capturedAt": "2026-11-20T09:31:16.029Z"
+    },
+    {
+      "file": "mobile-home.png",
+      "url": "https://vmi3711898.contaboserver.net/welcome",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "planetary homepage; public historical source imagery",
+      "sha256": "b385152c3f6c925990deb6730ea44e57e3e406818d1f42311b19b177d408277d",
+      "bytes": 645987,
+      "capturedAt": "2026-11-20T09:31:30.049Z"
+    },
+    {
+      "file": "mobile-atlas.png",
+      "url": "https://vmi3711898.contaboserver.net/atlas/geta",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "mode": "3D historical elevation context at 1x scale",
+        "grid": "T36MZE",
+        "date": "2026-11-08"
+      },
+      "sha256": "0cf9682067a8f29727222c95ac3cac92c0cfb5ab7ad2c1f587955e011e31eacc",
+      "bytes": 244672,
+      "capturedAt": "2026-11-20T09:31:51.780Z"
+    }
+  ]
+}

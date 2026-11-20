@@ -1,4 +1,8 @@
 # ForestProof — Cloud continuation handoff
+## Public geographic release — 20 November 2026
+
+The current public source is `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`, deployed on Contabo after complete application and raster CI passed. The homepage leads to `/atlas/geta`, which connects the actual provisional rectangle, exact image footprints, selected grid/date and observation laboratory. Historical local elevation supports optional 1× terrain and a pointer/keyboard 2D fallback. Seven inspectable fictional records connect the public tour to its unsigned dossier. All 32 exact public routes passed HTTPS GET/HEAD 200 and POST 405; private/unknown routes remained 401. Read the newest CURRENT_STATUS for final browser verification and release details. This supersedes older public pins below. The private app remains on `37934a5d41d7f086ae11b31ade2a35b557f1b30d`; qualified alerts, person-level owner identity and independent genuine-case recovery remain separate launch work. No paid service, provider key or operational feed was activated.
+
 ## Connected public workbench — 20 November 2026
 
 The current public service runs exact source `5dc1817503de3eb000e7a4c28f1dbd4e057b4a54`. The dark explorer connects date/grid selection, an exact matching historical crop and coverage interpretation. Unlinked dates open the clearest sampled pass; missing image context keeps counts visible. The fictional tour uses the same evidence-workbench identity and adds completion-gated unsigned JSON export plus print/save-PDF. Production checks passed at 1440, 390 and 320 px. See the newest CURRENT_STATUS for route, workflow and service verification. This supersedes older public pins below. The private app and source/identity/recovery launch requirements remain separate.

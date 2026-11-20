@@ -1,5 +1,12 @@
 # ForestProof — repository and system map
 
+## Geographic atlas and inspectable lineage — 20 November 2026
+
+The public `/atlas/geta` route uses `build_atlas_page.py` and `atlas.html` with the same validated observation projection/archive as `/visibility`. `assets/atlas.js` loads a same-origin pinned MapLibre module, places the canonical rectangle and only matching source crops, and offers bounded local terrain or an accessible 2D relief fallback. `assets/geta-geography.json` and `geography-provenance.json` retain image corners, geography, original terrain identities and rights. Four cached z10 Terrarium tiles and `geta-relief.png` are historical USGS-derived elevation context, not vegetation measurements. The runtime BSD licence and checksums are retained.
+
+The public tour graph derives seven inspectable records and six possible edges from its own fictional in-memory steps. Missing records remain unavailable. Browser-action timestamps are distinct from fictional source times; exports carry the exact recorded lineage. `apps/web/scripts/smoke-public-atlas.mjs` and the loopback-only `preview_fixture.py` test geographic readiness, date/grid linkage, source gaps, mobile reading, WebGL failure and transfer budgets on CI.
+
+
 ## Independent product review
 
 [REVIEW_PACKET.md](REVIEW_PACKET.md) brings together the deployed public routes, captured desktop/mobile views in `docs/review/`, a capture manifest with URLs/viewports/hashes, exact-version context and implementation links, and evaluation questions. The captures contain anonymous public pages and a completed fictional walkthrough only. Protected case records and private evidence remain outside this packet.

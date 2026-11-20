@@ -1,0 +1,885 @@
+# **ForestProof: independent product and design assessment**
+
+**What you want is achievable on your current infrastructure.** You do not need an expensive mapping subscription, a dedicated GPU server or a complete rewrite to deliver a beautiful, immersive, geographically grounded conservation product.
+
+Having examined the deployed site, I now understand the disconnect between what you envisioned and what Codex delivered.
+
+Codex has built a reasonably coherent scientific reporting website. What you envisioned is closer to an **interactive planetary observatory combined with a scientific evidence laboratory**.
+
+Those are fundamentally different experiences.
+
+I've also recovered our earlier **Living Atlas** design concept from November 19: an atmospheric Earth, emerald and cyan geography, geological relief, a descent from planetary scale into a local observation, and a connected visual investigation. That remains an excellent foundation.
+
+## **1. What I actually inspected**
+
+I successfully accessed all five public ForestProof pages on Contabo, the GitHub repository, the review packet, the design specification and the dated release records. I also viewed actual captured desktop screens of the homepage, observation explorer and completed dossier.
+
+I have not authenticated into the protected application, independently executed the complete browser workflow or verified the private research records and recovery process. The recorded test results from your repository are therefore distinguished from my own observations.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://raw.githubusercontent.com\&sz=32)
+
+raw\.githubusercontent.com+2
+
+
+
+I subsequently inspected the remaining nine screenshots, including the phone layouts, research page and initial practice-case screen. I also checked the repository's public implementation directory through GitHub.
+
+## **2. My assessment of the current website**
+
+These are qualitative product evaluation scores, not results from formal usability testing.
+
+Scientific transparency
+
+8.5/10
+
+Visual consistency
+
+7.5/10
+
+First-visit comprehension
+
+6.5/10
+
+Public interactivity
+
+6/10
+
+Visual delight
+
+5/10
+
+Geographic immersion
+
+2.5/10
+
+Grant readiness
+
+6.5/10
+
+Operational monitoring readiness
+
+3/10
+
+Your current website has several genuinely good qualities. The serif typography is elegant, the colours are disciplined, the scientific limitations are clearly communicated, and the public practice case provides real interaction rather than merely describing a hypothetical product.
+
+However, these strengths are not yet sufficient to create the experience you want.
+
+| Area                 | Current problem                                                 | Recommended evolution                |
+| -------------------- | --------------------------------------------------------------- | ------------------------------------ |
+| Homepage             | Feels like an editorial research publication                    | Cinematic planetary entrance         |
+| Geographic context   | Geta is primarily presented as text and image crops             | Navigable geographic atlas           |
+| Observation explorer | Satellite screenshot inside a rectangular panel                 | Immersive spatial investigation      |
+| Case walkthrough     | Sequential form with a progress indicator                       | Interactive evidence journey         |
+| Dossier              | Connected records presented primarily as text                   | Visual, inspectable evidence lineage |
+| Research             | Scientifically informative but text-heavy                       | Interactive scientific laboratory    |
+| Mobile               | Content reorganizes vertically but requires extensive scrolling | Compact, task-oriented exploration   |
+
+The biggest problem is not the colour scheme, typography or even the absence of animation.
+
+**It is the absence of spatial continuity.**
+
+ForestProof is fundamentally about places, observations of those places over time, and decisions about what happened there. Yet the current experience rarely allows you to feel that you are investigating an actual place.
+
+That should become the organizing principle of the redesigned product.
+
+# **3. ForestProof — Living Atlas 2.0**
+
+I would retain the existing Living Atlas identity but deepen its implementation considerably.
+
+[Africa Planet Earth Atmosphere Space](https://images.openai.com/static-rsc-4/l2SQA6AGaGmeZS0jzS1o4OgBV29Df6LwTfoBDg30PvLEOq7vVSJrQFDYGwdPTKrem-zxI-DmOwjacPC6SuCNM4S7eCJieQXtY_mQ7YTNmTt3-rW9pQbM75xqoKldULfmFBOxxcnsqkBEx3mucd2j0XDiMUorloKHGXNh-z4yrOobzeaAai7ad3QbvwvoZiA0?purpose=inline)
+
+[Aberdare Range Mountain Information](https://images.openai.com/static-rsc-4/BQPH1GLlIHGf43a8Di9wHjECqSl3EH57HImEswzQhEt6B6Ia64i3gxigULV63cFoMLZijJ9LIZRbFj8Csi2PokJhVmKLTorLl2eB6xWeUfjO_ErF_TAdrmkVChTF7pLihE-Ni-v3gLLzh399y1lJe6N8JQA7bFy2j31WS5VyDfU?purpose=inline)
+
+[Zherong Wu’s Page](https://images.openai.com/static-rsc-4/-yCS4pPpwAvwMdqBdUvJ2emq7cnhTVEpGonx6L0QXjzOUh7el27YZJGhwm1-SIi_a0ccm5TwYSOnnpBrjbYF3uY40WWQ4JmBlvRhwWQOYNrTxkRlcMgqSdC8lMtBwWORVpLzIQwuB0Q96Nj89czvB0q6LMb9r86ssLHyV2YXdzo?purpose=inline)
+
+9
+
+Visual direction references — not current ForestProof screens or verified Geta observations.
+
+Imagine entering ForestProof and experiencing a progressive descent through five scales of understanding.
+
+[Gallery: blue_marble](https://images.openai.com/static-rsc-4/d4VcB2z7C9R1tSWcbVxjuh6RGYFV7hldbVIHYfsXgfFEBmypkPYrDx8fYwhuDhTYf53tSl9OC9vmYH8ag92-8s7yg9q_UsUcVAbxwNyjYEkBt5pfBzVL2-lSRyDaq9Dd9nfriNkwTn2pdM-9dr2uv7iy7a4SHWb-7bSJOaE77SE?purpose=inline)
+
+**01 — Planetary scale**
+
+Understand the Earth as an interconnected living system.
+
+[Mount Kinangop Mountain Information](https://images.openai.com/static-rsc-4/Yiw8rt59h2iQ-99nV5ceTwom1ggju18cloJpV5yPkCcn5JOU3zsM6jaPGvXMdiKywxD_6I76bH-OLmmG3gkyAdgSI1aP_K50O0xI65ahAtkD-FbcgKg2ikBjPZXJbwf-XHvKPoTY6YZhnvm94Gw2xc4JEnOPb_Y8yil2r9eTb-o?purpose=inline)
+
+**02 — Landscape scale**
+
+Descend into the Kenyan ecosystem being studied.
+
+[Forests and their traits: Copernicus Sentinel-2 and tree resilience - Sentinel Success Stories - Sentinel Online](https://images.openai.com/static-rsc-4/Ct8BE4vWP3IPGxl0Ng2nZxJFjmcv-Mmj1oF7_i34OuBo7AkTb786rQ4vQNJqU3eXhOENyrwpXMr1H69vki9SfiyvQvwr7He3PmGQ2nfWCyHPGY0b8sf3y41rIm2NcdICkwsKV4GkS22TWP9sTrROMAGxW2SBlZqLuXQM5DfGLlY?purpose=inline)
+
+**03 — Observation scale**
+
+Examine what a particular sensor could actually observe.
+
+[Welcome](https://images.openai.com/static-rsc-4/Cpcw1C62iTepu5UIzFLC-MSxwx85luBAmJqWXDn5cVuO2QkZhvNGYrDeTkvBNT1g42HB6i1A5XuA8IZwyFoz8Iqb984A3BNiS3JmtRz3ZnKNbCDtKtOU-IJb7moA6Lo86N9PkXEeuCe3E0V1j-_haj1m8RsDVQKQQqCTkqS_C5Y?purpose=inline)
+
+**04 — Evidence scale**
+
+Inspect source layers, dates, uncertainty and provenance.
+
+**05 — Decision scale**
+
+Follow the thread from original evidence to a documented response and outcome.
+
+The transition between these scales is the experience that makes ForestProof distinctive.
+
+It should feel as though you are progressively unlocking deeper knowledge about the same world, rather than navigating unrelated web pages.
+
+## **4. What we can learn from existing products**
+
+[Introducing Worldview's Comparison Feature | NASA Earthdata](https://images.openai.com/static-rsc-4/LhuesxyCMph2FsGU8HKKiL8sKpX_QxF_TuDjH-f6uAvA0ZJbHr4rW_dJckDN-z4NIrl3Ml5jRMe5IJEtE301CGpxXuhaP-qB1SqThuS-DiadtHnUsy8ykOu5SxA7jnGoXG8bfr2sTvnDNU2aW7Lv-hqDcmm9CU1VU8Er2-DRcSU?purpose=inline)
+
+[**NASA Worldview**](https://worldview.earthdata.nasa.gov/?utm_source=chatgpt.com)
+
+Learn from its direct manipulation of satellite imagery: dates, opacity, swipe comparisons and geographic context. ForestProof should pair this kind of exploration with much stronger human decision lineage.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://worldview.earthdata.nasa.gov\&sz=32)
+
+worldview\.earthdata.nasa.gov
+
+
+
+[The power of citizen-centered GIS. | by Jamie Gibson | Vizzuality Blog | Medium](https://images.openai.com/static-rsc-4/sNCMQN48UVBkYrT0RrK3i-O2_0bW9YWSpldfz-4wXlg9eHuBX-StxnRz7og0NFVo6S7MhkBIRh0WyWS-s8yT0FHTyktmvMKKHNarTCoU3nmOJIyjC-IUiJXo5fVOgQUAudu6atnQOxcNoVSkO4ult9fBlL0_riRNXW9_9O3IpZg?purpose=inline)
+
+[**Global Forest Watch**](https://www.globalforestwatch.org/?utm_source=chatgpt.com)
+
+Learn from geographic layers, legends and area-based analysis. Its Forest Watcher product already supports investigating alerts and collecting field information, so we cannot assume that investigation workflows alone constitute an uncontested market.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://vizzuality.github.io\&sz=32)
+
+Global Forest Watch+1
+
+
+
+[Maps for developers | MapTiler](https://images.openai.com/static-rsc-4/n0U4esfB2ZwDcX9T6Hw4dPnjMnXU86ktTX4ZK6QBxWeK0dXxczg35jPotiMC_kvhl89zHKd1O7u9A1WWYCTtSirweZHOJhr1EM1nQmL5i9BdCpPiXc7e3WpqUAo8pS6Ya9LPKYlyuxivWD0NMAVaZq-c6jvS4tFQ-WNPiQ58SbM?purpose=inline)
+
+[**MapLibre GL JS**](https://maplibre.org/maplibre-gl-js/docs/examples/?utm_source=chatgpt.com)
+
+This is the strongest technical foundation for the interactive atlas. It already supports globe rendering, atmospheric effects, geographic overlays and three-dimensional terrain. ForestProof already uses MapLibre in its protected application.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://maplibre.org\&sz=32)
+
+MapLibre+1
+
+
+
+We should combine the visual wonder of a planetary explorer, the scientific discipline of Worldview, and the usefulness of a conservation workbench.
+
+But ForestProof's own identity should remain the **evidence-to-decision lifecycle**.
+
+# **5. The redesigned experience, screen by screen**
+
+## **Screen 1 — The planetary observatory**
+
+[From Alignment to Action: Rethinking U.S. - Japan Space Business Cooperation | Deloitte Tohmatsu Group](https://images.openai.com/static-rsc-4/C6x3JPe1N4GL2zJ7J_fX8UBcPmC8facnDHTX9bP2SumCUe5qDHJWNImi3f_QfNtU1gnohMh4rP-2EKM1Zg6cNerlb44KzFSbWr_an4MhaR8qPtR6zi6kIy5h-vQJbg6sqXwWv8cKm9qQmzo45K9Rx9qHPCVNkd8IurF0nOPPFko?purpose=inline)
+
+[deloitte.com](https://www.deloitte.com/jp/ja/Industries/defense-security-justice/perspectives/rethinking-us-japan-space-business-cooperation.html?utm_source=chatgpt.com)
+
+The homepage should make somebody want to explore before they have even finished reading the first sentence.
+
+I would use the following headline:
+
+> **Every landscape has a story. Follow the evidence.**
+
+The Earth occupies a substantial part of the first screen. Kenya is geographically identified, and the visitor is invited to descend into the Geta research area.
+
+The immediate actions are **Explore Geta** and **Follow an investigation**.
+
+The homepage must still explain that ForestProof is a public research preview. Wonder should not come at the expense of clarity.
+
+Importantly, the repository already contains an archived historical Earth composite. We do not have to start the visual work from nothing.
+
+## **Screen 2 — The living geographic atlas**
+
+[Bromo Tengger Semeru 3D Terrain](https://images.openai.com/static-rsc-4/VHnurR3p_miuhCKMqQn79FBl2SAs3dYIxCNU5I_vemIUubY9MUlhBcunt8VI81ppsOZ5R23iTB9mb6VDR7B_XtfeJGar5QJNAa0L_y3KaADyY-1PnJPmNB6T5EdOTSpoaenZa1qvb44G3j_5Urr43av0jsgRMnSyZZARmF42ktvntGREvPvODarxZzOcFmnR?purpose=inline)
+
+This becomes ForestProof's flagship public experience.
+
+The visitor can navigate the research landscape, rotate their perspective, inspect the terrain and switch between observation dates.
+
+A conceptual interface layout:
+
+**ForestProof**
+
+GETA · KENYA
+
+[A satellite image of a green mountain range photo – Green Image on Unsplash](https://images.openai.com/static-rsc-4/IM_c5oP32NslCs97vOVUmVhcTOiXRVl5ZwOl8eGKPVKQM9uNr8B4N9tm0RmvISiU_7UbIt2pFIhei5TuvhzEC1lpdct8tpkDJMCcIyNXCDfprq6RP_YPEnREXMfqXNqLG_OHLRNJ8wkY_-iLi1UxgRNyvMxuf8ThFWGvZNK9Fi0?purpose=inline)
+
+[unsplash.com](https://unsplash.com/photos/a-satellite-image-of-a-green-mountain-range-bji5VVwUBoA?utm_source=chatgpt.com)
+
+Terrain context
+
+2D / 3D · Layers
+
+Selected observation
+
+**8 November 2026**
+
+# **23.2%**
+
+Usable surface coverage · T36MZE
+
+Interpretation
+
+**Partial observation**
+
+Most sampled ground remains unassessed.
+
+Forest loss not established.
+
+OBSERVATION TIMELINE
+
+8 Nov
+
+23.2%
+
+10 Nov
+
+0%
+
+13 Nov
+
+<0.1%
+
+Conceptual layout using actual published coverage figures. The terrain reference is illustrative, not verified Geta terrain.
+
+The geographic scene should dominate. Dates, scientific controls and interpretation should surround it rather than compete with it.
+
+This would also solve a significant coherence problem: visitors would immediately understand where the observation comes from.
+
+## **Screen 3 — The observation laboratory**
+
+This is where the visitor moves from geographic exploration into scientific investigation.
+
+Provide the ability to:
+
+- Compare two available observations side by side.
+- Magnify original imagery.
+- Toggle between image context and actual classification layers, when available.
+- Inspect acquisition dates, resolution and source receipts.
+- See what is known, unknown and unassessed.
+- Understand why a newer observation is not necessarily more useful.
+
+For example, use the existing real T36MZE imagery from November 8 and November 13 to demonstrate an important scientific principle interactively.
+
+8 November13 November
+
+Usable sampled coverage
+
+# **23.2%**
+
+6,424 of 27,722 centres
+
+**A partial view of the landscape.**
+
+21,298 sampled centres remain unassessed. Neither result establishes forest loss.
+
+This is the kind of interaction I want throughout ForestProof: visually appealing instruments that teach something meaningful.
+
+## **Screen 4 — The investigation chamber**
+
+Instead of the case walkthrough feeling predominantly like a form, make it feel like assembling scientific evidence.
+
+There should be an original source, a selected observation, an investigation question, a reviewer, uncertainty, a response and an expected follow-up.
+
+Use a synchronized workspace consisting of an evidence viewport, a decision inspector and a persistent evidence trail.
+
+Every decision the visitor makes in the fictional walkthrough should visibly extend that trail.
+
+## **Screen 5 — The Forest Intervention Outcome Graph**
+
+This is potentially one of ForestProof's most important features, both commercially and intellectually.
+
+Illustrative case lineage. Not a record of an actual conservation intervention.
+
+Every node should be clickable. Selecting one reveals the original record, actor, timestamp, evidence and relationship to previous events.
+
+This is not merely a graph visualization. It represents the accumulating history that could eventually become ForestProof's proprietary knowledge asset.
+
+## **Screen 6 — The research laboratory**
+
+Your research page already contains meaningful material. It should be promoted from a lengthy technical publication into a more interactive scientific laboratory.
+
+Consider your Mount Kenya radar experiment.
+
+### **Radar threshold laboratory**
+
+2019 Mount Kenya fire · Historical experiment
+
+2 dB3 dB4 dB
+
+Mapped burn centres flagged
+
+**7.8%**
+
+Matched control centres flagged
+
+**2.9%**
+
+Mapped burn centres not flagged
+
+**92.2%**
+
+The reference rule leaves most mapped burn centres unflagged.These are historical backtest results, not operational detector accuracy or an established false-alert rate.
+
+The published research provides 144,677 matched centres in each group. Presenting the results honestly, including the poor detection performance, makes this a much more credible research instrument.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://vmi3711898.contaboserver.net\&sz=32)
+
+ForestProof research
+
+
+
+A grant evaluator should be able to interact with the experiment, examine its limitations and find the reproduction instructions without searching through extensive documentation.
+
+# **6. Is all of this technically feasible on Contabo?**
+
+Yes. The crucial architectural insight is that **the browser can perform the 3D rendering instead of your server.**
+
+Your VPS serves prepared assets, maps, data and application records. The visitor's graphics hardware renders the geographic scene.
+
+| Technology                   | Purpose                                 | New licence cost |
+| ---------------------------- | --------------------------------------- | ---------------- |
+| MapLibre GL JS               | Interactive globe and terrain           | $0               |
+| Three.js, if necessary       | Custom planetary artwork                | $0               |
+| SVG and CSS                  | Evidence graphs and visual instruments  | $0               |
+| PMTiles                      | Efficiently packaged regional map tiles | $0 software      |
+| GDAL / Rasterio              | Offline geospatial preparation          | $0               |
+| Existing Python service      | Public pages and scheduled reports      | Existing hosting |
+| Existing Next.js application | Protected case workspace                | Existing hosting |
+| FastAPI and SQLite           | Existing case backend                   | Existing hosting |
+
+MapLibre supports both raster-based three-dimensional relief and globe rendering. PMTiles permits static hosting of tile archives using HTTP range requests, including through Caddy, which your infrastructure already uses.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://maplibre.org\&sz=32)
+
+MapLibre+2
+
+
+
+## **Real terrain without expensive mapping APIs**
+
+An appropriate digital elevation model is the missing ingredient.
+
+[地形立体起来：ArcGIS做三维地形分析_arcgis生成三维立体图-CSDN博客](https://images.openai.com/static-rsc-4/qgAe1YGzrM5gl5K7Yud7316lIk7vPhEezxAmZc9RHaIcXJ7dPUmxB1_ZevsUfA12A6fqGLJ0HRisGHuCcSz-KHpLhHt31eVwFR823Q0RH4KPjPkTzjB_pEf7-bNYG41TivLInoy9TJyE2Q4TCNYdYvMYQZLYAsL_3KXRk1d3HtY?purpose=inline)
+
+[Copernicus DEM (COP-DEM) — Digital Earth Africa 2021 documentation](https://images.openai.com/static-rsc-4/M3CPU0yBiIbWsXc7RZoounuWN8lktwFtSZM4pOqZWcBWUE2cnh3FsqLMgZvyl5sdpu6MlYcVVlMDhPFBh9DBOVs7ExUXuJ_e0ZeWkLZQFMSTtDC51wsdpkp7Ht8t0Pl3Z31hjDJSqVyv5HM6ahadrxKU-9h7iRWdLn0r60H4CUA?purpose=inline)
+
+[Kestrel Aerial Services](https://images.openai.com/static-rsc-4/wwu-H_Abv9TeDCl3cG2eafWT0AShNN_lbVB1N83ib-LBONU9dwETXdCmA461wV2UtJjTVIBfBmt2meYg3FbNyGNjnWh8PwZXdICl4XIMbYa7MnBONLrbR9s6yw3wRpZJWTAX3pQ4MvAz5ZFPKpx8NLHyZb0EP1D69xDCAHsYjIY?purpose=inline)
+
+7
+
+The technical mechanism is straightforward:
+
+Digital elevation model
+
+Real surface height measurements
+
+Regional terrain tiles
+
+Prepared offline and cached locally
+
+Geographic imagery
+
+Correctly positioned over the terrain
+
+**Interactive 3D landscape**
+
+Copernicus GLO-30 is a candidate elevation dataset with a free licence for the openly available instance. However, access to its 30-metre online view service was restricted in August 2026, so Codex must distinguish downloadable open data from restricted hosted services and verify the applicable Kenyan tiles and redistribution conditions.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://dataspace.copernicus.eu\&sz=32)
+
+Copernicus Data Space Ecosystem+1
+
+
+
+We should not confuse a free open-source renderer with unrestricted or free access to every dataset it can display.
+
+## **Expected additional recurring cost**
+
+My design target is **$0 in new recurring service subscriptions** for the initial redesign.
+
+That is feasible if we constrain the geographic region, prepare assets offline, serve locally cached files, and stay within the existing VPS storage and bandwidth limits. I have not measured your current VPS resource headroom, so this is a target rather than a verified hosting guarantee.
+
+I would not introduce Mapbox subscriptions, paid photorealistic tiles, expensive AI services or a dedicated GPU instance at this stage.
+
+# **7. The Golden Economics and Still-Fulcrum opportunity**
+
+ForestProof should not attempt to own satellites, launch spacecraft or replicate every scientific provider.
+
+Its potential economic position is downstream of observation but upstream of consequential decisions.
+
+The beautiful public atlas is the acquisition and engagement layer.
+
+The observation-to-outcome workflow is the potential economic fulcrum.
+
+The authorized, trustworthy accumulation of reviewed observations, decisions and verified outcomes is the potential supermoat.
+
+Those commercial advantages must eventually be validated with real conservation practitioners. Visual delight can attract people, but they will only continue using ForestProof if it helps them accomplish meaningful work.
+
+# **8. The master implementation brief for Codex**
+
+I would give Codex the following directive. It explicitly defines what you mean by an immersive visual identity so that it does not interpret the request as merely changing colours, adding gradients or placing satellite images inside dashboard cards.
+
+# FORESTPROOF — LIVING ATLAS 2.0
+
+## Master product transformation directive
+
+Transform the existing ForestProof product into an immersive planetary observatory, geographic exploration environment and scientific evidence laboratory.
+
+This is an evolution of the existing repository and Contabo deployment, not a new application.
+
+The goal is to achieve exceptional visual delight, geographic immersion, scientific credibility and practical coherence simultaneously.
+
+## 1. Product identity
+
+ForestProof helps people understand environmental observations and follow their evidence into responsible human decisions.
+
+The canonical workflow is:
+
+Observation → Provenance → Human review → Recorded response → Dated follow-up → Reproducible dossier.
+
+The central visual metaphor is progressive descent:
+
+Planet → Country → Landscape → Observation → Evidence → Decision.
+
+Do not treat ForestProof as a generic administrative dashboard, landing-page template or collection of disconnected cards.
+
+## 2. Primary audiences
+
+**Public visitors and conservation enthusiasts:** Understand a landscape, explore actual satellite observations and learn how environmental evidence is interpreted.
+
+**Conservation practitioners:** Examine trustworthy sources, retain uncertainty, own investigations and document responses.
+
+**Researchers and technical contributors:** Inspect methodologies, reproduce experiments and understand source limitations.
+
+**Grant evaluators:** Independently distinguish implemented capabilities, experimental results, operational limitations and proposed future research.
+
+Prioritize the public discovery experience immediately. Preserve the operational workflow and advance its qualification independently.
+
+## 3. Architecture audit
+
+Before modifying implementation:
+
+- Read AGENTS.md, DESIGN.md, PROJECT_BRAIN.md, execution/CURRENT_STATUS.md, the project map and launch requirements.
+- Inspect the existing public templates and rendering tools under tools/sentinel_visibility.
+- Inspect packages/ui/living-atlas.css.
+- Inspect the existing MapLibre components in apps/web.
+- Locate the archived Earth artwork, source imagery manifests and geographic research geometry.
+- Record the current production commits, test baseline, deployment controls and resource usage.
+- Preserve existing real data, private records, scheduled jobs and working public routes.
+
+Avoid introducing a parallel framework or database. Extend existing foundations.
+
+## 4. Visual design system
+
+Implement Living Atlas 2.0 using:
+
+- Orbital black: #071511
+- Deep forest: #102B23
+- Terrain slate: #203B34
+- Bioluminescent mint: #8CE4BD
+- Scientific cyan: #65D5E5
+- Evidence ivory: #F2F0E5
+- Uncertainty amber: #E8B86A
+
+Retain elegant editorial typography and technical monospace metadata.
+
+Use depth through geographically meaningful terrain, layered evidence, atmospheric perspective and restrained motion.
+
+Use one principal visual focal point per screen. Avoid gratuitous glassmorphism, glowing charts, excessive cards, decorative grid clutter and meaningless particle effects.
+
+Mint represents navigation and primary actions. Cyan represents observations. Amber represents uncertainty. Red is reserved for actual errors or explicitly defined findings.
+
+## 5. Public homepage — planetary entrance
+
+Route: /welcome
+
+Create a visually dominant Earth scene displaying the geographic relationship between Earth, Kenya and the provisional Geta research area.
+
+Use the existing Earth artwork if suitable and appropriately licensed. A lightweight static render is sufficient initially. An optional interactive globe may follow.
+
+Required features:
+
+- Atmospheric Earth composition.
+- Geographically accurate Kenya locator.
+- Clear explanation of ForestProof.
+- Primary action: Explore Geta.
+- Secondary action: Follow an investigation.
+- Explicit distinction between real public observations and fictional demonstrations.
+- Existing two-date Sentinel-2 teaching example immediately accessible.
+
+The Earth visual must not imply global operational monitoring or a current satellite feed.
+
+Acceptance criteria:
+
+- A new visitor can explain what ForestProof does within 30 seconds.
+- Geta is identifiable as a research area in Kenya.
+- Navigation works without WebGL or JavaScript.
+- The existing historical image data and interpretations remain accurate.
+- Mobile visitors are not forced through a long cinematic animation.
+
+## 6. Public atlas — geographic exploration
+
+Proposed new route: /atlas/geta
+
+Retain /visibility as the functioning observation report and deep-link destination.
+
+Extend the existing MapLibre approach to create a public geographic observatory.
+
+Required interactions:
+
+- Pan, zoom, rotate and reset view.
+- Toggle between 2D and optional 3D terrain.
+- Locate the verified provisional research rectangle.
+- Select observation date and grid.
+- Display acquisition date and source identity.
+- Inspect source-image availability.
+- Open the observation laboratory at the selected grid/date.
+
+Design desktop as a geographic viewport with collapsible controls and an observation inspector.
+
+Design mobile as a geographic viewport with a compact date control and an accessible bottom evidence sheet.
+
+Terrain must originate from a documented, legally usable elevation dataset. The research rectangle must originate from the existing canonical geometry.
+
+If terrain has not been qualified, ship a documented 2D geographic experience first.
+
+Do not invent geographic coverage cells, disturbance polygons or alert locations.
+
+Acceptance criteria:
+
+- The displayed rectangle matches the canonical research geometry.
+- Its provisional status is continuously clear.
+- Camera actions do not modify scientific measurements.
+- Map selection and date selection stay synchronized.
+- Terrain-source failures provide a functional 2D fallback.
+- No global tile archive or expensive recurring map subscription is introduced without approval.
+
+## 7. Observation laboratory
+
+Route: /visibility
+
+Transform the existing report into a spatially coherent investigation instrument.
+
+Retain all existing date/grid combinations, exact source-derived values and no-script reading.
+
+Add:
+
+- Larger source-image viewport.
+- Side-by-side comparison for compatible available dates.
+- Image magnification.
+- Reliable observation-selection state.
+- Expandable source receipt.
+- Clear source-quality and interpretation panels.
+- Shareable grid/date URLs.
+- Optional geographic quality layers only when verified spatial rasters exist and publication is authorized.
+
+Preserve the distinction between:
+
+- Observation acquisition date.
+- Source verification time.
+- Publication time.
+- Image context.
+- Aggregate classification coverage.
+- Actual geographic quality distributions.
+
+Only T36MZE on 8 and 13 November 2026 currently has matching published imagery.
+
+Other selections must explicitly state that matching image context is unavailable.
+
+Do not reuse a different date's image to fill a missing state.
+
+Acceptance criteria:
+
+- Every published date/grid pair reproduces its verified counts.
+- Coverage calculations preserve their correct denominators.
+- Overlapping grids are never incorrectly summed.
+- Images are matched by explicit date/grid identifiers.
+- The 8 November T36MZE result remains 6,424 visible centres out of 27,722, including 6,346 classified as vegetation.
+- The 13 November T36MZE result remains three visible centres out of 27,722.
+- Missing imagery never prevents access to available aggregate evidence.
+- No view equates unassessed ground with unchanged forest.
+
+## 8. Evidence walkthrough
+
+Route: /tour
+
+Preserve the existing browser-only fictional simulation and build a more immersive investigation chamber around it.
+
+Provide:
+
+- A persistent evidence viewport.
+- Five clearly identified workflow stages.
+- A growing case lineage graph.
+- Review choices with meaningful consequences.
+- A documented next action and follow-up.
+- Inspectable completed dossier records.
+
+The same fictional source identity must persist across the entire investigation.
+
+Do not silently import real Geta coverage into a fictional disturbance investigation.
+
+Acceptance criteria:
+
+- Both existing review branches remain functional.
+- Editing an earlier decision resets affected downstream steps.
+- No public walkthrough state is written to the private backend.
+- The fictional status remains visible throughout.
+- JSON and print/PDF exports remain explicitly fictional and unsigned.
+- No response is presented as having contacted an external person or system.
+
+## 9. Forest Intervention Outcome Graph
+
+Build a reusable evidence-lineage visualization driven by existing case records.
+
+Node types:
+
+- Observation
+- Original source receipt
+- Case
+- Review decision
+- Response
+- Follow-up
+- Supporting evidence
+- Dossier
+
+Edges must represent real recorded relationships, not decorative connections.
+
+Each node inspector should display applicable identifiers, timestamps, source references, actor information, uncertainty and related records.
+
+Use lightweight SVG or an appropriate accessible graph component. Do not make this feature dependent on a graph database or 3D engine.
+
+The public graph uses the fictional walkthrough state. The protected graph uses authorized saved records.
+
+Acceptance criteria:
+
+- Each node resolves to an existing record.
+- Missing relationships have explicit unavailable states.
+- Private details cannot leak into public projections.
+- Graph updates correspond exactly to recorded workflow changes.
+- A conventional accessible timeline presents the same information.
+
+## 10. Research laboratory
+
+Route: /research
+
+Preserve the existing Mount Kenya research and improve its scientific visual presentation.
+
+Create interactive controls for the already published threshold experiment.
+
+Show mapped-burn results, matched-control results, missed detections, denominators and methodology limitations.
+
+Add clear links to source manifests, reproduction instructions and relevant code.
+
+Separate historical research, candidate methods, qualified sources and operational capabilities.
+
+Acceptance criteria:
+
+- Every threshold reproduces the published results.
+- Spatial correlation and control limitations remain visible.
+- Research results are not advertised as operational detector performance.
+- No invented time series, accuracy claims or burn polygons are introduced.
+- Existing reproducibility evidence remains accessible.
+
+## 11. Product guide
+
+Route: /guide
+
+Turn the guide into a concise visual field manual.
+
+Include a start-to-finish product map, annotated reading examples, glossary and capability-status explanations.
+
+Use expandable detail to accommodate both practitioners and researchers.
+
+Avoid repeating lengthy descriptions already available elsewhere.
+
+Acceptance criteria:
+
+- Visitors can easily locate answers about coverage, imagery, uncertainty and provenance.
+- Public, fictional, synthetic and operational capabilities remain differentiated.
+- All principal help links resolve.
+
+## 12. Protected application
+
+Extend the same visual identity into the existing authorized workspace without changing its security boundaries.
+
+Retain saved synthetic cases, case ownership, actions, follow-ups, existing API contracts and storage.
+
+Prioritize functional evidence inspection over cinematic effects.
+
+Authentication must not be presented as providing access to a qualified live forest-alert feed.
+
+Do not migrate production storage or modify authentication casually as part of a design sprint.
+
+## 13. Data and provenance contracts
+
+Extend existing manifests where necessary to support presentation.
+
+Each published imagery asset should have its source, date, grid, spatial reference, geographic bounds, resolution, licence or attribution, availability and integrity reference.
+
+Each terrain asset should have its dataset identity, resolution, geographic bounds, processing method, attribution and publication terms.
+
+Every displayed record must belong to an explicit category:
+
+- Real source-derived observation
+- Historical research
+- Illustrative contextual artwork
+- Fictional walkthrough
+- Synthetic protected DEMO data
+- Authorized real case
+
+Never allow presentation styling to blur these categories.
+
+Missing, stale, unavailable, loading and failed states must be explicitly implemented.
+
+## 14. Performance and infrastructure
+
+Use the existing Contabo deployment.
+
+Prefer:
+
+- Static, immutable assets.
+- Locally cached regional map tiles.
+- PMTiles or another appropriately scoped static tile format.
+- Client-side WebGL.
+- Deferred loading of heavy geographic components.
+- SVG/CSS for diagrams and evidence instruments.
+- Offline raster and terrain preparation.
+- Existing source-refresh scheduling.
+
+Avoid mandatory external requests on the principal public journey.
+
+Initial engineering budgets, subject to measurement:
+
+- Public landing-page transfer: target under 1.5 MB.
+- Optional initial geographic experience: target under 5 MB transferred.
+- Regional geographic asset storage: initially cap at 500 MB pending review.
+- Incremental recurring subscriptions: $0 target.
+
+Measure actual resource usage before release. Document any budget exceptions.
+
+Support reduced motion, no-WebGL operation, keyboard access and mobile touch.
+
+Never request or expose credentials, private evidence, API secrets or database files.
+
+## 15. Operational launch — separate workstream
+
+Visual completion does not satisfy operational readiness.
+
+Before enabling a live alert service:
+
+1. Qualify a source and approved operating area together.
+2. Verify repeated useful observations, access costs and publication rights.
+3. Establish production owner identity.
+4. Complete a genuine observation-to-persistent-case workflow.
+5. Recover the original receipt, case and dossier from an independently protected copy.
+6. Verify authorized publication rules and operational failure handling.
+
+A real historical observation and a separately stored review do not establish that this complete workflow exists.
+
+Keep operational claims gated until the necessary evidence has been independently verified.
+
+## 16. Grant credibility
+
+Create a concise public capability register that distinguishes:
+
+- Implemented and accessible.
+- Implemented but synthetic.
+- Historical research evidence.
+- Experimentally investigated.
+- Not yet qualified.
+- Proposed with grant funding.
+
+Include a reproducibility index, dated technical milestones and research limitations.
+
+Do not imply verified ecological impact, established customer traction, production monitoring or a validated competitive moat without evidence.
+
+## 17. Development order
+
+Phase 0: Audit the existing implementation, baseline performance and create desktop/mobile visual compositions.
+
+Phase 1: Deliver the planetary homepage and shared visual/navigation system.
+
+Phase 2: Deliver the geographic atlas and integrate the existing observation laboratory.
+
+Phase 3: Deliver the interactive evidence lineage and improved walkthrough.
+
+Phase 4: Extend the research laboratory, guide and protected workspace identity.
+
+Phase 5: Conduct comprehensive regression, accessibility, performance and scientific-integrity testing.
+
+Work on operational qualification as a separate explicitly tracked sequence.
+
+After each phase, provide actual screenshots and test results rather than merely describing the intended appearance.
+
+## 18. Release acceptance
+
+Exercise desktop and mobile viewport widths of 1440, 390 and 320 pixels.
+
+Test navigation, date/grid selection, URL persistence, missing imagery, blocked tiles, WebGL failure, no-script behavior, reduced motion, keyboard access, fictional exports, private-route protection and existing saved-case functionality.
+
+Run existing CI suites and add regression tests for new features.
+
+Document the exact deployment commit, measured resource usage, source limitations and rollback procedure.
+
+Preserve current gateway configuration, timers, private data and unrelated VPS services.
+
+Do not promote a failed or scientifically misleading implementation merely because its screenshots are attractive.
+
+## Final design principle
+
+Make the visual experience extraordinary because it reveals the structure of reality more clearly.
+
+Not because it invents a more impressive reality than the available evidence supports.
+
+# **9. How I would prioritize the next development sprint**
+
+The most important thing is not to instruct Codex to redesign everything simultaneously.
+
+### **Living Atlas implementation roadmap**
+
+0/7
+
+**Audit existing architecture and create visual compositions**
+
+Foundation
+
+**Build planetary homepage**
+
+Visual identity
+
+**Build public Geta atlas**
+
+Flagship experience
+
+**Connect atlas to observation laboratory**
+
+Product coherence
+
+**Build interactive evidence lineage**
+
+Differentiation
+
+**Refine research and guide**
+
+Grant credibility
+
+**Verify mobile, performance and scientific integrity**
+
+Release gate
+
+The first substantial deliverable I would demand from Codex is the **planetary homepage connected to a real geographic Geta atlas**.
+
+Once that transition feels coherent, the observation explorer, scientific laboratory and evidence graph can inherit its visual language.
+
+I would aim for cinematic 3D where it communicates geography, and clean, precise 2D where someone needs to interpret evidence or make decisions. I could recover the earlier Living Atlas design descriptions and concept artifact, but not independently inspect every original reference picture you submitted; the visual references above represent my interpretation of that direction.
+
+The ultimate ambition is to make ForestProof a place people enjoy returning to, while giving conservation practitioners a practical reason to return.
+
+**A beautiful window into the planet, and a trustworthy record of what humanity does about what it observes.**

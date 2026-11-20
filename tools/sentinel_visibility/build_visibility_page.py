@@ -107,7 +107,7 @@ def explorer(acquisitions: list) -> str:
         <h3>Image context unavailable</h3><p data-scene-missing>No published image crop matches this selected grid and date. The coverage counts remain available.</p>
       </div>
     </div>
-    <div class="scene-note"><strong data-scene-heading>Read the source and its limits</strong><p data-scene-caption>The coverage summary is separate from the image context.</p><a href="/guide#satellite-imagery">Understand the imagery and sources →</a></div>
+    <div class="scene-note"><strong data-scene-heading>Read the source and its limits</strong><p data-scene-caption>The coverage summary is separate from the image context.</p><a href="/atlas/geta" data-return-atlas>Locate this observation in the atlas →</a><br><a href="/guide#satellite-imagery">Understand the imagery and sources →</a></div>
     <p class="scene-data-note">Historical image context. To assess change, compare repeat observations and record a human review.</p>
   </section>
   <div class="observation-panel">
@@ -152,7 +152,7 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
     template = Template(TEMPLATE.read_text(encoding="utf-8"))
     masthead = (
         '<nav class="public-nav" aria-label="Page navigation">'
-        '<a href="/welcome">Home</a><a href="/visibility" aria-current="page">Explore Geta</a>'
+        '<a href="/welcome">Home</a><a href="/atlas/geta">Atlas</a><a href="/visibility" aria-current="page">Observations</a>'
         '<a href="/tour">Product tour</a><a href="/research">Research</a><a href="/guide">Guide</a></nav>'
         if public else '<p class="flag">Private research preview</p>'
     )

@@ -60,7 +60,7 @@ class TestPublicDocuments(TestCase):
         self.assertEqual(content_type, "application/xml; charset=utf-8")
         namespace = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         urls = {item.text for item in fromstring(sitemap).findall("s:url/s:loc", namespace)}
-        self.assertEqual(urls, {f"https://forestproof.example{path}" for path in ("/welcome", "/visibility", "/tour", "/research", "/guide", "/project.txt")})
+        self.assertEqual(urls, {f"https://forestproof.example{path}" for path in ("/welcome", "/atlas/geta", "/visibility", "/tour", "/research", "/guide", "/project.txt")})
         with self.assertRaises(ValueError):
             public_document("/source.json", "forestproof.example")
 

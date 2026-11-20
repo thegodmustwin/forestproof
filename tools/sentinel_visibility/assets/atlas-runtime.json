@@ -1,0 +1,36 @@
+{
+  "prepared_at": "2026-11-20T01:00:52.066694+00:00",
+  "maplibre_version": "6.16.0",
+  "maplibre_license": "BSD-3-Clause; retained in maplibre-LICENSE.txt",
+  "runtime_assets": [
+    {
+      "file": "maplibre-gl.mjs",
+      "bytes": 1108049,
+      "sha256": "fbbdf8ddd9a48e49059a4be6795a4f214a711314bb5809f72d3730b48e7897e3"
+    },
+    {
+      "file": "maplibre-gl-shared.mjs",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "maplibre-gl-worker.mjs",
+      "bytes": 519372,
+      "sha256": "0bf06492bdb7ba3d4132b78e435621bfba60d5250967991c02b1a73affea8cd5"
+    },
+    {
+      "file": "maplibre-gl.css",
+      "bytes": 71596,
+      "sha256": "a90798a1953017790e590f7e1bd35ff103a8a4263972cb47290b78adf86f8c20"
+    }
+  ],
+  "world_context": {
+    "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson",
+    "etag": "\"e2d9d73e03bb65f28bbc4b83cc136b667337ec9e6316d7e58d6334916b70dacb\"",
+    "source_sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+    "output_sha256": "a847f3b1e3f7298f61aa3ddbd0bc8f213fe6e45770246bdb248a584f599ff01e",
+    "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "license": "Public domain",
+    "processing": "Retained original country geometries, reduced properties to name and ISO3. Geographic orientation only; not official operational boundaries."
+  }
+}

@@ -1,4 +1,4 @@
-        @geta_visibility path /visibility /welcome /tour /research /guide /project.txt /robots.txt /sitemap.xml /assets/atlas.css /assets/earth-east.jpg /assets/visibility.js /assets/tour.js /assets/home.js /assets/geta-context-2026-11-08.png /assets/geta-context-2026-11-13.png /assets/geta-context.json
+        @geta_visibility path /assets/atlas-runtime.json /assets/atlas.css /assets/atlas.js /assets/earth-east.jpg /assets/geography-provenance.json /assets/geta-context-2026-11-08.png /assets/geta-context-2026-11-13.png /assets/geta-context.json /assets/geta-geography.json /assets/geta-relief.png /assets/home.js /assets/maplibre-LICENSE.txt /assets/maplibre-gl-shared.mjs /assets/maplibre-gl-worker.mjs /assets/maplibre-gl.css /assets/maplibre-gl.mjs /assets/terrain/10/615/512.png /assets/terrain/10/615/513.png /assets/terrain/10/616/512.png /assets/terrain/10/616/513.png /assets/tour.js /assets/visibility.js /assets/world-context.geojson /atlas/geta /guide /project.txt /research /robots.txt /sitemap.xml /tour /visibility /welcome
         handle @geta_visibility {
             route {
                 @geta_visibility_write not method GET HEAD
