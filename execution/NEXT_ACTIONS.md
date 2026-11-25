@@ -1,5 +1,9 @@
 # Next Actions
 
+## Discovery release candidate — 25 November 2026
+
+Complete code review, clean-environment CI, desktop/mobile and failure-state checks before considering the public candidate for deployment. Verify the current Contabo release and exact allowlists, preserve the report state and other services, and retain rollback. Discovery currently covers a small public curated set; coordinate search, natural-language interpretation, protected case search and a universal evidence inspector remain future work. Continue area/source qualification and real owner-case recovery independently.
+
 ## After the geographic release — 20 November 2026
 
 The public planet → place → selected observation journey is installed on Contabo. Use the newest CURRENT_STATUS entry for exact source and verification. Obtain first-user feedback on finding Geta, choosing a date, distinguishing coverage from change and tracing a fictional decision into its dossier.

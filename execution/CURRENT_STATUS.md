@@ -1,5 +1,11 @@
 # Current Status
 
+## Discovery and Time Machine candidate — 25 November 2026
+
+A candidate public `/discovery` page derives date/grid coverage records only from the validated public visibility projection. It supports deterministic keyword search, type, place, date, source and coverage filters, explicit unsupported forest-loss state, source explanations and reproducible atlas links. No private report receipts, protected cases or credentials are indexed. A public-only observation comparison uses the two documented same-window historical T36MZE crops; its native slider and shared magnification show independently labelled source imagery alongside available published coverage or an explicit unavailable state. Imagery is not evidence of forest change.
+
+The candidate adds two explicit public paths, `/discovery` and `/assets/discovery.js`; Python and Caddy allowlists must remain identical. It has not been deployed. Current public source is still `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035` unless separately verified. Existing source qualification, production identity, live storage and independent genuine-case recovery gates remain open. The original dirty D: checkout is preserved. See the archived brief under docs/origin for direction, not proof of implementation.
+
 ## Public geographic Living Atlas — 20 November 2026
 
 Contabo serves exact public source `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`. The planetary homepage leads to `/atlas/geta`, connecting the provisional Kenyan research rectangle, exact georeferenced historical crops, selected date/grid and observation laboratory. Navigation preserves the selection in both directions. Seven inspectable fictional records connect the practice investigation to its unsigned dossier. Terrain is historical elevation context at 1× scale; it is not canopy, vegetation change or an alert. The protected app remains on `37934a5d41d7f086ae11b31ade2a35b557f1b30d`.
