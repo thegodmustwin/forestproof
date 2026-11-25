@@ -1,5 +1,9 @@
 # Current Status
 
+## Actual owner-review backup comparison — 25 November 2026
+
+A read-only local check of the genuine historical owner-review ledger and its pre-existing same-device backup passed SQLite integrity and the owner tool's source-document and receipt-link validation for both files. The original and backup contain one matching recorded review and follow-up, and the original receipt bytes match. No notes, receipt contents, credentials, private hashes or locations were printed or committed. This checks the actual saved decision, not a synthetic fixture. Both files reside on the same laptop, so it does not establish off-device recovery, recovery after loss of the Windows profile, production identity/storage, or a qualified current alert feed.
+
 ## Pilot and practitioner validation checkpoint — 25 November 2026
 
 The post-launch assessment is preserved as historical product input. [Pilot qualification](../docs/PILOT_QUALIFICATION_20261125.md) separates provider dataset rights from API cost/quota, operating-area eligibility, production identity and actual independent recovery. [The practitioner kit](../docs/PRACTITIONER_VALIDATION_KIT.md) defines consented first-use tasks, interviews and a measured comparison. Neither document demonstrates a participant, customer, funding, completed recovery or live alert feed. The local owner-review test suite passed its two fixture tests; this does not inspect or restore the owner's real decision. The prior public Discovery deployment remains unchanged by this documentation work.
