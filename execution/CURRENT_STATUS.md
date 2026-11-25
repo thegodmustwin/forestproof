@@ -1,5 +1,13 @@
 # Current Status
 
+## Discovery and Time Machine release — 25 November 2026
+
+Contabo serves public source `d3f5c0d26c44cedcc50ab74c27250c3ec34f0a8b`. Public `/discovery` searches the validated report projection plus curated public place, research, guide and fictional-practice entries. Place, date, source, type and coverage filters retain URL state; matches link to the exact atlas selection. Unqualified live forest-loss queries return an explicit no-feed state. Search is deterministic keyword/filter matching, not general natural language, geocoding or protected-case search. No raw receipt, private evidence or credentials enter the public index.
+
+The public observation laboratory adds an aligned historical comparison of the published 8/13 November T36MZE source-window crops with a native slider and shared magnification. Real dates, image identities, available coverage, image failure and uncertainty remain distinct. Missing or aged-out coverage is labelled unavailable. The private standalone report stays self-contained. Local browser verification passed at 1440/390/320 for search, URL restoration, no-feed state, keyboard comparison, magnification, failure and no-script reading. Clean [application CI](https://github.com/thegodmustwin/forestproof/actions/runs/45570381090) and [raster CI](https://github.com/thegodmustwin/forestproof/actions/runs/45570380770) passed on this exact source.
+
+Before switching, the existing server raster environment passed its public-service suite. All 34 explicit public routes passed HTTPS GET/HEAD 200, POST 405 and MIME checks; unlisted/private routes remained 401. The source-report hash remained unchanged and the protected app, other services, SSH and loopback-only RDP were preserved. Previous release and gateway backup are retained for rollback. No new paid subscription or live alert feed was activated. Operational source qualification, owner identity, isolated live storage and independent recovery remain separate launch gates.
+
 ## Discovery and Time Machine candidate — 25 November 2026
 
 A candidate public `/discovery` page derives date/grid coverage records only from the validated public visibility projection. It supports deterministic keyword search, type, place, date, source and coverage filters, explicit unsupported forest-loss state, source explanations and reproducible atlas links. No private report receipts, protected cases or credentials are indexed. A public-only observation comparison uses the two documented same-window historical T36MZE crops; its native slider and shared magnification show independently labelled source imagery alongside available published coverage or an explicit unavailable state. Imagery is not evidence of forest change.

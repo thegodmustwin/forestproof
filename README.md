@@ -6,6 +6,7 @@ Turn an environmental observation into evidence, a human-owned case, a recorded 
 
 - [Open the public homepage](https://vmi3711898.contaboserver.net/welcome)
 - [Enter the geographic Geta Living Atlas](https://vmi3711898.contaboserver.net/atlas/geta)
+- [Search published observations and research](https://vmi3711898.contaboserver.net/discovery)
 - [Explore satellite visibility over Geta](https://vmi3711898.contaboserver.net/visibility)
 - [Follow a fictional investigation and inspect its evidence links](https://vmi3711898.contaboserver.net/tour)
 - [Take the product tour and read the full project guide](docs/PUBLIC_GUIDE.md)

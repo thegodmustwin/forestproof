@@ -1,5 +1,9 @@
 # Next Actions
 
+## After Discovery release — 25 November 2026
+
+Gather first-user feedback on finding an observation, understanding its limits and comparing the historical images. Expand deterministic query interpretation, stable typed indexing, accessible side-by-side comparison and the unified evidence inspector only after matching each to real records and permissions. The current public search is not a general natural-language or protected-case search. Continue qualifying one legitimate operating area and source, production owner identity, isolated live storage and independent recovery of the genuine review in parallel.
+
 ## Discovery release candidate — 25 November 2026
 
 Complete code review, clean-environment CI, desktop/mobile and failure-state checks before considering the public candidate for deployment. Verify the current Contabo release and exact allowlists, preserve the report state and other services, and retain rollback. Discovery currently covers a small public curated set; coordinate search, natural-language interpretation, protected case search and a universal evidence inspector remain future work. Continue area/source qualification and real owner-case recovery independently.
