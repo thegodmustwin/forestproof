@@ -83,5 +83,23 @@ try{
  await bp.mouse.move(bounds.x+bounds.width/2+35,bounds.y+bounds.height/2,{steps:4});await bp.mouse.up();
  assert.ok((await box())[0]<originalBox[0],'Pointer drag must pan the relief map');await bp.locator('[data-map-reset]').click();
  await fit(bp);await bp.screenshot({path:path.join(output,'mobile-no-webgl.png'),fullPage:true});await blocked.close();
+ const discovery=await browser.newContext({viewport:{width:390,height:844}}),dp=await discovery.newPage();
+ await dp.goto(base+'/discovery',{waitUntil:'networkidle'});await dp.locator('[data-discovery-form]:visible').waitFor();
+ assert.equal(await dp.locator('[data-kind="observation"]').count(),6);
+ await dp.locator('#query').fill('8 November 2026');assert.equal(await dp.locator('[data-kind="observation"]:visible').count(),2);
+ await dp.locator('#query').fill('T36MZE');assert.equal(await dp.locator('[data-kind="observation"]:visible').count(),3);
+ await dp.locator('#query').fill('forest loss');assert.equal(await dp.locator('[data-search-record]:visible').count(),0);assert.match(await dp.locator('[data-empty]').innerText(),/No qualified/);
+ await dp.locator('#query').fill('13 November 2026');await dp.reload({waitUntil:'networkidle'});
+ assert.equal(await dp.locator('#query').inputValue(),'13 November 2026');
+ assert.match(await dp.locator('[data-kind="observation"][data-grid="T36MZE"][data-date="2026-11-13"] h3 a').getAttribute('href'),/grid=T36MZE&date=2026-11-13/);
+ await fit(dp);await dp.screenshot({path:path.join(output,'mobile-discovery.png'),fullPage:true});await discovery.close();
+ const comparison=await browser.newContext({viewport:{width:390,height:844}}),cp=await comparison.newPage();
+ await cp.goto(base+'/visibility',{waitUntil:'networkidle'});await cp.locator('#compare-observations').scrollIntoViewIfNeeded();
+ await cp.waitForFunction(()=>[...document.querySelectorAll('[data-time-image]')].length===2&&[...document.querySelectorAll('[data-time-image]')].every(i=>i.complete&&i.naturalWidth>0));
+ assert.match(await cp.locator('[data-time-coverage="2026-11-08"]').textContent(),/6,424/);
+ assert.match(await cp.locator('[data-time-coverage="2026-11-13"]').textContent(),/3 of 27,722/);
+ await cp.locator('[data-time-reveal]').focus();await cp.keyboard.press('End');assert.equal(await cp.locator('[data-time-reveal]').inputValue(),'100');
+ await cp.locator('[data-time-zoom]').fill('200');assert.equal(await cp.locator('[data-time-canvas]').evaluate(e=>e.style.width),'200%');
+ await fit(cp);await cp.screenshot({path:path.join(output,'mobile-time-machine.png'),fullPage:true});await comparison.close();
  console.log('Public geographic smoke passed; no-script and WebGL-failure reading retained.');
 }finally{await browser?.close();if(server)server.kill('SIGTERM');}
