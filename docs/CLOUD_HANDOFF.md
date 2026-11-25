@@ -1,5 +1,9 @@
 # ForestProof — Cloud continuation handoff
 
+## Current public source — 25 November 2026
+
+Contabo public source is `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb`. It follows the Discovery/Time Machine release described below and keeps suggested searches aligned with the current rolling report. See the newest CURRENT_STATUS for tests, routes, rollback and open operational-alert gates.
+
 ## Discovery and Time Machine release — 25 November 2026
 
 The public Contabo service runs `d3f5c0d26c44cedcc50ab74c27250c3ec34f0a8b`. Read the newest CURRENT_STATUS for verification. `/discovery` searches only the projected public coverage and curated public pages; `/visibility#compare-observations` compares two precisely identified historical images. Neither is an operational forest-loss alert feed. See the archived Discovery assessment and newest NEXT_ACTIONS for unfinished work. The original dirty `D:\FORESTPROOF` checkout remains untouched.

@@ -1,5 +1,11 @@
 # Current Status
 
+## Discovery follow-up deployed — 25 November 2026
+
+Public source `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb` is deployed on Contabo. Suggested dates and grids now derive from the current public report; they disappear when unsupported, preventing stale suggestions as the rolling report changes. Four discovery projection/freshness tests and full [application CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138704) and [raster CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138735) passed on this exact source. The existing raster environment passed public service tests prior to the switch. All 34 exact public routes passed HTTPS GET/HEAD 200 and POST 405 with MIME checks; private/unknown paths stayed 401. Source-report state and existing services were preserved and the prior public release and gateway config were retained for rollback.
+
+Production browser checks of the preceding `d3f5c0d` release passed at 1440/390/320 for search, current report selections, URL reload, comparison, keyboard magnification, blocked-image feedback and no-JavaScript reading. The follow-up changes only suggestion generation and its tests. The full operational alert gates remain open.
+
 ## Discovery and Time Machine release — 25 November 2026
 
 Contabo serves public source `d3f5c0d26c44cedcc50ab74c27250c3ec34f0a8b`. Public `/discovery` searches the validated report projection plus curated public place, research, guide and fictional-practice entries. Place, date, source, type and coverage filters retain URL state; matches link to the exact atlas selection. Unqualified live forest-loss queries return an explicit no-feed state. Search is deterministic keyword/filter matching, not general natural language, geocoding or protected-case search. No raw receipt, private evidence or credentials enter the public index.
