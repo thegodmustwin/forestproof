@@ -25,6 +25,31 @@ READING_GUIDE = """
 """
 
 
+TIME_MACHINE = r'''
+<section class="time-machine" id="compare-observations" aria-labelledby="time-title">
+ <div class="time-intro"><div><p class="eyebrow">One place · two historical views</p><h2 id="time-title">Look through time.</h2></div><p>Compare the same published Sentinel-2 window on two dates. The images show what the sensor captured; the coverage figures describe what could be assessed.</p></div>
+ <div class="time-workbench"><header class="time-head"><strong>Geta research window · T36MZE</strong><span>Historical true colour · 10 m pixels</span></header>
+  <div class="time-layout"><div>
+   <div class="time-viewport" tabindex="0" aria-label="Historical comparison image viewport. At higher magnification, scroll or use arrow keys to move around the same view." data-time-viewport>
+    <div class="time-canvas" data-time-canvas>
+     <figure class="time-frame"><img src="/assets/geta-context-2026-11-08.png" width="335" height="333" loading="lazy" alt="8 November 2026: patches of green land between bright clouds and shadows." data-time-image="2026-11-08"><figcaption>08 NOV 2026 · S2C</figcaption></figure>
+     <figure class="time-frame"><img src="/assets/geta-context-2026-11-13.png" width="335" height="333" loading="lazy" alt="13 November 2026: the same source window is almost entirely white with little usable ground view." data-time-image="2026-11-13"><figcaption>13 NOV 2026 · S2B</figcaption></figure>
+    </div>
+   </div>
+   <div class="time-controls" data-time-controls hidden><label>Compare the two views <input data-time-reveal type="range" min="0" max="100" value="50" aria-label="Compare image dates: left is 8 November, right is 13 November"></label><label>Magnification <input data-time-zoom type="range" min="100" max="300" step="25" value="100" aria-label="Magnify both dates together"></label></div>
+   <p class="time-help" data-time-help>Two published crops share the same source window and grid. Their dates and source images remain distinct.</p>
+   <p class="time-failure" role="status" data-time-failure hidden></p>
+  </div><div class="time-evidence"><p class="eyebrow">Read the evidence</p><h3>What can we actually see?</h3><dl>
+    <div><dt>08 November 2026 · T36MZE</dt><dd data-time-coverage="2026-11-08">See the dated report above for coverage.</dd></div>
+    <div><dt>13 November 2026 · T36MZE</dt><dd data-time-coverage="2026-11-13">See the dated report above for coverage.</dd></div>
+   </dl><p class="time-limit"><strong>Visibility is not forest loss.</strong> Clouds and other unassessed areas limit comparison. Different appearances alone do not establish change, its cause or legality.</p>
+   <p class="time-source">Same 335 × 333 pixel source window, UTM grid and 10 m image resolution; coverage is sampled at 20 m. <a href="/assets/geta-context.json">View published source identities and provenance</a> · <a href="/guide#satellite-imagery">How to interpret imagery</a>.</p>
+  </div></div>
+ </div>
+</section>
+'''
+
+
 def percent_label(visible: int, sampled: int) -> str:
     percent = 100 * visible / sampled
     if visible == 0:
@@ -170,6 +195,8 @@ def render(snapshot: dict | None, *, now: datetime, public: bool = False, failed
             if public else f'<style>{ATLAS_STYLES.read_text(encoding="utf-8")}</style>'
         ),
         "explorer_script": '<script src="/assets/visibility.js" defer></script>' if public else "",
+        "time_machine": TIME_MACHINE if public else "",
+        "time_machine_link": '<p><a href="#compare-observations">Compare two historical views ↓</a></p>' if public else "",
         "footer_links": (
             '<span class="footer-links"><a href="/guide#coverage">Understand the coverage</a>'
             '<a href="/research">Research and methods</a><a href="/tour">Product tour</a></span>'

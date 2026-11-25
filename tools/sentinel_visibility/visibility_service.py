@@ -13,6 +13,7 @@ from xml.sax.saxutils import escape
 
 from tools.sentinel_visibility.build_home_page import render_home
 from tools.sentinel_visibility.build_atlas_page import render_atlas
+from tools.sentinel_visibility.build_discovery_page import render_discovery
 from tools.sentinel_visibility.build_product_pages import render_product_page
 from tools.sentinel_visibility.build_visibility_page import render
 from tools.sentinel_visibility.project_visibility import project
@@ -25,6 +26,7 @@ ASSET_PATHS = {
     "/assets/visibility.js": (Path(__file__).with_name("assets") / "visibility.js", "text/javascript; charset=utf-8"),
     "/assets/tour.js": (Path(__file__).with_name("assets") / "tour.js", "text/javascript; charset=utf-8"),
     "/assets/home.js": (Path(__file__).with_name("assets") / "home.js", "text/javascript; charset=utf-8"),
+    "/assets/discovery.js": (Path(__file__).with_name("assets") / "discovery.js", "text/javascript; charset=utf-8"),
     "/assets/geta-context-2026-11-08.png": (Path(__file__).with_name("assets") / "geta-context-2026-11-08.png", "image/png"),
     "/assets/geta-context-2026-11-13.png": (Path(__file__).with_name("assets") / "geta-context-2026-11-13.png", "image/png"),
     "/assets/geta-context.json": (Path(__file__).with_name("assets") / "geta-context.json", "application/json; charset=utf-8"),
@@ -48,7 +50,7 @@ for _x in (615, 616):
         _name = f"terrain/10/{_x}/{_y}.png"
         ASSET_PATHS[f"/assets/{_name}"] = (Path(__file__).with_name("assets") / _name, "image/png")
 PRODUCT_PAGES = {"/guide": "guide", "/research": "research"}
-PUBLIC_PATHS = {"/atlas/geta", "/visibility", "/welcome", "/tour", *PRODUCT_PAGES, "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
+PUBLIC_PATHS = {"/atlas/geta", "/discovery", "/visibility", "/welcome", "/tour", *PRODUCT_PAGES, "/project.txt", "/robots.txt", "/sitemap.xml", *ASSET_PATHS}
 DOCUMENT_PATHS = {"/project.txt", "/robots.txt", "/sitemap.xml"}
 GUIDE = Path(__file__).resolve().parents[2] / "docs" / "PUBLIC_GUIDE.md"
 ERRORS = (OSError, ValueError, KeyError, TypeError, OverflowError, RecursionError, AttributeError, HTTPException)
@@ -70,7 +72,7 @@ def public_document(route, hostname):
         raise ValueError("Unknown public document route")
     urls = "".join(
         f"<url><loc>https://{escape(hostname)}{path}</loc></url>"
-        for path in ("/welcome", "/atlas/geta", "/visibility", "/tour", "/research", "/guide", "/project.txt")
+        for path in ("/welcome", "/atlas/geta", "/discovery", "/visibility", "/tour", "/research", "/guide", "/project.txt")
     )
     body = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -141,6 +143,8 @@ def response_for(path, *, now, route="/visibility"):
         return 200, render_home(snapshot, now=now, failed_at=failed_at).encode("utf-8")
     if route == "/atlas/geta":
         return 200, render_atlas(snapshot, now=now, failed_at=failed_at).encode("utf-8")
+    if route == "/discovery":
+        return 200, render_discovery(snapshot, now=now, failed_at=failed_at).encode("utf-8")
     body = render(snapshot, now=now, public=True, failed_at=failed_at)
     return (200 if snapshot else 503), body.encode("utf-8")
 

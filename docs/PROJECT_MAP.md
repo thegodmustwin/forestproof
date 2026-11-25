@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Discovery and comparison candidate — 25 November 2026
+
+`tools/sentinel_visibility/build_discovery_page.py`, `discovery.html` and `assets/discovery.js` construct a public search surface from the same validated projection used by the atlas. `test_discovery_publication.py` tests projected records, source gaps and freshness. `visibility.html`, `build_visibility_page.py` and `assets/visibility.js` implement a public-only historical same-window comparison; the private static report stays self-contained. Exact routes are in `visibility_service.py` and `infrastructure/deployment/sentinel-visibility/public-route.caddy`. Deployment status is recorded separately.
+
 ## Geographic atlas and inspectable lineage — 20 November 2026
 
 The public `/atlas/geta` route uses `build_atlas_page.py` and `atlas.html` with the same validated observation projection/archive as `/visibility`. `assets/atlas.js` loads a same-origin pinned MapLibre module, places the canonical rectangle and only matching source crops, and offers bounded local terrain or an accessible 2D relief fallback. `assets/geta-geography.json` and `geography-provenance.json` retain image corners, geography, original terrain identities and rights. Four cached z10 Terrarium tiles and `geta-relief.png` are historical USGS-derived elevation context, not vegetation measurements. The runtime BSD licence and checksums are retained.

@@ -1,4 +1,13 @@
 # ForestProof — Cloud continuation handoff
+
+## Current public source — 25 November 2026
+
+Contabo public source is `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb`. It follows the Discovery/Time Machine release described below and keeps suggested searches aligned with the current rolling report. See the newest CURRENT_STATUS for tests, routes, rollback and open operational-alert gates.
+
+## Discovery and Time Machine release — 25 November 2026
+
+The public Contabo service runs `d3f5c0d26c44cedcc50ab74c27250c3ec34f0a8b`. Read the newest CURRENT_STATUS for verification. `/discovery` searches only the projected public coverage and curated public pages; `/visibility#compare-observations` compares two precisely identified historical images. Neither is an operational forest-loss alert feed. See the archived Discovery assessment and newest NEXT_ACTIONS for unfinished work. The original dirty `D:\FORESTPROOF` checkout remains untouched.
+
 ## Public geographic release — 20 November 2026
 
 The current public source is `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`, deployed on Contabo after complete application and raster CI passed. The homepage leads to `/atlas/geta`, which connects the actual provisional rectangle, exact image footprints, selected grid/date and observation laboratory. Historical local elevation supports optional 1× terrain and a pointer/keyboard 2D fallback. Seven inspectable fictional records connect the public tour to its unsigned dossier. All 32 exact public routes passed HTTPS GET/HEAD 200 and POST 405; private/unknown routes remained 401. Read the newest CURRENT_STATUS for final browser verification and release details. This supersedes older public pins below. The private app remains on `37934a5d41d7f086ae11b31ade2a35b557f1b30d`; qualified alerts, person-level owner identity and independent genuine-case recovery remain separate launch work. No paid service, provider key or operational feed was activated.

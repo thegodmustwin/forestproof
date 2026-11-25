@@ -163,3 +163,45 @@
   explorer.hidden = false;
   archive.open = false;
 })();
+
+// The historical source comparison is independent of the rolling report selection.
+(() => {
+  "use strict";
+  const canvas = document.querySelector("[data-time-canvas]");
+  const viewport = document.querySelector("[data-time-viewport]");
+  const controls = document.querySelector("[data-time-controls]");
+  if (!canvas || !viewport || !controls) return;
+  const failure = document.querySelector("[data-time-failure]");
+  const images = Array.from(canvas.querySelectorAll("[data-time-image]"));
+  const reveal = controls.querySelector("[data-time-reveal]");
+  const zoom = controls.querySelector("[data-time-zoom]");
+  const checkImages = () => {
+    const failed = images.filter(image => image.dataset.failed === "true");
+    failure.hidden = failed.length === 0;
+    failure.textContent = failed.length ? "The " + failed.map(image => image.dataset.timeImage).join(" and ") + " source image could not load. Reload to try again; no other date is substituted." : "";
+    controls.hidden = failed.length > 0;
+    viewport.classList.toggle("time-interactive", failed.length === 0);
+  };
+  images.forEach(image => {
+    image.addEventListener("load", () => { delete image.dataset.failed; checkImages(); });
+    image.addEventListener("error", () => { image.dataset.failed = "true"; checkImages(); });
+    if (image.complete && image.currentSrc && image.naturalWidth === 0) image.dataset.failed = "true";
+  });
+  reveal.addEventListener("input", () => canvas.style.setProperty("--reveal", reveal.value + "%"));
+  zoom.addEventListener("input", () => { canvas.style.width = zoom.value + "%"; });
+  document.querySelector("[data-time-help]").textContent = "Move the comparison slider to reveal each date. Magnify both together, then scroll or use arrow keys in the image viewport to explore the same location.";
+  const archive = document.querySelector("[data-observation-archive]");
+  document.querySelectorAll("[data-time-coverage]").forEach(node => {
+    const date = node.dataset.timeCoverage;
+    const pass = Array.from(archive?.querySelectorAll("[data-observation-date]") || []).find(item => item.dataset.observationDate === date);
+    const row = Array.from(pass?.querySelectorAll("[data-grid]") || []).find(item => item.dataset.grid === "T36MZE");
+    if (!row) { node.textContent = "Coverage is not available in the current report."; return; }
+    const visible = Number(row.dataset.visible), sampled = Number(row.dataset.sampled);
+    if (!Number.isInteger(visible) || !Number.isInteger(sampled) || sampled <= 0 || visible < 0 || visible > sampled) return;
+    const percent = 100 * visible / sampled;
+    const formatted = percent === 0 ? "0%" : percent < .1 ? "<0.1%" : percent.toFixed(1) + "%";
+    const format = new Intl.NumberFormat("en-KE");
+    node.textContent = formatted + " usable · " + format.format(visible) + " of " + format.format(sampled) + " sampled centres";
+  });
+  checkImages();
+})();

@@ -1,0 +1,987 @@
+# **ForestProof: Product, Search Intelligence, Visual Experience and Go-to-Market Strategy**
+
+Independent strategic review · 20 November 2026
+
+## **Executive conclusion**
+
+ForestProof has crossed an important threshold: **it is no longer just a proposed conservation platform with a synthetic workflow. It now has a documented, deployed public geographic experience using real historical observations, real terrain context and a connected fictional investigation.**
+
+That is meaningful progress.
+
+But I would change the next phase of development quite substantially.
+
+Instead of another broad visual redesign, I would build around three reinforcing capabilities:
+
+1. **The Living Atlas** — the beautiful spatial interface that makes people want to explore.
+2. **ForestProof Discovery** — a unified geographic, temporal, scientific and evidence search system that makes the product genuinely useful.
+3. **The Evidence Workbench** — the place where an observation becomes a review, a response, a follow-up and eventually a defensible outcome.
+
+The product's organizing idea should be:
+
+> **Find a place. Discover what we know. Understand what we don't. Follow what happened next.**
+
+That sentence unifies geography, discovery, scientific transparency and human accountability.
+
+The most promising commercial opportunity is not a prettier alternative to Global Forest Watch. It is a focused evidence-and-follow-up product for organizations responsible for specific landscapes.
+
+## **My launch verdict**
+
+**Public exploration**
+
+Ready for controlled promotion
+
+The current public experience is sufficiently documented for user feedback and a research showcase.
+
+**Practitioner pilot**
+
+Not yet operationally ready
+
+A qualified real observation feed, production identity and independent genuine-case recovery remain outstanding.
+
+**Grant outreach**
+
+Ready to prepare and approach selectively
+
+Credible as a working prototype and research programme, not as a proven conservation-impact system.
+
+**Paid SaaS launch**
+
+Not validated
+
+No paying customer, validated procurement need or demonstrated recurring usage is documented.
+
+These judgments are qualitative launch gates, not readiness percentages.
+
+## **What I verified**
+
+I read the current GitHub files through the GitHub connection, including `REVIEW_PACKET.md`, `PUBLIC_GUIDE.md`, `CURRENT_STATUS.md`, `NEXT_ACTIONS.md`, `PROJECT_MAP.md`, `PROJECT_CONTEXT.md`, `PROJECT_DECISIONS.md`, `DESIGN.md`, the original Living Atlas assessment, the commercial strategy, direct-source research, provider-independence research and launch strategy.
+
+The repository's current release record reports:
+
+- Public installation from commit `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`.
+- Successful application and raster CI.
+- Production browser verification at 1440, 390 and 320 pixels.
+- Working atlas-to-laboratory selection.
+- Seven connected fictional records.
+- Tested 2D/3D navigation and no-WebGL fallback.
+- No new paid mapping service or activated live-alert feed.
+
+See the [current release status](https://github.com/thegodmustwin/forestproof/blob/main/execution/CURRENT_STATUS.md?utm_source=chatgpt.com) and [review packet](https://github.com/thegodmustwin/forestproof/blob/main/docs/REVIEW_PACKET.md?utm_source=chatgpt.com).
+
+**Access limitation:** Direct retrieval of the Contabo homepage, atlas and observation laboratory failed in this session. I therefore rely on the repository's dated screenshots, source descriptions and recorded tests for those experiences. I did not personally execute the production browser interactions, inspect private records or independently reproduce CI.
+
+This distinction matters, particularly when we present ForestProof to funders.
+
+## **1. Is ForestProof now a coherent product?**
+
+Its documented public journey is substantially more coherent than the earlier release.
+
+**01**
+
+**Enter**
+
+Planetary homepage locates Kenya and introduces Geta.
+
+**02**
+
+**Explore**
+
+Living Atlas places historical imagery within real terrain context.
+
+**03**
+
+**Investigate**
+
+Observation laboratory explains dates, coverage and uncertainty.
+
+**04**
+
+**Review**
+
+Fictional case teaches how human decisions are recorded.
+
+**05**
+
+**Retrace**
+
+Linked dossier connects evidence, response and follow-up.
+
+The navigation structure now supports a clear story. But there is still a discontinuity between **exploring real environmental data** and **using ForestProof to accomplish a real conservation task**.
+
+The public visitor can study real coverage, then practice an imaginary response. A practitioner cannot yet take an approved, qualified, real disturbance observation through the deployed production workflow.
+
+That is the difference between an excellent interactive demonstration and a working operational conservation product.
+
+### **What I would fix conceptually**
+
+Stop making the satellite observation itself the central object.
+
+Make **the place and its evidence history** the central object.
+
+A place should have a persistent identity that links its geography, observations, sources, uncertainties, investigations, follow-ups and relevant research.
+
+This creates a much more natural product:
+
+- A visitor finds Geta.
+- They explore its observation history.
+- They ask which dates had the clearest evidence.
+- They examine an observation.
+- They see whether any authorized review exists.
+- They return later to discover new information or follow-up.
+
+The same mental model works for beginners and practitioners.
+
+It also gives us a foundation for the search engine you're envisioning.
+
+# **2. ForestProof Discovery: the search engine I would build**
+
+This is where I see one of the greatest opportunities.
+
+The ordinary interpretation of search would be a box in the navigation bar that finds pages containing keywords.
+
+That would barely improve ForestProof.
+
+What I would build instead is a **spatiotemporal evidence search engine**.
+
+It would answer questions combining geography, time, source quality, observations, research and authorized decisions.
+
+## **The central design**
+
+## **ForestProof Discovery**
+
+Product concept
+
+Explore landscapes, observations and their evidence trails.
+
+Explore
+
+Try a question
+
+Show me the clearest Geta observationCompare 8 and 13 November 2026Which observations have missing imagery?Show me the fictional case dossier
+
+Illustrative result preview
+
+SOURCE-BOUNDED
+
+SENTINEL-2 · HISTORICAL COVERAGE
+
+**Geta, Kenya — T36MZE**
+
+8 November 2026 · 6,424 of 27,722 sampled centres assessed (23.2%).
+
+Optical usable coverage, not a forest-loss finding.
+
+Proposed interface; not currently installedCurrent laboratory&#x20;
+
+The search should resolve user intent into structured filters, not fabricate scientific answers.
+
+For example:
+
+**Query:** “Which observation gives us the clearest view of Geta in November?”
+
+A useful result would show the selected acquisition, the assessed share, the study grid, the original source, missing evidence, and a button that opens that observation in its exact atlas context.
+
+**Query:** “What happened after this disturbance was reviewed?”
+
+If no authorized real case exists, the response should say so. It may offer a fictional walkthrough separately, but never pretend that fictional action is a real conservation response.
+
+## **The five search dimensions**
+
+**Geographic discovery**
+
+Search named places, coordinates, authorized areas and currently published footprints. Results immediately reposition the atlas.
+
+Search never treats the provisional Geta rectangle as an official boundary.
+
+**Temporal discovery**
+
+Search observations from specific dates or periods, compare passes, and filter on acquisition date versus verification date.
+
+This could become one of ForestProof's most useful forms of exploration.
+
+**Evidence and quality discovery**
+
+Search by source, sensor, visible coverage, unavailable imagery, uncertainty, provenance or processing version.
+
+Crucially, a coverage-quality search is not the same as a disturbance search.
+
+**Investigation and outcome discovery**
+
+Search authorized case records, review status, responses, follow-up deadlines and connected evidence.
+
+Public searches should index only approved projections. Protected searches enforce permissions before results are returned.
+
+**Scientific and explanatory discovery**
+
+Search methodology, research experiments, satellite products, definitions, technical caveats and reproducibility guides.
+
+A curious beginner can discover evidence and understand its meaning without having to know GIS terminology.
+
+### **Why this could produce strong retention**
+
+The objective is not to make people compulsively scroll. It's to make **each search produce something useful and lead naturally to another worthwhile question**.
+
+A visitor asks about Geta. The system surfaces the relevant dated observations. They compare two passes. They discover that the newer pass has worse usable coverage. They open the source explanation and investigate why. Later, they return to check whether another observation has become available.
+
+That is a natural discovery loop built on genuine information.
+
+For practitioners, the loop is even stronger:
+
+**New evidence → unresolved question → owned action → follow-up date → verified result.**
+
+Returning to the product has a practical purpose.
+
+# **3. The search architecture: powerful without expensive AI infrastructure**
+
+I would not start by building a large language model-powered retrieval platform or a vector database.
+
+The existing dataset is small, structured, mostly deterministic and unusually sensitive to provenance.
+
+A simpler architecture would be more accurate, cheaper and easier to maintain.
+
+### **Recommended technical design**
+
+| Component                       | Initial implementation                                |
+| ------------------------------- | ----------------------------------------------------- |
+| Public search index             | Generated JSON / SQLite FTS5                          |
+| Structured observation search   | Existing validated public report data                 |
+| Geographic queries              | Canonical geometry and spatial intersection functions |
+| Source search                   | Provenance manifests and approved metadata            |
+| Case search                     | Existing protected API with authorization             |
+| Search UI                       | Existing frontend and Living Atlas design tokens      |
+| Map interaction                 | Existing MapLibre atlas                               |
+| Search suggestions              | Curated, deterministic queries                        |
+| Natural-language interpretation | Optional later, with structured-query validation      |
+| Vector database                 | Not required initially                                |
+
+For the first version, a periodically rebuilt static search index is likely sufficient for public content, while protected cases should be queried separately through the authorized API.
+
+No credentials, protected case material or unpublished coordinates should enter the public index.
+
+### **Search result contract**
+
+Every result should carry enough information to explain itself:
+
+```
+{
+  "id": "observation:T36MZE:2026-11-08",
+  "type": "optical_coverage_observation",
+  "title": "Geta — 8 November 2026",
+  "grid": "T36MZE",
+  "acquired_at": "2026-11-08",
+  "source": "Sentinel-2",
+  "visible_centres": 6424,
+  "sampled_centres": 27722,
+  "interpretation": "usable optical coverage",
+  "limitations": [
+    "Not a forest-loss alert",
+    "Research rectangle is provisional"
+  ],
+  "public": true,
+  "source_receipt_id": "<resolved from existing manifest>"
+}
+```
+
+Illustrative proposed schema. The receipt ID must be resolved from the repository's real manifest, not substituted with a placeholder in production.
+
+Results should always expose a *why this matched* explanation and a source link.
+
+A search for “forest loss” must not silently return optical coverage results as though they were loss detections. It can instead explain that ForestProof currently publishes coverage diagnostics and offer the relevant research.
+
+## **A critical opportunity: search as navigation**
+
+Search should not open an unrelated results page and abandon geographic context.
+
+Selecting a result should update the atlas:
+
+- Camera moves to its valid geographic extent.
+- Date selector moves to the correct acquisition date.
+- Evidence inspector opens with the matched record.
+- Source and uncertainty remain visible.
+- The URL can be copied and reproduced.
+
+This is what makes the engine coherent.
+
+The map is the spatial representation of the query. The timeline is its temporal representation. The evidence panel is its scientific representation. The dossier is its accountability representation.
+
+**One query, one underlying truth, several complementary views.**
+
+# **4. How to make ForestProof visually magnetic**
+
+The current Living Atlas release already implements the first essential geographic foundation: a planetary entrance, historical elevation context and real georeferenced imagery.
+
+I would preserve that investment.
+
+The next improvement should be **data-driven visual storytelling**, not simply more 3D.
+
+[Blue Marble: Next Generation - NASA Science](https://images.openai.com/static-rsc-4/tFS-VgqinBGJ_bsWKAOigOWPECMREwBYb8P7Oj8hLd6uyE_oTtiQnGwDVYMWmXzZdbSKrwkF3avtBL7OHo5MmbAuRp1PuekOiV66joHSJUVMcvzXyBQhwLsrdkeHqyNiHsJFEESKO6GEz9K8dyfLJlOOiWYQVWlpbFr_4CR15dA?purpose=inline)
+
+[Butte County Satellite Image Topographic 3D View](https://images.openai.com/static-rsc-4/U5rfTNehkSuBhPUePnNDD7CS92vsSzKIleZmgYzpQAUf-y0_BDbpGWNxQ4oDsWKQt9UJhXJp34HCWiyT5aXUwTBI33-J_PmLfJ55WufbBv-NljF_I8XuTR1M0NKOhiiI2woRnY-ba24Z24LAVkiBjIRC8mtCVWjsXAoYKagAzpoTvEH5h2LrtXhcfKsVD_Bu?purpose=inline)
+
+[Проекты — СКАНЭКС](https://images.openai.com/static-rsc-4/ED0XftnUF-PUW6BgDq-89sv98Pu9zMppKtmG2cODKLygWXoeYy8qNb666Yz_lpYYgt_MzqqcneLSWgNixxjQPt4lAR7L9hD8O_z5CxHAsy3pPlgr0IHPNK9sy9a_zOr-jJaQ0U_EfNaI8LPQpn6N3Ev9AO5vri2lgxJda-Nm6_Q?purpose=inline)
+
+9
+
+Visual references only. They do not depict ForestProof's currently measured Geta observations.
+
+## **Three visual experiences that would transform the product**
+
+### **A. The observation time machine**
+
+This is my highest-priority visual feature.
+
+One geographical viewport remains fixed while the user changes acquisition dates.
+
+Real images transition with an optional swipe comparison. A synchronized quality chart explains what is visible, what is missing and whether the two dates are meaningfully comparable.
+
+**Observation Time Machine**
+
+Conceptual display · T36MZE
+
+Earlier
+
+Later
+
+8 November
+
+# **23.2%**
+
+Usable sampled coverage
+
+13 November
+
+# **0.011%**
+
+Usable sampled coverage
+
+The observations have substantially different usable coverage. A visual comparison alone cannot establish forest change.
+
+This mockup uses illustrative relief, while the coverage counts come from the documented historical public observations. The production version must display the actual correctly registered source images.
+
+### **B. Evidence X-ray**
+
+When somebody selects a point, date or observation, allow them to peel back the evidence layers.
+
+**The evidence stack**
+
+1
+
+Geographic context
+
+Where is this place?
+
+2
+
+Satellite acquisition
+
+What did the sensor capture?
+
+3
+
+Quality and availability
+
+Which evidence is usable?
+
+4
+
+Source provenance
+
+Where did the measurements originate?
+
+5
+
+Human interpretation
+
+What can a reviewer reasonably conclude?
+
+6
+
+Response and outcome
+
+What was recorded after review?
+
+Each layer has a different purpose. That is a much more meaningful form of visual depth than decorative three-dimensional charts.
+
+### **C. The living dossier**
+
+When a user opens a case, they should not see merely a series of text records.
+
+They should see an explorable timeline.
+
+Every meaningful event extends the same history. Clicking a record reveals its evidence, timestamp, reviewer and limitations.
+
+The interface should make it immediately obvious whether a source is real, a case is synthetic, a decision is fictional or a follow-up is genuinely verified.
+
+I would prioritize this over an elaborate animated network graph. The lineage needs to remain readable and auditable.
+
+## **The visual principle I would enforce**
+
+**Every major visual interaction should answer a question.**
+
+An orbit animation answers, “Where are we?”
+
+A terrain view answers, “What kind of landscape is this?”
+
+A time slider answers, “How did observations differ?”
+
+A quality overlay answers, “What could the sensor actually assess?”
+
+A dossier timeline answers, “What happened after the evidence was reviewed?”
+
+If an animation answers no meaningful question, it should not be a priority.
+
+# **5. The go-to-market opportunity**
+
+I see three distinct markets, but only one should be the initial commercial focus.
+
+| Audience                   | What attracts them                                         | What makes them return                      | Business role                          |
+| -------------------------- | ---------------------------------------------------------- | ------------------------------------------- | -------------------------------------- |
+| Enthusiasts and students   | Visual exploration, comparisons and scientific explanation | New observations and discoveries            | Public distribution and feedback       |
+| Researchers and tinkerers  | Reproducible data, methods, APIs and provenance            | Research datasets and tools                 | Technical credibility and contributors |
+| Conservation organizations | Cases, responsibilities, evidence and follow-up reporting  | Active monitoring and accountability duties | Initial paying-customer hypothesis     |
+
+## **The first buyer I would pursue**
+
+A small conservation, watershed, restoration or environmental-monitoring organization that already has responsibility for one defined area.
+
+Not a ministry-wide contract. Not a continent-scale satellite-monitoring agreement.
+
+One organization, one approved landscape, one accountable workflow.
+
+Their potential problem is straightforward:
+
+> “We receive environmental observations and field reports, but it's difficult to consistently determine what needs review, assign responsibility, retain evidence and demonstrate what happened afterward.”
+
+ForestProof should test whether it can reduce that difficulty.
+
+But our differentiation needs to be sharper than “satellite alerts plus field investigations.”
+
+The competitive reality
+
+Forest Watcher already provides offline alerts, field investigations, reporting and team coordination. Its web and mobile tools support areas of interest and assignments.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://fw.globalforestwatch.org\&sz=32)
+
+fw\.globalforestwatch.org+2
+
+
+
+That means we cannot honestly claim that the general workflow is unprecedented.
+
+Instead, our hypothesis should be that smaller organizations have unmet needs around **source-transparent evidence histories, interoperable case dossiers, reproducible provenance and funder-facing follow-up reporting**.
+
+Those are plausible differentiators. We need interviews to determine whether they're valuable enough to justify adopting another product.
+
+## **The commercial wedge**
+
+I would frame the first pilot as:
+
+**ForestProof Evidence & Response Pilot**
+
+A bounded institutional engagement that helps an organization review sourced observations in one approved area, retain responsible decisions and produce traceable follow-up records.
+
+We should not quote a subscription price yet. The repository records no validated willingness to pay, procurement requirements or cost of servicing such a customer.
+
+A first pilot should establish whether a customer will use the workflow, what it replaces, how much staff time it consumes or saves, and who controls the budget.
+
+### **GTM sequence**
+
+1
+
+**Public discovery**
+
+Now
+
+Invite bounded feedback on the atlas, laboratory and fictional walkthrough. Track comprehension, not just page visits.
+
+2
+
+**Practitioner interviews**
+
+Next
+
+Speak with 5–8 people who currently investigate, report or manage forest-related evidence. Understand their existing tools and biggest bottlenecks.
+
+3
+
+**Design-partner agreement**
+
+After demonstrated interest
+
+Identify one legitimate organization and one approved geography, with a clear data-sharing and pilot scope.
+
+4
+
+**Owner-only genuine pilot**
+
+After technical launch gates
+
+Qualify source access, identity, secure storage, a genuine end-to-end case and independent recovery.
+
+5
+
+**Paid institutional offer**
+
+After operational usefulness is demonstrated
+
+Test a bounded fee for evidence management, follow-up reporting or monitoring coordination, with documented delivery costs.
+
+I would not spend effort implementing billing, multi-tenancy or enterprise integrations before these tests.
+
+### **Grant readiness is a different sale**
+
+ForestProof can already make a credible prototype-and-research argument:
+
+- There is a deployed public geographic experience.
+- There are genuine historical optical measurements.
+- Scientific uncertainty and missing information are disclosed.
+- Historical radar experiments have reproducible methods and limitations.
+- The evidence workflow has a functioning, clearly fictional demonstration.
+- Operational launch milestones are explicit.
+
+That is a stronger application than a concept deck alone.
+
+However, a grant application should not claim documented conservation impact, independent operational detection accuracy, institutional adoption or production monitoring.
+
+The strongest funding narrative would be:
+
+**We have built the prototype and demonstrated reproducible environmental-data research. Funding will support qualified source integration, practitioner co-design, secure case operation and field validation.**
+
+This is evidence-based and gives a funder clear milestones.
+
+# **6. Source independence, Golden Economics and the moat**
+
+The provider strategy in your repository is directionally sound.
+
+I would distinguish three types of independence.
+
+| Independence             | Meaning                                                                              | Priority       |
+| ------------------------ | ------------------------------------------------------------------------------------ | -------------- |
+| Application independence | ForestProof controls the user experience, workflow and evidence model                | High           |
+| Integration independence | ForestProof can change qualified sources without redesigning the entire product      | High           |
+| Detector independence    | ForestProof develops and operates its own validated disturbance-detection algorithms | Research-stage |
+
+The first two are useful now. The third could eventually be valuable, but it is substantially more expensive and scientifically demanding.
+
+Your own direct-source work illustrates why.
+
+The documented 2019 Mount Kenya research compared radar-derived thresholds against an independent mapped fire event. The 3 dB rule flagged only 7.8% of the matched burn centres and 2.9% of matched controls. That is meaningful experimental work, but not evidence that the rule is ready to detect forest loss operationally. See [direct-source evaluation](https://github.com/thegodmustwin/forestproof/blob/main/docs/DIRECT_SOURCE_EVALUATION.md?utm_source=chatgpt.com).
+
+Current published source descriptions also make clear that RADD, GLAD-L and DIST-ALERT have different geographic and sensor scopes.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://globalnaturewatch.org\&sz=32)
+
+Global Forest Watch
+
+
+
+The right choice is not simply the cheapest provider. It is the lowest total-cost pathway that supplies legally usable, useful, recurring observations for the selected operational area.
+
+Costs must include acquisition, processing, storage, quality checking, licensing, staff review and downstream publication. The current Global Nature Watch terms also require attention to attribution and dataset-specific permissions.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://globalnaturewatch.org\&sz=32)
+
+Global Nature Watch+1
+
+
+
+## **The Still-Fulcrum position**
+
+The economic fulcrum is not the satellite observation.
+
+It is the **trusted transition from uncertain observation to accountable human action**.
+
+That is where organizations may have an operational problem significant enough to pay to solve.
+
+The potential flywheel is:
+
+More legitimate observations reviewed
+
+More structured decisions and follow-ups
+
+**Better evidence of workflow performance**
+
+Improved triage and practitioner confidence
+
+More reasons to use ForestProof
+
+Hypothesized future flywheel; not demonstrated customer growth or defensibility.
+
+**The proprietary asset is not the raw satellite pixels.** It is potentially the permissioned history of how reliable observations were interpreted, how decisions were made, and what subsequent evidence showed.
+
+That history must be earned through actual authorized use. Merely storing many records will not automatically create a competitive moat.
+
+# **7. The five highest-value next improvements**
+
+These are the changes I would actually prioritize for Codex.
+
+**1**
+
+**Build ForestProof Discovery v1**
+
+P0 · Public value
+
+A unified search that covers published places, observations, dates, source-quality information, research and public explanatory content.
+
+**Acceptance:** All published observations are discoverable; searching a date/grid opens the exact atlas state; search results expose provenance and limitations; unsupported questions return explicit no-evidence states; no protected data is indexed.
+
+**2**
+
+**Complete the observation time machine**
+
+P0 · Visual usefulness
+
+Implement synchronized compatible-image comparison, magnification and explicit quality context.
+
+**Acceptance:** The two published T36MZE images align geographically; dates and source identity remain visible; the comparison works with keyboard and touch; missing imagery cannot silently substitute another image; unavailable measurements remain unavailable.
+
+**3**
+
+**Make evidence history a universal interaction**
+
+P1 · Product differentiation
+
+Introduce one consistent evidence inspector and lineage component across atlas observations, public fictional cases and authorized saved cases.
+
+**Acceptance:** Every displayed edge resolves to an actual permitted record; missing or fictional states are explicit; source chronology is distinct from browser-action timestamps; exports preserve record identities; anonymous queries never expose protected case data.
+
+**4**
+
+**Run the operational-source and real-case qualification track**
+
+P0 · Pilot gate
+
+Qualify one source and area together; implement production person-level identity and isolated storage; prove one genuine end-to-end review and independent recovery.
+
+**Acceptance:** Access cost and reuse rights are documented; source records have traceable identities; a real authorized owner can review and follow up; restoration reproduces the original receipt and recorded decision; failure states remain explicit; no demo/live contamination occurs.
+
+**5**
+
+**Create the public validation and grant evidence kit**
+
+P1 · GTM and funding
+
+Add an honest capabilities page, concise walkthrough, practitioner feedback process, source/research index and easily shared case demonstrations.
+
+**Acceptance:** A first-time visitor can complete the core walkthrough unaided; practitioner feedback is collected with consent; capability claims link to dated evidence; demo and research claims are visibly differentiated; no customer traction or impact is inferred from site analytics alone.
+
+I would execute items 1 and 2 as a coherent product sprint, while pursuing the operational work in item 4 independently. The real-data qualification should never be blocked by another round of visual polishing.
+
+# **8. Copy-and-paste Codex master implementation brief**
+
+This is the brief I would send back to your development agent. It is deliberately designed to prevent Codex from rebuilding what already exists or confusing compelling visuals with unsupported environmental claims.
+
+# FORESTPROOF — DISCOVERY ENGINE & PRODUCT COHERENCE
+
+## Mission
+
+Evolve the existing deployed ForestProof Living Atlas into a cohesive geographic discovery and evidence-exploration platform.
+
+The target experience is:
+
+**Search or select a place → discover observations → compare evidence → understand uncertainty → inspect the review trail → identify the next legitimate action.**
+
+We want exceptional visual quality, genuine scientific utility and a credible path toward institutional adoption.
+
+Do not create a parallel product or restart the architecture. Build on the existing release.
+
+## Step 0 — Establish the verified baseline
+
+Before implementation, inspect:
+
+- `execution/CURRENT_STATUS.md`
+- `execution/NEXT_ACTIONS.md`
+- `docs/REVIEW_PACKET.md`
+- `docs/PROJECT_MAP.md`
+- `docs/PROJECT_CONTEXT.md`
+- `docs/PROJECT_DECISIONS.md`
+- `docs/COMMERCIAL_STRATEGY.md`
+- `docs/DIRECT_SOURCE_EVALUATION.md`
+- `docs/GNW_INDEPENDENCE_RESEARCH.md`
+- `DESIGN.md`
+- Existing public visibility renderers, atlas code and manifests.
+- Existing protected Next.js, FastAPI and persistence components.
+- Current test coverage, deployment scripts and rollback procedures.
+
+The documented deployed public source is `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`. Verify actual installed state and current main before making changes.
+
+Preserve all existing public routes, tests, scientific data, protection boundaries and unrelated Contabo services.
+
+Produce a short implementation inventory and migration plan before modifying code.
+
+## Workstream A — ForestProof Discovery v1
+
+Build a unified, provenance-aware search experience using the existing stack.
+
+Searchable public entities:
+
+1. Published geographic areas.
+2. Published Sentinel-2 coverage observations.
+3. Published acquisition dates and grids.
+4. Available image-context assets.
+5. Source and provenance descriptions.
+6. Public research methods and results.
+7. Public product documentation.
+8. Explicitly published case demonstrations.
+
+Do not index private research, internal evidence, credentials, synthetic protected records or unpublished case materials.
+
+Required user interactions:
+
+- Global search accessible from the homepage and atlas.
+- Place, date, source and evidence-quality filters.
+- Search suggestions grounded in actual indexed entities.
+- Search results with titles, meaningful summaries, source type, date, geographic relevance and limitations.
+- Deep links preserving exact date/grid selection.
+- Result selection that repositions or focuses the atlas.
+- Clear empty, unsupported, stale and unavailable states.
+- Keyboard and mobile functionality.
+- A way to copy a reproducible search or observation URL.
+
+Start with deterministic parsing and structured queries.
+
+Use existing SQLite capabilities or generated search assets where appropriate. Do not require a vector database, external LLM or paid geocoding service for v1.
+
+Search must never treat optical visibility coverage as detected forest loss.
+
+### Search contract
+
+Implement a typed public search record with:
+
+- Stable entity ID and type.
+- Display name and summary.
+- Temporal metadata.
+- Optional verified geometry reference.
+- Source and provenance references.
+- Public visibility status.
+- Data limitations.
+- Authorized destination URL.
+- Search indexing version.
+
+Implement permission filtering at the data source, not merely by hiding results in the frontend.
+
+Maintain deterministic ordering and clearly explain why results match.
+
+### Acceptance
+
+- All six published date/grid pairs can be found through search.
+- Queries for 8 November, 13 November, Geta and T36MZE resolve appropriately.
+- Clicking a matching result restores the correct atlas and laboratory state.
+- Queries for unqualified live forest-loss alerts do not fabricate results.
+- Search does not expose unpublished geometry or protected records.
+- The public search works without new recurring infrastructure subscriptions.
+- Tests cover accuracy, indexing, URL state, permissions and unavailable data.
+
+## Workstream B — Observation Time Machine
+
+Complete compatible source-image comparison and magnification.
+
+Required capabilities:
+
+- Same geographic viewport for compatible imagery.
+- Before/after swipe control.
+- Optional side-by-side comparison.
+- Zoom/pan synchronization.
+- Persistent acquisition and source labels.
+- Coverage statistics displayed separately from source imagery.
+- Visible uncertainty and comparability warnings.
+- Touch, keyboard and reduced-motion support.
+- Correct handling of unmatched or missing imagery.
+
+Only use the actual published historical images and corresponding valid manifests.
+
+Do not generate or synthesize false observation pixels.
+
+### Acceptance
+
+- T36MZE imagery from 8 and 13 November 2026 aligns using documented spatial metadata.
+- Source-image identities are stable across interaction and reload.
+- Missing imagery provides a meaningful fallback without date substitution.
+- Poor usable coverage is explained without implying unchanged forest.
+- Comparison supports desktop and phone layouts.
+
+## Workstream C — Integrated Evidence Explorer
+
+Unify the interpretation model across the atlas, observation laboratory, fictional walkthrough and protected workbench.
+
+Build reusable evidence panels for:
+
+- Source identity.
+- Acquisition and source-check timestamps.
+- Observation type.
+- Spatial scope.
+- Quality and missing information.
+- Associated review records, where authorized.
+- Recorded response and follow-up.
+- Dossier reproduction status.
+
+Public fictional case lineage must remain browser-only, fictional and unsigned.
+
+Protected case lineage must derive solely from authorized saved records.
+
+Do not create decorative graph nodes lacking underlying records.
+
+### Acceptance
+
+- Every inspectable lineage node resolves to the correct source record.
+- Chronology is correct.
+- Editing an earlier fictional decision updates downstream records correctly.
+- Protected details do not leak through search, metadata, caching or public APIs.
+- An accessible textual timeline offers the same essential information.
+
+## Workstream D — Visual Discovery System
+
+Extend the existing Living Atlas design language.
+
+Prioritize:
+
+1. A search-first geographic entrance.
+2. A large coherent spatial viewport.
+3. An observation time machine.
+4. Evidence X-ray / source-layer inspection.
+5. A readable, interactive case timeline.
+
+Use the existing orbital-black, forest, mint, cyan, ivory and amber tokens.
+
+Avoid new decorative dashboards, invented polygons, misleading heatmaps, false alert counts or simulated measured terrain.
+
+Every animation must clarify spatial, temporal or evidentiary relationships.
+
+The user must always know whether a visual is:
+
+- Original source data.
+- Derived scientific information.
+- Historical geographic context.
+- Illustrative visual design.
+- Fictional training content.
+- Authorized real case evidence.
+
+### Acceptance
+
+- A new visitor can locate Geta, select an observation and explain the coverage limitation.
+- The public site remains functional on mobile and when WebGL is unavailable.
+- Visual changes preserve source provenance.
+- No scientific measurements change as a result of presentation work.
+- Compare screenshots across desktop, 390px and 320px layouts.
+- Run usability tests with people unfamiliar with the product.
+
+## Workstream E — Operational Pilot Qualification
+
+Track separately from the public design release.
+
+Do not activate LIVE merely because the search or UI is complete.
+
+Required gates:
+
+1. Agree a legitimate operating geography.
+2. Qualify a useful source with repeat observations.
+3. Verify access price, data-use rights, attribution and retention.
+4. Establish production person-level identity.
+5. Establish isolated live-case storage.
+6. Connect one genuine source receipt to an authorized case review, response and follow-up.
+7. Independently recover the complete original receipt and case history.
+8. Implement explicit publication authorization and freshness reporting.
+
+No unverified provider fee, paid account or subscription may be activated without owner approval.
+
+## Workstream F — Market Validation and Grant Evidence
+
+Create a public-facing capability and evidence register.
+
+Distinguish:
+
+- Implemented public functionality.
+- Working synthetic demonstration.
+- Historical reproducible research.
+- Qualified operational functionality.
+- Planned research and engineering.
+- Unverified commercial hypotheses.
+
+Provide a concise research and grant-review landing page.
+
+Include links to methods, provenance, tests, limitations and current milestones.
+
+Prepare a practitioner feedback instrument focused on real tasks rather than aesthetic preference alone.
+
+Do not invent partner organizations, user testimonials, funding, paid customers or ecological outcomes.
+
+## Measurement
+
+Measure:
+
+- Time to find a published observation.
+- Correct interpretation of visibility versus disturbance.
+- Time to complete the fictional workflow.
+- Search success and explicit no-result rates.
+- Atlas-to-laboratory navigation success.
+- Page performance and transferred bytes.
+- Practitioner-reported usefulness.
+- Operational case completeness when a qualified real pilot exists.
+
+Do not describe engagement or retention as validated until measured.
+
+## Infrastructure and release requirements
+
+Continue using existing Contabo hosting.
+
+Preserve existing gateway rules, SSH access, loopback-only RDP, scheduled visibility checks, protected database, other hosted applications and rollback artifacts.
+
+Prefer static search indexes, bounded regional assets and client-side rendering.
+
+Keep new recurring subscription spending at $0 unless a specific paid alternative is justified and approved.
+
+Use staged changes, CI, production-safe read-only verification and documented rollback.
+
+No secrets, private evidence or credentials in logs, prompts, commits or screenshots.
+
+## Implementation sequence
+
+**Phase 1:** Architecture audit, typed search entities and static public search index.
+
+**Phase 2:** Search interface, filters, source-bound answers and atlas deep linking.
+
+**Phase 3:** Compatible-image time machine and magnification.
+
+**Phase 4:** Unified evidence inspector and lineage improvements.
+
+**Phase 5:** User comprehension tests, visual refinement, performance and accessibility.
+
+**Parallel operational track:** Qualified source and operating area, genuine owner workflow and independent recovery.
+
+After every phase:
+
+- Report modified files and architectural decisions.
+- Run tests.
+- Capture real desktop/mobile screenshots.
+- Compare scientific results against baseline.
+- Record deployed commit and verified deployment state.
+- State what remains incomplete.
+- Do not claim success based on screenshots alone.
+
+## Final product standard
+
+ForestProof should feel like a beautiful scientific instrument through which someone can explore a real landscape and follow trustworthy evidence.
+
+Search, geography, time, sources, uncertainty, human decisions and follow-up should all feel like different views of one connected reality.
+
+Build that coherence before expanding into more landscapes, more complex AI or more operational claims.
+
+## **9. What I would do next as the founder**
+
+I would run two tracks, not ten.
+
+**Track A: Build the discovery experience.** This is what will make ForestProof visually exceptional, accessible to curious users and more useful than its current collection of pages. It is also a feature that can be built with the public data already available.
+
+**Track B: Prove the institutional workflow with genuine qualified evidence.** This is what could turn ForestProof into a sustainable business rather than an impressive science demonstration.
+
+The strongest go-to-market story will emerge when you can show an organization this simple sequence:
+
+> Here is the landscape you are responsible for. Here are the observations and their uncertainties. Here is what your team reviewed, what it did, and what follow-up evidence supports. Here is the dossier you can reproduce independently.
+
+That is much more compelling than selling “AI-powered forest monitoring.”
+
+The larger vision can ultimately become a searchable **environmental evidence memory**: a governed system that remembers what was observed in a landscape, which questions arose, who reviewed them, and what later evidence showed.
+
+That is a credible application of your Still-Fulcrum and Golden Economics doctrines—but only if the product earns its position through real use, validated data and genuine operational value.
+
+**My strongest recommendation is to make ForestProof's next release a Discovery Engine plus Observation Time Machine, while treating the first genuine institutional pilot as the separate, non-negotiable commercial milestone.**

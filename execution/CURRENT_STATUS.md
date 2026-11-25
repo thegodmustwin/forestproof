@@ -1,5 +1,25 @@
 # Current Status
 
+## Discovery follow-up deployed — 25 November 2026
+
+Public source `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb` is deployed on Contabo. Suggested dates and grids now derive from the current public report; they disappear when unsupported, preventing stale suggestions as the rolling report changes. Four discovery projection/freshness tests and full [application CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138704) and [raster CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138735) passed on this exact source. The existing raster environment passed public service tests prior to the switch. All 34 exact public routes passed HTTPS GET/HEAD 200 and POST 405 with MIME checks; private/unknown paths stayed 401. Source-report state and existing services were preserved and the prior public release and gateway config were retained for rollback.
+
+Production browser checks of the preceding `d3f5c0d` release passed at 1440/390/320 for search, current report selections, URL reload, comparison, keyboard magnification, blocked-image feedback and no-JavaScript reading. The follow-up changes only suggestion generation and its tests. The full operational alert gates remain open.
+
+## Discovery and Time Machine release — 25 November 2026
+
+Contabo serves public source `d3f5c0d26c44cedcc50ab74c27250c3ec34f0a8b`. Public `/discovery` searches the validated report projection plus curated public place, research, guide and fictional-practice entries. Place, date, source, type and coverage filters retain URL state; matches link to the exact atlas selection. Unqualified live forest-loss queries return an explicit no-feed state. Search is deterministic keyword/filter matching, not general natural language, geocoding or protected-case search. No raw receipt, private evidence or credentials enter the public index.
+
+The public observation laboratory adds an aligned historical comparison of the published 8/13 November T36MZE source-window crops with a native slider and shared magnification. Real dates, image identities, available coverage, image failure and uncertainty remain distinct. Missing or aged-out coverage is labelled unavailable. The private standalone report stays self-contained. Local browser verification passed at 1440/390/320 for search, URL restoration, no-feed state, keyboard comparison, magnification, failure and no-script reading. Clean [application CI](https://github.com/thegodmustwin/forestproof/actions/runs/45570381090) and [raster CI](https://github.com/thegodmustwin/forestproof/actions/runs/45570380770) passed on this exact source.
+
+Before switching, the existing server raster environment passed its public-service suite. All 34 explicit public routes passed HTTPS GET/HEAD 200, POST 405 and MIME checks; unlisted/private routes remained 401. The source-report hash remained unchanged and the protected app, other services, SSH and loopback-only RDP were preserved. Previous release and gateway backup are retained for rollback. No new paid subscription or live alert feed was activated. Operational source qualification, owner identity, isolated live storage and independent recovery remain separate launch gates.
+
+## Discovery and Time Machine candidate — 25 November 2026
+
+A candidate public `/discovery` page derives date/grid coverage records only from the validated public visibility projection. It supports deterministic keyword search, type, place, date, source and coverage filters, explicit unsupported forest-loss state, source explanations and reproducible atlas links. No private report receipts, protected cases or credentials are indexed. A public-only observation comparison uses the two documented same-window historical T36MZE crops; its native slider and shared magnification show independently labelled source imagery alongside available published coverage or an explicit unavailable state. Imagery is not evidence of forest change.
+
+The candidate adds two explicit public paths, `/discovery` and `/assets/discovery.js`; Python and Caddy allowlists must remain identical. It has not been deployed. Current public source is still `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035` unless separately verified. Existing source qualification, production identity, live storage and independent genuine-case recovery gates remain open. The original dirty D: checkout is preserved. See the archived brief under docs/origin for direction, not proof of implementation.
+
 ## Public geographic Living Atlas — 20 November 2026
 
 Contabo serves exact public source `3d2f5d8c7aebd6b4afee84759c8b4552bc7c2035`. The planetary homepage leads to `/atlas/geta`, connecting the provisional Kenyan research rectangle, exact georeferenced historical crops, selected date/grid and observation laboratory. Navigation preserves the selection in both directions. Seven inspectable fictional records connect the practice investigation to its unsigned dossier. Terrain is historical elevation context at 1× scale; it is not canopy, vegetation change or an alert. The protected app remains on `37934a5d41d7f086ae11b31ade2a35b557f1b30d`.

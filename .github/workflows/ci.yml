@@ -26,6 +26,8 @@ jobs:
         working-directory: apps/web
       - name: Verify published geography and runtime integrity
         run: python -m unittest discover -s tools/sentinel_visibility -p test_atlas_publication.py
+      - name: Verify public discovery projection and freshness
+        run: python -m unittest tools.sentinel_visibility.test_discovery_publication
       - name: Verify planetary entry atlas and source selection
         run: node apps/web/scripts/smoke-public-atlas.mjs
         env:
