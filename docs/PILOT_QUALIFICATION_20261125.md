@@ -20,7 +20,7 @@ Before any paid service, obtain a concrete price and owner approval. Do not infe
 4. Use a protected copy stored outside the source system, restore on an independently accessible environment, and compare the exact original receipt, owner decision, follow-up and dossier. Test recovery after loss of the original machine/profile using an owner-controlled recovery mechanism. A same-host copy or a synthetic rehearsal does not prove this.
 5. Publish only explicitly approved fields with source attribution and clear stale/unavailable status. Keep private case/API routes protected.
 
-The existing [loopback owner-review tool](../tools/owner_review/README.md) documents a SQLite integrity-checked copy and receipt-link validation. On 25 November, a read-only local check of the actual saved owner ledger and its existing same-device backup passed integrity and source-linkage checks; the original receipt bytes, single review and follow-up matched. No private content was printed. This confirms a matching local copy, not an independent production restore. The next step is a non-destructive off-device restore using an owner-controlled destination and recovery mechanism, with an independent receipt, decision and dossier comparison. Never upload the database or keys to the public repository.
+The existing [loopback owner-review tool](../tools/owner_review/README.md) documents a SQLite integrity-checked copy and receipt-link validation. On 25 November the genuine ledger and its laptop backup matched locally. A fresh encrypted snapshot of the genuine ledger was also restored temporarily on Contabo: integrity and linkage passed, and the original receipt and reconstructed dossier, including review and follow-up, matched. The temporary server copy was removed and the one-use key was not retained. This validates a cross-device restore path, but not durable off-device storage or recovery without the laptop. The ten separate source rasters were not restored. Set up owner-controlled encrypted backups and independently accessible recovery credentials, and test restoring both the review and source raster archive. Never upload the database or keys to the public repository.
 
 ## Decisions and evidence to collect
 
@@ -30,5 +30,5 @@ The existing [loopback owner-review tool](../tools/owner_review/README.md) docum
 | Recurring source | Repeated usable observations, provenance, access and response semantics | Open |
 | Cost and use | Exact service price/quota and permitted retention/publication | Open; no payment authorized |
 | Owner and storage | Person-level authorization, isolated store and failure handling | Open for production |
-| Genuine review and recovery | Actual decision, receipt and dossier independently restored | Open; screenshot shows local decision |
+| Genuine review and recovery | Actual decision, receipt and dossier independently restored; durable backup and independent recovery credentials tested | Temporary Contabo restore passed; durable recovery and raster restore open |
 | Practitioner value | Consented task observations and baseline comparison | Not yet measured |

@@ -1,5 +1,11 @@
 # Current Status
 
+## Genuine historical review: temporary Contabo restore — 25 November 2026
+
+A fresh, memory-only SQLite snapshot of the actual historical owner-review ledger was encrypted with a freshly generated AES-256-GCM key and sent over host-verified SSH to Contabo. In an isolated, owner-only temporary directory on `/dev/shm` (verified tmpfs), the encrypted snapshot was decrypted and restored. SQLite integrity and the owner-review source-document, receipt, owner and review-linkage validation passed. The original receipt digest and a canonical reconstruction of the complete dossier, including the saved review and follow-up, matched the local snapshot; private content, credentials and hashes were not printed. The temporary server directory was removed after the test. No public route, service, live feed or production database was changed.
+
+This was an encrypted transfer and **temporary cross-device restore rehearsal**, not a retained, independently recoverable backup: the one-use key traveled in the same authenticated SSH session and was not retained for the owner. It does not demonstrate recovery after laptop/profile loss, a separately held recovery credential, or independently controlled long-term storage. The ten original raster inputs are not in the review ledger and were not restored in this test. Establish and test durable owner-controlled encrypted off-device backup and independently available recovery credentials, then verify the separate raster archive before declaring disaster recovery complete.
+
 ## Actual owner-review backup comparison — 25 November 2026
 
 A read-only local check of the genuine historical owner-review ledger and its pre-existing same-device backup passed SQLite integrity and the owner tool's source-document and receipt-link validation for both files. The original and backup contain one matching recorded review and follow-up, and the original receipt bytes match. No notes, receipt contents, credentials, private hashes or locations were printed or committed. This checks the actual saved decision, not a synthetic fixture. Both files reside on the same laptop, so it does not establish off-device recovery, recovery after loss of the Windows profile, production identity/storage, or a qualified current alert feed.
