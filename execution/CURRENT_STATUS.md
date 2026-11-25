@@ -1,5 +1,9 @@
 # Current Status
 
+## Pilot and practitioner validation checkpoint — 25 November 2026
+
+The post-launch assessment is preserved as historical product input. [Pilot qualification](../docs/PILOT_QUALIFICATION_20261125.md) separates provider dataset rights from API cost/quota, operating-area eligibility, production identity and actual independent recovery. [The practitioner kit](../docs/PRACTITIONER_VALIDATION_KIT.md) defines consented first-use tasks, interviews and a measured comparison. Neither document demonstrates a participant, customer, funding, completed recovery or live alert feed. The local owner-review test suite passed its two fixture tests; this does not inspect or restore the owner's real decision. The prior public Discovery deployment remains unchanged by this documentation work.
+
 ## Discovery follow-up deployed — 25 November 2026
 
 Public source `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb` is deployed on Contabo. Suggested dates and grids now derive from the current public report; they disappear when unsupported, preventing stale suggestions as the rolling report changes. Four discovery projection/freshness tests and full [application CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138704) and [raster CI](https://github.com/thegodmustwin/forestproof/actions/runs/45572138735) passed on this exact source. The existing raster environment passed public service tests prior to the switch. All 34 exact public routes passed HTTPS GET/HEAD 200 and POST 405 with MIME checks; private/unknown paths stayed 401. Source-report state and existing services were preserved and the prior public release and gateway config were retained for rollback.

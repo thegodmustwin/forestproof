@@ -1,5 +1,9 @@
 # Next Actions
 
+## Owner pilot and practitioner validation — 25 November 2026
+
+Use [the pilot qualification checkpoint](../docs/PILOT_QUALIFICATION_20261125.md) to establish actual source and area eligibility, applicable costs and reuse, person-level identity, separate live storage and independent restoration of the genuine owner review and source receipt. The saved historical review shown by the owner is not a qualified live feed. Use [the practitioner validation kit](../docs/PRACTITIONER_VALIDATION_KIT.md) to run consented first-use tasks and interviews when the owner selects participants. Targets are not achieved outcomes. Keep private notes and evidence out of Git and do not send invitations without explicit direction.
+
 ## After Discovery release — 25 November 2026
 
 Gather first-user feedback on finding an observation, understanding its limits and comparing the historical images. Expand deterministic query interpretation, stable typed indexing, accessible side-by-side comparison and the unified evidence inspector only after matching each to real records and permissions. The current public search is not a general natural-language or protected-case search. Continue qualifying one legitimate operating area and source, production owner identity, isolated live storage and independent recovery of the genuine review in parallel.
