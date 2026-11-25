@@ -1,5 +1,9 @@
 # ForestProof — repository and system map
 
+## Pilot qualification and practitioner learning — 25 November 2026
+
+[Pilot qualification](PILOT_QUALIFICATION_20261125.md) tracks the source/area, identity, storage, genuine review and independent recovery gates. [Practitioner validation](PRACTITIONER_VALIDATION_KIT.md) provides an interview and usability protocol plus a grant-evidence inventory. These are plans and evidence references, not claims of operational readiness or completed customer validation.
+
 ## Discovery and comparison candidate — 25 November 2026
 
 `tools/sentinel_visibility/build_discovery_page.py`, `discovery.html` and `assets/discovery.js` construct a public search surface from the same validated projection used by the atlas. `test_discovery_publication.py` tests projected records, source gaps and freshness. `visibility.html`, `build_visibility_page.py` and `assets/visibility.js` implement a public-only historical same-window comparison; the private static report stays self-contained. Exact routes are in `visibility_service.py` and `infrastructure/deployment/sentinel-visibility/public-route.caddy`. Deployment status is recorded separately.

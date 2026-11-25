@@ -1,0 +1,293 @@
+# ForestProof: Post-Launch Product Review & Go-to-Market Assessment
+
+25 November 2026 · Following merged PR #55
+
+**ForestProof is ready to be shown to the world as a working conservation research and discovery prototype. It is not yet ready to be sold as a live forest-monitoring service.**
+
+But there is an important opportunity between those two stages: you can begin engaging potential institutional customers, conservation researchers and grant partners **right now**, while preparing the first genuine operational pilot.
+
+I verified that PR #55 was merged on November 25. The repository's current deployment record identifies public source `a3edd00b80c247dcc9bc01ce5a89a71b28a62ffb` as running on Contabo, with application and raster CI passing. The search-date follow-up is also documented as tested against the current public report.
+
+The live Contabo pages could not be retrieved through my web viewer, so this review is based on the merged source code, deployment records and earlier captured geographic-release screenshots—not a fresh visual inspection or independently executed browser session.
+
+## 1. What ForestProof actually is
+
+Here is how I would explain the product to anybody unfamiliar with conservation technology.
+
+> ForestProof is a geographic evidence platform that helps people explore environmental observations, understand their reliability, investigate what they might mean, and document what responsible people do afterward.
+
+It combines three things that are usually discussed separately:
+
+**A geographic observatory**
+
+Explore an actual landscape, its historical imagery, terrain and scientific coverage.
+
+The public Geta research area in Kenya is the starting point.
+
+---
+
+**An environmental evidence engine**
+
+Search observations, compare dates, inspect imagery and discover exactly what the available evidence can establish.
+
+This is where Discovery and the Observation Time Machine fit.
+
+---
+
+**An accountability and response system**
+
+Connect sourced observations to human review, action, follow-up and reproducible case dossiers.
+
+Today, the accessible investigation is fictional. Turning this into a secure, genuine operational workflow remains the key commercial milestone.
+
+Illustrative imagery, not screenshots of the newly deployed Discovery release or verified Geta source images.
+
+The key business insight is that ForestProof should not compete primarily to become another satellite-image provider.
+
+**It should compete to become the trusted record of what organizations knew, what they decided, what they did and what they subsequently verified.**
+
+That is your Still-Fulcrum opportunity.
+
+## 2. What the Discovery release actually added
+
+I reviewed the new `build_discovery_page.py`, `discovery.html`, `discovery.js`, `visibility.js` and the release tests in GitHub.
+
+**ForestProof Discovery**
+
+Implemented public-search release
+
+---
+
+This is a meaningful architectural improvement because public observations are derived from the validated report rather than a completely separate collection of manually maintained values.
+
+Search suggestions also follow the rolling report. If a date falls out of the published collection, it no longer remains a misleading suggestion.
+
+However, the search is still intentionally bounded. It does not yet understand arbitrary natural-language questions, identify any coordinate on Earth, search protected cases or discover operational disturbance alerts.
+
+**Observation Time Machine**
+
+Implemented historical comparison
+
+The comparison uses the published T36MZE image window from November 8 and 13, 2026, with a reveal slider and shared magnification.
+
+It preserves separate dates, source identities, quality descriptions and missing-image handling.
+
+Importantly, the implementation does not treat a visual difference between two cloudy images as proof of forest change.
+
+This gives ForestProof a useful and teachable capability: **a visitor can discover why the most recent satellite image might actually be less informative than an earlier one.**
+
+That is a genuine scientific insight presented interactively.
+
+---
+
+## 3. Go-to-market readiness
+
+The important distinction is between **being ready to enter the market** and **being ready to operate for paying customers**.
+
+You are ready for the first.
+
+You have not yet demonstrated the second.
+
+---
+
+## 4. The competitive reality: where could ForestProof actually win?
+
+We need to understand what already exists before deciding where to concentrate our development effort.
+
+Several established platforms cover important parts of your proposed workflow.
+
+**Forest Watcher**
+
+Provides forest alerts, offline investigations, reports and team coordination. Its field and web tools are already available without a conventional paid SaaS subscription.
+
+ForestProof cannot differentiate simply by offering forest alerts and reporting.
+
+---
+
+**EarthRanger**
+
+A free conservation operations platform that supports incident records, patrols, geographic data and coordinated responses. Its November 2026 releases continue improving these operational workflows.
+
+ForestProof should not try to replicate this entire operational environment.
+
+---
+
+**SMART Conservation Tools**
+
+Provides established field data collection, analysis, operational workflows and reporting. Its recent SMART 8 release adds further data-management capabilities.
+
+Another reason to favor interoperability and focused specialization over rebuilding a general conservation platform.
+
+### So what is our strongest potential differentiation?
+
+I would position ForestProof as a **source-independent environmental evidence and accountability layer**, designed to produce defensible, reproducible dossiers across observations, decisions and follow-ups.
+
+The distinctive question to test is:
+
+> Can ForestProof make it materially easier for a conservation or restoration team to demonstrate what evidence it received, whether that evidence was reliable, what action it took, and what subsequent observations support?
+
+That is a narrower and potentially more valuable business proposition than “AI that detects deforestation.”
+
+But the differentiation is still a hypothesis. Existing platforms may already meet a prospective customer's needs, so we need to test it against their actual reporting workflows.
+
+## 5. The first customers I would target in Kenya
+
+Kenya has an identifiable institutional context for this product.
+
+The Kenya Watershed Services Improvement Programme supports community-led watershed and landscape restoration. Its grant programme includes Community Forest Associations, Water Resource Users Associations and other eligible community groups.
+
+The programme also developed a monitoring, evaluation and learning framework intended to strengthen accountability and results reporting.
+
+This suggests a specific opportunity: helping implementing organizations organize evidence for restoration activities, follow-up and reporting. It does **not** establish that KEWASIP wants ForestProof, would fund its software development, or has an open procurement opportunity for it.
+
+## The first commercial offer I would test
+
+PROPOSED POSITIONING
+
+# ForestProof Evidence & Accountability Pilot
+
+A bounded pilot for one conservation or watershed project, showing how sourced observations, human reviews, actions and follow-ups can be maintained as a reproducible evidence trail.
+
+---
+
+**Potential buyer:** a conservation NGO, restoration programme manager, catchment-management organization or environmental reporting team.
+
+**Problem:** fragmented evidence, inconsistent follow-up and time-consuming reporting.
+
+**Potential value:** a more complete audit trail, less time reconstructing case histories, better source transparency and clearer reporting.
+
+**Commercial validation needed:** an accountable buyer, a real workflow, actual operating costs and demonstrated savings or reporting improvement.
+
+There may be a second attractive segment in organizations that implement grant-funded restoration projects and must periodically report progress.
+
+For example, Kenya's Eldoret–Iten Water Fund describes digital monitoring and monthly/quarterly oversight, illustrating the institutional importance of evidence-based reporting. That is market context, not evidence of a ForestProof partnership.
+
+For a founder with limited capital, an assisted institutional pilot may be easier to validate than launching a self-service SaaS product immediately.
+
+You can sell a carefully scoped service around a validated workflow before investing in elaborate billing, user management and multi-tenant infrastructure.
+
+---
+
+## 6. What would make ForestProof genuinely sticky?
+
+This is where I would apply your Golden Economics and Panopticon doctrines carefully.
+
+Discovery v1 is technically useful, but it has a fundamental retention limitation: **the published collection is still small**.
+
+Searching six recent observation combinations plus a few curated research and guide entries is informative. It does not yet offer enough breadth or ongoing practical utility to sustain frequent visits by a large user base.
+
+Adding an LLM to that small collection would not solve the underlying problem.
+
+Instead, I would develop four connected forms of value.
+
+**Guided scientific discovery**
+
+Give visitors interesting, source-grounded questions that lead through actual observations.
+
+For example: “Why did the November 13 pass reveal so little ground?” A guided route opens the historical comparison, explains cloud limitations, and shows the actual coverage counts.
+
+---
+
+**A unified evidence inspector**
+
+Let people search and explore a source without losing context.
+
+Every eligible result should connect its geographic position, date, original imagery, quality, provenance and permitted case relationships in one coherent workspace.
+
+---
+
+**Saved places and source-status follow-ups**
+
+Eventually, allow users to follow approved monitoring areas or publication feeds and see when genuinely new evidence becomes available.
+
+A source-status update must not be marketed as a new forest-loss alert. User notifications require proper freshness rules and explicit consent.
+
+---
+
+**Longitudinal evidence memory**
+
+When genuine authorized cases exist, preserve the history of reviews, decisions and follow-ups so practitioners can return to unfinished work or retrieve a complete dossier.
+
+This is the strongest potential retention mechanism for institutional customers.
+
+The economic distinction matters.
+
+Public users may return because ForestProof helps them discover and understand environmental information.
+
+Institutional users should return because they have real responsibilities, unresolved cases, reporting deadlines and histories they need to preserve.
+
+The second is a more credible foundation for recurring revenue.
+
+## 7. How I would measure business value
+
+The metric I would optimize first is not website traffic.
+
+It is **how much easier ForestProof makes a legitimate environmental evidence task**.
+
+Suppose an organization currently reconstructs a case from emails, spreadsheets, satellite images and field notes. ForestProof could be valuable if it measurably reduces the work required to assemble a complete source-linked report.
+
+A simple pilot value model is:
+
+\\[ \text{Net operational value} = \text{Staff time saved} + \text{Rework avoided} + \text{Other validated benefits} - \text{Total operating cost} \\]
+
+We don't know these values yet. The first pilot should measure them.
+
+For instance, compare the time it takes practitioners to complete and retrieve a case dossier with and without ForestProof. Record missing source references, incomplete follow-ups and user interpretation errors, not just task completion speed.
+
+This also sharpens your pricing strategy. You should eventually charge against a measured operational benefit, rather than assuming organizations will pay because the geographic interface looks impressive.
+
+---
+
+# 8. The next 30 days: launch-readiness plan
+
+Proposed execution window: November 25 – December 25, 2026
+
+| Workstream                | Concrete action                                                                                           | Success evidence                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Public validation         | Observe 5–10 first-time users completing Discovery and the Time Machine                                   | Task-completion, comprehension and friction notes              |
+| Customer discovery        | Interview 5–8 conservation or environmental-reporting practitioners                                       | Existing workflows, strongest pain points and budget ownership |
+| Institutional pipeline    | Seek one interested design partner with legitimate responsibility for a landscape                         | Documented pilot interest, not assumed demand                  |
+| Operational qualification | Advance one source/area combination, identity, storage and recoverable genuine case                       | Explicit technical and rights-based launch evidence            |
+| Grant preparation         | Package architecture, reproducible experiments, screenshots, limitations and proposed research milestones | A funder-ready evidence pack                                   |
+
+These are execution targets, not commitments or already-achieved milestones.
+
+A branded domain and concise practitioner landing page would also improve presentation credibility. Neither should delay the genuine source and recovery work.
+
+## The pilot gate I would insist on
+
+Before calling ForestProof operationally ready, Codex should be able to demonstrate a complete, authorized sequence:
+
+That sequence, supported by real records and independent verification, would be a much more meaningful milestone than a larger searchable collection of synthetic cases.
+
+# 9. The next strategic product decision
+
+I would now prioritize the following balance of effort:
+
+**Operational pilot readiness** 55%
+
+**Practitioner discovery and GTM** 30%
+
+**Discovery and visual refinements** 15%
+
+Recommended allocation of future development effort, not measured product readiness.
+
+The reason is simple: you now have enough public product to begin learning from real people.
+
+Further investment in visual refinement has value, but the highest-uncertainty assumptions are now commercial and operational.
+
+Can a legitimate conservation team use ForestProof on a real case? Does that team gain something valuable it cannot already obtain from its existing tools? Is someone willing and able to fund that improvement?
+
+Those are the questions that determine whether ForestProof becomes a sustainable company.
+
+## Final assessment
+
+ForestProof currently has three compelling assets: a working public geographic interface, credible source-aware scientific presentation, and a reproducible software/research development history.
+
+Its missing assets are equally important: an operationally qualified real-data workflow, validated institutional demand and accumulated genuine intervention outcomes.
+
+You should **begin market entry now through public demonstrations, practitioner interviews and selective grant outreach**. At the same time, direct most development effort toward proving a single genuine, secure, recoverable environmental case.
+
+The longer-term opportunity is a trusted, searchable history of environmental observations and responsible human responses—not merely an increasingly beautiful satellite map.
+
+That is where the Still-Fulcrum Doctrine, Golden Economics and genuine user value could converge.
