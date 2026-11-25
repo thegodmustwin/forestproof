@@ -34,6 +34,15 @@ class PublicDiscoveryTests(unittest.TestCase):
         self.assertIn('Observation report unavailable', page)
         self.assertNotIn('data-kind="observation"', page)
         self.assertIn('data-kind="place"', page)
+        self.assertNotIn('data-suggestion="8 November 2026"', page)
+
+    def test_suggested_date_tracks_the_public_report(self):
+        page = render_discovery(self.snapshot, now=self.now)
+        self.assertIn('data-suggestion="13 November 2026"', page)
+        self.snapshot['acquisitions'] = self.snapshot['acquisitions'][1:]
+        page = render_discovery(self.snapshot, now=self.now)
+        self.assertIn('data-suggestion="10 November 2026"', page)
+        self.assertNotIn('data-suggestion="13 November 2026"', page)
 
     def test_imagery_context_is_strictly_matched(self):
         page = render_discovery(self.snapshot, now=self.now)

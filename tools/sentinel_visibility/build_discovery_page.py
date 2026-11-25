@@ -50,4 +50,12 @@ def render_discovery(snapshot: dict | None, *, now: datetime, failed_at: datetim
         f'<option value="{day["date"].isoformat()}">{day["date"].strftime("%d %b %Y")}</option>'
         for day in snapshot['acquisitions']
     )
-    return Template(TEMPLATE.read_text(encoding='utf-8')).substitute(status=status, observations=observations, dates=dates)
+    suggested_date = ''
+    if snapshot and snapshot['acquisitions']:
+        day = snapshot['acquisitions'][0]['date']
+        label = day.strftime('%d %B %Y').lstrip('0')
+        suggested_date = f'<button type="button" data-suggestion="{escape(label, quote=True)}">{escape(label)}</button>'
+    suggested_grid = ''
+    if snapshot and any(tile['grid'] == 'T36MZE' for day in snapshot['acquisitions'] for tile in day['tiles']):
+        suggested_grid = '<button type="button" data-suggestion="T36MZE">T36MZE</button>'
+    return Template(TEMPLATE.read_text(encoding='utf-8')).substitute(status=status, observations=observations, dates=dates, suggested_date=suggested_date, suggested_grid=suggested_grid)
