@@ -1,5 +1,9 @@
 # Next Actions
 
+## After the genuine cross-device restore rehearsal — 25 November 2026
+
+The actual historical review, original receipt and reconstructed dossier were restored and verified on Contabo in temporary memory-only storage. This proves the transfer/restore path for that snapshot, but no durable backup or independently held recovery key was retained, and the ten source raster files were not part of the exercise. Set up an owner-controlled encrypted backup outside the application host, independently accessible recovery credentials, and a restore test of both the review and separate raster archive. Continue native source/area eligibility, exact service costs and reuse checks before live ingestion; the public research area remains provisional.
+
 ## Owner pilot and practitioner validation — 25 November 2026
 
 Use [the pilot qualification checkpoint](../docs/PILOT_QUALIFICATION_20261125.md) to establish actual source and area eligibility, applicable costs and reuse, person-level identity, separate live storage and independent restoration of the genuine owner review and source receipt. The saved historical review shown by the owner is not a qualified live feed. Use [the practitioner validation kit](../docs/PRACTITIONER_VALIDATION_KIT.md) to run consented first-use tasks and interviews when the owner selects participants. Targets are not achieved outcomes. Keep private notes and evidence out of Git and do not send invitations without explicit direction.
