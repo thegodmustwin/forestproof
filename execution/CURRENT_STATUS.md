@@ -1,5 +1,9 @@
 # Current Status
 
+## Direct GLAD-L observation-date research — 25 November 2026
+
+A bounded, anonymous read of the direct GLAD-L observation-date grid sampled 14,400 pixel centres in the provisional Geta research rectangle. The newest clear-observation date was 19 November; 4,258 centres (29.6%) had a clear observation within seven days of 25 November. These are observation dates, not disturbance alerts, RADD native-baseline eligibility, or evidence about an official forest boundary. One checked snapshot cannot establish normal cadence, source retention or a production feed. See the [methods and limitations](../docs/GLAD_OBSERVATION_DATE_20261125.md).
+
 ## Genuine historical review: temporary Contabo restore — 25 November 2026
 
 A fresh, memory-only SQLite snapshot of the actual historical owner-review ledger was encrypted with a freshly generated AES-256-GCM key and sent over host-verified SSH to Contabo. In an isolated, owner-only temporary directory on `/dev/shm` (verified tmpfs), the encrypted snapshot was decrypted and restored. SQLite integrity and the owner-review source-document, receipt, owner and review-linkage validation passed. The original receipt digest and a canonical reconstruction of the complete dossier, including the saved review and follow-up, matched the local snapshot; private content, credentials and hashes were not printed. The temporary server directory was removed after the test. No public route, service, live feed or production database was changed.

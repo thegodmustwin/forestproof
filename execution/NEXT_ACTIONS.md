@@ -1,5 +1,7 @@
 # Next Actions
 
+The [25 November direct GLAD-L observation-date check](../docs/GLAD_OBSERVATION_DATE_20261125.md) shows some recent clear observations in the provisional research rectangle. Continue qualifying native alert eligibility, repeated availability, service cost, rights and an authorized operating area; do not treat observation dates as disturbance alerts or RADD eligibility.
+
 ## After the genuine cross-device restore rehearsal — 25 November 2026
 
 The actual historical review, original receipt and reconstructed dossier were restored and verified on Contabo in temporary memory-only storage. This proves the transfer/restore path for that snapshot, but no durable backup or independently held recovery key was retained, and the ten source raster files were not part of the exercise. Set up an owner-controlled encrypted backup outside the application host, independently accessible recovery credentials, and a restore test of both the review and separate raster archive. Continue native source/area eligibility, exact service costs and reuse checks before live ingestion; the public research area remains provisional.
