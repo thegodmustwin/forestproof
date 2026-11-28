@@ -9,6 +9,17 @@ permissions:
   contents: read
 
 jobs:
+  owner-review-backup:
+    name: Owner review encrypted backup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r tools/owner_review/requirements-backup.txt
+      - run: python -m unittest tools.owner_review.test_encrypted_backup -v
+
   public-atlas:
     name: Public geographic experience
     runs-on: ubuntu-latest
